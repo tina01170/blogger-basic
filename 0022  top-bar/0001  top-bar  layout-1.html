@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+   
+    <style>
+
+    /* top-bar */
+
+    .top-bar { width: 100%; overflow: hidden; position: relative; display:flex; justify-content: space-between; align-items:center;  height:50px;  background:$(bar.bg.color);}
+    .date p {  font-size:16px; color:$(bar.text.color); /* height:38px; line-height:24px;*/ }
+
+    #social-top .widget > h3 { display:none; }
+    #social-top .widget { margin-right:20px;  /*padding-top:8px;*/ }
+    .social-top { position:relative; float:right; display:block; }
+    .social-top ul > li { float:left; display:inline-block; }
+    .social-top ul > li > a { text-decoration:none; display:block; /*line-height:38px;*/ padding:0; margin:0 0 0 15px; }
+    .social-top .LinkList ul.social-counter a:before { display:block; font-family:'Font Awesome 5 Brands'; font-size:20px;  text-align:center; color:$(bar.text.color); background:$(bar.bg.color);  }
+
+    @media screen and (max-width:600px) {
+          .social-top .LinkList ul.social-counter a:before { font-size:18px; }
+        .date p { font-size:14px; }
+    }
+    @media screen and (max-width:480px) {
+          .social-top .LinkList ul.social-counter a:before { font-size:14px; }
+    }
+    @media screen and (max-width:360px) {
+          .social-top .LinkList ul.social-counter a:before { font-size:12px; }
+          
+    }
+
+    /*
+     <Variable name="bar.bg.color" description="Topbar Background Color" type="color" default="#000000" value="#000000"/> 
+ 		<Variable name="bar.text.color" description="Topbar Text Color" type="color" default="#ffffff" value="#ffffff"/>  
+    
+    */
+
+    body#layout .top-bar { width:100%; padding:0; margin:0; }
+	  body#layout .social-top { width:100%; padding:0; margin:0; }
+    </style>
+  </head>
+  <body>
+    <!--放header 的上面-->
+    <div class='top-bar'>
+      <div class='date'>
+        <p>
+        <script type='text/javascript'>
+          const date = new Date(); 
+          const day = date.getDate();
+          const month = date.getMonth() + 1;
+          const year = date.getFullYear();
+          //document.write(month + &quot;月&quot; + day + &quot;日&#65292;&quot; + year + &quot; 年&quot;);
+          document.write(year + &quot;年&quot; + month + &quot;月&quot; + day + &quot;日&quot;);
+        </script>
+        </p>
+      </div> 
+      <b:section class='social-top social' id='social-top' maxwidgets='1' name='Social Top' showaddelement='yes'>
+                      <b:widget id='LinkList5' locked='false' title='Social  Top' type='LinkList' version='3' visible='true'>
+                        <b:widget-settings>
+                          <b:widget-setting name='link-3'>https://</b:widget-setting>
+                          <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                          <b:widget-setting name='text-1'>twitter</b:widget-setting>
+                          <b:widget-setting name='link-1'>https://</b:widget-setting>
+                          <b:widget-setting name='text-0'>facebook</b:widget-setting>
+                          <b:widget-setting name='link-2'>https://</b:widget-setting>
+                          <b:widget-setting name='text-3'>pinterest</b:widget-setting>
+                          <b:widget-setting name='link-0'>https://</b:widget-setting>
+                          <b:widget-setting name='text-2'>instagram</b:widget-setting>
+                        </b:widget-settings>
+                        <b:includable id='main'>
+    <b:include name='widget-title'/>
+    <b:include name='content'/>
+    </b:includable>
+                        <b:includable id='content'><!--這裡要改 a:before 才出得來-->
+                      <div class='widget-content'>
+                        <ul class='social-counter social social-color'>
+                          <b:loop values='data:links' var='link'>
+                            <li expr:class='data:link.name'><a expr:href='data:link.target' expr:title='data:link.name' target='_blank'/></li>
+                          </b:loop>
+                        </ul>
+                      </div>
+                    </b:includable>
+                      </b:widget>
+                    </b:section>
+    </div>
+    
+
+    
+    <div class='footer-info'>
+      <div class='copyright'>
+        <p>Copyright &#169; <script type='text/javascript'>let newyear = new Date();document.write(newyear.getFullYear());</script>
+           <b:tag expr:href='data:blog.homepageUrl' name='a'>
+              <data:blog.title.escaped/>
+            </b:tag>
+        </p>   
+      </div> 
+    </div>
+   
+  </body>
+</html>

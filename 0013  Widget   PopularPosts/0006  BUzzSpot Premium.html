@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BUzzSpot Premium</title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <b:defaultmarkup type='PopularPosts'>
+    <b:includable id='main' var='this'>
+      <b:include name='widget-title'/>
+          <div class='widget-content'>
+            <b:if cond='data:widget.sectionId == &quot;ticker&quot;'>
+                <div class='pbt-ticker ticker-items'>
+                  <b:loop index='i' values='data:posts' var='post'>
+                    <b:include data='post' name='content'/>
+                  </b:loop>
+                </div>
+            <b:elseif cond='data:widget.sectionId == &quot;trending&quot;'/>
+                <div class='trending-items'>
+                  <b:loop index='i' values='data:posts' var='post'>
+                    <b:include cond='data:i lt 4' data='post' name='content'/>
+                  </b:loop>
+                </div>
+            <b:else/>
+                <b:class name='side-items'/>
+                <b:loop index='i' values='data:posts' var='post'>
+                  <b:include data='post' name='content'/>
+                </b:loop>
+            </b:if>
+          </div>
+      </b:includable>
+    <b:includable id='blogThisShare'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='bylineByName' var='byline'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='bylineRegion' var='regionItems'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='commentsLink'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='commentsLinkIframe'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='content' var='post'>
+      <b:include name='popular-content'/>
+    </b:includable>
+    <b:includable id='emailPostIcon'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='facebookShare'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='footerBylines'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='googlePlusShare'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='headerByline'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='linkShare'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='otherSharingButton'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='platformShare'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='postAuthor'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='postCommentsLink'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='postJumpLink' var='post'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='postLabels'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='postLocation'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='postReactions'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='postShareButtons'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='postTimestamp'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='sharingButton'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='sharingButtonContent'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='sharingButtons'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='sharingButtonsMenu'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='sharingPlatformIcon'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='snippetedPostByline'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='snippetedPostContent'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='snippetedPostThumbnail'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='snippetedPostTitle'><b:comment>Replaced</b:comment></b:includable>
+    <b:includable id='snippetedPosts'><b:comment>Replaced</b:comment></b:includable>
+  </b:defaultmarkup>
+  
+    <b:if cond='data:view.isLayoutMode or (data:view.isHomepage and (data:widgets any w =&gt; w.sectionId == &quot;trending&quot;))'>
+      <div class='flex-c' id='trending-wrapper'>
+        <b:section class='trending container row-x1' id='trending' maxwidgets='1' name='Trending Posts' showaddelement='yes'>
+        </b:section>
+      </div>
+    </b:if>
+    
+   
+  </body>
+</html>

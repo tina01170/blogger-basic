@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>  
+    <style>
+        .llilxXft{margin:0;width:45%;}
+        .llilxXft{grid-gap:10px;}
+        .featured-grid-all .llilxiXft.item0,    
+        .llilxXft{width:100%;}
+
+
+        .flex-section{display:flex;flex-wrap:wrap;width:100%;float:left;align-items:center;justify-content:center;}
+        .Pro-flex .widget{position: relative;display:none;float: left;width: 100%;box-sizing: border-box;border-radius:4px;padding:7px;z-index: 1;}
+        .Pro-flex .widget.PopularPosts,.Pro-flex .open-iki{display:block!important}
+        .Pro-flex .widget .widget-content{position:relative;float: left;width: 100%;display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:365px;}
+
+        .Pro-flex .widget .post-filter-link{width:100%;height:100%;position:relative;display:block;overflow:hidden;}
+        .Pro-flex .widget .post-filter-inner.gaint{width:100%;height:460px;}
+
+        .featured-grid-all{flex-direction:column;}
+        .featured-grid-all .llilxiXft.item0,.llilxXft{width:100%;}
+        .Pro-flex .llilxiXft.item0 .post-filter-inner{height:360px;}
+        .llilxiXft .entery-category-fly{bottom:0;}
+        .llilxiXft.item0 .entry-title{font-size:20px;}
+        .Pro-flex .llilxiXft.item0 .post-filter-inner{height:310px;}
+
+        .llilxiXft.item0 .entry-title,.block-module.item0 .entry-title,.Pro-box .modal-grid.item0 .entry-title,.Pro-box .video-module.item0 .entry-title,.square-posts.item0 .entry-title{font-size:30px}
+        .featured-grid-all .llilxiXft.item0{width:calc(55% - 1em);}
+        .llilxiXft{position:relative;overflow: hidden;}
+        .llilxiXft.item0 .entery-category-fly{bottom: 15px;}
+        .llilxiXft:not(.llilxiXft.item0,.llilxiXft.item2){margin:0 0 10px;}        
+    </style>
+  </head>
+  <body>
+    <b:defaultmarkup type='PopularPosts'>
+      <b:includable id='main' var='this'>
+          <b:include name='widget-title'/>
+          <div class='widget-content'>
+              <b:if cond='data:widget.sectionId == &quot;hot-posts&quot;'>
+                  <div class='breaking-ticker'>
+                      <b:loop index='i' values='data:posts' var='post'>
+                          <b:include cond='data:i in [0,1,2,3]' data='post' name='content'/>
+                      </b:loop>
+                  </div>
+              <b:elseif cond='data:widget.sectionId == &quot;ft-post&quot;'/>
+                  <div class='featured-grid-all'><b:loop index='i' values='data:posts' var='post'><b:include cond='data:i in [0]' data='post' name='content'/></b:loop>
+                      <div class='llilxXft'>
+                          <b:loop index='i' values='data:posts' var='post'>
+                              <b:include cond='data:i in [1,2]' data='post' name='content'/>
+                          </b:loop>
+                      </div>
+                  </div>
+              <b:else/>
+                  <b:class name='sidebar-posts'/>
+                  <b:loop index='i' values='data:posts' var='post'>
+                      <b:include data='post' name='content'/>
+                  </b:loop>
+              </b:if>
+          </div>
+      </b:includable>
+      <b:includable id='blogThisShare'/>
+      <b:includable id='bylineByName'/>
+      <b:includable id='bylineRegion'/>
+      <b:includable id='commentsLink'/>
+      <b:includable id='commentsLinkIframe'/>
+  <b:includable id='content' var='post'>
+  <b:include name='popular-content'/>
+  </b:includable>
+      <b:includable id='emailPostIcon'/>
+      <b:includable id='facebookShare'/>
+      <b:includable id='footerBylines'/>
+      <b:includable id='googlePlusShare'/>
+      <b:includable id='headerByline'/>
+      <b:includable id='linkShare'/>
+      <b:includable id='otherSharingButton'/>
+      <b:includable id='platformShare'/>
+      <b:includable id='postAuthor'/>
+      <b:includable id='postCommentsLink'/>
+      <b:includable id='postJumpLink'/>
+      <b:includable id='postLabels'/>
+      <b:includable id='postLocation'/>
+      <b:includable id='postReactions'/>
+      <b:includable id='postShareButtons'/>
+      <b:includable id='postTimestamp'/>
+      <b:includable id='sharingButton'/>
+      <b:includable id='sharingButtonContent'/>
+      <b:includable id='sharingButtons'/>
+      <b:includable id='sharingButtonsMenu'/>
+      <b:includable id='sharingPlatformIcon'/>
+      <b:includable id='snippetedPostByline'/>
+      <b:includable id='snippetedPostContent'/>
+      <b:includable id='snippetedPostThumbnail'/>
+      <b:includable id='snippetedPostTitle'/>
+      <b:includable id='snippetedPosts'/>
+  </b:defaultmarkup>     
+  
+    
+    <b:if cond='data:view.isHomepage and !data:isFeed'>
+        <div class='flex-section' id='mega-wrap'>
+            <b:section class='Pro-flex container flex' id='ft-post' maxwidgets='1' name='Top Feature Section' showaddelement='yes'>
+            </b:section>
+        </div>
+    </b:if>
+  </body>
+</html>

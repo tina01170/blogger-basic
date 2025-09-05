@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+/* banner recent and popular posts */
+
+.banner { margin:0 auto; padding:0 20px; box-sizing:border-box; }
+#banner { margin:50px 0 0; padding:0;  }
+.banner .HTML > h3, .banner .PopularPosts > h3 { display:none;} 
+
+.banner .HTML .widget-content { display:none; }
+.banner .show-hot .widget-content {display:block!important}
+.banner .hot-posts { overflow:hidden; display:flex;  margin:0 -15px;  }
+.banner .hot-posts .hot-item { margin:0 0 50px; display: block; width:25%; padding:0 15px;}
+.banner .hot-posts .hot-item img { display: block; overflow:hidden; width:100%; height:150px; object-fit:cover; vertical-align: middle;}
+.banner .hot-posts .hot-item .post-info { overflow:hidden; margin:0; }
+
+.banner .hot-posts .hot-item .post-info .post-tag { display:block; margin-top:15px; width:fit-content; padding:6px; color:#fff; font-size:13px; text-transform: capitalize; font-weight:700; background:$(main.color); }
+.banner .hot-posts .hot-item .post-info .post-tag a { display:block; width:fit-content; color:#fff; font-size:13px; text-transform: capitalize; font-weight:700; background:$(main.color); }
+
+.banner .hot-posts .hot-item .post-info h2 { overflow:hidden; font-size:16px; font-weight: 700; line-height:1.6em; margin:10px 0; }
+.banner .hot-posts .hot-item .post-info h2 a { display:block; color:$(title.color); font-family:'Roboto',sans-serif;  -webkit-transition: color 0.2s; -moz-transition: color 0.2s; transition:color 0.2s;}
+.banner .hot-posts .hot-item .post-info h2 a:hover { color:$(main.color);}
+.banner .hot-posts .hot-item .post-info .post-date { font-size:16px; color:#000; }
+    </style>
+  </head>
+  <body>
+  
+    <b:defaultmarkup type='PopularPosts'>
+      <b:includable id='main' var='this'>
+        <b:include name='widget-title'/>
+        <div class='widget-content'><!--sidebar posts-->
+          <b:if cond='data:widget.sectionId == &quot;banner&quot;'>
+             <ul class='hot-posts'>  
+                 <b:loop index='i' values='data:posts' var='post'>
+                     <b:include data='post' name='hotcontent'/>
+                 </b:loop>
+              </ul>
+          <b:else/>  
+             <b:loop values='data:posts' var='post'>
+                <b:include data='post' name='content'/>
+             </b:loop>
+          </b:if>
+        </div>
+      </b:includable>
+      <b:includable id='content' var='post'>
+          <article class='post'>
+              <b:if cond='data:postDisplay.showFeaturedImage'> 
+                  <a class='post-image-link' expr:href='data:post.url'>
+                      <b:if cond='data:post.featuredImage'>
+                          <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 512, &quot;4:3&quot;)'/>
+                      <b:else/>
+                          <img class='post-thumb' expr:alt='data:post.title' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnO1vVWbzxR8nDIHRPhcMUhcFXQrisYPL5ZjZgEhpqp68Ho8mVREKFR-g11xCzK8d-3TaK-h72KeJYe-GD-d__0Il7k5-o4QB-ZY-8UZmtR2iqC-Aakc7QNY8vHrfvKKJYpIiHsGWuTHk/w640/nth.png'/><!--更換圖片link-->            
+                      </b:if>
+                  </a>        
+              </b:if>
+              <div class='post-info'>
+                  <b:if cond='data:post.labels'><span class='post-tag'><a expr:href='data:post.labels.first.url'><data:post.labels.first.name/></a></span></b:if>
+                  <h2 class='post-title'>
+                      <a expr:href='data:post.url'><data:post.title/></a>
+                  </h2>
+                  <div class='post-meta'>                              				       
+                    <span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
+                  </div>
+              </div>  
+          </article>
+      </b:includable>
+      <b:includable id='hotcontent' var='post'>
+          <li class='hot-item'>
+            <div class='hot-item-inner'>
+              <b:if cond='data:postDisplay.showFeaturedImage'> 
+                <a class='post-image-link' expr:href='data:post.url'>
+                  <b:if cond='data:post.featuredImage'>
+                    <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 512, &quot;4:3&quot;)'/>
+                  <b:else/>
+                    <img class='post-thumb' expr:alt='data:post.title' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnO1vVWbzxR8nDIHRPhcMUhcFXQrisYPL5ZjZgEhpqp68Ho8mVREKFR-g11xCzK8d-3TaK-h72KeJYe-GD-d__0Il7k5-o4QB-ZY-8UZmtR2iqC-Aakc7QNY8vHrfvKKJYpIiHsGWuTHk/w640/nth.png'/><!--更換圖片link-->            
+                  </b:if>
+                </a>        
+              </b:if>
+              <div class='post-info'>
+                  <b:if cond='data:post.labels'><span class='post-tag'><a expr:href='data:post.labels.first.url'><data:post.labels.first.name/></a></span></b:if>
+                  <h2 class='post-title'>
+                      <a expr:href='data:post.url'><data:post.title/></a>
+                  </h2>
+                  <span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
+              </div> 
+             </div>   
+          </li> 
+      </b:includable>
+    </b:defaultmarkup>       
+
+    
+   
+  </body>
+</html>

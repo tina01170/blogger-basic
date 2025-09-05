@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+      /*BlogSearch */	
+      .BlogSearch .search-form {display:flex; }
+      .BlogSearch .search-input { float:left; width:75%; background-color:#fff; font-weight:400; font-size:12px; line-height:32px; box-sizing:border-box; height:32px; border:1px solid #ccc; border-radius:3px ; font-family:inherit;  padding:0 5px;  }
+      .BlogSearch .search-action { height:32px; font-size:14px; font-weight:600; line-height:32px; cursor:pointer; box-sizing: border-box;border:0; padding:0 10px; margin:0 0 0 10px; color:$(buttom.text.color);; background-color:$(buttom.bg.color); font-family:inherit; -webkit-transition: background 0.5s; -moz-transition: background 0.5s; transition: background 0.5s; width:auto; border-radius:3px; border:0; text-transform: uppercase; }
+      .BlogSearch .search-action:hover {background:$(buttom.hover.color);  }
+      .BlogSearch .widget-content {margin:0 0 20px;}
+
+
+    </style>
+  </head>
+  <body>
+
+      <b:defaultmarkup type='BlogSearch'>
+        <b:includable id='main' var='this'>
+          <b:include name='widget-title'/>
+          <b:include name='content'/>
+        </b:includable>
+        <b:includable id='content'>
+          <div class='widget-content' role='search'>
+            <form class='search-form' expr:action='data:blog.searchUrl'>
+              <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
+              <b:include name='urlParamsAsFormInput'/>
+              <input autocomplete='off' class='search-input' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
+              <input class='search-action' expr:value='data:messages.search.escaped' type='submit'/>
+            </form>
+          </div>
+        </b:includable>
+        <b:includable id='searchForm'/>
+        <b:includable id='searchSubmit'/>
+      </b:defaultmarkup>    
+      <!--use Grid mag-->
+    
+   
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+    </style>
+  </head>
+  <body>
+    <b:defaultmarkup type='FeaturedPost'>
+      <b:includable id='main' var='this'>
+        <b:if cond='data:widget.sectionId != &quot;feat-sec&quot;'>
+          <b:include name='widget-title'/>
+        </b:if>
+        <div class='widget-content'>
+          <b:loop values='data:posts' var='post'>
+            <b:include data='post' name='content'/>
+          </b:loop>
+        </div>
+      </b:includable>
+      <b:includable id='content' var='post'>
+        <article class='post'>
+          <b:if cond='data:postDisplay.showFeaturedImage'> 
+            <div class='post-image-wrap'>
+              <a class='post-image' expr:href='data:post.url'>
+                <b:if cond='data:post.featuredImage'>
+                  <span class='post-thumb' expr:data-image='data:post.featuredImage resizeImage 680'/>
+                  <b:else/>
+                  <span class='post-thumb' data-image='https://4.bp.blogspot.com/-eALXtf-Ljts/WrQYAbzcPUI/AAAAAAAABjY/vptx-N2H46oFbiCqbSe2JgVSlHhyl0MwQCK4BGAYYCw/s680/nth-ify.png'/>
+                </b:if>
+              </a>
+            </div>
+          </b:if>
+          <div class='post-header'>
+            <div class='post-meta'>
+              <b:if cond='data:post.labels'><span class='post-tag Label'><a expr:href='data:post.labels.first.url'><data:post.labels.first.name/></a></span></b:if><time class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></time>
+            </div>
+            <h2 class='post-title'>
+              <a expr:href='data:post.url'><data:post.title/></a>
+            </h2>
+          </div>
+          <div class='post-content'>
+            <b:if cond='data:postDisplay.showSnippet'>
+              <b:if cond='data:widget.sectionId == &quot;feat-sec&quot;'>
+              <p class='post-snippet'><b:eval expr='data:post.snippets.long snippet { length: 255 }'/></p>
+              <b:else/>
+              <p class='post-snippet'><b:eval expr='data:post.snippets.long snippet { length: 120 }'/></p>
+            </b:if>
+            </b:if>
+            <b:if cond='data:blog.jumpLinkMessage != &quot;hide&quot;'>
+              <a class='read-more' expr:href='data:post.url'><data:blog.jumpLinkMessage/></a>
+            </b:if>
+          </div>
+        </article>
+      </b:includable>
+    </b:defaultmarkup>    
+
+    
+   
+  </body>
+</html>

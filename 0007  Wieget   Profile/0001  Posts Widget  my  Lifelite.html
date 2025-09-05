@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+        /*Profile*/
+        .widget.Profile .individual { overflow:hidden;  }
+        .Profile .individual .profile-top { position:relative; overflow:hidden; width:100%;}
+        .Profile .profile-avatar { text-align:center; margin:0 0 15px; width:100%; }
+        .Profile .individual a.user-img { display:block;  }
+        .Profile .individual .profile-img {  background-position:center ;background-repeat:no-repeat; object-fit:cover; width:100%; height:auto; vertical-align: middle; }
+        .Profile .individual .profile-info { display:block; }
+        .Profile .profile-datablock { margin:0 0 30px;} 
+        .Profile .profile-data { text-align:center;  margin:0 0 10px; }
+        .Profile .profile-data a { font-size:24px; font-family:'Roboto',sans-serif; font-weight:600; -webkit-transition: color 0.4s; -moz-transition: color 0.4s; transition: color 0.4s; color:$(title.color);}
+        .Profile .profile-data a:hover { color:$(main.color); }
+        .profile-textblock {  font-size:14px; line-height:1.7; margin:0; }
+        .Profile .profile-link { font-size:14px; transition: color 0.5s; -webkit-transition: color 0.5s; -moz-transition: color 0.5s; color:$(title.color); }
+        .Profile .profile-link:hover{ color:$(main.color); }  
+
+    </style>
+  </head>
+  <body>
+      <b:defaultmarkup type='Profile'>
+        <b:includable id='userProfileImage'>
+          <div class='profile-avatar'>
+              <a class='user-img ' expr:href='data:userUrl' rel='nofollow'>
+                <b:include name='profileImage'/>
+              </a>
+          </div>
+        </b:includable>
+        <b:includable id='userProfile'>
+              <div class='profile-top'>
+                <b:include name='userProfileImage'/>
+                <b:include name='userProfileInfo'/>
+              </div>
+              <b:include name='viewProfileLink'/>          	  
+        </b:includable>  
+        <b:includable id='userProfileInfo'>
+            <div class='profile-info'>
+              <div class='profile-datablock'>
+                <b:class cond='data:showlocation and data:location != &quot;&quot;' name='has-location'/>
+                <b:include name='userProfileData'/>
+                <b:include cond='data:showlocation and data:location != &quot;&quot;' name='userLocation'/>
+                <b:include cond='data:aboutme != &quot;&quot;' name='userProfileText'/>
+              </div>
+            </div>
+        </b:includable>
+        <b:includable id='userProfileText'>
+            <div class='profile-textblock profile-snippet snippet-container r-snippet-container'>
+                <div class='snippet-item r-snippetized'>
+                  <data:aboutme/>
+                </div>
+                <div class='snippet-fade r-snippet-fade hidden'/>
+            </div>
+        </b:includable>
+      </b:defaultmarkup>    
+    
+
+    
+   
+  </body>
+</html>

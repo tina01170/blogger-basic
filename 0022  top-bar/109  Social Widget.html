@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+    <style>
+     
+     
+    .social-top { position:relative; float:right; display:block; }
+    .social-top ul > li { float:left; display:inline-block; }
+    .social-top ul > li > a { text-decoration:none; display:block; line-height:38px; padding:0; margin:0 0 0 15px; }
+    .social-top .LinkList ul.social-counter a:before { display:block; font-family:'Font Awesome 5 Brands'; font-size:20px; color: $(main.color); text-align:center; background:#fff;  }
+
+    @media screen and (max-width:600px) {
+      .social-top .LinkList ul.social-counter a:before { font-size:18px; }
+    }
+    @media screen and (max-width:480px) {
+      .social-top .LinkList ul.social-counter a:before { font-size:14px; }
+    }
+    @media screen and (max-width:360px) {
+      .social-top .LinkList ul.social-counter a:before { font-size:12px; }
+    }
+
+  
+    .social-wrap { position:absolute; top:0; right:49px; height:40px; z-index:20; margin:12px 0 0}
+    .social-menu .widget > h3 { display:none; }
+    .social-menu { display:block; }
+    .social-menu ul > li { float:left; display:inline-block; }
+    .social-menu ul > li > a { text-decoration:none; display:block; line-height:38px; padding:0; margin:0 0 0 15px; }
+    .social-menu .LinkList ul.social-counter a:before { display:block; font-family:'Font Awesome 5 Brands'; font-size:18px; color: $(title.color); text-align:center; background:#fff;  }
+    @media screen and (max-width:600px) {
+      .social-menu .LinkList ul.social-counter a:before { font-size:16px; }
+    }  
+
+
+    body#layout .header-area  { width:100%; padding:0; margin:0; }
+	  body#layout .header-menu { width:100%; height:auto; }
+	  body#layout .header-menu > .container { width:100%; margin:0 auto; padding:0; display:flex;}
+    body#layout .menu-wrap  { width:50%; padding:0;}
+    body#layout .social-wrap { width:50%; padding:0; }
+
+
+
+    .social-footer { width:100%; margin:0; padding:0; }
+    .social-footer .widget { text-align:center; }
+    .social-footer .widget > h3 { font-size:28px; font-style: italic; font-weight:600; color:#656565; }
+
+    </style>
+  </head>
+  <body>
+    <div class='social-wrap'>
+        <b:section class='social-menu social' id='social-menu' maxwidgets='1' name='Social Top' showaddelement='yes'>
+          <b:widget id='LinkList7' locked='false' title='Social  Top' type='LinkList' version='3' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='link-3'>https://</b:widget-setting>
+              <b:widget-setting name='sorting'>NONE</b:widget-setting>
+              <b:widget-setting name='text-1'>twitter</b:widget-setting>
+              <b:widget-setting name='link-1'>https://</b:widget-setting>
+              <b:widget-setting name='text-0'>facebook</b:widget-setting>
+              <b:widget-setting name='link-2'>https://</b:widget-setting>
+              <b:widget-setting name='text-3'>pinterest</b:widget-setting>
+              <b:widget-setting name='link-0'>https://</b:widget-setting>
+              <b:widget-setting name='text-2'>instagram</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+    <b:include name='widget-title'/>
+    <b:include name='content'/>
+    </b:includable>
+            <b:includable id='content'><!--這裡要改 a:before 才出得來-->
+                      <div class='widget-content'>
+                        <ul class='social-counter social social-color'>
+                          <b:loop values='data:links' var='link'>
+                            <li expr:class='data:link.name'><a expr:href='data:link.target' expr:title='data:link.name' target='_blank'/></li>
+                          </b:loop>
+                        </ul>
+                      </div>
+                    </b:includable>
+          </b:widget>
+        </b:section>
+    </div>
+    
+
+    
+    <div class='social-footer'>
+      <b:section class='social-footer' id='social-footer' maxwidgets='1' name='Social Footer' showaddelement='yes'>
+        <b:widget id='HTML3' locked='false' title='Instagram' type='HTML' visible='true'>
+          <b:widget-settings>
+            <b:widget-setting name='content'/>
+          </b:widget-settings>
+          <b:includable id='main'>
+          <b:include name='widget-title'/>
+            <div class='widget-content'>
+            <data:content/>
+            </div>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </div>
+   
+  </body>
+</html>

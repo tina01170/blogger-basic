@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+        <b:defaultmarkup type='FeaturedPost'>
+            <b:includable id='main' var='this'>
+                <b:include name='widget-title'/>
+                <div class='widget-content'>
+                  <b:loop values='data:posts' var='post'>
+                      <b:include data='post' name='content'/>
+                    </b:loop>
+                </div>
+            </b:includable>
+            <b:includable id='content' var='post'>
+              <article class='post'>
+                      <div class='post-content'>
+                          <div class='post-pic'>
+                            <b:if cond='data:postDisplay.showFeaturedImage'> 
+                                <a class='post-image-link' expr:href='data:post.url'>
+                                  <b:if cond='data:post.featuredImage'>
+                                    <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 512, &quot;4:3&quot;)'/>
+                                    <b:else/>
+                                    <img class='post-thumb' expr:alt='data:post.title' src='https://4.bp.blogspot.com/-O3EpVMWcoKw/WxY6-6I4--I/AAAAAAAAB2s/KzC0FqUQtkMdw7VzT6oOR_8vbZO6EJc-ACK4BGAYYCw/w680/nth.png'/>   
+                                  </b:if>
+                                </a>        
+                            </b:if>
+                        </div>
+                        <div class='post-text'>
+                            <h2 class='post-title'>
+                                  <a expr:href='data:post.url'><data:post.title/></a>
+                            </h2>
+                            <div class='post-meta'>  
+                                  <span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
+                                  <b:include data='post' name='postAuthor'/>
+                                  <b:if cond='data:post.labels'><span class='post-tag Label'><a expr:href='data:post.labels.first.url'><data:post.labels.first.name/></a></span></b:if>                        
+                            </div>  
+                            <div class='post-info'>
+                                <b:if cond='data:postDisplay.showSnippet'>
+                                  <p class='post-snippet'><b:eval expr='data:post.snippets.short snippet { length: 140 }'/></p>
+                                  </b:if>   
+                            </div>
+                            <b:include data='post' name='postJumpLink'/>
+                        </div>  
+                    </div>  
+                </article>
+            </b:includable>
+        </b:defaultmarkup>    
+
+    
+   
+  </body>
+</html>

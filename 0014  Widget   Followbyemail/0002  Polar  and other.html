@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+      /*-- Polar --*/
+    .sidebar .FollowByEmail > .widget-title > h3{margin:0 }
+    .FollowByEmail .widget-content{position:relative;overflow:hidden;text-align:center;font-weight:400;box-sizing:border-box;padding:20px }
+    .FollowByEmail .widget-content > h3{font-size:17px;color:$(widget.title);font-weight:600;margin:0 0 13px }
+    .FollowByEmail .before-text{font-size:13px;line-height:1.5em;margin:0 0 15px;display:block;padding:0 10px;overflow:hidden }
+    .FollowByEmail .follow-by-email-inner{position:relative }
+    .FollowByEmail .follow-by-email-inner .follow-by-email-address{width:100%;height:32px;color:$(title.color);font-size:11px;font-family:inherit;padding:0 10px;margin:0 0 10px;box-sizing:border-box;border:1px solid #eee;border-radius:3px;transition:ease .17s }
+    .FollowByEmail .follow-by-email-inner .follow-by-email-submit{width:100%;height:32px;font-family:inherit;font-size:11px;color:#fff;background-color:$(main.color);text-transform:uppercase;text-align:center;font-weight:600;cursor:pointer;margin:0;border:0;border-radius:3px;transition:background .17s ease }
+    .FollowByEmail .follow-by-email-inner .follow-by-email-submit:hover{background-color:$(main.dark.color) }#ArchiveList ul.flat li{color:$(title.color);font-size:13px;font-weight:400;padding:7px 0;border-bottom:1px dotted #eaeaea }
+
+    /*-- Amalia--*/
+    .FollowByEmail .widget-content{
+        position:relative;
+        box-sizing:border-box;
+        padding:20px;
+        border:1px solid #e7e7e7
+    }
+    .FollowByEmail .widget-content:before{
+        content:'';
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        height:2px;
+        margin:-1px -1px 0;
+        background-color:$(main.color)
+    }
+    .follow-by-email-title{
+        font-size:13px;
+        color:$(title.color);
+        font-weight:600;
+        text-transform:uppercase;
+        margin:0 0 10px
+    }
+    .follow-by-email-text{
+        font-size:13px;
+        line-height:1.5em;
+        margin:0 0 10px
+    }
+    .follow-by-email-address{
+        width:100%;
+        height:32px;
+        background-color:#fff;
+        font-family:inherit;
+        font-size:12px;
+        text-align:center;
+        box-sizing:border-box;
+        padding:0 10px;
+        margin:0 0 10px;
+        border:1px solid #f0f0f0;
+        border-radius:3px
+    }
+    .follow-by-email-submit{
+        width:100%;
+        height:32px;
+        background-color:$(main.color);
+        font-family:inherit;
+        font-size:11px;
+        color:#fff;
+        font-weight:600;
+        line-height:32px;
+        text-transform:uppercase;
+        cursor:pointer;
+        padding:0 20px;
+        border:0;
+        border-radius:3px;
+        transition:all .17s ease
+    }
+    .follow-by-email-submit:hover{
+        background-color:$(dark.color)
+    }
+
+
+      /*-- Amia--*/
+      .sidebar .FollowByEmail > .widget-title > h3{
+          margin:0
+      }
+      .FollowByEmail .widget-content{
+          position:relative;
+          overflow:hidden;
+          background-color:#fff;
+          text-align:center;
+          font-weight:400;
+          box-sizing:border-box;
+          padding:20px;
+          border-radius:2px;
+          border:1px solid #eee
+      }
+      .FollowByEmail .widget-content > h3{
+          font-size:18px;
+          color:$(title.color);
+          font-weight:500;
+          text-transform:uppercase;
+          margin:0 0 13px
+      }
+      .FollowByEmail .before-text{
+          font-size:13px;
+          line-height:1.5em;
+          margin:0 0 15px;
+          display:block;
+          padding:0 10px;
+          overflow:hidden
+      }
+      .FollowByEmail .widget-content:after{
+          content:'\f0e0';
+          position:absolute;
+          right:-15px;
+          top:-15px;
+          font-family:FontAwesome;
+          font-size:50px;
+          color:$(main.color);
+          opacity: .5;
+          transform:rotate(21deg)
+      }
+      .FollowByEmail .follow-by-email-inner{
+          position:relative
+      }
+      .FollowByEmail .follow-by-email-inner .follow-by-email-address{
+          width:100%;
+          height:32px;
+          color:$(title.color);
+          font-size:11px;
+          font-family:inherit;
+          padding:0 10px;
+          margin:0 0 10px;
+          box-sizing:border-box;
+          border:1px solid #eee;
+          transition:ease .17s
+      }
+      .FollowByEmail .follow-by-email-inner .follow-by-email-submit{
+          width:100%;
+          height:32px;
+          font-family:inherit;
+          font-size:11px;
+          color:#fff;
+          background-color:$(main.color);
+          text-transform:uppercase;
+          text-align:center;
+          font-weight:500;
+          cursor:pointer;
+          margin:0;
+          border:0;
+          transition:opacity .17s ease
+      }
+      .FollowByEmail .follow-by-email-inner .follow-by-email-submit:hover{
+          opacity:.85
+      }    
+    </style>
+  </head>
+  <body>
+    <!-- Polar -->
+
+    <b:defaultmarkup type='FollowByEmail'>
+      <b:includable id='main' var='this'>
+        <b:include name='content'/>
+      </b:includable>
+      <b:includable id='content'>
+        <div class='widget-content'>
+          <b:if cond='data:defaultTitle or data:title'>
+            <h3 class='title'>
+              <data:title/>
+            </h3>
+          </b:if>
+          <span class='before-text'><data:skin.vars.followByEmail/></span>
+          <div class='follow-by-email-inner'>
+            <form action='https://feedburner.google.com/fb/a/mailverify' expr:onsubmit='&quot;window.open(\&quot;https://feedburner.google.com/fb/a/mailverify?uri=&quot; + data:feedPath + &quot;\&quot;, \&quot;popupwindow\&quot;, \&quot;scrollbars=yes,width=550,height=520\&quot;); return true&quot;' method='post' target='popupwindow'>
+              <input autocomplete='off' class='follow-by-email-address' expr:placeholder='data:messages.emailAddress' name='email' type='email'/>
+              <input class='follow-by-email-submit' expr:value='data:messages.subscribe' type='submit'/>
+              <input expr:value='data:feedPath' name='uri' type='hidden'/>
+              <input name='loc' type='hidden' value='en_US'/>
+            </form>
+          </div>
+        </div>
+      </b:includable>
+    </b:defaultmarkup>
+
+    <!-- Amalia-->
+    <b:defaultmarkup type='FollowByEmail'>
+      <b:includable id='main' var='this'>
+        <b:include name='content'/>
+      </b:includable>
+      <b:includable id='content'>
+        <div class='widget-content'>
+          <h3 class='follow-by-email-title'>
+            <data:title/>
+          </h3>
+          <p class='follow-by-email-text'><b:include data='{ message: &quot;followByEmailText&quot; }' name='translate'/></p>
+          <div class='follow-by-email-inner'>
+            <form action='https://feedburner.google.com/fb/a/mailverify' expr:onsubmit='&quot;window.open(\&quot;https://feedburner.google.com/fb/a/mailverify?uri=&quot; + data:feedPath + &quot;\&quot;, \&quot;popupwindow\&quot;, \&quot;scrollbars=yes,width=550,height=520\&quot;); return true&quot;' method='post' target='popupwindow'>
+              <input autocomplete='off' class='follow-by-email-address' expr:placeholder='data:messages.emailAddress' name='email' type='email'/>
+              <input class='follow-by-email-submit' expr:value='data:messages.subscribe' type='submit'/>
+              <input expr:value='data:feedPath' name='uri' type='hidden'/>
+              <input name='loc' type='hidden' value='en_US'/>
+            </form>
+          </div>
+        </div>
+      </b:includable>
+    </b:defaultmarkup>    
+    
+    <!-- Amia-->
+    <b:defaultmarkup type='FollowByEmail'>
+      <b:includable id='main' var='this'>
+        <b:include name='content'/>
+      </b:includable>
+      <b:includable id='content'>
+        <div class='widget-content'>
+          <b:if cond='data:defaultTitle or data:title'>
+            <h3 class='title'>
+              <data:title/>
+            </h3>
+          </b:if>
+          <span class='before-text'><data:skin.vars.followByEmail/></span>
+          <div class='follow-by-email-inner'>
+            <form action='https://feedburner.google.com/fb/a/mailverify' expr:onsubmit='&quot;window.open(\&quot;https://feedburner.google.com/fb/a/mailverify?uri=&quot; + data:feedPath + &quot;\&quot;, \&quot;popupwindow\&quot;, \&quot;scrollbars=yes,width=550,height=520\&quot;); return true&quot;' method='post' target='popupwindow'>
+              <input autocomplete='off' class='follow-by-email-address' expr:placeholder='data:messages.emailAddress' name='email' type='email'/>
+              <input class='follow-by-email-submit' expr:value='data:messages.subscribe' type='submit'/>
+              <input expr:value='data:feedPath' name='uri' type='hidden'/>
+              <input name='loc' type='hidden' value='en_US'/>
+            </form>
+          </div>
+        </div>
+      </b:includable>
+    </b:defaultmarkup>
+    
+   
+  </body>
+</html>

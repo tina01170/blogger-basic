@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title> 
+    <style>
+    </style>
+  </head>
+  <body>
+    
+  <!-- Polar -->
+  <b:defaultmarkup type='BlogSearch'>
+    <b:includable id='main' var='this'>
+      <b:include name='widget-title'/>
+      <b:include name='content'/>
+    </b:includable>
+    <b:includable id='content'>
+      <div class='widget-content' role='search'>
+        <form class='search-form' expr:action='data:blog.searchUrl'>
+          <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
+          <b:include name='urlParamsAsFormInput'/>
+          <input autocomplete='off' class='search-input' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
+          <input class='search-action' expr:value='data:messages.search.escaped' type='submit'/>  
+        </form>
+      </div>
+    </b:includable>
+  </b:defaultmarkup>
+
+  <!-- Amia-->
+  <b:defaultmarkup type='BlogSearch'>
+    <b:includable id='main' var='this'>
+      <b:include name='widget-title'/>
+      <b:include name='content'/>
+    </b:includable>
+    <b:includable id='content'>
+      <div class='widget-content' role='search'>
+        <form class='search-form' expr:action='data:blog.searchUrl'>
+          <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
+          <b:include name='urlParamsAsFormInput'/>
+          <input autocomplete='off' class='search-input' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
+          <input class='search-action' expr:value='data:messages.search.escaped' type='submit'/>  
+        </form>
+      </div>
+    </b:includable>
+  </b:defaultmarkup>
+
+  <!-- Grid mag-->
+  <b:defaultmarkup type='BlogSearch'>
+    <b:includable id='main' var='this'>
+      <b:include name='widget-title'/>
+      <b:include name='content'/>
+    </b:includable>
+    <b:includable id='content'>
+      <div class='widget-content' role='search'>
+        <form class='search-form' expr:action='data:blog.searchUrl'>
+          <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
+          <b:include name='urlParamsAsFormInput'/>
+          <input autocomplete='off' class='search-input' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
+          <input class='search-action' expr:value='data:messages.search.escaped' type='submit'/>
+        </form>
+      </div>
+    </b:includable>
+    <b:includable id='searchForm'/>
+    <b:includable id='searchSubmit'/>
+  </b:defaultmarkup>
+
+
+  <!-- Amalia-->      
+  <b:defaultmarkup type='BlogSearch'>
+    <b:includable id='main'>
+      <b:include name='widget-title'/>
+      <b:include name='content'/>
+    </b:includable>
+    <b:includable id='content'>
+      <div class='widget-content' role='search'>
+        <b:include name='searchForm'/>
+      </div>
+    </b:includable>
+    <b:includable id='searchForm'>
+      <form class='search-form' expr:action='data:blog.searchUrl'>
+        <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
+        <b:include name='urlParamsAsFormInput'/>
+        <input autocomplete='off' class='search-input' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
+        <b:include name='searchSubmit'/>
+      </form>
+    </b:includable>
+    <b:includable id='searchSubmit'>
+      <input class='search-action' expr:value='data:messages.search.escaped' type='submit'/>
+    </b:includable>
+  </b:defaultmarkup>
+
+
+   
+  </body>
+</html>

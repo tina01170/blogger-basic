@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+
+
+    </style>
+  </head>
+  <body>
+    <!--polar 不能用-->
+    <b:defaultmarkup type='Header'>
+      <b:includable id='main' var='this'>
+        <div class='header-widget'>
+        <b:includable id='description'>
+                <!-- Don't show description on the item page -->
+                <b:include cond='not data:view.isSingleItem' name='super.description'/>
+              </b:includable>
+              <b:include cond='data:imagePlacement in {&quot;REPLACE&quot;, &quot;BEFORE_DESCRIPTION&quot;}' name='image'/>
+              <b:include cond='data:imagePlacement == &quot;BEHIND&quot;' name='title'/>
+            </div>
+          </b:includable>
+          <b:includable id='image'>
+            <a class='header-image-wrapper' expr:href='data:blog.homepageUrl'>
+              <img expr:alt='data:blog.title.escaped' expr:data-height='data:height' expr:data-width='data:width' expr:src='data:image'/>
+            </a>
+          </b:includable>
+    </b:defaultmarkup>
+
+
+    <!--Grid mag  不能用-->
+    <b:defaultmarkup type='Header'>
+        <b:includable id='main' var='this'> <!--same-->
+            <div class='header-widget'>
+            <b:include cond='data:imagePlacement in {&quot;REPLACE&quot;, &quot;BEFORE_DESCRIPTION&quot;}' name='image'/><!--same blogger-->
+            <b:include cond='data:imagePlacement == &quot;BEHIND&quot;' name='title'/>
+            </div>
+        </b:includable>  
+        <b:includable id='image'>
+            <a class='header-image-wrapper' expr:href='data:blog.homepageUrl'>
+            <img expr:alt='data:blog.title.escaped' expr:data-height='data:height' expr:data-width='data:width' expr:src='data:image'/>
+            </a>
+        </b:includable>
+    </b:defaultmarkup>
+
+    <!--Blue heaster-->
+    <b:defaultmarkup type='Header'>
+        <b:includable id='main' var='this'><!--same-->
+          <div class='header-widget'>
+            <b:include cond='data:imagePlacement in {&quot;REPLACE&quot;, &quot;BEFORE_DESCRIPTION&quot;}' name='image'/><!--same blogger-->
+            <b:include cond='data:imagePlacement == &quot;BEHIND&quot;' name='title'/><!--same blogger-->
+          
+            <b:include cond='data:imagePlacement == &quot;BEHIND&quot;' name='behindImageStyle'/><!-- blogger-->
+          </div>
+        </b:includable>
+        <b:includable id='image'>
+          <a class='header-logo-image' expr:href='data:blog.homepageUrl'>
+            <img expr:alt='data:blog.title.escaped' expr:data-height='data:height' expr:data-width='data:width' expr:src='data:image'/>
+            <b:if cond='data:view.isHomepage'><b:if cond='data:widget.sectionId == &quot;main-logo&quot;'><h1 id='h1-tag'><data:title/></h1></b:if></b:if>
+          </a>
+        </b:includable>
+        <b:includable id='title'>
+          <h1 class='blog-title'>
+            <b:tag expr:href='data:blog.homepageUrl' name='a'>
+              <data:title/>
+            </b:tag>
+          </h1>
+        </b:includable>
+    </b:defaultmarkup>
+
+    <!-- Amia-->
+    <b:defaultmarkup type='Header'>
+      <b:includable id='main' var='this'>
+        <div class='header-widget'>
+          <b:include cond='data:imagePlacement in {&quot;REPLACE&quot;, &quot;BEFORE_DESCRIPTION&quot;}' name='image'/>
+          <b:include cond='data:imagePlacement == &quot;BEHIND&quot;' name='title'/>
+        </div>
+      </b:includable>
+      <b:includable id='image'>
+        <a class='header-image-wrapper' expr:href='data:blog.homepageUrl'>
+          <img expr:alt='data:blog.title.escaped' expr:data-height='data:height' expr:data-width='data:width' expr:src='data:image'/>
+        </a>
+      </b:includable>
+    </b:defaultmarkup>
+
+    <!--官方-->
+    <b:defaultmarkup type='Header'>
+        <b:includable id='main' var='this'>
+            <div class='header-widget'>
+              <b:include cond='data:imagePlacement in {&quot;REPLACE&quot;, &quot;BEFORE_DESCRIPTION&quot;}' name='image'/><!--same BH/grid mag-->
+              <b:include cond='data:imagePlacement not in {&quot;REPLACE&quot;, &quot;BEFORE_DESCRIPTION&quot;}' name='title'/>
+              <b:include cond='data:imagePlacement != &quot;REPLACE&quot;' name='description'/>
+            </div>
+            <b:include cond='data:imagePlacement == &quot;BEHIND&quot;' name='behindImageStyle'/>
+        </b:includable>
+        <b:includable id='description'>
+            <p>
+              <data:this.description/>
+            </p>
+        </b:includable>
+        <b:includable id='title'>
+          <h1>
+            <b:tag cond='data:view.url != data:blog.homepageUrl' expr:href='data:blog.homepageUrl' name='a'>
+              <data:title/>
+            </b:tag>
+          </h1>
+        </b:includable>  
+    </b:defaultmarkup>    
+    
+
+    
+   
+  </body>
+</html>

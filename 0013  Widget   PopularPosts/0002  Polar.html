@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+
+    </style>
+  </head>
+  <body>
+      <b:defaultmarkup type='PopularPosts'>
+        <b:includable id='main' var='this'>
+        <b:include name='widget-title'/>
+            <div class='widget-content'>
+              <b:if cond='data:widget.sectionId == &quot;hot-section&quot;'>
+                
+                  <ul class='hot-posts'>  
+                      <b:loop index='i' values='data:posts' var='post'>
+                      <b:include data='post' name='postContent'/>
+                    </b:loop>
+          
+                </ul>
+              <b:else/>
+                  <b:loop values='data:posts' var='post'>
+                    <b:include data='post' name='postContent'/>
+                  </b:loop>
+              </b:if>
+            </div>
+        </b:includable>
+        <b:includable id='blogThisShare'><b:comment>Replaced</b:comment></b:includable>
+        <b:includable id='bylineByName' var='byline'><b:comment>Replaced</b:comment></b:includable>
+        <b:includable id='bylineRegion' var='regionItems'><b:comment>Replaced</b:comment></b:includable>
+        <b:includable id='commentsLink'><b:comment>Replaced</b:comment></b:includable>
+        <b:includable id='commentsLinkIframe'><b:comment>Replaced</b:comment></b:includable>
+        <b:includable id='defaultContent' var='post'>
+        <div class='post'>
+          <div class='post-content'>
+            <a class='post-image-link' expr:href='data:post.url'>
+              <b:if cond='data:post.featuredImage'>
+                <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+                <b:else/>
+                <img class='post-thumb' expr:alt='data:post.title' src='https://4.bp.blogspot.com/-O3EpVMWcoKw/WxY6-6I4--I/AAAAAAAAB2s/KzC0FqUQtkMdw7VzT6oOR_8vbZO6EJc-ACK4BGAYYCw/w100/nth.png'/>
+              </b:if>
+            </a>
+            <div class='post-info'>
+              <h2 class='post-title'>
+                <a expr:href='data:post.url'><data:post.title/></a>
+              </h2>
+              <div class='post-meta'>
+                <span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        </b:includable>
+        <b:includable id='emailPostIcon'><b:comment>Replaced</b:comment></b:includable>
+        <b:includable id='facebookShare'><b:comment>Replaced</b:comment></b:includable>
+        <b:includable id='footerBylines'><b:comment>Replaced</b:comment></b:includable>
+        <b:includable id='googlePlusShare'><b:comment>Replaced</b:comment></b:includable>
+        <b:includable id='headerByline'><b:comment>Replaced</b:comment></b:includable>
+        <b:includable id='hotBox' var='post'>
+            <b:if cond='data:i lt 2'>
+              <li class='hot-item'>
+              <b:class expr:name='&quot;item-&quot;+data:i'/>               
+            <div class='hot-item-inner'>
+              
+                                
+            <a class='post-image-link' expr:href='data:post.url'>
+              <b:if cond='data:post.featuredImage'>
+                <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+                <b:else/>
+                <img class='post-thumb' expr:alt='data:post.title' src='https://4.bp.blogspot.com/-O3EpVMWcoKw/WxY6-6I4--I/AAAAAAAAB2s/KzC0FqUQtkMdw7VzT6oOR_8vbZO6EJc-ACK4BGAYYCw/w100/nth.png'/>
+              </b:if>
+            </a>
+            <div class='post-info'>
+                <b:if cond='data:post.labels'><span class='post-tag'><data:post.labels.first.name/></span></b:if>
+              <h2 class='post-title'>
+                <a expr:href='data:post.url'><data:post.title/></a>
+              </h2>
+              
+              <div class='post-meta'>
+                <span class='post-author'><data:post.author.name/></span><span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
+              </div>
+              
+              
+            </div>
+        </div>
+                </li>
+              </b:if>
+              </b:includable>
+            <b:includable id='linkShare'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='otherSharingButton'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='platformShare'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='postAuthor'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='postCommentsLink'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='postContent' var='post'>
+                  <b:if cond='data:widget.sectionId == &quot;hot-section&quot;'>
+          <b:include data='post' name='hotBox'/>
+          <b:else/>
+          <b:include data='post' name='defaultContent'/>
+              </b:if>
+            </b:includable>
+            <b:includable id='postJumpLink' var='post'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='postLabels'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='postLocation'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='postReactions'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='postShareButtons'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='postTimestamp'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='sharingButton'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='sharingButtonContent'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='sharingButtons'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='sharingButtonsMenu'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='sharingPlatformIcon'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='snippetedPostByline'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='snippetedPostContent'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='snippetedPostThumbnail'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='snippetedPostTitle'><b:comment>Replaced</b:comment></b:includable>
+            <b:includable id='snippetedPosts'><b:comment>Replaced</b:comment></b:includable>
+      </b:defaultmarkup>    
+
+    
+   
+  </body>
+</html>

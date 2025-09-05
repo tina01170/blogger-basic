@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+    /*header*/
+
+    .main-logo-wrap { position:relative; width:100%; overflow:hidden; padding:20px 0; }
+    .main-logo { position:relative; max-width: 100%; text-align:center; }
+    .main-logo .header-image-wrapper { display: block; }
+    .main-logo img { max-width: 100%; max-height:70px; margin: 0; }
+
+    .header-area h1 {  display: block; color:$(header.color); font-size:60px; margin: 0; line-height: 70px;}
+    .header-area h1 a { color:$(title.color); transition:0.6s; transition: color 0.2s;-webkit-transition: color 0.2s; -moz-transition: color 0.2s; font-family:'Roboto',sans-serif; }
+    .header-area h1 a:hover { color:$(main.color); }
+   
+    .header-area p {font-size:20px; color:$(title.color);}
+    @media screen and (max-width: 992px) {
+      .main-logo { max-width: 100%; width: 100%; text-align: center; padding: 20px 0; }
+    }
+    
+    </style>
+  </head>
+  <body>
+    <!--沒有 destription -->
+    <b:defaultmarkup type='Header'>
+      <b:includable id='main' var='this'>
+        <div class='header-widget'>
+          <b:include cond='data:imagePlacement in {&quot;REPLACE&quot;, &quot;BEFORE_DESCRIPTION&quot;}' name='image'/>
+          <b:include cond='data:imagePlacement == &quot;BEHIND&quot;' name='title'/>
+        </div>
+      </b:includable>
+      <b:includable id='image'>
+        <a class='header-image-wrapper' expr:href='data:blog.homepageUrl'>
+          <img expr:alt='data:blog.title.escaped' expr:data-height='data:height' expr:data-width='data:width' expr:src='data:image'/>
+        </a>
+      </b:includable>
+    </b:defaultmarkup>
+
+
+    <header class='header-area'>
+      <div class='container'>
+            <div class='main-logo-wrap'>
+                <b:section class='main-logo' id='main-logo' maxwidgets='1' name='Main Logo' showaddelement='yes'></b:section>
+            </div>
+            <nav class='header-menu'></nav>
+            <div class='clearfix'></div>
+        </div>
+    </header> 
+
+    
+
+    
+   
+  </body>
+</html>

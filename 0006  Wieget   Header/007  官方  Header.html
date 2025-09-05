@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+
+
+    </style>
+  </head>
+  <body>
+        <b:defaultmarkup type='Header'>
+            <b:includable id='main' var='this'>
+              	<div class='header-widget'>
+                  <b:include cond='data:imagePlacement in {&quot;REPLACE&quot;, &quot;BEFORE_DESCRIPTION&quot;}' name='image'/>
+                  <b:include cond='data:imagePlacement not in {&quot;REPLACE&quot;, &quot;BEFORE_DESCRIPTION&quot;}' name='title'/>   
+                </div>       
+            </b:includable> 
+            <b:includable id='image'>
+                <a class='main-logo-img' expr:href='data:blog.homepageUrl'>
+                  <img expr:alt='data:blog.title.escaped' expr:data-height='data:height' expr:data-width='data:width' expr:src='data:image'/>
+                  <b:if cond='data:view.isHomepage'><b:if cond='data:widget.sectionId == &quot;main-logo&quot;'><h1 id='h1-tag'><data:title/></h1></b:if></b:if>
+                </a>
+            </b:includable>
+            <b:includable id='title'>
+                <h1 class='site-title'>
+                  <b:tag expr:href='data:blog.homepageUrl' name='a'>
+                    <data:title/>
+                  </b:tag>
+                </h1>
+            </b:includable>
+  	    </b:defaultmarkup>
+
+           
+    
+
+    
+   
+  </body>
+</html>

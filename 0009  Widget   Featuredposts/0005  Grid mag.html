@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+      <b:defaultmarkup type='FeaturedPost'>
+          <b:includable id='main' var='this'>
+              <b:include name='widget-title'/>
+              <div class='widget-content'>
+              <b:loop values='data:posts' var='post'><b:include data='post' name='postContent'/></b:loop>
+              </div>
+          </b:includable>
+          <b:includable id='blogThisShare'/>
+          <b:includable id='bylineByName'/>
+          <b:includable id='bylineRegion'/>
+          <b:includable id='commentsLink'/>
+          <b:includable id='commentsLinkIframe'/>
+          <b:includable id='emailPostIcon'/>
+          <b:includable id='facebookShare'/>
+          <b:includable id='footerBylines'/>
+          <b:includable id='googlePlusShare'/>
+          <b:includable id='headerByline'/>
+          <b:includable id='linkShare'/>
+          <b:includable id='otherSharingButton'/>
+          <b:includable id='platformShare'/>
+          <b:includable id='postAuthor'/>
+          <b:includable id='postCommentsLink'/>
+          <b:includable id='postJumpLink' />
+          <b:includable id='postLabels'/>
+          <b:includable id='postLocation'/>
+          <b:includable id='postReactions'/>
+          <b:includable id='postShareButtons'/>
+          <b:includable id='postTimestamp'/>
+          <b:includable id='sharingButton'/>
+          <b:includable id='sharingButtonContent'/>
+          <b:includable id='sharingButtons'/>
+          <b:includable id='sharingButtonsMenu'/>
+          <b:includable id='sharingPlatformIcon'/>
+          <b:includable id='snippetedPostByline'/>
+          <b:includable id='snippetedPostContent'/>
+          <b:includable id='snippetedPostThumbnail'/>
+          <b:includable id='snippetedPostTitle'/>
+          <b:includable id='snippetedPosts'/>
+          <b:includable id='postContent' var='post'>
+              <div class='post-content'>
+                  <a class='post-filter-link' expr:href='data:post.url'>
+                      <b:if cond='data:post.featuredImage'><img class='snip-thumbnail' expr:alt='data:post.title ? data:post.title : data:messages.noTitle' expr:data-src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped , 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage , 72, &quot;1:1&quot;)'/>
+                          <b:else/><img class='snip-thumbnail' data-src='https://4.bp.blogspot.com/-O3EpVMWcoKw/WxY6-6I4--I/AAAAAAAAB2s/KzC0FqUQtkMdw7VzT6oOR_8vbZO6EJc-ACK4BGAYYCw/w680/nth.png' expr:alt='data:post.title ? data:post.title : data:messages.noTitle'/>
+                      </b:if><b:class expr:name='data:post.featuredImage.isYouTube ? &quot;video-nos&quot; : &quot;image-nos&quot;'/>
+                  </a>
+                  <div class='entery-category'>
+                  <b:if cond='data:post.labels'><span class='post-tag'><data:post.labels.first.name/></span></b:if>
+                      <h2 class='entry-title vcard'><a expr:href='data:post.url' expr:title='data:post.title' rel='bookmark'><b:eval expr='data:post.title ? data:post.title : data:messages.noTitle'/></a></h2>
+                      <p class='post-snippet'><b:eval expr='data:post.snippets.short snippet { length: 120 }'/></p>
+                      <div class='post-snip'>
+                        <b:if cond='data:widgets.Blog.first.allBylineItems.author'><data:widgets.Blog.first.allBylineItems.author.label/><span class='post-author'><data:post.author.name/></span></b:if>
+                        <b:if cond='data:widgets.Blog.first.allBylineItems.timestamp'><span class='post-date'><data:post.date/></span></b:if>
+                    </div>
+                  </div>
+              </div>
+          </b:includable>
+      </b:defaultmarkup>    
+
+s
+  </body>
+</html>

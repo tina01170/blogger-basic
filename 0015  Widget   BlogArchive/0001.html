@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+
+    <!-- Polar -->
+
+    <b:defaultmarkup type='BlogArchive'>
+      <b:includable id='main' var='this'>
+        <b:include name='widget-title'/>
+        <b:include name='content'/>
+      </b:includable>
+      <b:includable id='content'>
+        <div class='widget-content'>
+          <div id='ArchiveList'>
+            <div expr:id='data:widget.instanceId + &quot;_ArchiveList&quot;'>
+              <b:include cond='data:this.style in {&quot;FLAT&quot;, &quot;MENU&quot;, &quot;HIERARCHY&quot;}' name='flat'/>
+            </div>
+          </div>
+        </div>
+      </b:includable>
+      <b:includable id='flat'>
+        <ul class='flat'>
+          <b:loop values='data:data' var='i'>
+            <li class='archivedate'>
+              <a expr:href='data:i.url'>
+                <data:i.name/><span class='post-count'><data:i.post-count/></span>
+              </a>
+            </li>
+          </b:loop>
+        </ul>
+      </b:includable>
+    </b:defaultmarkup>
+
+    <!-- Amalia-->
+
+    <b:defaultmarkup type='BlogArchive'>
+      <b:includable id='main' var='this'>
+        <b:include name='widget-title'/>
+        <b:include name='content'/>
+      </b:includable>
+      <b:includable id='content'>
+        <div class='widget-content'>
+          <b:class name='archive-list'/>
+          <b:include cond='data:this.style in {&quot;FLAT&quot;, &quot;MENU&quot;, &quot;HIERARCHY&quot;}' name='flat'/>
+        </div>
+      </b:includable>
+      <b:includable id='flat'>
+        <ul>
+          <b:loop values='data:data' var='i'>
+            <li>
+              <a class='archive-name' expr:href='data:i.url'>
+                <data:i.name/><span class='archive-count'><data:i.post-count/></span>
+              </a>
+            </li>
+          </b:loop>
+        </ul>
+      </b:includable>
+    </b:defaultmarkup>  
+
+    <!-- Amia-->
+
+    <b:defaultmarkup type='BlogArchive'>
+      <b:includable id='main' var='this'>
+        <b:include name='widget-title'/>
+        <b:include name='content'/>
+      </b:includable>
+      <b:includable id='content'>
+        <div class='widget-content'>
+          <div id='ArchiveList'>
+            <div expr:id='data:widget.instanceId + &quot;_ArchiveList&quot;'>
+              <b:include cond='data:this.style in {&quot;FLAT&quot;, &quot;MENU&quot;, &quot;HIERARCHY&quot;}' name='flat'/>
+            </div>
+          </div>
+        </div>
+      </b:includable>
+      <b:includable id='flat'>
+        <ul class='flat'>
+          <b:loop values='data:data' var='i'>
+            <li class='archivedate'>
+              <a expr:href='data:i.url'>
+                <data:i.name/><span class='post-count'><data:i.post-count/></span>
+              </a>
+            </li>
+          </b:loop>
+        </ul>
+      </b:includable>
+    </b:defaultmarkup>
+    
+    <!-- Grid mag-->
+    <b:defaultmarkup type='BlogArchive'>
+      <b:includable id='main' var='this'>
+        <b:include name='widget-title'/>
+        <b:include name='content'/>
+      </b:includable>
+      <b:includable id='content'>
+        <div class='widget-content'>
+          <div id='ArchiveList'>
+            <div expr:id='data:widget.instanceId + &quot;_ArchiveList&quot;'>
+              <b:include cond='data:this.style in {&quot;FLAT&quot;, &quot;MENU&quot;, &quot;HIERARCHY&quot;}' name='flat'/>
+            </div>
+          </div>
+        </div>
+      </b:includable>
+      <b:includable id='flat'>
+        <ul class='flat'>
+          <b:loop values='data:data' var='i'>
+          <li class='archivedate'><a expr:href='data:i.url'><data:i.name/><span class='post-count'><data:i.post-count/></span></a></li>
+          </b:loop>
+        </ul>
+      </b:includable>
+    </b:defaultmarkup>
+
+  </body>
+</html>

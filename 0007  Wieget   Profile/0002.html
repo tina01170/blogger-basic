@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <!-- Amalia-->
+    <b:defaultmarkup type='Profile'>
+      <b:includable id='main'>
+        <b:include name='widget-title'/>
+        <b:include name='content'/>
+      </b:includable>
+      <b:includable id='content'>
+        <div class='widget-content individual'>
+          <b:class cond='data:aboutme == &quot;&quot;' name='no-snippet'/>
+          <div class='profile-img-wrap'><img class='profile-img' expr:alt='data:messages.myPhoto' expr:data-height='data:authorPhoto.height' expr:data-image='data:authorPhoto.image' expr:data-width='data:authorPhoto.width'/></div>
+          <a class='profile-name-link' expr:href='data:userUrl' rel='author' target='_blank'>
+            <data:displayname/>
+          </a>
+          <b:if cond='data:aboutme != &quot;&quot;'>
+            <p class='profile-snippet'><b:eval expr='data:aboutme snippet { length: 50 }'/></p>
+          </b:if>
+          <a class='profile-link' expr:href='data:userUrl' rel='author' target='_blank'>
+            <data:messages.visitProfile/>
+          </a>
+        </div>
+      </b:includable>
+    </b:defaultmarkup>  
+
+
+    <!--Grid mags-->
+    <b:defaultmarkup type='Profile'>
+        <b:includable id='main'>
+            <b:include name='widget-title'/>
+            <b:include name='content'/>
+        </b:includable>
+        <b:includable id='authorProfileImage'><img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/></b:includable>
+        <b:includable id='content'>
+            <b:if cond='data:team'>
+                <div class='widget-content team'><b:include name='teamProfile'/></div>
+                <b:else/>
+                <div class='widget-content individual'><b:include name='userProfile'/></div>
+            </b:if>
+        </b:includable>
+        <b:includable id='teamProfile'>
+            <b:loop values='data:authors' var='author'>
+                <div class='team-member'><b:include data='author' name='teamProfileLink'/></div>
+            </b:loop>
+        </b:includable>
+        <b:includable id='teamProfileLink'>
+            <a class='team-member-img' expr:href='data:userUrl' rel='nofollow'>
+                <b:if cond='data:authorPhoto.image'><img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:src='data:authorPhoto.image' expr:width='data:authorPhoto.width'/>
+                    <b:else/><img class='profile-img' expr:alt='data:messages.myPhoto' expr:height='data:authorPhoto.height' expr:width='data:authorPhoto.width' src='/'/>
+                </b:if>
+            </a>
+            <div class='team-flex'><a expr:href='data:userUrl' rel='nofollow'><span class='profile-name'><data:display-name/></span></a></div>
+        </b:includable>
+        <b:includable id='userProfile'>
+            <a class='user-image' expr:href='data:userUrl' rel='nofollow'><b:include name='profileImage'/></a>
+            <div class='profile-info'>
+                <div class='profile-datablock'><a class='profile-linke' expr:href='data:userUrl' rel='author nofollow'><data:displayname/></a>
+                </div>
+                <div class='profile-textblock'><data:aboutme/></div>
+                <ul class='description-links colorful colorful-ico'/>
+                <b:if cond='data:location'><div class='profile-data location'><data:location/></div></b:if>
+            </div>
+        </b:includable>
+        <b:includable id='defaultProfileImage'><img class='profile-img' expr:alt='data:post.author.name' src='https://4.bp.blogspot.com/-uCjYgVFIh70/VuOLn-mL7PI/AAAAAAAADUs/Kcu9wJbv790hIo83rI_s7lLW3zkLY01EA/s100/avatar.png'/></b:includable>
+        <b:includable id='profileImage'>
+            <b:if cond='data:authorPhoto.image'><b:include name='authorProfileImage'/>
+                <b:else/><b:include name='defaultProfileImage'/>
+            </b:if>
+        </b:includable>
+    </b:defaultmarkup>    
+
+        
+
+    
+   
+  </body>
+</html>

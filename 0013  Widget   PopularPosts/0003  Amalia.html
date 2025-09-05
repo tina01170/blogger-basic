@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+    
+      <b:defaultmarkup type='PopularPosts'>
+        <b:includable id='main' var='this'>
+          <b:include name='widget-title'/>
+          <div class='widget-content'>
+            <b:loop values='data:posts' var='post'>
+              <b:include data='post' name='content'/>
+            </b:loop>
+          </div>
+        </b:includable>
+        <b:includable id='content' var='post'>
+          <article class='popular-post post'>
+            <b:if cond='data:postDisplay.showFeaturedImage'> 
+              <div class='post-image-wrap'>
+                <a class='post-image' expr:href='data:post.url'>
+                  <b:if cond='data:post.featuredImage'> 
+                    <span class='post-thumb' expr:data-image='data:post.featuredImage resizeImage 120'/>
+                    <b:else/>
+                    <span class='post-thumb' data-image='https://4.bp.blogspot.com/-eALXtf-Ljts/WrQYAbzcPUI/AAAAAAAABjY/vptx-N2H46oFbiCqbSe2JgVSlHhyl0MwQCK4BGAYYCw/s680/nth-ify.png'/>
+                  </b:if>
+                </a>
+              </div>
+            </b:if>
+            <div class='post-header'>
+              <b:if cond='data:postDisplay.showSnippet'>
+                <div class='post-meta'>
+                  <time class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></time>
+                </div>
+              </b:if>
+              <h2 class='post-title'>
+                <a expr:href='data:post.url'><data:post.title/></a>
+              </h2>
+            </div>
+          </article>
+        </b:includable>
+      </b:defaultmarkup>
+    
+   
+  </body>
+</html>

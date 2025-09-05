@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contempo 官方</title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+      <b:defaultmarkup type='FeaturedPost'>
+        <b:includable id='snippetedPostContent'>
+          <b:comment>Re-order the thumbnail before the snippet, add &#39;Keep reading&#39; link.</b:comment>
+          <b:include cond='data:this.postDisplay.showTitle' name='snippetedPostTitle'/>
+          <b:include name='headerByline'/>
+          <b:include cond='data:this.postDisplay.showFeaturedImage and data:post.featuredImage' data='post' name='snippetedPostThumbnail'/>
+          <b:include cond='data:this.postDisplay.showSnippet' data='post' name='postSnippet'/>
+          <b:include data='post' name='postFooter'/>
+        </b:includable>
+        <b:includable id='snippetedPostThumbnail'>
+          <a expr:href='data:post.url'>
+          <div class='snippet-thumbnail'>
+            <b:with value='data:post.featuredImage.isYoutube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl, 945, &quot;945:600&quot;) : &quot;&quot;' var='highRes'>
+              <b:include data='{ image: data:post.featuredImage, imageSizes: [256, 512, 945, 1684], imageRatio: &quot;945:600&quot;, sourceSizes: &quot;(min-width: 954px) 842px, (min-width: 801px) calc(100vw - 112px), calc(100vw - 64px)&quot;, enhancedSourceset: data:highRes }' name='responsiveImage'/>
+            </b:with>
+          </div>
+          </a>
+        </b:includable>
+      </b:defaultmarkup>
+    
+
+    
+   
+  </body>
+</html>

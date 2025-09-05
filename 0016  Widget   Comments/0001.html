@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+        <!-- Polar -->
+        <b:defaultmarkup type='Common'>
+          <b:includable id='widget-title'>
+            <b:if cond='data:defaultTitle or data:title'>
+              <div class='widget-title'>
+                <h3 class='title'>
+                  <data:title/>
+                </h3>
+              </div>
+            </b:if>
+          </b:includable>    
+           <b:includable id='contact-form-content'>
+            <div class='widget-content contact-form-widget'>
+              <div class='form'>
+                <form name='contact-form'>
+                  <input class='contact-form-name' expr:ariby='data:contactFormNameMsg' expr:id='data:widget.instanceId + &quot;_contact-form-name&quot;' expr:placeholder='data:contactFormNameMsg' name='name' size='30' type='text' value=''/>
+                  <input class='contact-form-email' expr:ariby='data:contactFormEmailMsg + &quot; *&quot;' expr:id='data:widget.instanceId + &quot;_contact-form-email&quot;' expr:placeholder='data:contactFormEmailMsg + &quot; *&quot;' name='email' size='30' type='text' value=''/>
+                  <textarea class='contact-form-email-message' cols='25' expr:ariby='data:contactFormMessageMsg + &quot; *&quot;' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' expr:placeholder='data:contactFormMessageMsg + &quot; *&quot;' name='email-message' rows='5'/>
+                  <input class='contact-form-button btn contact-form-button-submit' expr:id='data:widget.instanceId + &quot;_contact-form-submit&quot;' expr:value='data:contactFormSendMsg' type='button'/>
+                  <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
+                  <p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;'/>
+                </form>
+              </div>
+            </div>
+          </b:includable>
+        </b:defaultmarkup>
+
+
+  <!-- Amalia-->
+  <b:defaultmarkup type='Common'>
+    <b:includable id='widget-title'>
+      <b:if cond='data:defaultTitle or data:title'>
+        <div class='widget-title'>
+          <h3 class='title'>
+            <data:title/>
+          </h3>
+        </div>
+      </b:if>
+    </b:includable>  
+    <b:includable id='themeHead'>
+      <meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
+      <meta content='blogger' name='generator'/>
+      <link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
+      <b:if cond='data:blog.adultContent'>
+        <meta content='adult' name='rating'/>
+      </b:if>
+      <link expr:href='data:view.url.canonical' rel='canonical'/>
+      <data:blog.feedLinks/><data:blog.openIdOpTag/><data:blog.meTag/>
+      <meta expr:content='data:view.description.escaped' name='description'/>
+      <b:tag cond='data:view.isMultipleItems and data:widgets.Blog.first.posts[0].featuredImage' expr:href='data:widgets.Blog.first.posts[0].featuredImage resizeImage 680' name='link' rel='image_src'/>
+      <b:tag cond='data:view.isSingleItem and data:view.featuredImage' expr:href='data:view.featuredImage resizeImage 680' name='link' rel='image_src'/>
+      <b:include name='customOpenGraphMetaData'/>
+    </b:includable>
+    <b:includable id='customOpenGraphMetaData'>
+      <!-- Metadata for Open Graph protocol. See http://ogp.me/. -->
+      <b:if cond='data:view.isHomepage'>
+        <meta content='website' property='og:type'/>
+      </b:if>
+      <b:if cond='data:view.isSingleItem'>
+        <meta content='article' property='og:type'/>
+      </b:if>
+      <b:if cond='data:view.isMultipleItems and not data:view.isHomepage'>
+        <meta content='object' property='og:type'/>
+      </b:if>    
+      <meta expr:content='data:view.title.escaped' property='og:title'/>
+      <meta expr:content='data:blog.url.canonical' property='og:url'/>
+      <meta expr:content='data:view.description.escaped' property='og:description'/>
+      <meta expr:content='data:blog.title.escaped' property='og:site_name'/>
+      <b:tag cond='data:view.isMultipleItems and data:widgets.Blog.first.posts[0].featuredImage' expr:href='data:widgets.Blog.first.posts[0].featuredImage resizeImage 680' name='meta' property='og:image'/>
+      <b:if cond='data:view.featuredImage'>
+        <meta expr:content='data:view.featuredImage resizeImage 680' property='og:image'/>
+        <meta expr:content='data:view.featuredImage resizeImage 680' name='twitter:image'/>
+      </b:if>
+      <meta content='summary' name='twitter:card'/>
+      <meta expr:content='data:view.title.escaped' name='twitter:title'/>
+      <meta expr:content='data:blog.url.canonical' name='twitter:domain'/>
+      <meta expr:content='data:view.description.escaped' name='twitter:description'/>
+      <b:if cond='data:view.isHomepage'>
+        <script type='application/ld+json'>{&quot;@context&quot;:&quot;http://schema.org&quot;,&quot;@type&quot;:&quot;WebSite&quot;,&quot;name&quot;:&quot;<data:view.title.escaped/>&quot;,&quot;url&quot;:&quot;<data:view.url.jsonEscaped/>&quot;,&quot;potentialAction&quot;:{&quot;@type&quot;:&quot;SearchAction&quot;,&quot;target&quot;:&quot;<data:view.url.jsonEscaped/>search?q={search_term_string}&quot;,&quot;query-input&quot;:&quot;required name=search_term_string&quot;}}</script>
+      </b:if>
+    </b:includable> 
+    <b:includable id='translate'>
+      <b:switch var='data:blog.locale.language'>
+        <b:case value='en'/><b:include name='customLang'/>
+        <b:default/><b:include name='customLang'/>
+      </b:switch>
+    </b:includable> 
+    <b:includable id='customLang'>
+      <b:switch var='data:message'>
+        <b:case value='relatedPosts'/><b:if cond='data:blog.locale.language == &quot;en&quot;'>Related Posts<b:elseif cond='data:blog.locale.language == &quot;es&quot;'/>Artículos Relacionados<b:elseif cond='data:blog.locale.language == &quot;pt&quot;'/>Postagens Relacionadas<b:else/><data:messages.youMayLikeThesePosts/></b:if>
+        <b:case value='prevPost'/><b:if cond='data:blog.locale.language == &quot;en&quot;'>Previous Post<b:elseif cond='data:blog.locale.language == &quot;es&quot;'/>Artículo Anterior<b:elseif cond='data:blog.locale.language == &quot;pt&quot;'/>Postagem Anterior<b:else/><data:messages.newer/></b:if>
+        <b:case value='nextPost'/><b:if cond='data:blog.locale.language == &quot;en&quot;'>Next Post<b:elseif cond='data:blog.locale.language == &quot;es&quot;'/>Artículo Siguiente<b:elseif cond='data:blog.locale.language == &quot;pt&quot;'/>Próxima Postagem<b:else/><data:messages.older/></b:if>
+        <b:case value='followByEmailText'/><b:if cond='data:blog.locale.language == &quot;en&quot;'>Get all latest content delivered straight to your inbox.<b:elseif cond='data:blog.locale.language == &quot;es&quot;'/>Obtener todo el contenido más reciente directamente en su bandeja de entrada.<b:elseif cond='data:blog.locale.language == &quot;pt&quot;'/>Obtenha todo o conteúdo mais recente diretamente na sua caixa de entrada.<b:else/><data:messages.getEmailNotifications/></b:if>
+      </b:switch>
+    </b:includable> 
+  </b:defaultmarkup> 
+
+        <!-- Amia-->
+        <b:defaultmarkup type='Common'>
+          <b:includable id='widget-title'>
+            <b:if cond='data:defaultTitle or data:title'>
+              <div class='widget-title'>
+                <h3 class='title'>
+                  <data:title/>
+                </h3>
+              </div>
+            </b:if>
+          </b:includable> 
+          <b:includable id='translate'>
+            <b:switch var='data:blog.locale.language'>
+              <b:case value='en'/><b:include name='customLang'/>
+              <b:default/><b:include name='customLang'/>
+            </b:switch>
+          </b:includable> 
+          <b:includable id='customLang'>
+            <b:switch var='data:message'>
+                <b:case value='prevPost'/>
+                <b:if cond='data:blog.locale.language == &quot;en&quot;'>Previous Post<b:else/><data:messages.newer/></b:if>
+                <b:case value='nextPost'/>
+                <b:if cond='data:blog.locale.language == &quot;en&quot;'>Next Post<b:else/><data:messages.older/></b:if>
+                <b:case value='loadMorePosts'/>
+                <b:if cond='data:blog.locale.language == &quot;en&quot;'>Load More<b:else/><data:messages.loadMorePosts/></b:if>
+                <b:case value='noMorePosts'/>
+                <b:if cond='data:blog.locale.language == &quot;en&quot;'>That is All<b:else/><data:messages.noResultsFound/></b:if>
+            </b:switch>
+          </b:includable>   
+        </b:defaultmarkup>
+   
+  </body>
+</html>

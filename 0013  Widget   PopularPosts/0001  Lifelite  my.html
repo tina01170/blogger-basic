@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>   
+    <style>
+
+    </style>
+  </head>
+  <body>
+      <b:defaultmarkup type='PopularPosts'>
+        <b:includable id='main' var='this'>
+          <b:include name='widget-title'/>
+          <div class='widget-content'><!--sidebar posts-->
+            <b:loop values='data:posts' var='post'>
+              <b:include data='post' name='content'/>
+            </b:loop>
+          </div>
+        </b:includable>
+        <b:includable id='content' var='post'>
+            <article class='post'>
+                <b:if cond='data:postDisplay.showFeaturedImage'> 
+                    <a class='post-image-link' expr:href='data:post.url'>
+                        <b:if cond='data:post.featuredImage'>
+                            <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 512, &quot;4:3&quot;)'/>
+                        <b:else/>
+                            <img class='post-thumb' expr:alt='data:post.title' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnO1vVWbzxR8nDIHRPhcMUhcFXQrisYPL5ZjZgEhpqp68Ho8mVREKFR-g11xCzK8d-3TaK-h72KeJYe-GD-d__0Il7k5-o4QB-ZY-8UZmtR2iqC-Aakc7QNY8vHrfvKKJYpIiHsGWuTHk/w640/nth.png'/><!--更換圖片link-->            
+                        </b:if>
+                    </a>        
+                </b:if>
+                <div class='post-info'>
+                    <b:if cond='data:post.labels'><span class='post-tag'><a expr:href='data:post.labels.first.url'><data:post.labels.first.name/></a></span></b:if>
+                    <h2 class='post-title'>
+                        <a expr:href='data:post.url'><data:post.title/></a>
+                    </h2>
+                    <div class='post-meta'>                              				       
+                      <span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
+                    </div>
+                </div>  
+            </article>
+        </b:includable>
+      </b:defaultmarkup>    
+
+    
+   
+  </body>
+</html>

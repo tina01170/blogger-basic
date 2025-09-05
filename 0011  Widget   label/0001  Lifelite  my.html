@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+      /*label*/
+
+      .cloud-label ul { position:relative; padding:0; display:flex; flex-wrap:wrap;}
+      .cloud-label ul li {padding:0 15px 0 0;  margin:0 0 15px; }
+      .cloud-label ul li a { display:block; line-height:32px; height:32px; font-size:15px; padding:0 8px; color:$(buttom.text.color); background:$(buttom.bg.color); text-transform: capitalize;  -webkit-transition: background 0.3s; -moz-transition: background 0.3s; transition: background 0.3s; }
+      .cloud-label ul li a:hover { background:$(buttom.hover.color); }
+      .label-name .label-count { padding-left:12px; }
+
+      .list-label ul { position:relative; padding:0;}
+      .list-label ul li a { display:block; font-size:18px; font-weight:500; line-height:28px; height:28px;  text-transform: capitalize; border-bottom:1px solid #E0E0E0; margin:5px 0 0; }
+      #sidebar .list-label ul li a { color:#000; -webkit-transition: color 0.3s; -moz-transition: color 0.3s; transition: color 0.3s; }
+      #sidebar .list-label ul li a:hover { color:$(main.color); }
+      .list-label .label-count { position: relative; font-size:18px; float:right; }
+
+
+
+    </style>
+  </head>
+  <body>
+      <b:defaultmarkup type='Label'>
+            <b:includable id='main' var='this'>
+              <b:include name='widget-title'/>
+              <b:include name='content'/>
+            </b:includable>
+            <b:includable id='content'>
+              <div class='widget-content'>
+                <b:class expr:name='data:this.display + &quot;-label&quot;'/>
+                <b:include cond='data:this.display == &quot;list&quot;' name='list'/>
+                <b:include cond='data:this.display == &quot;cloud&quot;' name='list'/>
+              </div>
+            </b:includable>
+            <b:includable id='list'>
+              <ul>
+                <b:loop values='data:labels' var='label'>
+                  <li>
+                    <a class='label-name' expr:href='data:label.url'>
+                      <data:label.name/>
+                      <b:if cond='data:this.showFreqNumbers'>
+                        <span class='label-count'><data:label.count/></span>
+                      </b:if>
+                    </a>
+                  </li>
+                </b:loop>
+              </ul>
+            </b:includable>
+      </b:defaultmarkup>    
+
+    
+   
+  </body>
+</html>

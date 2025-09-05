@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title> 
+    <style>
+        /*header*/
+        .header-section { position: relative; width: 100%; height:60px; box-sizing: border-box; padding:0; margin: 0;}
+        .main-logo-wrap { margin:0 30px 0 0; float:left; }
+        .main-logo { position:relative; width:auto; max-width:250px; max-height:50px; margin:0; padding:0; float:left; }
+        .main-logo .header-image-wrapper { display: block; }
+        .main-logo img { max-width: 100%; max-height:50px; margin: 0; }
+
+        .main-logo h1 {  display: block; color:$(header.color); font-size:45px; margin: 0; line-height: 55px;}
+        .main-logo h1 a { color:$(title.color); transition:0.6s; transition: color 0.2s;-webkit-transition: color 0.2s; -moz-transition: color 0.2s; font-family:'Roboto',sans-serif; }
+        .main-logo h1 a:hover { color:$(main.color); }
+
+        @media screen and (max-width: 992px) {
+          .main-logo-wrap, .main-logo { width:100%; max-width:232px; text-align:center; margin:0 auto; float:none; }
+        }
+        @media screen and (max-width: 480px) {
+          .main-logo-wrap, .main-logo { padding:0 0 0 15px; }
+        }
+
+    </style>
+  </head>
+  <body>
+      <b:defaultmarkup type='Header'>
+          <b:includable id='main' var='this'>
+            <div class='header-widget'>
+              <b:include cond='data:imagePlacement in {&quot;REPLACE&quot;, &quot;BEFORE_DESCRIPTION&quot;}' name='image'/>
+              <b:include cond='data:imagePlacement == &quot;BEHIND&quot;' name='title'/>
+            </div>
+          </b:includable>
+          <b:includable id='image'>
+            <a class='header-image-wrapper' expr:href='data:blog.homepageUrl'>
+              <img expr:alt='data:blog.title.escaped' expr:data-height='data:height' expr:data-width='data:width' expr:src='data:image'/>
+            </a>
+          </b:includable>
+      </b:defaultmarkup>
+
+    <!--new-->
+    <b:defaultmarkup type='Header'>
+      <b:includable id='main' var='this'>
+        <div class='header-widget'>
+          <b:include cond='data:imagePlacement in {&quot;REPLACE&quot;, &quot;BEFORE_DESCRIPTION&quot;}' name='image'/>
+          <b:include cond='data:imagePlacement == &quot;BEHIND&quot;' name='title'/>
+        </div>
+      </b:includable>
+      <b:includable id='image'>
+        <a class='header-image-wrapper' expr:href='data:blog.homepageUrl'>
+          <img expr:alt='data:blog.title.escaped' expr:data-height='data:height' expr:data-width='data:width' expr:src='data:image'/>
+        </a>
+      </b:includable>
+      <b:includable id='title'>
+        <h1 class='site-title'>
+              <b:tag expr:href='data:blog.homepageUrl' name='a'>
+                  <data:title/>
+                </b:tag>
+            </h1>
+      </b:includable>
+    </b:defaultmarkup>
+    
+   
+  </body>
+</html>

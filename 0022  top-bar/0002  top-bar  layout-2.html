@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+   
+    <style>
+    /* top-bar */
+
+    .top-bar { width: 100%; overflow: hidden; position: relative;  background:$(bar.bg.color); height:50px;}
+    .top-bar .container { position:relative; max-width:100%; width:1280px; padding:0 20px; margin:0 auto; box-sizing:border-box; display:flex; justify-content: space-between; align-items:center; }
+    .date p {  font-size:16px; color:$(bar.text.color); /* height:38px; line-height:24px;*/ }
+
+    #social-top .widget > h3 { display:none; }
+    #social-top .widget {  }
+    .social-top { position:relative; float:right; display:block; }
+    .social-top ul > li { float:left; display:inline-block; }
+    .social-top ul > li > a { text-decoration:none; display:block; /*line-height:38px;*/ padding:0; margin:0 0 0 15px; }
+    .social-top .LinkList ul.social-counter a:before { display:block; font-family:'Font Awesome 5 Brands'; font-size:20px;  text-align:center; color:$(bar.text.color);  background:$(bar.bg.color);  }
+
+    @media screen and (max-width:600px) {
+      .social-top .LinkList ul.social-counter a:before { font-size:18px; }
+        .date p { font-size:14px; }
+    }
+    @media screen and (max-width:480px) {
+        .social-top .LinkList ul.social-counter a:before { font-size:14px; }
+    }
+    @media screen and (max-width:360px) {
+        .social-top .LinkList ul.social-counter a:before { font-size:12px; }       
+    }
+
+
+    /*
+    <Variable name="bar.bg.color" description="Topbar Background Color" type="color" default="#000000" value="#000000"/> 
+ 		<Variable name="bar.text.color" description="Topbar Text Color" type="color" default="#ffffff" value="#ffffff"/>  
+    */
+
+    body#layout .top-bar { width:100%; padding:0; margin:0; }
+	  body#layout .social-top { width:100%; padding:0; margin:0; }
+
+
+    /*layout-3*/
+    .header-area { width:100%; position:relative; height:70px; box-sizing: border-box; padding:0; margin:10px 0 0; border-bottom: 1px solid #ccc;   }
+
+    body#layout .header-area  { width:100%; padding:0; margin:0; height:auto; }
+	  body#layout .header-area .container { width:100%; padding:0; margin:0; }
+
+    /*header*/
+
+   .main-logo-wrap { margin:10px 30px 0 0; float:left; }
+    </style>
+  </head>
+  <body>
+     <!--放header 的上面-->
+    <div class='top-bar'>
+      <div class='container'>
+         <div class='date'>
+           <p>
+           <script type='text/javascript'>
+             const date = new Date(); 
+             const day = date.getDate();
+             const month = date.getMonth() + 1;
+             const year = date.getFullYear();
+             //document.write(month + &quot;月&quot; + day + &quot;日&#65292;&quot; + year + &quot; 年&quot;);
+             document.write(year + &quot;年&quot; + month + &quot;月&quot; + day + &quot;日&quot;);
+           </script>
+           </p>
+         </div> 
+         <b:section class='social-top social' id='social-top' maxwidgets='1' name='Social Top' showaddelement='yes'>
+            <b:widget id='LinkList5' locked='false' title='Social  Top' type='LinkList' version='3' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='link-3'>https://</b:widget-setting>
+                <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                <b:widget-setting name='text-1'>twitter</b:widget-setting>
+                <b:widget-setting name='link-1'>https://</b:widget-setting>
+                <b:widget-setting name='text-0'>facebook</b:widget-setting>
+                <b:widget-setting name='link-2'>https://</b:widget-setting>
+                <b:widget-setting name='text-3'>pinterest</b:widget-setting>
+                <b:widget-setting name='link-0'>https://</b:widget-setting>
+                <b:widget-setting name='text-2'>instagram</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                  <b:include name='widget-title'/>
+                  <b:include name='content'/>
+              </b:includable>
+              <b:includable id='content'><!--這裡要改 a:before 才出得來-->
+               <div class='widget-content'>
+                 <ul class='social-counter social social-color'>
+                   <b:loop values='data:links' var='link'>
+                     <li expr:class='data:link.name'><a expr:href='data:link.target' expr:title='data:link.name' target='_blank'/></li>
+                   </b:loop>
+                 </ul>
+               </div>
+             </b:includable>
+            </b:widget>
+          </b:section>
+      </div>
+    </div>
+    
+
+    
+   
+  </body>
+</html>

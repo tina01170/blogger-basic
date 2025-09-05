@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+    <style>
+
+    .comments-item { position:relative; width:100%; margin:0 0 15px; padding:0 0 15px; border-bottom:1px solid #ccc; display:flex; }
+    .comments-item .comments-image { }
+    .comments-item .comments-info { margin-left:15px; }
+    .comments-item a { display:block; color:#000; font-size:18px; text-transform: capitalize; margin:0; font-weight: 600; line-height: 1.5em; text-decoration:none; }
+    .comments-item p { font-size:16px; line-height:1.5em; margin:6px 0 0; }
+
+    </style>
+    <script>
+      $('.slider .HTML .widget-content, .sidebar .HTML .widget-content, #footer .HTML .widget-content').each(function() {
+        var t = $(this);  
+        var e = (t.text().trim().toLowerCase())
+        var	a =	e.split('/');  console.log(" e =" + e );
+        var count = a[0], label=a[1], type=a[2];
+        //console.log(" count =" + count, " label =" + label, " type =" + type);
+        return Posts(t, e, count, label);
+      });
+
+      
+        function Posts($this, type, count, label) {
+            console.log($this, type, count, label);
+            if ( type.match('comments') || type.match('list') ||type.match('related')) {
+            var url = '';
+              if (label == 'recent') {
+                  url = '/feeds/posts/default?alt=json-in-script&max-results=' + count;
+              } else if (label == 'comments') {
+                  url = '/feeds/comments/default?alt=json&max-results=' + count;
+              } else {
+                  url = '/feeds/posts/default/-/' + label + '?alt=json-in-script&max-results=' + count;
+              }
+                $.ajax({
+                        url: url,
+                        type: 'get',
+                        dataType: 'jsonp',
+                        success: function(json) {
+                            if (type.match('comments')) {  
+                                var code = '<ul class="comments-list">';
+                            }  else if (type.match('list')) {
+                                var code = '<ul class="custom-widget">';
+                            }  else if (type.match('related')) {
+                                var code = '<ul class="related-posts">';
+                            }
+                            var entry = json.feed.entry;   console.log(entry);
+                            if (entry != undefined) {
+                                for (var i = 0,feed = entry;i < entry.length; i++) {
+                                    var link = l(feed,i);
+                                          //console.log(link);
+                                          var title = t(feed,i);
+                                          //console.log(title);
+                                          var date = e(feed, i);
+                                          //console.log(date);
+                                          var	image = g(feed,i,title);
+                                          //console.log(image);
+                                          var tag = p(feed, i);
+                                          //console.log(tag);
+                                          var author = r(feed, i); 
+
+                                    var content = '';
+                                    if (type.match('list')) {                           
+                                        content += '<li class="recent-item">' + image + '<div class="post-info"><h3><a href="' + link + '">' + title +'</a></h3>'+ date +'</div></li>';
+                                    } else if (type.match('related')) {
+                                        content += '<li class="related-item">' + image + '<div class="post-info"><h3><a href="' + link + '">' + title + '</a></h3></div></li>';
+                                    }  else if (type.match('show')) {
+                                        content += '<div class="comments-item"><div class="comments-image"><img src="//www.blogger.com/img/blogger_logo_round_35.png" alt=""></div><div class="comments-info"><a href="' + link + '">'+ author +'</a><p>' + title +'</p></div></div>';
+                                    }
+                                    
+                                    code += content;                           
+                                }
+                              code += '</ul>';   
+                            } else {
+                                code = '<ul class="no-posts">No Posts Found</ul>';
+                            }
+                            $this.html(code);
+                }
+                });
+            }
+        }
+
+
+    </script>
+  </head>
+  <body>
+    
+
+    
+   
+  </body>
+</html>
