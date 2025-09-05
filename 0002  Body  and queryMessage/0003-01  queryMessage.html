@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+      /* archive & search & 404*/
+	
+      .queryMessage { color:#000;  margin:0 0 50px; font-size:18px;  overflow:hidden; background-color:#E0E0E0;  font-weight:400; height:34px; line-height:34px; padding:4px 0 0; }
+      .queryMessage .query-info {margin:0 8px; }
+      .queryMessage .search-query, .queryMessage .query-info .search-label { font-weight:800; text-transform:uppercase; } 
+      .queryMessage .search-query:before,.queryMessage .search-label:before{content:"\201c" }
+      .queryMessage .search-query:after,.queryMessage .search-label:after{content:"\201d" }
+      .queryMessage a.show-more {float:right;  margin:0 5px; color:#46a3ff; text-decoration:underline; }
+      .queryEmpty { font-size:20px;font-weight:600; text-align:center; margin:0 0 25px; padding:0; }
+      @media screen and (max-width: 540px) { 
+        .queryMessage { height:auto; padding:10px 0; text-align: center; } 
+          .queryMessage .show-more{width:100%; margin:10px 0 0}
+      }
+
+      .error404 #main-wrapper{ width:100%}
+      .error404 #sidebar-wrapper{ display:none}
+      .errorWrap { color:$(title.color); text-align:center; padding:30px 0 110px}
+      .errorWrap h3 { font-size:140px; line-height:1em; margin:0 0 30px;}
+      .errorWrap h4 { font-size:24px; margin:0 0 20px}
+      .errorWrap p {margin:0 0 20px}
+      .errorWrap .homepage .fas {font-size:18px;}
+      .errorWrap .homepage {display:inline-block; height:34px; background-color:#000; font-size:16px; color:#fff; font-weight:600; text-transform:capitalize; line-height:34px; padding:0 20px; margin:15px 0 0; border-radius:3px; } 
+
+    </style>
+  </head>
+  <body>
+    <b:includable id='searchMessage'><!--標籤訊息區塊 -->
+        <!-- Search Message -->
+        <b:if cond='data:view.search.query'>
+            <div class='queryMessage'>
+              <b:if cond='data:posts.empty'>
+                <span class='query-info query-error'/><data:view.search.resultsMessageHtml/><a class='show-more' expr:href='data:blog.homepageUrl'><data:messages.showAll/></a>
+                <b:else/>
+                <span class='query-info query-success'><data:view.search.resultsMessageHtml/></span><a class='show-more' expr:href='data:blog.homepageUrl'><data:messages.showAll/></a>
+              </b:if>
+            </div>
+        </b:if>
+        <b:if cond='data:view.search.label'>
+            <div class='queryMessage'>
+                <b:if cond='data:posts.empty'>
+                  <span class='query-info query-error'><data:view.search.resultsMessageHtml/></span><a class='show-more' expr:href='data:blog.homepageUrl'><data:messages.showAll/></a>
+                  <b:else/>
+                  <span class='query-info query-success'><data:view.search.resultsMessageHtml/></span><a class='show-more' expr:href='data:blog.homepageUrl'><data:messages.showAll/></a>
+                </b:if>
+            </div>
+        </b:if>
+        <b:if cond='data:view.isArchive'>
+            <div class='queryMessage'>
+              <b:if cond='data:posts.empty'>
+                <span class='query-info query-error'><data:view.archive.rangeMessage/></span><a class='show-more' expr:href='data:blog.homepageUrl'><data:messages.showAll/></a>
+                <b:else/>
+                <span class='query-info query-success'><data:view.archive.rangeMessage/></span><a class='show-more' expr:href='data:blog.homepageUrl'><data:messages.showAll/></a>
+              </b:if>
+            </div>
+        </b:if>
+        <b:if cond='data:view.isError'>
+            <div class='errorWrap'>
+              <h3>404</h3>
+              <h4><data:messages.theresNothingHere/></h4>
+              <p><data:navMessage/></p>
+              <a class='homepage' expr:href='data:blog.homepageUrl'><i class='fas fa-home'/> <data:messages.home/></a>
+            </div>
+        </b:if>
+        <b:if cond='data:view.isMultipleItems and data:posts.empty'><div class='queryEmpty'><data:messages.noResultsFound/></div></b:if>
+    </b:includable>    
+
+    
+   
+  </body>
+</html>

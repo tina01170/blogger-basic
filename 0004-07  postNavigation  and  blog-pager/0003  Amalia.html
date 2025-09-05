@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+
+
+    </style>
+  </head>
+  <body>
+    <b:includable id='postNavigation'>
+      <div class='post-nav'>
+        <b:include cond='data:newerPageUrl' name='previousPageLink'/>
+        <b:include cond='data:olderPageUrl' name='nextPageLink'/>
+      </div>
+    </b:includable>
+
+    <b:includable id='postPagination'>
+      <!-- Post Pagination Index -->
+      <b:if cond='data:olderPageUrl or data:newerPageUrl'>
+        <div class='blog-pager container' id='blog-pager'>
+          <b:include cond='data:newerPageUrl' name='previousPageLink'/>
+          <b:include cond='data:olderPageUrl' name='nextPageLink'/>
+          <b:include cond='data:view.url != data:blog.homepageUrl' name='homePageLink'/>
+        </div>
+      </b:if>
+    </b:includable>       
+
+    <b:includable id='homePageLink'>
+      <b:comment>Disabled.</b:comment>
+    </b:includable>
+
+    <b:includable id='previousPageLink'>
+      <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;'>
+        <b:if cond='data:view.isMultipleItems'><data:messages.newerPosts/></b:if>
+        <b:if cond='data:view.isPost'><b:include data='{ message: &quot;prevPost&quot; }' name='translate'/></b:if>
+      </a>
+    </b:includable>
+
+    <b:includable id='nextPageLink'>
+      <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;'>
+        <b:if cond='data:view.isMultipleItems'><data:messages.olderPosts/></b:if><b:if cond='data:view.isPost'><b:include data='{ message: &quot;nextPost&quot; }' name='translate'/></b:if>
+      </a>
+    </b:includable>
+
+    <b:includable id='translate'>
+      <b:switch var='data:blog.locale.language'>
+        <b:case value='en'/><b:include name='customLang'/>
+        <b:default/><b:include name='customLang'/>
+      </b:switch>
+    </b:includable> 
+
+    <b:includable id='customLang'>
+      <b:switch var='data:message'>
+        <b:case value='relatedPosts'/><b:if cond='data:blog.locale.language == &quot;en&quot;'>Related Posts<b:elseif cond='data:blog.locale.language == &quot;es&quot;'/>Artículos Relacionados<b:elseif cond='data:blog.locale.language == &quot;pt&quot;'/>Postagens Relacionadas<b:else/><data:messages.youMayLikeThesePosts/></b:if>
+        <b:case value='prevPost'/><b:if cond='data:blog.locale.language == &quot;en&quot;'>Previous Post<b:elseif cond='data:blog.locale.language == &quot;es&quot;'/>Artículo Anterior<b:elseif cond='data:blog.locale.language == &quot;pt&quot;'/>Postagem Anterior<b:else/><data:messages.newer/></b:if>
+        <b:case value='nextPost'/><b:if cond='data:blog.locale.language == &quot;en&quot;'>Next Post<b:elseif cond='data:blog.locale.language == &quot;es&quot;'/>Artículo Siguiente<b:elseif cond='data:blog.locale.language == &quot;pt&quot;'/>Próxima Postagem<b:else/><data:messages.older/></b:if>
+        <b:case value='followByEmailText'/><b:if cond='data:blog.locale.language == &quot;en&quot;'>Get all latest content delivered straight to your inbox.<b:elseif cond='data:blog.locale.language == &quot;es&quot;'/>Obtener todo el contenido más reciente directamente en su bandeja de entrada.<b:elseif cond='data:blog.locale.language == &quot;pt&quot;'/>Obtenha todo o conteúdo mais recente diretamente na sua caixa de entrada.<b:else/><data:messages.getEmailNotifications/></b:if>
+      </b:switch>
+    </b:includable>   
+    
+    <script>
+      
+    </script>
+    
+  </body>
+</html>

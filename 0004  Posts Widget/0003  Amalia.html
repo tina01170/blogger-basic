@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+
+
+    </style>
+  </head>
+  <body>
+            <b:includable id='postFeaturedImage' var='post'>
+              <!-- Post Featured Image on Index -->
+              <div class='post-image-wrap'>
+                <a class='post-image' expr:href='data:post.url'>
+                  <b:if cond='data:post.featuredImage'> 
+                    <span class='post-thumb' expr:data-image='data:post.featuredImage resizeImage 680'/>
+                    <b:else/>
+                    <span class='post-thumb' data-image='https://4.bp.blogspot.com/-eALXtf-Ljts/WrQYAbzcPUI/AAAAAAAABjY/vptx-N2H46oFbiCqbSe2JgVSlHhyl0MwQCK4BGAYYCw/s680/nth-ify.png'/>
+                  </b:if>
+                </a>
+              </div>
+            </b:includable>
+    
+            <b:includable id='postHeader' var='post'>
+              <b:include cond='data:view.isSingleItem' data='post' name='postBreadcrumbs'/>
+              <b:include cond='data:view.isMultipleItems' data='post' name='headerByline'/>
+              <b:include cond='data:view.isPost' data='post' name='postCategory'/>
+              <b:include data='post' name='postTitle'/>
+              <b:include cond='data:view.isPost' data='post' name='headerByline'/>
+            </b:includable>
+
+            <b:includable id='postTitle' var='post'><!--都一樣-->
+              <!-- Post Title Index and Item -->
+              <b:if cond='data:view.isMultipleItems'>
+                <h2 class='post-title'>
+                  <a expr:href='data:post.url'><data:post.title/></a>
+                </h2>
+              </b:if>
+              <b:if cond='data:view.isSingleItem'>
+                <h1 class='post-title'>
+                  <data:post.title/>
+                </h1>
+              </b:if>
+            </b:includable>
+
+            <b:includable id='headerByline' var='post'><!--Amalia 有條件式-->
+              <!-- Post Header Meta -->
+              <div class='post-meta'>
+                <b:include cond='data:view.isMultipleItems' data='post' name='postCategory'/>
+                <b:include cond='data:allBylineItems.author and data:view.isPost' data='post' name='postAuthor'/>
+                <b:include cond='data:allBylineItems.timestamp' data='post' name='postTimestamp'/>
+              </div>
+            </b:includable>
+
+            <b:includable id='postCategory' var='post'><!--Amalia 不一樣-->
+              <!-- Post Label/Category -->
+              <b:if cond='data:post.labels'>
+                <span class='post-tag Label'>
+                  <a expr:href='data:post.labels.first.url'><data:post.labels.first.name/></a>
+                </span>
+              </b:if>
+            </b:includable>
+
+            <b:includable id='postAuthor'><!--Amalia 不一樣-->
+              <span class='byline post-author vcard'>
+                <span class='post-author-label'>
+                  <data:byline.label/>
+                </span>
+                <span class='fn'>
+                  <b:if cond='data:post.author.profileUrl'>
+                    <meta expr:content='data:post.author.profileUrl'/>
+                    <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+                      <span><data:post.author.name/></span>
+                    </a>
+                  <b:else/>
+                    <span><data:post.author.name/></span>
+                  </b:if>
+                </span>
+              </span>
+            </b:includable>
+
+            <b:includable id='postTimestamp'><!--Amalia 不一樣-->
+              <span class='byline post-timestamp'>
+                <data:byline.label/>
+                <b:if cond='data:post.url'>
+                  <meta expr:content='data:post.url.canonical'/>
+                  <a class='timestamp-link' expr:href='data:post.url' rel='bookmark' title='permanent link'>
+                    <time class='published' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'>
+                      <data:post.date/>
+                    </time>
+                  </a>
+                </b:if>
+              </span>
+            </b:includable>
+
+
+            <b:includable id='postSummary' var='post'><!--都一樣-->
+              <!-- Post Summary -->
+              <p class='post-snippet'><b:eval expr='data:post.snippets.long snippet { length: 86 }'/></p>
+            </b:includable>
+
+            <b:includable id='postJumpLink' var='post'><!--都一樣-->
+              <b:if cond='data:blog.jumpLinkMessage != &quot;hide&quot;'>
+                <a class='read-more' expr:href='data:post.url'><data:blog.jumpLinkMessage/></a>
+              </b:if>
+            </b:includable>
+
+            <b:includable id='postLabels' var='post'><!--Amalia 不一樣-->
+              <b:if cond='data:post.labels'>
+                <div class='post-labels Label'>
+                  <span><data:allBylineItems.labels.label/></span>
+                  <b:loop values='data:post.labels' var='label'>
+                    <a class='label-link' expr:href='data:label.url' rel='tag'><data:label.name/></a>
+                  </b:loop>
+                </div>
+              </b:if>
+            </b:includable>  
+
+            <b:includable id='postFooter' var='post'>
+              <!-- Post Footer Itens -->
+              <div class='post-footer'>
+                <!-- Post Labels, Reactions, Share, About Author, Navigation -->
+                <b:include cond='data:allBylineItems.labels' data='post' name='postLabels'/>
+                <b:include data='post' name='postReactions'/>
+                <b:include data='post' name='postShareButtons'/>
+                <b:include data='post' name='postFooterAuthorProfile'/>
+                <b:include data='post' name='relatedPosts'/>
+                <b:include name='postNavigation'/>
+              </div>
+            </b:includable>
+    
+            <b:includable id='postBreadcrumbs' var='post'><!--Amalia 不一樣-->
+              <!-- Post Breadcrumbs -->
+              <b:if cond='data:view.isPost'>
+                <script type='application/ld+json'>{
+                &quot;@context&quot;: &quot;http://schema.org&quot;,
+                &quot;@type&quot;: &quot;BreadcrumbList&quot;,
+                &quot;itemListElement&quot;: [{
+                  &quot;@type&quot;: &quot;ListItem&quot;,
+                  &quot;position&quot;: 1,
+                  &quot;item&quot;: {
+                    &quot;name&quot;: &quot;<data:messages.home/>&quot;,
+                    &quot;@id&quot;: &quot;<data:blog.homepageUrl.jsonEscaped/>&quot;
+                  }
+                },{
+                  &quot;@type&quot;: &quot;ListItem&quot;,
+                  &quot;position&quot;: 2,
+                  &quot;item&quot;: {
+                    &quot;name&quot;: &quot;<b:if cond='data:post.labels'><data:post.labels.first.name/></b:if>&quot;,
+                    &quot;@id&quot;: &quot;<data:post.labels.first.url.jsonEscaped/>&quot;
+                  }
+                },{
+                  &quot;@type&quot;: &quot;ListItem&quot;,
+                  &quot;position&quot;: 3,
+                  &quot;item&quot;: {
+                    &quot;name&quot;: &quot;<data:post.title/>&quot;,
+                    &quot;@id&quot;: &quot;<data:post.url.jsonEscaped/>&quot;
+                  }
+                }]
+              }</script>
+              </b:if>
+              <b:if cond='data:view.isPage'>
+                <script type='application/ld+json'>{
+                &quot;@context&quot;: &quot;http://schema.org&quot;,
+                &quot;@type&quot;: &quot;BreadcrumbList&quot;,
+                &quot;itemListElement&quot;: [{
+                  &quot;@type&quot;: &quot;ListItem&quot;,
+                  &quot;position&quot;: 1,
+                  &quot;item&quot;: {
+                    &quot;name&quot;: &quot;<data:messages.home/>&quot;,
+                    &quot;@id&quot;: &quot;<data:blog.homepageUrl.jsonEscaped/>&quot;
+                  }
+                },{
+                  &quot;@type&quot;: &quot;ListItem&quot;,
+                  &quot;position&quot;: 2,
+                  &quot;item&quot;: {
+                    &quot;name&quot;: &quot;<data:post.title/>&quot;,
+                    &quot;@id&quot;: &quot;<data:post.url.jsonEscaped/>&quot;
+                  }
+                }]
+              }</script>
+              </b:if>
+            </b:includable>   
+  </body>
+</html>

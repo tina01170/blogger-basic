@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+      
+    </style>
+  </head>
+  <body>
+          <b:includable id='postFooter' var='post'>
+            <!-- Post Footer Itens -->
+            <div class='post-footer'>
+              <!-- Post Labels, Reactions, Share, About Author, Navigation -->
+              <b:include cond='data:allBylineItems.labels' data='post' name='postLabels'/>
+              <b:include data='post' name='postReactions'/>
+              <b:include data='post' name='postShareButtons'/>
+              <b:include data='post' name='postFooterAuthorProfile'/>
+              <b:include data='post' name='relatedPosts'/>
+              <b:include name='postNavigation'/>
+            </div>
+          </b:includable>  
+
+          <b:includable id='postLabels' var='post'><!--Amalia 不一樣-->
+              <b:if cond='data:post.labels'>
+                <div class='post-labels Label'>
+                  <span><data:allBylineItems.labels.label/></span>
+                  <b:loop values='data:post.labels' var='label'>
+                    <a class='label-link' expr:href='data:label.url' rel='tag'><data:label.name/></a>
+                  </b:loop>
+                </div>
+              </b:if>
+          </b:includable>  
+
+          <b:includable id='postReactions' var='post'>
+            <!-- Post Reactions -->
+            <div class='post-reactions'>
+              <span class='reactions-label'><data:allBylineItems.reactions.label/></span>
+              <div class='reactions-inner'>
+                <iframe allowtransparency='true' class='reactions-iframe' expr:src='data:post.reactionsUrl' frameborder='0' name='reactions' scrolling='no'/>
+              </div>                  
+            </div>           
+          </b:includable>     
+  </body>
+</html>

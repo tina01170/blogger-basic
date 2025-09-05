@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+
+
+    </style>
+  </head>
+  <body>
+    <b:includable id='postFeaturedImage'>
+        <!-- Post Featured Image on Index -->
+        <div class='post-image-wrap'>
+            <a class='post-image-link' expr:href='data:post.url'>
+                <b:if cond='data:post.featuredImage'> 
+                    <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 256, &quot;4:3&quot;)'/>
+                    <b:else/>
+                    <img class='post-thumb' expr:alt='data:post.title' src='https://4.bp.blogspot.com/-O3EpVMWcoKw/WxY6-6I4--I/AAAAAAAAB2s/KzC0FqUQtkMdw7VzT6oOR_8vbZO6EJc-ACK4BGAYYCw/w680/nth.png'/><!--圖片link-->
+                </b:if>
+            </a>
+        </div>
+    </b:includable>
+
+    <b:includable id='postTitle' var='post'>
+  	  <b:if cond='data:view.isMultipleItems'>
+        <h2 class='post-title'>
+          <a expr:href='data:post.url'><data:post.title/></a>
+        </h2>
+      </b:if>
+      <b:if cond='data:view.isSingleItem'>
+        <h1 class='post-title'>
+          <data:post.title/>
+        </h1>
+      </b:if>
+    </b:includable>
+
+    <b:includable id='postHeader' var='post'>
+      <b:include data='post' name='headerByline'/>
+    </b:includable>
+
+    <!--自己寫的-->
+    <b:includable id='headerByline' var='post'>
+        <b:if cond='data:view.isMultipleItems'>
+            <!-- index Meta -->
+            <div class='post-meta'>
+                <b:include data='post' name='postTimestamp'/>
+                <b:include data='post' name='postCategory'/>
+            </div>
+        </b:if>
+        <b:if cond='data:view.isSingleItem'>
+            <!-- Post Header Meta -->  
+            <div class='post-meta'>
+                <b:include data='post' name='postAuthor'/>
+                <b:include data='post' name='postTimestamp'/>
+                <b:if cond='data:post.numberOfComments &gt;= 0'>
+                    <a class='comments-number' expr:href='data:post.url + &quot;#comments&quot;'><data:post.numberOfComments/></a>                
+                </b:if>
+            </div>
+        </b:if>
+		</b:includable>
+
+    <!--和 polar 一樣-->
+    <b:includable id='postCategory' var='post'>
+        <b:if cond='data:post.labels'>
+          <span class='post-tag'>
+            <a expr:href='data:post.labels.first.url'>
+              <data:post.labels.first.name/>
+            </a>
+          </span>
+        </b:if>
+    </b:includable>
+
+    <b:includable id='postAuthor'>
+      <span class='byline post-author vcard'>
+        <span class='post-author-label'>
+          <data:byline.label/>
+        </span>
+        <span class='fn'>
+          <b:if cond='data:post.author.profileUrl'>
+            <meta expr:content='data:post.author.profileUrl'/>
+            <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+              <span><data:post.author.name/></span>
+            </a>
+          <b:else/>
+            <span><data:post.author.name/></span>
+          </b:if>
+        </span>
+      </span>
+    </b:includable>
+
+    <b:includable id='postTimestamp'>
+      <span class='byline post-timestamp'>
+        <data:byline.label/>
+        <b:if cond='data:post.url'>
+          <meta expr:content='data:post.url.canonical'/>
+          <a class='timestamp-link' expr:href='data:post.url' rel='bookmark' title='permanent link'>
+            <time class='published' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'>
+              <data:post.date/>
+            </time>
+          </a>
+        </b:if>
+      </span>
+    </b:includable>
+
+    <b:includable id='postSummary' var='post'>
+        <!-- Post Summary -->
+        <p class='post-snippet'><b:eval expr='data:post.snippets.short snippet { length: 10 }'/></p>
+	  </b:includable>
+
+    <b:includable id='postJumpLink' var='post'>
+      <div class='jump-link flat-button'>
+        <a expr:href='data:post.url fragment &quot;more&quot;' expr:title='data:post.title'>
+          <b:eval expr='data:blog.jumpLinkMessage'/>
+        </a>
+      </div>
+    </b:includable>
+
+    <!--item post-->
+
+    <b:includable id='postLabels' var='post'>
+        <b:if cond='data:post.labels'>
+          <div class='post-labels Label'>
+            <b:loop values='data:post.labels' var='label'>
+              <a class='label-link' expr:href='data:label.url' rel='tag'><data:label.name/></a>
+            </b:loop>
+          </div>
+        </b:if>
+    </b:includable>
+
+    <b:includable id='postFooter' var='post'>
+		    <div class='post-footer'>   
+            <!--<b:include data='post' name='postRelated'/>-->
+            <b:include data='post' name='postShareButtons'/>
+            <b:include data='post' name='postFooterAuthorProfile'/> 	 
+            <b:include data='post' name='postNavigation'/>
+            <b:include data='post' name='postRelated'/>
+        </div> 	                     
+    </b:includable>
+
+    <b:includable id='postBreadcrumbs' var='post'>
+      <nav id='breadcrumb'>
+        <a expr:href='data:blog.homepageUrl'><data:messages.home/></a>
+        <b:if cond='data:post.labels'><em class='delimiter'/><a class='b-label' expr:href='data:post.labels.first.url'><data:post.labels.first.name/></a>
+      </b:if>
+      <em class='delimiter'/><span class='current'><data:post.title/></span>
+      </nav>                  
+      <script type='application/ld+json'>
+      {
+        &quot;@context&quot;: &quot;http://schema.org&quot;,
+        &quot;@type&quot;: &quot;BreadcrumbList&quot;,
+        &quot;@id&quot;: &quot;#Breadcrumb&quot;,
+        &quot;itemListElement&quot;: [{
+          &quot;@type&quot;: &quot;ListItem&quot;,
+          &quot;position&quot;: 1,
+        &quot;item&quot;: {
+            &quot;name&quot;: &quot;<data:messages.home/>&quot;,
+            &quot;@id&quot;: &quot;<data:blog.homepageUrl.jsonEscaped/>&quot;
+        }
+      },{
+          &quot;@type&quot;: &quot;ListItem&quot;,
+        &quot;position&quot;: 2,
+        &quot;item&quot;: {
+          &quot;name&quot;: &quot;<b:if cond='data:post.labels'><data:post.labels.first.name/></b:if>&quot;,
+          &quot;@id&quot;: &quot;<data:post.labels.first.url.jsonEscaped/>&quot;
+        }
+      },{
+        &quot;@type&quot;: &quot;ListItem&quot;,
+        &quot;position&quot;: 3,
+        &quot;item&quot;: {
+          &quot;name&quot;: &quot;<data:post.title/>&quot;,
+        &quot;@id&quot;: &quot;<data:post.url.jsonEscaped/>&quot;
+      }
+      }]
+      }
+    </script>   
+    </b:includable>
+    
+
+    
+   
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>上圖下字</title>
+    <style>
+    .author-profile { position:relative; overflow:hidden; background-color:#fff; padding:25px 0 5px;  margin:60px 0 0; border:1px solid #d6d6d6; display:block; width:100%; box-sizing:border-box; }
+    .author-profile .avatar-container { position:relative; width:70px; height:70px; overflow:hidden; margin:0 17px; background-color:rgba(155,155,155,0.2); border-radius:50%; float:left; }
+    .author-profile .author-avatar { float: left; width:100%; height:100%; display:block; background-position:center; background-repeat:no-repeat;  object-fit:cover; }
+
+    .author-profile .author-name { overflow:hidden; display:inline-block; margin:0;  }
+    .author-profile .author-name a { display:block; font-size:19px; color:$(title.color); font-weight:700; margin:0;  -webkit-transition: color 0.5s;-moz-transition: color 0.5s; transition:color 0.5s; }
+    .author-profile .author-name a:hover { color:$(main.color);  }
+    .author-profile .author-text { overflow:hidden; display:block; font-size:15px; color:$(text.color); font-weight:400; line-height:1.6em; }
+
+
+    </style>
+  </head>
+  <body>
+    <!-- my coding -->
+
+    <b:includable id='postFooterAuthorProfile' var='post'>
+      <b:if cond='data:post.author.aboutMe and data:view.isPost'>
+         <div class='author-profile'>
+         <div class='avatar-container'>
+             <b:if cond='data:post.author.authorPhoto.image'>
+               <img class='author-avatar' expr:alt='data:post.author.name' expr:src='data:post.author.authorPhoto.image resizeImage 70'/> 
+             </b:if>
+           </div>
+           <div class='author-description'>
+               <h3 class='author-name'>
+                <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' target='_blank' title='author profile'>
+                  <span><data:post.author.name/></span>
+                </a>
+               </h3>
+               <p class='author-text'><data:post.author.aboutMe/></p>
+           </div>
+        </div>
+      </b:if>
+    </b:includable>
+
+    <!-- Polar -->
+    <b:includable id='aboutPostAuthor'>
+      <div class='about-author'>
+        <div class='avatar-container'>
+          <b:if cond='data:post.author.authorPhoto.image'>
+            <img class='author-avatar' expr:alt='data:post.author.name' expr:src='data:post.author.authorPhoto.image resizeImage 100'/>                
+            <b:else/><!--換空白圖片路逕-->
+            <img class='author-avatar' expr:alt='data:post.author.name' src='https://4.bp.blogspot.com/-uCjYgVFIh70/VuOLn-mL7PI/AAAAAAAADUs/Kcu9wJbv790hIo83rI_s7lLW3zkLY01EA/s100/avatar.png'/>
+          </b:if>
+        </div>
+        <h3 class='author-name'>
+          <span><data:messages.postedBy/></span><a expr:alt='data:post.author.name' expr:href='data:post.author.profileUrl' target='_blank'> <data:post.author.name/></a>
+        </h3>
+        <span class='author-description'><data:post.author.aboutMe/></span>
+      </div>
+    </b:includable> 
+    
+    <!-- Amalia-->
+    <b:includable id='postFooterAuthorProfile' var='post'>
+      <div class='about-author'>
+        <div class='avatar-container'>
+          <b:if cond='data:post.author.authorPhoto.image'>
+            <span class='author-avatar' expr:data-image='data:post.author.authorPhoto.image'/>                
+          </b:if>
+        </div>
+        <h3 class='author-name'>
+          <span><data:messages.postedBy/></span><a expr:alt='data:post.author.name' expr:href='data:post.author.profileUrl' target='_blank'> <data:post.author.name/></a>
+        </h3>
+        <div class='author-description social'>                        
+          <span class='description-text'><data:post.author.aboutMe/></span>
+        </div>
+      </div>
+    </b:includable>  
+
+    <!-- Amia-->
+    <b:includable id='aboutPostAuthor'>
+      <div class='about-author'>
+        <div class='avatar-container'>
+          <b:if cond='data:post.author.authorPhoto.image'>
+            <img class='author-avatar' expr:alt='data:post.author.name' expr:src='data:post.author.authorPhoto.image resizeImage 100'/>                
+            <b:else/>
+            <img class='author-avatar' expr:alt='data:post.author.name' src='https://4.bp.blogspot.com/-uCjYgVFIh70/VuOLn-mL7PI/AAAAAAAADUs/Kcu9wJbv790hIo83rI_s7lLW3zkLY01EA/s100/avatar.png'/>
+          </b:if>
+        </div>
+        <h3 class='author-name'>
+          <span><data:messages.postedBy/></span><a expr:alt='data:post.author.name' expr:href='data:post.author.profileUrl' target='_blank'> <data:post.author.name/></a>
+        </h3>
+        <span class='author-description'><data:post.author.aboutMe/></span>
+      </div>
+    </b:includable>
+    
+        
+
+    
+
+    
+   
+  </body>
+</html>

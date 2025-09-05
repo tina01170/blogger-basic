@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>postRelated</title>
+    <style>
+        /* related-posts 文字版*/
+
+        #related-posts{ overflow:hidden; margin:60px 0; position:relative; width:100%; }
+        #related-posts h2 { font-size:24px; line-height:34px; color:$(title.color); margin:0 0 40px; padding:0; border-bottom:1px solid #E0E0E0; font-family:'Roboto',sans-serif; }
+        #related-posts h2:after { content:''; display:block; width:140px; height:2px; margin-top:8px; background-color:$(main.color); }
+        #related-posts #related-content{ width:100%; }
+        #related-content ul { position:relative; overflow:hidden; list-style:none; }
+        .related-item { position:relative; overflow:hidden;  padding:0 0 0 15px;}
+        .related-item .post-info { display:flex; align-items:center; }
+        .related-item .post-info .post-tag { display:block; font-size:16px; font-weight:500; color:$(main.color); padding:0 10px 0 0; }
+        .related-item h3 { font-size:16px; font-weight:500; line-height:1.3em;  margin:5px 0; }
+        .related-item h3 a { display: block; color:$(main.color); font-family:'Roboto',sans-serif; /*-webkit-transition: color 0.3s; -moz-transition: color 0.3s; transition:color .3s; */}
+        /*
+        .related-item h3 a:hover { color:$(main.color);}
+        */
+
+
+        /* related-posts 圖文版*/
+
+        #related-posts{ overflow:hidden; margin:60px 0; position:relative; width:100%; }
+
+        #related-posts h2 { font-size:24px; line-height:34px; color:$(title.color); margin:0 0 40px; padding:0; border-bottom:1px solid #E0E0E0; font-family:'Roboto',sans-serif; }
+        #related-posts h2:after { content:''; display:block; width:140px; height:2px; margin-top:8px; background-color:$(main.color); }
+
+        #related-posts #related-content{ width:100%; }
+
+        #related-content ul { position:relative; overflow:hidden; list-style:none;display:flex;flex-wrap:wrap;  margin:0 -10px; box-sizing:border-box; }
+
+        .related-item { width:33.3%; padding:0 10px; position:relative;overflow:hidden; box-sizing:border-box; }
+        .related-item .post-image-link { display:block; position:relative; overflow:hidden; width:100%; height: 150px;  margin: 0 0 10px; }
+
+        .related-posts h3 { font-size:18px; font-weight:700; line-height:1.7em;  margin:5px 0; }
+        .related-posts h3 a { display: block; color:$(title.color); font-family:'Roboto',sans-serif; -webkit-transition: color 0.3s; -moz-transition: color 0.3s; transition:color .3s; }
+        .related-item h3 a:hover { color:$(main.color);}
+        .related-item .post-date { font-size:16px; color:#000; }
+
+        @media screen and (max-width: 992px) {  
+          .related-item { width:50%; margin:0 0 30px;}
+          .related-item h3 { margin:10px 0 0; }
+          .related-item h3 a { font-size:18px; }
+          .related-item .post-image-link {  height:240px; }
+        }
+        @media screen and (max-width: 767px) { 
+          .related-item {  width:100%; margin:0 0 55px;}
+          .related-item .post-image-link {  height:360px;  }
+        }
+        @media screen and (max-width: 479px) {
+          .related-item .post-image-link { height:240px; }
+        }
+    </style>
+  </head>
+  <body>
+    <!-- my coding -->
+    <b:includable id='postRelated' var='post'><!--不一樣的地方-->
+        <div id='related-posts'>
+            <!--<h2><data:messages.youMayLikeThesePosts/></h2>-->
+            <h3><a>相關文章推薦</a></h3>
+            <div id='related-content'>
+              <b:if cond='data:post.labels'>
+                  <div class='related-tag' expr:data-label='data:post.labels.first.name'/>
+              <b:else/>
+                  <div class='related-tag' data-label='recent'/>
+                </b:if>
+              </div>   
+        </div>
+    </b:includable>
+
+    <!-- Polar -->
+    <b:includable id='postRelated' var='post'>
+      <!-- Related Posts -->
+        <div id='related-wrap'>
+          <div class='title-wrap'>
+            <h3><data:messages.youMayLikeThesePosts/></h3>
+          </div>
+          <div class='related-ready'>
+            <b:if cond='data:post.labels'>
+              <div class='related-tag' expr:data-label='data:post.labels.first.name'/>
+              <b:else/>
+              <div class='related-tag' data-label='random'/>
+            </b:if>
+          </div> 
+        </div>  
+    </b:includable>   
+    
+    <!-- Amalia -->
+    <b:includable id='relatedPosts' var='post'>
+      <!-- Related Posts -->
+      <div id='related-wrap'>
+        <div class='related-title'>
+          <h3><b:include data='{ message: &quot;relatedPosts&quot; }' name='translate'/></h3>
+        </div>
+        <div class='related-content'>
+          <b:if cond='data:post.labels'>
+            <div class='related-tag' expr:data-label='data:post.labels.first.name'/>
+            <b:else/>
+            <div class='related-tag' data-label='recent'/>
+          </b:if>
+        </div> 
+      </div>  
+    </b:includable>  
+    
+    <!-- Amia -->
+    <b:includable id='postRelated' var='post'>
+      <!-- Related Posts -->
+        <div id='related-wrap'>
+          <div class='title-wrap'>
+            <h3><data:messages.youMayLikeThesePosts/></h3>
+          </div>
+          <div class='related-ready'>
+            <b:if cond='data:post.labels'>
+              <div class='related-tag' expr:data-label='data:post.labels.first.name'/>
+              <b:else/>
+              <div class='related-tag' data-label='random'/>
+            </b:if>
+          </div> 
+        </div>  
+    </b:includable>
+    
+   
+  </body>
+</html>

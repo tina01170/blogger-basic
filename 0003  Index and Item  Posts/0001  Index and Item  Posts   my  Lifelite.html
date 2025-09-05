@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+
+
+    </style>
+  </head>
+  <body>
+    <!--Blog1  改變版型-->
+    <b:widget id='Blog1' locked='true' title='網誌文章' type='Blog' version='2' visible='true'>
+      <b:widget-settings></b:widget-settings>
+      <b:includable id='main' var='this'><!--改變版型的地方-->
+          <b:include name='searchMessage'/>
+          <div class='blog-posts hfeed container'>
+                <b:class cond='data:view.isMultipleItems' name='index-post-wrap'/><!--index-post--> 
+                <b:class cond='data:view.isSingleItem' name='item-post-wrap'/><!--item-post-->   
+                <!--文章產生處 loop--> 
+                <!--  class='grid-posts' 可改名稱-->                   
+                <b:tag class='grid-posts' cond='data:view.isMultipleItems' name='div'>
+                    <b:loop index='i' values='data:posts' var='post'>
+                        <b:include data='post' name='postCommentsAndAd'/><!--呼叫-->
+                    </b:loop>
+                </b:tag>            
+          </div>
+          <b:include cond='data:view.isMultipleItems' name='postPagination'/><!--首頁頁碼-->
+      </b:includable>
+
+
+
+      <b:includable id='postCommentsAndAd' var='post'>
+          <article class='post-outer-container'>
+              <!-- Post title and body -->
+              <b:class cond='data:view.isMultipleItems' name='index-post'/>
+              <b:class cond='data:view.isSingleItem' name='item-post'/>
+              <b:include data='post' name='post'/>
+
+              <!-- Comments-->
+              <b:if cond='data:view.isSingleItem and data:post.allowComments'>
+                <div class='blog-post-comments'>
+                    <b:include data='post' name='threadedCommentsDisqus'/><!--多加的-->
+                    <b:include data='post' name='commentPicker'/>
+                </div>
+              </b:if> 
+
+              <!-- Show ad inside post container, after comments, if single item. -->
+              <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/>
+          </article>
+
+          <!-- Show ad outside post container (between posts) for feed pages. -->
+          <b:include cond='data:view.isMultipleItems and data:post.includeAd' data='post' name='inlineAd'/>
+      </b:includable>
+
+      <b:includable id='post' var='post'>
+          <!-- Post Index -->
+          <b:if cond='data:view.isMultipleItems'>
+              <b:include data='post' name='indexPost'/><!--呼叫 indexPost-->	
+          </b:if> 
+          <!-- Post Item -->
+          <b:if cond='data:view.isSingleItem'>
+              <b:include data='post' name='itemPost'/><!--呼叫 itemPost-->	                       
+          </b:if>                                    	
+      </b:includable>
+
+      <b:includable id='indexPost' var='post'><!--index post-->                 
+          <b:include data='post' name='postFeaturedImage'/>
+          <div class='post-info'>                                 
+              <b:include data='post' name='postTitle'/>
+              <b:include data='post' name='postHeader'/>                              
+			  <b:include data='post' name='postSummary'/>
+              <b:include data='post' name='postJumpLink'/>                                	
+          </div> 
+      </b:includable>
+
+      <b:includable id='itemPost' var='post'><!--item post-->     
+          <div class='item-post'>
+              <b:include cond='data:view.isSingleItem' data='post' name='postBreadcrumbs'/>
+              <b:include data='post' name='postTitle'/>
+              <b:include data='post' name='postHeader'/>		
+              <b:include data='post' name='postBody'/>     
+              <b:include data='post' name='postLabels'/>
+              <b:include data='post' name='postFooter'/>
+          </div> 
+       </b:includable>     
+       
+       
+        <b:includable id='threadedCommentsDisqus' var='post'>
+            <script type='text/javascript'>
+                var disqus_blogger_current_url = &quot;<data:blog.canonicalUrl/>&quot;;
+                if (!disqus_blogger_current_url.length) {
+                    disqus_blogger_current_url = &quot;<data:blog.url/>&quot;;
+                }
+                var disqus_blogger_homepage_url = &quot;<data:blog.homepageUrl/>&quot;;
+                var disqus_blogger_canonical_homepage_url = &quot;<data:blog.canonicalHomepageUrl/>&quot;;
+            </script>
+		</b:includable>
+    </b:widget>
+    
+
+    
+   
+  </body>
+</html>

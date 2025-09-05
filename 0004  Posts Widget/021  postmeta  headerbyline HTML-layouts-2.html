@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+    <style>
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+  </head>
+  <body>
+        <b:includable id='headerByline' var='post'>
+    			    <b:if cond='data:view.isMultipleItems'>
+                <!-- index Meta -->
+                <div class='post-meta'>
+                    <b:include data='post' name='postTimestamp'/>
+                    <b:include data='post' name='postCategory'/>
+                </div>
+ 				      </b:if>
+   				    <b:if cond='data:view.isSingleItem'>
+                <!-- Post Header Meta -->  
+                <div class='post-meta'>
+                    <div class='meta-left'>
+                        <b:include data='post' name='postAuthor'/>
+                        <b:include data='post' name='postTimestamp'/>
+                    </div>
+                    <div class='meta-right'>
+                        <b:if cond='data:post.numberOfComments &gt;= 0'>
+                        <a class='comments-number' expr:href='data:post.url + &quot;#comments&quot;'><data:post.numberOfComments/></a>                
+                    </b:if>
+                  </div>
+                </div>
+              </b:if>
+			  </b:includable>
+    
+
+    
+   
+  </body>
+</html>

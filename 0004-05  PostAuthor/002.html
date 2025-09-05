@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+    <style>
+      .author-container {display:flex; padding:60px 0 20px;}
+			.avatar-container .author-avatar { vertical-align: middle; }
+			.avatar-container {}
+			.author-text {padding-left:20px;}
+			.author-name a  { font-size:22px; text-decoration: none; color:#000; margin:0; }
+			.author-description { font-size:15px; }
+
+
+
+
+
+
+
+
+
+    </style>
+  </head>
+  <body>
+
+    <div class='post-footer'>
+      <b:include data='post' name='postLabels'/>
+      <b:include name='footerBylines'/>
+      <!--<b:include data='post' name='postShareButtons'/>-->
+        <b:if cond='data:view.isHomepage'>
+          <div class='blog-pager container' id='blog-pager'>
+              <b:include cond='data:olderPageUrl' name='nextPageLink'/>
+              <b:include cond='data:newerPageUrl' name='previousPageLink'/>
+          </div> 
+        </b:if>
+        <!--<b:include data='post' name='postFooterAuthorProfile'/>-->
+        <b:include data='post' name='aboutPostAuthor'/><!--更改處-->
+        <b:include data='post' name='postRelated'/>
+    </div>
+
+
+    <b:includable id='postFooterAuthorProfile' var='post'>
+      <!--中間刪除-->
+    </b:includable>
+
+
+    <b:includable id='aboutPostAuthor'>
+      <div class='author-container'>   
+          <div class='avatar-container'>
+              <b:if cond='data:post.author.authorPhoto.image'>
+                  <img class='author-avatar' expr:alt='data:post.author.name' expr:src='data:post.author.authorPhoto.image resizeImage 100'/>                
+              <b:else/>
+                    <img class='author-avatar' expr:alt='data:post.author.name' src='https://4.bp.blogspot.com/-uCjYgVFIh70/VuOLn-mL7PI/AAAAAAAADUs/Kcu9wJbv790hIo83rI_s7lLW3zkLY01EA/s100/avatar.png'/>
+              </b:if>
+          </div>                
+          <div class='author-name'>
+            <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+              <span>
+                <data:post.author.name/>
+              </span>
+            </a>
+          </div>
+          <div>
+            <span class='author-desc'>
+              <data:post.author.aboutMe/>
+            </span>
+            <!--網誌文章下方的顯示作者簡介打開就出來了-->
+          </div>
+      </div>
+    </b:includable>
+
+
+    <b:includable id='aboutPostAuthor'>
+      <section class='author-container'>                        
+          <div class='avatar-container'>
+               <b:if cond='data:post.author.authorPhoto.image'>
+                   <img class='author-avatar' expr:alt='data:post.author.name' expr:src='data:post.author.authorPhoto.image resizeImage 200'/>                
+               <b:else/>
+                    <img class='author-avatar' expr:alt='data:post.author.name' src='https://4.bp.blogspot.com/-uCjYgVFIh70/VuOLn-mL7PI/AAAAAAAADUs/Kcu9wJbv790hIo83rI_s7lLW3zkLY01EA/s200/avatar.png'/>
+               </b:if>
+          </div> 
+       	  <div class='author-text'>
+            <h3 class='author-name'>
+              <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+                <span>
+                  <data:post.author.name/>
+                </span>
+              </a>
+            </h3>
+            <span class='author-desc'><data:post.author.aboutMe/></span>    
+          </div>
+       </section>                       
+    </b:includable>
+     
+  </body>
+</html>

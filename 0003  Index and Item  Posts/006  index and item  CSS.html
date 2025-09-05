@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+   
+    <style>
+
+
+        /* article */ 
+
+	  .blog-posts { display: block; overflow: hidden; word-wrap: break-word; }
+	   /* 最外圈*/
+    .item-post { padding-right:20px; }
+    
+
+
+      /* 等於index-post */
+    .blog-post { display:block; overflow:hidden; word-wrap:break-word; }
+
+	  .item-post-inner {position:relative; overflow: hidden; width: 100%; box-sizing:border-box; margin: 0 0 50px; /*float: left;*/ }
+
+
+
+    </style>
+  </head>
+  <body>
+
+  <b:includable id='postCommentsAndAd' var='post'>
+      <article class='blog-post hentry'><!--fix class-->
+        <!-- Post title and body -->
+        <b:class cond='data:view.isMultipleItems' name='index-post'/>
+        <b:class cond='data:view.isSingleItem' name='item-post'/>
+        <b:include data='post' name='post'/>
+
+        <!-- Comments-->
+        <b:if cond='data:view.isSingleItem and data:post.allowComments'>
+          <div class='blog-post-comments'>
+          <b:include data='post' name='threadedCommentsDisqus'/>
+                <b:include data='post' name='commentPicker'/>
+          </div>
+        </b:if> 
+
+        <!-- Show ad inside post container, after comments, if single item. -->
+        <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/>
+      </article>
+  </b:includable>
+
+
+  <b:includable id='itemPost' var='post'><!--item post-->     
+      <div class='item-post-inner'>
+          <b:include cond='data:view.isSingleItem' data='post' name='postBreadcrumbs'/>
+          <b:include data='post' name='postTitle'/>
+          <b:include data='post' name='postHeader'/>		
+          <b:include data='post' name='postBody'/>     
+          <b:include data='post' name='postLabels'/>
+          <b:include data='post' name='postFooter'/>
+      </div> 
+   </b:includable>
+    
+
+    
+   
+  </body>
+</html>

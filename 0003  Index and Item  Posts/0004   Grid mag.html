@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+
+
+    </style>
+  </head>
+  <body>
+        <b:includable id='main' var='this'>
+           <b:if cond='!data:isFeed'>
+            <b:include name='searchMessage'/>
+            <b:if cond='!data:posts.empty'>
+            <div class='blog-posts hfeed container'>
+              <b:class cond='data:view.isMultipleItems' name='post-filter-wrap'/>
+              <b:class cond='data:view.isSingleItem' name='item-post-wrap'/>
+              <b:if cond='data:view.isHomepage and data:blog.jumpLinkMessage not contains &quot;(hide)&quot;'>
+                <div class='widget-title'>
+                  <h3 class='title'><span><data:blog.jumpLinkMessage/></span></h3><a class='simple-viewmore' href='/search'><data:messages.showMore/></a></div>
+              </b:if>
+              <b:if cond='data:view.isMultipleItems and data:posts.empty'>
+              <div class='queryEmpty'><data:messages.noResultsFound/></div>
+              </b:if>
+              <b:tag class='grid-posts' cond='data:view.isMultipleItems' name='div'>
+                <b:loop index='i' values='data:posts' var='post'><b:include data='post' name='postCommentsAndAd'/></b:loop>
+              </b:tag>
+              <b:include cond='data:view.isMultipleItems' name='postPaginationNext'/>
+            </div>
+            <b:include cond='data:view.isMultipleItems and !data:view.isHomepage' name='indexBlogPager'/>
+            </b:if>
+            <b:else/>
+             <code id='native-feed'>{&quot;version&quot;:&quot;1.0&quot;,&quot;encoding&quot;:&quot;UTF-8&quot;,&quot;author&quot;:&quot;Piki Templates&quot;,&quot;website&quot;:&quot;https://www.pikitemplates.com/&quot;,&quot;feed&quot;:{<b:if cond='!data:posts.empty'>&quot;entry&quot;:[<b:loop index='i' values='data:posts' var='post'><b:if cond='data:i != 0'>,</b:if>{&quot;id&quot;: &quot;<data:post.id.jsonEscaped/>&quot;,&quot;title&quot;: &quot;<b:eval expr='data:post.title ? data:post.title.jsonEscaped : data:messages.noTitle.jsonEscaped'/>&quot;,&quot;date&quot;: &quot;<b:if cond='data:widgets.Blog.first.allBylineItems.timestamp'><data:post.date.jsonEscaped/><b:else/></b:if>&quot;,&quot;datetime&quot;: &quot;<b:if cond='data:widgets.Blog.first.allBylineItems.timestamp'><data:post.date.iso8601.jsonEscaped/><b:else/></b:if>&quot;,&quot;author&quot;: &quot;<data:post.author.name.jsonEscaped/>&quot;,&quot;authorimage&quot;: &quot;<b:if cond='data:post.author.authorPhoto.image'><b:eval expr='resizeImage(data:post.author.authorPhoto.image, 70)'/><b:else/>https://4.bp.blogspot.com/-uCjYgVFIh70/VuOLn-mL7PI/AAAAAAAADUs/Kcu9wJbv790hIo83rI_s7lLW3zkLY01EA/s100/avatar.png</b:if>&quot;,<b:if cond='data:post.labels'>&quot;category&quot;: &quot;<data:post.labels.first.name/>&quot;,</b:if>&quot;link&quot;: &quot;<data:post.url.canonical.jsonEscaped/>&quot;,&quot;thumbnail&quot;: {&quot;src&quot;: &quot;<b:if cond='data:post.featuredImage'><b:eval expr='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage.jsonEscaped, 72, &quot;1:1&quot;)'/><b:else/>https://resources.blogblog.com/img/blank.gif</b:if>&quot;,&quot;type&quot;: &quot;<b:if cond='data:post.featuredImage.isYouTube'>video-nos<b:else/>image-nos</b:if>&quot;}<b:if cond='data:post.snippets.short snippet { length: 120 }'>,&quot;summary&quot;:&quot;<data:post.snippets.short.jsonEscaped/>&quot;</b:if>}</b:loop>]</b:if>}}</code>
+          </b:if>
+        </b:includable>
+
+        <b:includable id='postCommentsAndAd' var='post'>
+            <!-- Post Content Index and Item -->
+            <article class='hentry' itemscope='itemscope' itemtype='https://schema.org/CreativeWork'>
+              <b:class cond='data:view.isMultipleItems' expr:name='&quot;post-filter item&quot; + data:i'/>
+              <b:class cond='data:view.isSingleItem' name='item-post'/>
+              <b:include data='post' name='post'/>
+            </article>
+            <b:include cond='data:view.isPost' data='post' name='scriptTime'/>
+            <!-- Main Comments -->
+            <b:if cond='data:view.isSingleItem and data:post.allowComments'>
+              <div class='ilicm' expr:data-shortcode='data:allBylineItems.comments.label contains &quot;type&quot; ? data:allBylineItems.comments.label : &quot;#type=(blogger)&quot;'>
+                <b:include data='post' name='threadedCommentsDisqus'/>
+                <b:include data='post' name='commentPicker'/>
+              </div>
+            </b:if>
+        </b:includable>
+
+        <b:includable id='threadedCommentsDisqus' var='post'>
+            <script type='text/javascript'>
+              var disqus_blogger_current_url = &quot;<data:blog.canonicalUrl/>&quot;;
+                if (!disqus_blogger_current_url.length) { disqus_blogger_current_url = &quot;<data:blog.url/>&quot;; }
+                var disqus_blogger_homepage_url = &quot;<data:blog.homepageUrl/>&quot;;
+                var disqus_blogger_canonical_homepage_url = &quot;<data:blog.canonicalHomepageUrl/>&quot;;
+            </script>
+        </b:includable>
+
+        <b:includable id='post' var='post'>
+            <!-- Post Index -->
+            <b:if cond='data:view.isMultipleItems'><b:include data='post' name='indexPost'/></b:if>
+            <!-- Post Item -->
+            <b:if cond='data:view.isSingleItem'><b:include data='post' name='itemPost'/></b:if>
+        </b:includable>
+
+
+        <b:includable id='itemPost' var='post'>
+            <!-- Item Post Content -->
+            <div class='post-inner-area'>
+              <b:include data='post' name='postMeta'/>
+              <b:include data='post' name='postHeader'/>
+              <b:include data='post' name='postBody'/>
+              <b:include cond='data:view.isPost' data='post' name='footerBylines'/>
+            </div>
+            <b:include cond='data:view.isPost' data='post' name='postFooter'/>
+        </b:includable>
+    
+
+    
+   
+  </body>
+</html>

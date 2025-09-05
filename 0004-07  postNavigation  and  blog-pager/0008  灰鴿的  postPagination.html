@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+    <style>
+
+
+    </style>
+  </head>
+  <body>
+      <b:includable id='main'>
+          <b:include name='noContentPlaceholder'/>
+
+          <b:comment>Cap the total number of ads (widgets and inline ads).</b:comment>
+          <b:with value='3' var='maxNumAds'>
+          <b:with value='data:widgets.AdSense.size' var='numDesktopAds'>
+          <b:with value='data:widgets.AdSense count (w =&gt; w.sectionId != &quot;ads&quot;)' var='numMobileAds'>
+          <b:comment>Filter out the featured post, but only on the homepage.</b:comment>
+          <b:with value='data:widgets.FeaturedPost filter (w =&gt; w.sectionId == &quot;page_body&quot;) map (w =&gt; w.postId)' var='featuredPostIds'>
+          <b:with value='data:view.isHomepage ? data:posts filter (post =&gt; post.id not in data:featuredPostIds) : data:posts' var='posts'>
+            <b:include name='super.main'/>
+          </b:with>
+          </b:with>
+          </b:with>
+          </b:with>
+          </b:with>
+          <b:include cond='data:view.isSingleItem' name='postPagination'/>
+      </b:includable>
+
+      <b:includable id='postPagination'>
+        <div class='blog-pager container' id='blog-pager'>
+            <b:if cond='data:newerPageUrl'><a class='newerPlink' expr:href='data:newerPageUrl'>&#11088; 上一頁</a></b:if>
+            <b:include cond='data:view.url != data:blog.homepageUrl' name='super.homePageLink'/>
+            <b:if cond='data:olderPageUrl'><a class='olderPlink' expr:href='data:olderPageUrl'>下一頁 &#11088;</a></b:if>
+        </div>
+      </b:includable>
+
+
+      <b:includable id='previousPageLink'><b:comment>Don&#39;t show</b:comment></b:includable>
+      <b:includable id='homePageLink'><b:comment>Don&#39;t show</b:comment></b:includable>
+      
+      <b:includable id='nextPageLink'>
+            <a class='blog-pager-older-link flat-button ripple' expr:href='data:olderPageUrl' expr:title='data:messages.morePosts'>
+              <data:messages.morePosts/>
+            </a>
+      </b:includable>
+    
+
+    
+   
+  </body>
+</html>

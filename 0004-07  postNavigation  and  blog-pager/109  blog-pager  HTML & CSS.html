@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+    <style>
+      /* blog-pager*/
+
+      #blog-pager { margin:16px 0;text-align:center; overflow: hidden; } 
+      #blog-pager .blog-pager-newer-link, #blog-pager .blog-pager-older-link { font-size:16px; display:inline-block; height:38px; line-height:38px; font-weight:400; padding:0 14px; text-transform:capitalize; background:$(main.color); color:#fff;  -webkit-transition:color 0.27s;-moz-transition:color 0.27s; transition:color 0.27s ease; }
+      #blog-pager .blog-pager-newer-link:hover,  #blog-pager .blog-pager-older-link:hover { background:$(buttom.hover.color); } 
+
+      .blog-pager-newer-link, .newerPlink { float:left; }
+      .blog-pager-older-link, .olderPlink { float:right; }
+
+
+
+    </style>
+  </head>
+  <body>
+    <!--Demo-->
+    <b:includable id='nextPageLink'>
+        <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;'>
+          Next Post</a>
+    </b:includable>
+    <b:includable id='previousPageLink'>
+        <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;'>
+          Previous Post</a>        
+    </b:includable>
+    
+
+    <b:includable id='postPagination'>
+    		<div class='blog-pager container' id='blog-pager'>
+            <!--<b:include cond='data:newerPageUrl' name='previousPageLink'/>-->
+            <b:if cond='data:newerPageUrl'><a class='newerPlink' expr:href='data:newerPageUrl'>Back</a></b:if>
+            
+            <b:include cond='data:view.url != data:blog.homepageUrl' name='homePageLink'/>
+                
+            <!--<b:include cond='data:olderPageUrl' name='nextPageLink'/>-->	
+            <b:if cond='data:olderPageUrl'><a class='olderPlink' expr:href='data:olderPageUrl'>Next</a></b:if>
+        </div>      
+    </b:includable>
+
+   
+  </body>
+</html>

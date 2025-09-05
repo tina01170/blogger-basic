@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+
+    </style>
+
+  </head>
+  <body>
+    <script>
+       function y(t,a){var e=t[a].title.$t,s=t[a].content.$t;if("media$thumbnail"in t[a]){
+          var i=t[a].media$thumbnail.url,  l=i.replace("/s72-c","/w640"),  n=i.replace("/s72-c","/w280"),  o=i.replace("/s72-c","/w100");
+          -1<s.indexOf("youtube.com/embed")&&(l=i.replace("/default.","/hqdefault."),n=i.replace("/default.","/mqdefault."),o=i)}else l=noThumbnail,n=noThumbnail.replace("/s680","/w280"),o=noThumbnail.replace("/s680","/w100");return['<img class="post-thumb" alt="'+e+'" src="'+l+'"/>','<img class="post-thumb" alt="'+e+'" src="'+n+'"/>','<img class="post-thumb" alt="'+e+'" src="'+o+'"/>']}
+    </script>
+    
+
+    
+   
+  </body>
+</html>

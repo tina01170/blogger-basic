@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+
+
+    </style>
+  </head>
+  <body>
+    <b:includable id='postNavigation' var='post'>
+      <!-- Post Navigation Item -->
+      <ul class='post-nav'>
+        <li class='post-next'> 
+          <b:if cond='data:newerPageUrl'> 
+            <a class='next-post-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' rel='next'>
+              <div class='post-nav-inner'><span><data:messages.newer/></span><p/></div>
+            </a> 
+            <b:else/> 
+            <a rel='next'><div class='post-nav-inner post-nav-active'><span><data:messages.newer/></span><p><data:post.title/></p></div></a> 
+          </b:if> 
+        </li>
+        <li class='post-prev'> 
+          <b:if cond='data:olderPageUrl'> 
+            <a class='prev-post-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' rel='previous'>
+              <div class='post-nav-inner'><span><data:messages.older/></span><p/></div>
+            </a> 
+            <b:else/>
+            <a rel='previous'><div class='post-nav-inner post-nav-active'><span><data:messages.older/></span><p><data:post.title/></p></div></a> 
+          </b:if> 
+        </li>
+      </ul>
+    </b:includable>
+
+    
+    <b:includable id='postPagination'>
+      <b:comment>Disabled</b:comment>
+    </b:includable>        
+    
+    <b:includable id='homePageLink'>
+      <b:comment>Disabled</b:comment> 
+    </b:includable>
+    
+    <b:includable id='previousPageLink'>
+      <b:comment>Disabled</b:comment>
+    </b:includable>
+
+    <b:includable id='nextPageLink'>
+      <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:messages.olderPosts'>
+        <data:messages.loadMorePosts/>
+      </a>
+    </b:includable>
+
+    <b:includable id='indexBlogPager'>
+      <!-- Post Pagination Index -->
+      <b:if cond='data:olderPageUrl'>
+        <div class='blog-pager container' id='blog-pager'>
+          <b:include name='nextPageLink'/>
+        </div>
+      </b:if>
+    </b:includable>
+
+    <script>
+    $('.post-nav').each(function() {
+        var getURL_prev = $('a.prev-post-link').attr('href'),
+            getURL_next = $('a.next-post-link').attr('href');
+        $.ajax({
+            url: getURL_prev,
+            type: 'get',
+            success: function(prev) {
+                var title = $(prev).find('.blog-post h1.post-title').text();
+                $('.post-prev a .post-nav-inner p').text(title);
+            }
+        });
+        $.ajax({
+            url: getURL_next,
+            type: 'get',
+            success: function(next) {
+                var title = $(next).find('.blog-post h1.post-title').text();
+                $('.post-next a .post-nav-inner p').text(title);
+            }
+        });
+    });  
+    </script>
+
+
+    
+   
+  </body>
+</html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+
+
+    </style>
+  </head>
+  <body>
+    <b:includable id='postCommentsAndAd' var='post'>
+      <!-- In-Feed Ads -->
+      <b:include cond='data:view.isMultipleItems and not data:view.search.label and not data:view.search.query and not data:view.isArchive' data='post' name='inlineAd'/>
+      <article class='blog-post hentry'>
+        <b:class cond='data:view.isMultipleItems' expr:name='&quot;index-post post-&quot; + data:i'/>
+        <b:class cond='data:view.isSingleItem' name='item-post'/>
+        <b:include data='post' name='post'/>
+      </article>
+      <b:if cond='data:view.isSingleItem and data:post.allowComments'>
+        <!-- Post Comments -->
+        <div class='blog-post-comments'>
+          <b:include data='post' name='commentPicker'/>
+        </div>
+      </b:if>
+      <!-- Post Navigation -->
+      <b:include cond='data:skin.vars.postnav == &quot;1px&quot;' name='postNavigation'/>
+    </b:includable>   
+            <b:includable id='postFeaturedImage' var='post'>
+              <!-- Post Featured Image on Index -->
+              <div class='post-image-wrap'>
+                <a class='post-image' expr:href='data:post.url'>
+                  <b:if cond='data:post.featuredImage'> 
+                    <span class='post-thumb' expr:data-image='data:post.featuredImage resizeImage 680'/>
+                    <b:else/>
+                    <span class='post-thumb' data-image='https://4.bp.blogspot.com/-eALXtf-Ljts/WrQYAbzcPUI/AAAAAAAABjY/vptx-N2H46oFbiCqbSe2JgVSlHhyl0MwQCK4BGAYYCw/s680/nth-ify.png'/>
+                  </b:if>
+                </a>
+              </div>
+            </b:includable>
+    
+            <b:includable id='postHeader' var='post'>
+              <b:include cond='data:view.isSingleItem' data='post' name='postBreadcrumbs'/>
+              <b:include cond='data:view.isMultipleItems' data='post' name='headerByline'/>
+              <b:include cond='data:view.isPost' data='post' name='postCategory'/>
+              <b:include data='post' name='postTitle'/>
+              <b:include cond='data:view.isPost' data='post' name='headerByline'/>
+            </b:includable>
+
+            <b:includable id='postTitle' var='post'><!--都一樣-->
+              <!-- Post Title Index and Item -->
+              <b:if cond='data:view.isMultipleItems'>
+                <h2 class='post-title'>
+                  <a expr:href='data:post.url'><data:post.title/></a>
+                </h2>
+              </b:if>
+              <b:if cond='data:view.isSingleItem'>
+                <h1 class='post-title'>
+                  <data:post.title/>
+                </h1>
+              </b:if>
+            </b:includable>
+
+            <b:includable id='headerByline' var='post'><!--Amalia 有條件式-->
+              <!-- Post Header Meta -->
+              <div class='post-meta'>
+                <b:include cond='data:view.isMultipleItems' data='post' name='postCategory'/>
+                <b:include cond='data:allBylineItems.author and data:view.isPost' data='post' name='postAuthor'/>
+                <b:include cond='data:allBylineItems.timestamp' data='post' name='postTimestamp'/>
+              </div>
+            </b:includable>
+
+            <b:includable id='postCategory' var='post'><!--Amalia 不一樣-->
+              <!-- Post Label/Category -->
+              <b:if cond='data:post.labels'>
+                <span class='post-tag Label'>
+                  <a expr:href='data:post.labels.first.url'><data:post.labels.first.name/></a>
+                </span>
+              </b:if>
+            </b:includable>
+
+            <b:includable id='postAuthor'><!--Amalia 不一樣-->
+              <span class='byline post-author vcard'>
+                <span class='post-author-label'>
+                  <data:byline.label/>
+                </span>
+                <span class='fn'>
+                  <b:if cond='data:post.author.profileUrl'>
+                    <meta expr:content='data:post.author.profileUrl'/>
+                    <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+                      <span><data:post.author.name/></span>
+                    </a>
+                  <b:else/>
+                    <span><data:post.author.name/></span>
+                  </b:if>
+                </span>
+              </span>
+            </b:includable>
+
+            <b:includable id='postTimestamp'><!--Amalia 不一樣-->
+              <span class='byline post-timestamp'>
+                <data:byline.label/>
+                <b:if cond='data:post.url'>
+                  <meta expr:content='data:post.url.canonical'/>
+                  <a class='timestamp-link' expr:href='data:post.url' rel='bookmark' title='permanent link'>
+                    <time class='published' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'>
+                      <data:post.date/>
+                    </time>
+                  </a>
+                </b:if>
+              </span>
+            </b:includable>
+
+            <b:includable id='postSummary' var='post'><!--都一樣-->
+              <!-- Post Summary -->
+              <p class='post-snippet'><b:eval expr='data:post.snippets.long snippet { length: 86 }'/></p>
+            </b:includable>
+
+            <b:includable id='postJumpLink' var='post'><!--都一樣-->
+              <b:if cond='data:blog.jumpLinkMessage != &quot;hide&quot;'>
+                <a class='read-more' expr:href='data:post.url'><data:blog.jumpLinkMessage/></a>
+              </b:if>
+            </b:includable>
+
+  </body>
+</html>

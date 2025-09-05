@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+    <style>
+
+
+
+
+
+
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <script>
+     
+     
+     
+    </script>
+    
+
+    <script>
+     
+      var bPager = {};
+      bPager.width = "310px"; // 設定文章標題的寬度像素值
+      bPager.home = "N", // 是否顯示首頁按鈕, 填入 "N" 將不顯示
+      bPager.newPic = "https://googledrive.com/host/0B8h1srzA_rLXdFhNMUNrSVpUWjg/white-left-arrow5.png"; // 較新文章的圖示
+      bPager.oldPic = "https://googledrive.com/host/0B8h1srzA_rLXdFhNMUNrSVpUWjg/white-right-arrow6.png"; // 較舊文章的圖示
+      
+      bPager.newer=function(a){
+        document.getElementById("Blog1_blog-pager-newer-link").innerHTML="<span><img src='"+bPager.newPic+"' style='height:28px;'/></span><span>"+a.feed.entry[0].title.$t+"</span>"}
+      ;
+
+      bPager.older=function(a){
+        document.getElementById("Blog1_blog-pager-older-link").innerHTML="<span>"+a.feed.entry[0].title.$t+"</span><span><img src='"+bPager.oldPic+"'style='height:28px;'/></span>"
+      };
+      
+      (function(){
+          var f="Blog1_blog-pager-newer-link",
+              e="Blog1_blog-pager-older-link",
+              i=function(n){
+                return document.getElementById(n)
+              },
+              m="http://"+location.hostname,g=i(f)?i(f).href.replace(m,""):"",b=i(e)?i(e).href.replace(m,""):"",
+              d="/feeds/posts/summary?alt=json-in-script",l=function(n){return document.createElement(n)},k=l("script"),j=l("script"),a=l("style"),
+              c=function(n){
+                return document.documentElement.firstChild.appendChild(n)
+              },
+              h=bPager.home=="N"?".home-link {display: none;}":"";
+              k.src=d+"&callback=bPager.newer&path="+g;j.src=d+"&callback=bPager.older&path="+b;
+              a.innerHTML="#Blog1_blog-pager-older-link span, #Blog1_blog-pager-newer-link span {display: table-cell; vertical-align: middle; padding: 3px;} #Blog1_blog-pager-older-link, #Blog1_blog-pager-newer-link {display: table; text-decoration: none; font-size: 18px; width: "+bPager.width+"}"+h;
+              c(k);
+              c(j);
+              c(a)
+      })();
+    
+    </script>
+   
+  </body>
+</html>

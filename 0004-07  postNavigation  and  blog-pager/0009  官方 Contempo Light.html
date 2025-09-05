@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+   
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <!--官方 Contempo Light-->
+
+    <b:includable id='postPagination'>
+      <div class='blog-pager container' id='blog-pager'>
+        <b:include cond='data:newerPageUrl' name='previousPageLink'/>
+        <b:include cond='data:olderPageUrl' name='nextPageLink'/>
+        <b:include cond='data:view.url != data:blog.homepageUrl' name='homePageLink'/>
+      </div>
+    </b:includable>
+
+    <b:includable id='previousPageLink'><b:comment>Don&#39;t show</b:comment></b:includable>
+    <b:includable id='homePageLink'><b:comment>Don&#39;t show</b:comment></b:includable>
+    
+    <b:includable id='nextPageLink'>
+      <a class='blog-pager-older-link flat-button ripple' expr:href='data:olderPageUrl' expr:title='data:messages.morePosts'>
+        <data:messages.morePosts/>
+      </a>
+    </b:includable>
+    
+
+    <!--頂尖企業-->
+
+    <b:includable id='mobile-nextprev'>
+      <div class='blog-pager' id='blog-pager'>
+        <b:if cond='data:newerPageUrl'>
+          <div class='mobile-link-button' id='blog-pager-newer-link'>
+          <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'>&amp;lsaquo;</a>
+          </div>
+        </b:if>
+    
+        <b:if cond='data:olderPageUrl'>
+          <div class='mobile-link-button' id='blog-pager-older-link'>
+          <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'>&amp;rsaquo;</a>
+          </div>
+        </b:if>
+    
+        <div class='mobile-link-button' id='blog-pager-home-link'>
+        <a class='home-link' expr:href='data:blog.homepageUrl'><data:homeMsg/></a>
+        </div>
+    
+        <div class='mobile-desktop-link'>
+          <a class='home-link' expr:href='data:desktopLinkUrl'><data:desktopLinkMsg/></a>
+        </div>
+    
+      </div>
+      <div class='clear'/>
+    </b:includable>
+
+    <b:includable id='nextprev'>
+      <div class='blog-pager' id='blog-pager'>
+        <b:if cond='data:newerPageUrl'>
+          <span id='blog-pager-newer-link'>
+          <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:newerPageTitle'><data:newerPageTitle/></a>
+          </span>
+        </b:if>
+
+        <b:if cond='data:olderPageUrl'>
+          <span id='blog-pager-older-link'>
+          <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'><data:olderPageTitle/></a>
+          </span>
+        </b:if>
+
+        <a class='home-link' expr:href='data:blog.homepageUrl'><data:homeMsg/></a>
+
+        <b:if cond='data:mobileLinkUrl'>
+          <div class='blog-mobile-link'>
+            <a expr:href='data:mobileLinkUrl'><data:mobileLinkMsg/></a>
+          </div>
+        </b:if>
+
+      </div>
+      <div class='clear'/>
+    </b:includable>
+    
+   
+  </body>
+</html>

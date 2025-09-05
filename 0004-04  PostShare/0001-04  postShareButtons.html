@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+    .post-share{ position:relative; overflow:hidden; width:100%; box-sizing:border-box; padding:0; margin:0 0 0 -5px;  }
+    .share-links { position:relative; }
+    .share-links li { width:10%; float:left; box-sizing:border-box;padding:0;margin:0 5px;overflow:hidden; }
+    .share-links li a { float:left;display:inline-block;cursor:pointer;width:100%;height:32px;line-height:32px;color:#fff;font-weight:400;font-size:17px;text-align:center;box-sizing:border-box;opacity:1;border-radius:3px; }
+    .post-share li a:before{ display:inline-block; font-family:'Font Awesome 5 Brands'; font-style:normal; font-weight:400; color:#fff;  }
+    .share-links li.facebook a:before {content:"\f39e";   } 
+    .share-links li.twitter a:before {content:"\f099";   } 
+    .share-links li.pinterest a:before {content:"\f231";   } 
+    .share-links li.linkedin a:before {content:"\f0e1";   } 
+    .share-links li.whatsapp a:before {content:"\f232";     } 
+    .share-links li.reddit a:before {content:"\f1a1";   } 
+    .share-links li.instagram a:before {content:"\f16d";  } 
+    .share-links li.email a:before { font-family:'Font Awesome 5 Free'; content:"\f0e0";}
+
+
+    </style>
+  </head>
+  <body>
+    <!-- my coding -->
+    <b:includable id='postShareButtons' var='post'>
+      <!-- Post ShareButtons -->
+      <b:if cond='data:allBylineItems.share'>
+        <div class='post-share'>
+          <ul class='share-links  social social-color'>
+            <!-- facebook -->
+            <li class='facebook'><a class='facebook' expr:href='&quot;https://www.facebook.com/sharer.php?u=&quot; + data:post.url' onclick='window.open(this.href, &apos;windowName&apos;, &apos; left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
+             <!-- twitter -->
+            <li class='twitter'><a class='twitter' expr:href='&quot;https://twitter.com/share?url=&quot; + data:post.url + &quot;&amp;text=&quot; + data:post.title' onclick='window.open(this.href, &apos;windowName&apos;, &apos;, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
+            <!-- pinterest -->
+             <li class='pinterest'><a class='pinterest' expr:href='&quot;https://www.pinterest.com/pin/create/button/?url=&quot; + data:post.url + &quot;&amp;media=&quot; + data:post.featuredImage + &quot;&amp;description=&quot; + data:post.title' onclick='window.open(this.href, &apos;windowName&apos;, &apos; left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
+            <!-- linkedin -->
+            <li class='linkedin'><a class='linkedin' expr:href='&quot;https://www.linkedin.com/shareArticle?url=&quot; + data:post.url' onclick='window.open(this.href, &apos;windowName&apos;, &apos; left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
+             <!-- whatsapp -->
+            <b:if cond='data:blog.isMobileRequest'>
+              <li class='whatsapp whatsapp-mobile'><a class='whatsapp' expr:href='&quot;https://api.whatsapp.com/send?text=&quot; + data:post.title + &quot; | &quot; + data:post.url' rel='nofollow' target='_blank'/></li>
+              <b:else/>
+              <li class='whatsapp whatsapp-desktop'><a class='whatsapp' expr:href='&quot;https://web.whatsapp.com/send?text=&quot; + data:post.title + &quot; | &quot; + data:post.url' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=900, height=550, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
+            </b:if>
+            <!-- email -->
+            <li class='email'><a class='email' expr:href='&quot;mailto:?subject=&quot; + data:post.title + &quot;&amp;body=&quot; + data:post.url' onclick='window.open(this.href, &apos;windowName&apos;, &apos; left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li> 
+          </ul>
+        </div>
+      </b:if>
+    </b:includable> 
+
+    <!-- Polar -->
+    <b:includable id='postShareButtons' var='post'>
+      <!-- Post ShareButtons -->
+      <b:if cond='data:allBylineItems.share'>
+        <div class='post-share'>
+          <ul class='share-links social social-color'>
+            <li class='facebook'><a class='facebook' expr:href='&quot;https://www.facebook.com/sharer.php?u=&quot; + data:post.url' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=550, height=650, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
+            <li class='twitter'><a class='twitter' expr:href='&quot;https://twitter.com/share?url=&quot; + data:post.url + &quot;&amp;text=&quot; + data:post.title' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=550, height=450, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
+            <li class='pinterest'><a class='pinterest' expr:href='&quot;https://www.pinterest.com/pin/create/button/?url=&quot; + data:post.url + &quot;&amp;media=&quot; + data:post.featuredImage + &quot;&amp;description=&quot; + data:post.title' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=735, height=750, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li> 
+            <li class='linkedin'><a class='linkedin' expr:href='&quot;https://www.linkedin.com/shareArticle?url=&quot; + data:post.url' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=550, height=650, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
+            <b:if cond='data:blog.isMobileRequest'>
+              <li class='whatsapp whatsapp-mobile'><a class='whatsapp' expr:href='&quot;https://api.whatsapp.com/send?text=&quot; + data:post.title + &quot; | &quot; + data:post.url' rel='nofollow' target='_blank'/></li>
+              <b:else/>
+              <li class='whatsapp whatsapp-desktop'><a class='whatsapp' expr:href='&quot;https://web.whatsapp.com/send?text=&quot; + data:post.title + &quot; | &quot; + data:post.url' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=900, height=550, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
+            </b:if>
+            <li class='email'><a class='email' expr:href='&quot;mailto:?subject=&quot; + data:post.title + &quot;&amp;body=&quot; + data:post.url' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=500, height=400, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
+          </ul>
+        </div>
+      </b:if>
+    </b:includable>    
+
+    <!-- Amalia-->
+    <b:includable id='postShareButtons' var='post'>
+      <!-- Post ShareButtons -->
+      <div class='post-share'>
+        <ul class='share-links social social-color social-text'> 
+          <b:class cond='data:blog.isMobileRequest' name='mobile-share'/>
+          <li class='facebook-f'><a class='facebook window-ify' data-height='650' data-width='550' expr:data-url='&quot;https://www.facebook.com/sharer.php?u=&quot; + data:post.url' rel='nofollow'/></li>
+          <li class='twitter'><a class='twitter window-ify' data-height='460' data-width='550' expr:data-url='&quot;https://twitter.com/intent/tweet?url=&quot; + data:post.url + &quot;&amp;text=&quot; + data:post.title' rel='nofollow'/></li>
+          <li class='pinterest-p'><a class='pinterest window-ify' data-height='750' data-width='735' expr:data-url='&quot;https://www.pinterest.com/pin/create/button/?url=&quot; + data:post.url + &quot;&amp;media=&quot; + data:post.featuredImage + &quot;&amp;description=&quot; + data:post.title' rel='nofollow'/></li> 
+          <li class='linkedin'><a class='linkedin window-ify' data-height='700' data-width='1000' expr:data-url='&quot;https://www.linkedin.com/shareArticle?url=&quot; + data:post.url' rel='nofollow'/></li>
+          <li class='whatsapp whatsapp-desktop'><a class='whatsapp window-ify' data-height='550' data-width='900' expr:data-url='&quot;https://web.whatsapp.com/send?text=&quot; + data:post.title + &quot; | &quot; + data:post.url' rel='nofollow'/></li>
+          <li class='whatsapp whatsapp-mobile'><a class='whatsapp' expr:href='&quot;https://api.whatsapp.com/send?text=&quot; + data:post.title + &quot; | &quot; + data:post.url' rel='nofollow'/></li>
+          <li class='email'><a class='email window-ify' data-height='650' data-width='650' expr:data-url='&quot;mailto:?subject=&quot; + data:post.title + &quot;&amp;body=&quot; + data:post.url' rel='nofollow'/></li>
+        </ul>
+      </div>
+    </b:includable>
+
+    <!-- Amia-->
+    <b:includable id='postShareButtons' var='post'>
+      <!-- Post ShareButtons -->
+      <b:if cond='data:allBylineItems.share'>
+        <div class='post-share'>
+          <ul class='share-links social social-color'>
+            <li class='facebook'><a class='facebook' expr:href='&quot;https://www.facebook.com/sharer.php?u=&quot; + data:post.url' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=550, height=650, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
+            <li class='twitter'><a class='twitter' expr:href='&quot;https://twitter.com/share?url=&quot; + data:post.url + &quot;&amp;text=&quot; + data:post.title' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=550, height=450, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
+            <li class='pinterest'><a class='pinterest' expr:href='&quot;https://www.pinterest.com/pin/create/button/?url=&quot; + data:post.url + &quot;&amp;media=&quot; + data:post.featuredImage + &quot;&amp;description=&quot; + data:post.title' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=735, height=750, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li> 
+            <li class='linkedin'><a class='linkedin' expr:href='&quot;https://www.linkedin.com/shareArticle?url=&quot; + data:post.url' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=550, height=650, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
+            <b:if cond='data:blog.isMobileRequest'>
+              <li class='whatsapp whatsapp-mobile'><a class='whatsapp' expr:href='&quot;https://api.whatsapp.com/send?text=&quot; + data:post.title + &quot; | &quot; + data:post.url' rel='nofollow' target='_blank'/></li>
+              <b:else/>
+              <li class='whatsapp whatsapp-desktop'><a class='whatsapp' expr:href='&quot;https://web.whatsapp.com/send?text=&quot; + data:post.title + &quot; | &quot; + data:post.url' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=900, height=550, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
+            </b:if>
+            <li class='email'><a class='email' expr:href='&quot;mailto:?subject=&quot; + data:post.title + &quot;&amp;body=&quot; + data:post.url' onclick='window.open(this.href, &apos;windowName&apos;, &apos;width=500, height=400, left=24, top=24, scrollbars, resizable&apos;); return false;' rel='nofollow'/></li>
+          </ul>
+        </div>
+      </b:if>
+    </b:includable>    
+
+    
+
+    
+   
+  </body>
+</html>

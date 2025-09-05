@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+    <style>
+    .blog-pager-older-link h2, .blog-pager-newer-link h2 { font-size:14px;  }
+
+    .blog-pager-newer-link h2:before { font-family: 'Font Awesome 5 Free';  content: '\f053'; font-size: 10px; font-weight:900; float: left; margin: 1px 4px 0 0; padding-left:20px; }
+    .blog-pager-older-link h2:after { font-family: 'Font Awesome 5 Free';  content: '\f054'; font-size: 10px; font-weight:900; float: right; margin: 1px 0 0 4px; padding-right:20px; }
+
+    </style>
+    <script>
+      $('#blog-pager').each(function() {
+          var preLink = $("a.blog-pager-newer-link").attr("href");
+          //var pre = $(".blog-pager-newer-link").text();
+          var title = $("a.blog-pager-newer-link").load(preLink+" h2:eq(0)");
+          $(".blog-pager-newer-link").text(title);
+
+
+          var nextLink = $("a.blog-pager-older-link").attr("href");
+          console.log(nextLink);
+          //var next = $(".blog-pager-older-linkk").text();
+          //console.log(next);
+          var title = $("a.blog-pager-older-link").load(nextLink+" h2:eq(0)");
+          console.log(title);
+          $(".blog-pager-older-link").text(title);
+      });
+
+
+    </script>
+  </head>
+  <body>
+    
+
+    
+   
+  </body>
+</html>

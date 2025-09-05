@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Polar</title>
+    <style>
+
+
+
+    </style>
+  </head>
+  <body>
+            <b:includable id='main' var='this'>
+              <b:include name='searchMessage'/>
+              <div class='blog-posts hfeed container'>
+                <b:class cond='data:view.isMultipleItems' name='index-post-wrap'/>
+                <b:class cond='data:view.isSingleItem' name='item-post-wrap'/>
+                <b:tag class='grid-posts' cond='data:view.isMultipleItems' name='div'>
+                  <b:loop index='i' values='data:posts' var='post'>
+                    <b:include data='post' name='postCommentsAndAd'/>
+                  </b:loop>
+                </b:tag>
+              </div>
+              <b:include cond='data:view.isMultipleItems' name='indexBlogPager'/>
+              <b:include name='feedLinks'/>
+            </b:includable>
+            
+            <b:includable id='postCommentsAndAd' var='post'>
+              <!-- Post, Comments and Ads -->
+              <!-- Post Content Index and Item -->
+              <div class='blog-post hentry'>
+                <b:class cond='data:view.isMultipleItems' name='index-post'/>
+                <b:class cond='data:view.isSingleItem' name='item-post'/>
+                <b:include data='post' name='post'/>
+              </div>
+              <!-- Comments -->
+              <b:if cond='data:view.isSingleItem and data:post.allowComments'>
+                <div class='blog-post-comments'>
+                  <b:include data='post' name='threadedCommentsDisqus'/>
+                  <b:include data='post' name='commentPicker'/>
+                </div>
+              </b:if>
+            </b:includable>
+            <b:includable id='threadedCommentsDisqus' var='post'>
+              <script type='text/javascript'>
+                var disqus_blogger_current_url = &quot;<data:blog.canonicalUrl/>&quot;;
+                if (!disqus_blogger_current_url.length) {
+                  disqus_blogger_current_url = &quot;<data:blog.url/>&quot;;
+                }
+                var disqus_blogger_homepage_url = &quot;<data:blog.homepageUrl/>&quot;;
+                var disqus_blogger_canonical_homepage_url = &quot;<data:blog.canonicalHomepageUrl/>&quot;;
+              </script>
+            </b:includable>
+            <b:includable id='post' var='post'>
+              <!-- Post Index -->
+              <b:if cond='data:view.isMultipleItems'>
+                <b:include data='post' name='indexPost'/>
+              </b:if>
+              <!-- Post Item -->
+              <b:if cond='data:view.isSingleItem'>
+                <b:include data='post' name='itemPost'/>
+              </b:if>
+            </b:includable>
+            <b:includable id='indexPost' var='post'>
+                <div class='index-post-inside-wrap'>
+                    <!-- Index Post Content -->
+                    <b:include data='post' name='postFeaturedImage'/>
+                    <div class='post-info-wrap'>
+                      <div class='post-info'>
+                        <b:include data='post' name='postHeader'/>
+                      </div>
+                      <div class='index-post-footer'>
+                        <b:include data='post' name='headerByline'/>
+                        <b:include data='post' name='postSummary'/>
+                      <b:include data='post' name='postJumpLink'/>
+                      </div>
+                    </div>
+                </div>
+            </b:includable>
+
+            
+            <b:includable id='itemPost' var='post'>
+                <!-- Item Post Content -->
+                <div class='post-item-inner'>
+                  <b:include data='post' name='postMeta'/>
+                  <b:include data='post' name='postHeader'/>
+                  <b:include data='post' name='postBody'/>
+                  <b:include cond='data:view.isPost' data='post' name='footerBylines'/>
+                </div>
+                <b:include cond='data:view.isPost' data='post' name='postFooter'/>
+            </b:includable>
+    
+
+    
+   
+  </body>
+</html>

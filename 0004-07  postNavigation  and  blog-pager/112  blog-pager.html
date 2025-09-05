@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+        /* blog-pager*/
+        #blog-pager { margin:16px 0;text-align:center; overflow: hidden; } 
+        #blog-pager .home-link, #blog-pager .blog-pager-newer-link,#blog-pager .blog-pager-older-link { color:#46A3FF; font-size:20px; display:inline-block; height:38px; line-height:38px; font-weight:400; text-transform:capitalize; /*padding:0 15px;*/ }
+        .home-link, #blog-pager .blog-pager-newer-link, #blog-pager .blog-pager-older-link { display:none; }
+        .blog-pager-newer-link { float:left; }
+        .blog-pager-older-link { float:right; }
+
+        .post-nav { position:relative; overflow:hidden; display:block; width:100%; padding:0; margin:0; }
+        .post-nav a { padding:10px 0 30px; }
+        .post-nav a.blog-pager-older-link  { text-align:right; }
+        .post-nav .blog-pager-newer-link, .post-nav .blog-pager-older-link { font-size:18px; color:#46A3FF; font-weight:400;  }
+        .post-nav .blog-pager-newer-link:before, .post-nav .blog-pager-older-link:before { font-family:'Font Awesome 5 Free'; font-size:10px; font-weight:900; }
+        .post-nav .blog-pager-newer-link:before { content:'\f053';  margin:3px 3px 0; float:left; }
+        .post-nav .blog-pager-older-link:before { content:'\f054'; margin:3px 0 0 3px; float:right; }
+        .post-nav a p {  font-weight:500; margin:10px 0 0; line-height:34px; text-decoration:underline; text-transform:capitalize; }
+
+
+        /*new*/
+        #blog-pager { margin:16px 0;text-align:center; overflow: hidden; } 
+        #blog-pager .page-prev,#blog-pager .page-next { font-size:14px; }
+        #blog-pager .page-prev:before, #blog-pager .page-next:before{ font-family:'Font Awesome 5 Free'; font-weight:900; ; }
+        #blog-pager .page-prev:before { content:'\f053'; }
+        #blog-pager .page-next:before { content:'\f054'; }
+        #blog-pager .page-num { font-size:12px; color:#5B5B5B; box-sizing:border-box; padding:5px 10px; margin:0 5px 0 0; border:1px solid #ccc; background-color:#fff; line-height:32px; transition: color 0.5s;-webkit-transition: color 0.5s;-moz-transition: color 0.5s; }
+        #blog-pager .page-active, #blog-pager a:hover{ background-color:$(main.color); color:#fff; }
+
+
+    </style>
+  </head>
+  <body>
+    <b:includable id='nextPageLink'>
+         <b:if cond='data:view.isMultipleItems'>                 
+            <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;'>
+              Next page</a>                
+          </b:if>
+         <b:if cond='data:view.isSingleItem'>
+         <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;'>
+          Next post</a>
+          </b:if>                
+    </b:includable>
+
+    <b:includable id='previousPageLink'>
+      <b:if cond='data:view.isMultipleItems'>
+          <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;'>
+              Previous page</a>   
+       </b:if>
+      <b:if cond='data:view.isSingleItem'>
+          <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;'>
+              Previous Post</a>   
+      </b:if>
+    </b:includable>
+
+
+   
+  </body>
+</html>

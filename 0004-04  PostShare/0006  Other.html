@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+/*Boost*/      
+.share-title{color:#010101;display:inline-block;padding-bottom:10px;font-size:13px;font-weight:700;position:relative;top:5px;text-transform:uppercase}
+.share-art{float:right;padding:0;padding-top:0;font-size:13px;font-weight:400;text-transform:capitalize}
+.share-art a{color:#fff;padding:3px 8px;margin-left:4px;border-radius:2px;display:inline-block;margin-right:0}
+.share-art a:hover{color:#fff}
+
+/*Casper*/  
+.post-share{margin:25px 0 0}
+ul.share-a{display:flex;flex-wrap:wrap;align-items:flex-start;gap:5px}
+.share-a .btn{display:flex;align-items:center;justify-content:center;width:38px;height:36px;background-color:currentColor;font-size:16px;font-weight:400;overflow:hidden}
+.share-a .email .btn{font-size:18px}
+.share-a .has-span .btn{display:flex;gap:10px;width:auto;padding:0 15px}
+.share-a .btn:before{color:#fff}
+.share-a .btn span{font-size:14px;color:#fff}
+.share-a .sl-btn{position:relative;background-color:var(--outer-bg);font-size:18px;color:var(--title-color);overflow:visible;margin:0 5px 0 0;border:1px solid var(--border-color);border-radius:var(--radius)}
+.share-a .sl-btn:before,.share-a .sl-btn:after{position:absolute;content:'';height:0;width:0;pointer-events:none;top:calc(50% - 6px);right:-12px;border:6px solid transparent;border-left-color:var(--border-color)}
+.share-a .sl-btn:after{top:calc(50% - 5px);right:-10px;border:5px solid transparent;border-left-color:var(--outer-bg)}
+.sl-btn .sl-ico:before{display:block;content:'\e80d';font-family:'Material Icons Round';font-style:normal;line-height:0;font-weight:400}
+.rtl .share-a .sl-btn{margin:0 0 0 5px;transform:rotate3d(0,1,0,180deg)}
+.share-a .show-more .btn{background-color:var(--gray-bg);font-size:28px}
+.share-a .show-more .btn:before{content:'\e145';font-family:'Material Icons Round';font-weight:400;color:var(--meta-color)}
+.share-a li .btn:not(.sl-btn):hover{opacity:.9}
+.share-modal{display:flex;flex-direction:column;position:fixed;top:50%;left:50%;width:440px;max-width:calc(100% - 40px);background-color:var(--modal-bg);overflow:hidden;z-index:1010;padding:20px;border-radius:var(--radius);box-shadow:0 1px 2px rgba(0,0,0,0.05),0 5px 15px 0 rgba(0,0,0,0.15);transform:translate(-50%,0);visibility:hidden;opacity:0;transition:all .17s ease}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:0 0 15px;margin:0 0 20px;border-bottom:1px solid var(--border-color)}
+.share-modal .title{font-size:15px;color:var(--title-color);font-weight:var(--title-weight);text-transform:capitalize}
+.hide-modal{display:flex;font-size:21px;color:var(--title-color)}
+.hide-modal:before{content:'\e5cd';font-family:'Material Icons Round';font-weight:400}
+.hide-modal:hover{color:var(--title-hover-color)}
+ul.share-b{display:grid;grid-template-columns:repeat(5,1fr);grid-gap:15px;margin:0 0 20px}
+.share-b a{display:flex;align-items:center;justify-content:center;height:36px;background-color:currentColor;font-size:18px}
+.share-b .email a{font-size:20px}
+.share-b a:before{color:#fff}
+.share-b a:hover{opacity:.9}
+
+/*Scoop*/
+.post-share{
+    position:relative;
+    overflow:hidden;
+    line-height:0;
+    margin:0 0 30px
+}
+ ul.share-links{
+    position:relative
+}
+ .share-links li{
+    width:32px;
+    float:left;
+    box-sizing:border-box;
+    margin:0 5px 0 0
+}
+ .share-links li.facebook,.share-links li.twitter,.share-links li.gplus{
+    width:20%
+}
+ .share-links li a{
+    float:left;
+    display:inline-block;
+    cursor:pointer;
+    width:100%;
+    height:32px;
+    line-height:32px;
+    color:#fff;
+    font-weight:400;
+    font-size:13px;
+    text-align:center;
+    box-sizing:border-box;
+    opacity:1;
+    margin:0;
+    padding:0;
+    transition:all .17s ease
+}
+ .share-links li.whatsapp-mobile{
+    display:none
+}
+ .is-mobile li.whatsapp-desktop{
+    display:none
+}
+ .is-mobile li.whatsapp-mobile{
+    display:inline-block
+}
+ .share-links li a:before{
+    float:left;
+    display:block;
+    width:32px;
+    background-color:rgba(255,255,255,0.07);
+    font-size:15px;
+    text-align:center;
+    line-height:32px
+}
+ .share-links li a:hover{
+    opacity:.8
+}
+
+/*SeoPro*/
+.post-share{position:relative;float:left;width:100%;padding:15px 0 0;margin:20px 0 0;border-top:1px solid var(--border-color)}
+ul.seopro-pro-share-links{display:flex;flex-wrap:wrap;align-items:flex-start;margin:0}
+.seopro-pro-share-links li{padding:0 6px 0 0}
+.rtl .seopro-pro-share-links li{padding:0 0 0 6px}
+.seopro-pro-share-links .share-label span{display:block;height:34px;font-size:13px;color:var(--meta-color);line-height:34px;margin:5px 3px 0 0}
+.rtl .seopro-pro-share-links .share-label span{margin:5px 0 0 3px}
+.seopro-pro-share-links .share-label span:before{content:'\f064';display:block;font-family:'Font Awesome 5 Free';font-weight:900}
+.rtl .seopro-pro-share-links .share-label span:before{transform:rotate3d(0,1,0,180deg)}
+    
+.seopro-pro-share-links li a{float:left;width:36px;height:34px;overflow:hidden;font-size:16px;color:#fff;line-height:34px;font-weight:400;cursor:pointer;text-align:center;margin:5px 0 0}
+.seopro-pro-share-links li.has-span a{width:auto;display:flex}
+.seopro-pro-share-links li.has-span a:before{width:36px;background-color:rgba(255,255,255,0.1)}
+.seopro-pro-share-links li a span{display:inline-block;font-size:14px;font-weight:400;padding:0 15px}
+.seopro-pro-share-links li a:hover{opacity:.9}
+.seopro-pro-share-links .show-hid a{background-color:rgba(155,155,155,0.08);font-size:14px;color:rgba(155,155,155,0.8)}
+.seopro-pro-share-links .show-hid a:before{content:'\f067';font-family:'Font Awesome 5 Free';font-weight:900}
+.show-hidden .show-hid a:before{content:'\f068'}   
+
+/*Starter*/
+.entry-labels,.post-share{margin:20px 0 0}
+.share-links li:not(.has-span) a{width:40px}
+.share-links .twitter span{display:none}
+.share-links .twitter.has-span a{width:40px;justify-content:center}
+.share-links .twitter.has-span a:before{background-color:transparent;padding:0}
+    </style>
+  </head>
+  <body>
+  
+    
+
+    
+   
+  </body>
+</html>

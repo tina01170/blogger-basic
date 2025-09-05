@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+          <b:includable id='postHeader' var='post'>
+            <b:include cond='data:view.isPost' data='post' name='postBreadcrumbs'/>
+            <b:include data='post' name='postTitle'/>
+            <b:include cond='data:view.isPost' data='post' name='postsByline'/>
+          </b:includable>
+
+          <b:includable id='postsByline' var='post'>
+            <div class='all-flex'>
+              <div class='post-inner-data flex'>
+                <div class='post-inner-user'>
+                  <b:if cond='data:post.author.authorPhoto.image and data:allBylineItems.author'>
+                    <span class='author-image'><img expr:alt='data:post.author.name' class='snip-thumbnail' expr:data-src='resizeImage(data:post.author.authorPhoto.image, 70)'/></span>
+                    <b:else/><b:if cond='data:allBylineItems.author'><span class='author-image'><img class='snip-thumbnail' data-src='https://4.bp.blogspot.com/-uCjYgVFIh70/VuOLn-mL7PI/AAAAAAAADUs/Kcu9wJbv790hIo83rI_s7lLW3zkLY01EA/s100/avatar.png' expr:alt='data:post.author.name'/></span></b:if>
+                  </b:if>
+                </div>
+                <div class='post-inner-username'>
+                <b:if cond='data:allBylineItems.author'><data:widgets.Blog.first.allBylineItems.author.label/><span class='post-author' itemprop='name'><data:post.author.name/></span></b:if>
+                  <b:if cond='data:allBylineItems.timestamp'>
+                  <div class='post-times'><span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span><span id='readTime'/></div>
+                  </b:if>
+                </div>
+              </div>
+              <div class='post-inner-comments flex'>
+              <b:if cond='data:post.allowComments'><span class='comment-bubble show'><data:post.numberOfComments/></span></b:if>
+              <b:if cond='data:view.isPost and data:allBylineItems.share'><div class='share-top'><i class="bi bi-share-fill"></i></div></b:if>
+              </div>
+            </div>
+          </b:includable>
+
+
+          <b:includable id='footerBylines' var='post'>
+            <!-- Post Footer Extras -->
+            <b:include data='post' name='postLabels'/>
+            <b:include data='post' name='postShareButtons'/>
+            <b:include data='post' name='postNavigation'/>
+          </b:includable>
+
+          <b:includable id='postLabels' var='post'>
+            <b:if cond='data:allBylineItems.labels'>
+              <b:if cond='data:post.labels'>
+                <div class='label-container'>
+                <span><data:allBylineItems.labels.label/></span>
+                <div class='label-head Label'>
+                <b:loop values='data:post.labels' var='label'><a class='label-link' expr:href='data:label.url' rel='tag'><data:label.name/></a></b:loop>
+                </div>
+                </div>
+              </b:if>
+            </b:if>
+          </b:includable>
+  </body>
+</html>

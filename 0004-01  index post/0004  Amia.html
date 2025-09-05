@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+
+
+    </style>
+  </head>
+  <body>
+    <b:includable id='postFeaturedImage' var='post'>
+      <!-- Post Featured Image on Index -->
+      <div class='post-image-wrap'>
+        <a class='post-image-link' expr:href='data:post.url'>
+          <b:if cond='data:post.featuredImage'> 
+            <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)'/>
+            <b:else/>
+            <img class='post-thumb' expr:alt='data:post.title' src='https://4.bp.blogspot.com/-O3EpVMWcoKw/WxY6-6I4--I/AAAAAAAAB2s/KzC0FqUQtkMdw7VzT6oOR_8vbZO6EJc-ACK4BGAYYCw/w680/nth.png'/>
+          </b:if>
+        </a>
+        <b:include data='post' name='postCategory'/>
+      </div>
+    </b:includable>
+    
+    <b:includable id='postTitle' var='post'><!--都一樣-->
+      <!-- Post Title Index and Item -->
+      <b:if cond='data:view.isMultipleItems'>
+        <h2 class='post-title'>
+          <a expr:href='data:post.url'><data:post.title/></a>
+        </h2>
+      </b:if>
+      <b:if cond='data:view.isSingleItem'>
+        <h1 class='post-title'>
+          <data:post.title/>
+        </h1>
+      </b:if>
+    </b:includable>    
+
+    <b:includable id='postHeader' var='post'>
+      <b:include cond='data:view.isPost' data='post' name='postBreadcrumbs'/>
+      <b:include cond='data:view.isPost' data='post' name='postCategory'/>
+      <b:include data='post' name='postTitle'/>
+      <b:include cond='!data:view.isPage' data='post' name='headerByline'/>
+    </b:includable>
+
+    <b:includable id='postCategory' var='post'>
+      <!-- Post Label/Category -->
+      <b:if cond='data:view.isMultipleItems and data:post.labels'>
+        <span class='post-tag index-post-tag'>
+          <data:post.labels.last.name/>
+        </span>
+      </b:if>
+    </b:includable>
+
+    <b:includable id='headerByline' var='post'>
+      <!-- Post Header Meta -->
+        <div class='post-meta'>
+          <b:include data='post' name='postAuthor'/>
+          <b:include data='post' name='postTimestamp'/>
+        </div>
+    </b:includable>  
+
+    <b:includable id='postAuthor' var='post'>
+      <!-- Post Author -->
+      <b:if cond='data:allBylineItems.author'>
+        <span class='post-author'><a expr:href='data:post.author.profileUrl' expr:title='data:post.author.name' target='_blank'><data:post.author.name/></a></span>
+      </b:if>
+    </b:includable>    
+
+    <b:includable id='postTimestamp' var='post'>
+      <!-- Post Timestamp -->
+      <b:if cond='data:allBylineItems.timestamp'>
+        <span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
+      </b:if>
+    </b:includable>
+    
+    <b:includable id='postSummary' var='post'>
+      <!-- Post Summary -->
+      <p class='post-snippet'><b:eval expr='data:post.snippets.short snippet { length: 80 }'/></p>
+    </b:includable>
+
+    <b:includable id='postJumpLink' var='post'>
+      <b:if cond='data:blog.jumpLinkMessage != &quot;hide&quot;'>
+        <a class='read-more' expr:href='data:post.url'><data:blog.jumpLinkMessage/></a>
+      </b:if>
+    </b:includable>
+
+   
+  </body>
+</html>

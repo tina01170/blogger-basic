@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>有數字頁碼</title>
+    <style>
+        /* blog-pager*/
+        #blog-pager { margin:16px 0;text-align:center; overflow: hidden; } 
+        #blog-pager .blog-pager-newer-link, #blog-pager .blog-pager-older-link { font-size:16px; display:inline-block; height:38px; line-height:38px; font-weight:400; padding:0 14px; text-transform:capitalize; background:$(main.color); color:#fff;  -webkit-transition:color 0.27s;-moz-transition:color 0.27s; transition:color 0.27s ease; }
+        #blog-pager .blog-pager-newer-link:hover,  #blog-pager .blog-pager-older-link:hover { background:$(buttom.hover.color); } 
+        #blog-pager .blog-pager-newer-link, #blog-pager .blog-pager-older-link { display:none;}
+        #blog-pager .blog-pager-newer-link { float:left; }
+        #blog-pager .blog-pager-older-link { float:right; }
+
+        .post-footer .post-nav { position:relative; overflow:hidden; display:block; width:100%; margin:0 0 10px;}
+        .post-nav a { display:block; padding:10px 0 30px; width:49.5%; }
+        .post-nav a.blog-pager-older-link  { text-align:right; }
+        .post-nav .blog-pager-newer-link, .post-nav .blog-pager-older-link { font-size:18px; font-weight:400; color:$(postnav.text.color); }
+        .post-nav .blog-pager-newer-link { float:left; }
+        .post-nav .blog-pager-older-link { float:right; }
+        .post-nav .blog-pager-newer-link:before, .post-nav .blog-pager-older-link:before { font-family:'Font Awesome 5 Free'; font-size:10px; font-weight:900; }
+        .post-nav .blog-pager-newer-link:before { content:'\f053';  margin:3px 3px 0; float:left; }
+        .post-nav .blog-pager-older-link:before { content:'\f054'; margin:3px 0 0 3px; float:right; }
+        .post-nav a p {  font-weight:500; margin:10px 0 0; line-height:34px; text-decoration:underline; text-transform:capitalize; }
+        @media screen and (max-width: 767px) {	
+          .post-nav a { width:100%; }
+        }
+
+        #blog-pager .page-prev,#blog-pager .page-next { font-size:14px; }
+        #blog-pager .page-prev:before, #blog-pager .page-next:before{ font-family:'Font Awesome 5 Free'; font-weight:900; ; }
+        #blog-pager .page-prev:before { content:'\f053'; }
+        #blog-pager .page-next:before { content:'\f054'; }
+        #blog-pager .page-num { font-size:12px; color:#5B5B5B; box-sizing:border-box; padding:5px 10px; margin:0 5px 0 0; border:1px solid #ccc; background-color:#fff; line-height:32px; -webkit-transition: color 0.5s;-moz-transition: color 0.5s; transition: color 0.5s;}
+        #blog-pager .page-active, #blog-pager a:hover{ background-color:$(main.color); color:#fff; }
+
+
+
+    </style>
+  </head>
+  <body>
+    
+
+    
+   
+  </body>
+</html>
