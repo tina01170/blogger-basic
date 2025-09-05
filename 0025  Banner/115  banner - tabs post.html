@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+      .tab { padding:0; margin:0; list-style:none;  }
+      .tab li { display: inline-block; color:#000; border:1px solid #e7e7e7; padding:5px 15px;  min-width:80px;  text-align: center; cursor: pointer; transition:all 0.3s ease-in-out;  }
+      .tab li+li { margin-left:32px; }
+      .tab li a { font-size:22px; }
+      .tab li:hover, .tab li.active { background-color:#fccfd6; border:none; }
+      .tab-wrap {  padding-top:30px; }
+      .tab-container { color:#000; border-radius:0 5px 5px 5px; display:none;}
+      .tab-container li{ list-style:none; }
+
+      .label-item { display:flex; margin:0 0 20px; }
+      .label-item img { display: block; overflow:hidden; width:96px; height:72px; object-fit:cover; vertical-align: middle;}
+      .label-item .post-info { overflow:hidden; margin-left:15px; }
+      .label-item .post-info h3 { overflow:hidden; font-size:14px; font-weight: 700; line-height:1.6em; margin:0 0 5px;  }
+      .label-item .post-info h3 a { display:block; color:$(title.color); font-family:'Roboto',sans-serif;  -webkit-transition: color 0.2s; -moz-transition: color 0.2s; transition:color 0.2s;}
+      .label-item .post-info h3 a:hover { color:$(main.color);}
+      .label-item .post-info .post-date { font-size:16px; color:#000; }
+
+    </style>
+  </head>
+  <body>
+      <div class="tab-posts">
+          <ul class="tab">
+              <li><a>tvshow</a></li>
+              <li><a>comic</a></li>
+          </ul>
+          <div class="tab-wrap">
+              <div class="tab-container">3/tvshow/list</div>
+              <div class="tab-container">3/comic/list</div>
+          </div>
+      </div>
+      <script>
+          $(".tab-container:first").show();
+          $(".tab li:first").addClass('active');
+
+          $(".tab li").click(function(){
+            index = $(this).index();
+            $(".tab li").removeClass('active');
+            $(this).addClass('active');
+            $(".tab-container").hide();
+              $(".tab-container").eq(index).show();
+          });
+          
+          $('.tab-wrap .tab-container:first-child, .tab-wrap .tab-container:last-child').each(function() {
+            var t = $(this);  
+            var e = (t.text().trim().toLowerCase())
+            var	a =	e.split('/');  
+            var count = a[0], label=a[1], type=a[2];
+            return Posts(t, e, count, label);
+          }) 
+
+      </script>
+
+    
+   
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>原來的</title>
+    <style>
+.show-search {position: absolute;top: 0;right: 0;display: block;background-color: #fff;color: $(menu.color);font-size: 19px;text-align: center;cursor: pointer;z-index: 20;height: 60px;line-height: 60px;}
+.show-search:before {content:"\f002";font-family:'Font Awesome 5 Free';font-weight:900}
+
+#nav-search {position:absolute;top:65px;right:0;height:40px;background-color:#fcfcfc;line-height:46px;z-index: 999; overflow:hidden;border:1px dashed #8E8E8E;padding:6px 15px 10px;visibility: hidden;}
+#nav-search.active {visibility:visible;z-index:99;}
+
+#nav-search .search-form {width:100%;height:40px;line-height:40px;overflow:hidden;padding:0;}
+#nav-search .search-input {width:300px;height:28px;font-size:16px;font-family:inherit;margin:10px 0;padding:0;border:1px solid #ccc;box-sizing:border-box;color:#282828;background-color:#fcfcfc;}
+#nav-search .search-input:focus {color:$(title.color);outline:none;}
+
+@media screen and (max-width:600px) {
+    .social-menu .LinkList ul.social-counter a:before {font-size:16px;}
+    #nav-search .search-input {width:100%;} 
+}
+
+.show-search {position: absolute;top: 0;right: 0;display: block;background-color: $(main.color);color: $(menu.text.color);font-size: 19px;text-align: center;cursor: pointer;z-index: 20;height: 60px;line-height: 60px;}
+    </style>
+
+  </head>
+  <body>
+  
+    <div id='nav-search'>
+      <form class='search-form' expr:action='data:blog.searchUrl' role='search'>
+          <input autocomplete='off' class='search-input' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' type='search'/>
+      </form>
+    </div>
+    <span class='show-search'/>    
+
+    <script>
+      $(".show-search").on('click',function() {
+          $('#nav-search').toggleClass("active");
+      })
+    </script>    
+   
+  </body>
+</html>

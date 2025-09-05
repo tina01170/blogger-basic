@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+      /* banner */
+
+.banner { margin:0 auto; padding:0 20px; box-sizing:border-box; }
+#banner { margin:0; padding:0;  }
+.banner .FeaturedPost > h3 { display:none; }
+.banner .FeaturedPost .post .post-content { display:flex; margin:0 0 50px; border:1px solid #ccc; }
+.banner .FeaturedPost .post  .post-content .post-pic { width:45%; }
+.banner .FeaturedPost .post .post-content .post-pic .post-image-link { display:block; position:relative; overflow:hidden; width:100%; height:360px; margin:0;}
+.banner .FeaturedPost .post .post-content .post-pic img { width:100%; object-fit:cover; vertical-align: middle;}
+.banner .FeaturedPost .post .post-content .post-text { width:55%; padding-left:30px;  }
+.banner .FeaturedPost .post .post-content .post-text .post-title { margin:30px 0; color:$(title.color); }
+
+.FeaturedPost .post .post-content .post-text .post-title a { color:$(title.color); }
+.FeaturedPost .post .post-content .post-text .post-title a:hover { color:$(main.color); -webkit-transition:color 0.17s;-moz-transition:color 0.17s; transition:color 0.17s ease; }
+
+.banner .FeaturedPost .post .post-content .post-text .post-meta { margin:0 0 15px; }
+.banner .FeaturedPost .post .post-content .post-text .post-meta span { margin:0 5px 0 0;}
+@media screen and (max-width: 600px) {	
+    .banner .FeaturedPost .post .post-content { flex-direction: column; border:none;}
+    .banner .FeaturedPost .post .post-content .post-pic { width:100%; display:block;}
+    .banner .FeaturedPost .post .post-content .post-text { width:100%; padding:0;   }
+}
+
+
+
+
+      /* banner style-2*/
+
+.banner {margin:0 auto;padding:0 20px;box-sizing:border-box;}
+#banner {margin:0;padding:0;}
+.banner .FeaturedPost > h3 {display:none;}
+.banner .FeaturedPost .post .post-content {display:flex;margin:0 0 60px;align-items:center;}
+.banner .FeaturedPost .post .post-content .post-pic {width:55%;flex-shrink: 0;margin-right: -10%;}
+.banner .FeaturedPost .post .post-content .post-pic .post-image-link {display:block;width: 100%;height: 360px;margin: 0;}
+.banner .FeaturedPost .post .post-content .post-text {width:55%;flex-shrink: 0;background-color:#f9f9f9e6;z-index:1;padding:20px 30px;box-sizing:border-box;position:relative;box-shadow: 5px 3px 5px 0px rgba(204,204,204,1);}
+
+.banner .FeaturedPost .post .post-content .post-text .post-title {margin: 30px 0;color: $(title.color);}
+.banner .FeaturedPost .post .post-content .post-text .post-title {margin: 30px 0;color: $(title.color);}
+.banner .FeaturedPost .post .post-content .post-text .post-title a {color: $(title.color);transition:color 0.2s ease;}
+.banner .FeaturedPost .post .post-content .post-text .post-title a:hover {color: $(main.color);}
+.banner .FeaturedPost .post .post-content .post-text .post-meta {margin:0 0 15px;}
+.banner .FeaturedPost .post .post-content .post-text .post-meta span {margin:0 5px 0 0;}
+.banner .FeaturedPost .post .post-content .post-text .jump-link {display:none;}
+@media screen and (max-width: 600px) {	
+	.banner .FeaturedPost .post .post-content {flex-direction: column;border: none;}
+	.banner .FeaturedPost .post .post-content .post-pic {width: 100%;display: block;}
+	.banner .FeaturedPost .post .post-content .post-text {width: 100%;padding: 0;}
+}
+
+
+    </style>
+  </head>
+  <body>
+    
+
+    
+   
+  </body>
+</html>

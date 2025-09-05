@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+#banner {position:relative;margin:0 auto;padding:0 20px;box-sizing:border-box;z-index:1;width:100%;max-width: 1280px;}      
+.banner .HTML > h3, .banner .PopularPosts > h3 {display:none;} 
+.banner .HTML .widget-content {display:none;}
+.banner .show-hot .widget-content {display:block!important}
+.banner .widget {position:relative;overflow:hidden;padding:70px 0 0;height:410px;}
+.banner .widget-content {position:relative;overflow:hidden;margin:0;padding:0;height:410px;}
+.banner .widget-content .no-posts{text-align:center;line-height:410px;padding:0;background-color:#f0f0f0;}
+
+.hot-posts {position:relative;height:410px;}
+.hot-item {position:relative;float:right;width:25%;height:200px;overflow:hidden;box-sizing:border-box;padding:0 1px;margin:0}
+.hot-item:nth-child(1) {float:left;width:50%;height:410px;padding:0 10px 0 0;}
+.hot-item:nth-child(2) {padding:0 0 0 5px;} 
+.hot-item:nth-child(3) {padding:0 5px 0 0;}
+.hot-item:nth-child(4) {width:50%;margin:10px 0 0;}
+
+.hot-item-inner {position:relative;width:100%;height:100%;overflow:hidden;display:block;z-index:10;}
+.hot-item .post-image-link {position:relative;overflow:hidden;width:100%;height:100%;/*一定要寫*/display:block;z-index:5;margin:0;}
+.hot-item .post-image-link:before {content:'';position:absolute;left:0;right:0;bottom:0;height:47%;background-image:linear-gradient(to bottom,transparent,rgba(0,0,0,0.8)); z-index: 2; opacity: 1; margin: 0; }
+.hot-item .post-image-link .post-thumb {position:relative;width:100%;height:100%;vertical-align:middle;object-fit:cover;z-index: 1;scale(1,1);transition: all 0.4s ease;}
+.hot-item .post-image-link:hover .post-thumb {transform:scale(1.1);}
+.hot-item .post-info {position: absolute;left:0;bottom:0;z-index:15;width:100%;box-sizing:border-box;padding:10px 15px 20px;}
+.hot-item .hot-title {font-weight:400;line-height:1.5em;margin:0 0 10px;display:block;font-size:12px;}
+.hot-item:nth-child(1) .hot-title {font-size:18px;}
+.hot-item:nth-child(2) .hot-title {font-size:16px;}
+.hot-item .post-info .hot-title a, .hot-item .post-info .post-date {color:#fff;}
+.hot-item .post-info .post-tag {display:block;font-size:14px;text-transform:capitalize;margin:8px 0 15px;color: #fff;background: $(buttom.bg.color);width:fit-content;padding:3px 6px;}
+
+@media screen and (max-width: 820px) {
+  .banner .widget, .banner .widget-content {height:auto;}
+  .hot-item:nth-child(1), .hot-item:nth-child(2), .hot-item:nth-child(3), .hot-item:nth-child(4) {width:100%;height:270px;margin:0 0 15px;padding:0;}
+}
+@media screen and (max-width: 768px) {
+  .hot-item:nth-child(1) .entry-title {font-size:20px;}
+  .hot-item:nth-child(2) .entry-title {font-size:14px;}
+}
+@media screen and (max-width: 360px) {
+	.hot-item .post-info .post-tag { display:block; font-size:12px; }
+}
+
+.loader{position:relative;height:180px;overflow:hidden;display:block}
+.loader:after{content:'';position:absolute;top:50%;left:50%;width:26px;height:26px;margin:-16px 0 0 -16px;border:3px solid #ddd;border-right-color:$(main.color);border-radius:100%;animation:spinner .8s infinite linear;transform-origin:center}
+@-webkit-keyframes spinner {
+0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
+to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}
+}
+@keyframes spinner {
+0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
+to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}
+}
+    </style>
+  </head>
+  <body>
+  
+    
+
+    
+   
+  </body>
+</html>

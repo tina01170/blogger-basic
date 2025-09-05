@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTML 框</title>
+   
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css' rel='stylesheet'/> 
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script> 
+    <!--<link href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css' rel='stylesheet'></link>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css' rel='stylesheet'></link>-->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'></script> 
+    <style>
+
+    /*slider*/ 
+      .owl-carousel,.owl-carousel .owl-item{-webkit-tap-highlight-color:transparent;position:relative}
+      .owl-carousel{display:none;width:100%;z-index:1}
+      .owl-carousel .owl-stage{position:relative;-ms-touch-action:pan-Y;touch-action:manipulation;-moz-backface-visibility:hidden}
+      .owl-carousel .owl-stage:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}
+      .owl-carousel .owl-stage-outer{position:relative;overflow:hidden;-webkit-transform:translate3d(0,0,0)}
+      .owl-carousel .owl-item,.owl-carousel .owl-wrapper{-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0)}
+      .owl-carousel .owl-item{min-height:1px;float:left;-webkit-backface-visibility:hidden;-webkit-touch-callout:none}
+      .owl-carousel .owl-item img{display:block;width:100%}
+      .owl-carousel .owl-dots.disabled,.owl-carousel .owl-nav.disabled{display:none}
+      .no-js .owl-carousel,.owl-carousel.owl-loaded{display:block}
+      .owl-carousel .owl-dot,.owl-carousel .owl-nav .owl-next,.owl-carousel .owl-nav .owl-prev{cursor:pointer;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+
+      .owl-carousel button.owl-dot{background:0 0;color:inherit;border:none;padding:0!important;font:inherit}
+      .owl-carousel.owl-loading{opacity:0;display:block}
+      .owl-carousel.owl-hidden{opacity:0}
+      .owl-carousel.owl-refresh .owl-item{visibility:hidden}
+      .owl-carousel.owl-drag .owl-item{-ms-touch-action:pan-y;touch-action:pan-y;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+      .owl-carousel.owl-grab{cursor:move;cursor:grab}
+      .owl-carousel.owl-rtl{direction:rtl}
+      .owl-carousel.owl-rtl .owl-item{float:right}
+      .owl-carousel .animated{animation-duration:1s;animation-fill-mode:both}
+      .owl-carousel .owl-animated-in{z-index:0}
+      .owl-carousel .owl-animated-out{z-index:1}
+      .owl-carousel .fadeOut{animation-name:fadeOut}@keyframes fadeOut{0%{opacity:1}100%{opacity:0}}
+      .owl-height{transition:height .5s ease-in-out}
+      .owl-carousel .owl-item .owl-lazy{opacity:0;transition:opacity .4s ease}
+      .owl-carousel .owl-item .owl-lazy:not([src]),.owl-carousel .owl-item .owl-lazy[src^=""]{max-height:0}
+      .owl-carousel .owl-item img.owl-lazy{transform-style:preserve-3d}
+
+	    .owl-nav .owl-prev, .owl-nav .owl-next { position: absolute; top:45%; border:none;font-size:28px; color:#fff; width: 40px; height: 40px; z-index:9; padding:0 !important; background:rgba(0,0,0,0.3); /*opacity:0;*/}
+	    /*.owl-nav .owl-prev:hover, .owl-nav .owl-next:hover {opacity:1; }*/
+      .owl-nav .owl-prev {left:0;}
+      .owl-nav .owl-next {right:0;}
+
+	    .banner { margin:0 auto; padding:0 20px; box-sizing:border-box; }
+	    #banner { margin:0; padding:0 0 60px;  }
+	    .banner .HTML > h3{ display:none; }
+
+      .banner .show-slider{display:block!important; overflow:hidden;}
+      .banner .widget{position:relative;padding:0}
+      .item { position:relative; width:100%; height:360px; overflow:hidden; }
+      .item .info { position:absolute;top:50%; left:20%; background:rgba(245,245,245,0.8);width:60%; text-align: center;padding:10px 0;z-index:9;}
+      .item .info h3 a { text-decoration:none; color:#000; font-size:18px; font-weight:700; display:block; margin:10px 0; }
+      .item .info .post-date { padding-left:3px; } 
+
+    </style>
+  </head>
+  <body>
+    
+    <ul id="slider-b"></ul>
+    <script>
+    $(function() {  
+      $("#slider-b").addClass("owl-carousel owl-theme");
+      var  count ="5";  //文章篇數   
+
+      $.ajax({
+          url: '/feeds/posts/default?alt=json-in-script&max-results='+ count,
+          type: 'get',
+          dataType: 'jsonp',
+          success: xson,  
+      }); 
+
+      function xson(data) {
+            var tent = data.feed.entry;
+            var temp='';
+            if (!tent) { $('.owl-carousel').html('<span>沒文章 下載</span>'); return(0);}    
+            for(var i=0;i<tent.length;i++) {        
+                var recenthumb;
+                try {
+                  recenthumb = tent.media$thumbnail.url;
+                } catch (error) {
+                  s = tent[i].content.$t;
+                  a = s.indexOf("<img");
+                  b = s.indexOf("src=\"", a);
+                  c = s.indexOf("\"", b + 5);
+                  d = s.substr(b + 5, c - b - 5);
+                  if ((a != -1) && (b != -1) && (c != -1) && (d != "")) {
+                      recenthumb = d;
+                  } else recenthumb = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZpxOKrgvKr91vlO3rt9bTXd64r9G2DAb-0hXtlakPFgWUBo5MHn4yuw6wN2jyD5lY7ibcQZL5P1RbkNDKIZq3wU5Iqp8Kyw978SxeaDvHEOdpq0TZQWPRQd3g9Ae7bOFUwBvQVJUtRX7_/s1600/no-thumb.png';
+                }
+                var postImageUrl = recenthumb;
+                var posterImage = postImageUrl ? '<img src="' + postImageUrl + '" alt="' + tent[i].title.$t + '">' : '';
+                temp += '<li class="item">';
+                temp += posterImage; 
+                temp += '<div class="info"><a class="slider-title" href="' + tent[i].link[4].href + '">' +  tent[i].title.$t + '</a><span>';
+                temp += tent[i].published.$t.replace(/[T].*/,"")+'</span></div></li>';			
+            }
+            $('#slider-b').append(temp);
+              //code.append(temp);
+
+            $(".owl-carousel").owlCarousel({
+                    loop: true, // 循環輪播
+                    margin: 25, // 與右邊圖片的距離
+                    nav: true, // 導航文字
+                    dots:false,
+                    autoplay: false, // 自動輪播
+                    autoplayTimeout: 1000, // 切換時間
+                    autoplayHoverPause: true, // 滑鼠經過時暫停
+					
+					responsive: {
+					  0: {
+                        items: 1 // 螢幕大小為 0~600 顯示 1 個項目
+                      },
+                      
+                      992: {
+                        items: 2 // 螢幕大小為 1000 以上 顯示 5 個項目
+                      }
+					}
+            })
+          } 
+      });
+   </script>
+    
+   
+  </body>
+</html>

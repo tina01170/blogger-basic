@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+    /* tabs post*/
+
+    .tabs-post .HTML .widget-content { display:none; }
+    .tabs-post .show-tab .widget-content {display:block!important}
+
+    .tab { padding:0; margin:0; list-style:none;  }
+    .tab li { display: inline-block; color:#000; border:1px solid #e7e7e7; padding:5px 15px;  min-width:80px;  text-align: center; cursor: pointer; transition:all 0.3s ease-in-out;  }
+    .tab li+li { margin-left:32px; }
+    .tab li a { font-size:22px; }
+    .tab li:hover, .tab li.active { background-color:#fccfd6; border:none; }
+    .tab-wrap {  padding-top:30px; }
+    .tab-container { color:#000; border-radius:0 5px 5px 5px; display:none;}
+    .tab-container li{ list-style:none; }
+
+    .tab-item { display:flex; margin:0 0 20px; }
+    .tab-item img { display: block; overflow:hidden; width:96px; height:72px; object-fit:cover; vertical-align: middle;}
+    .tab-item .post-info { overflow:hidden; margin-left:15px; }
+    .tab-item .post-info h3 { overflow:hidden; font-size:14px; font-weight: 700; line-height:1.6em; margin:0 0 5px;  }
+    .tab-item .post-info h3 a { display:block; color:$(title.color); font-family:'Roboto',sans-serif;  -webkit-transition: color 0.2s; -moz-transition: color 0.2s; transition:color 0.2s;}
+    .tab-item .post-info h3 a:hover { color:$(main.color);}
+    .tab-item .post-info .post-date { font-size:16px; color:#000; }
+
+
+    </style>
+  </head>
+  <body>
+    
+    <div class='tab-wrapper'>
+      <b:section class='tabs-post' id='tabs-post' maxwidgets='1' name='Tabs Post' showaddelement='yes'>
+      </b:section>
+    </div>
+
+  <script>
+    $('.tabs-post .widget-content').each(function() {
+      var t=$(this),e=t.text().trim().toLowerCase();
+      var type=e.split("/")[0],label=e.split("/")[1];
+      var count = 3;
+        console.log(t, e,count, label);
+      if( e.match('tab')){
+          t.text('');
+        t.append('<div class="two-posts">'+ e +'</div>')
+        }
+      t.parent().addClass('show-tab');
+    })    
+
+    $('.two-posts').each(function(){
+        var t=$(this),e=t.text().trim().toLowerCase();
+        var type=e.split("/")[0],label=e.split("/")[1];
+        var count = 3;
+        console.log(t, e,count, label);
+        if( e.match('tab')){
+            t.text('');
+            t.append('<ul class="tab"/><div class="tab-wrap"/>')
+          }
+        if(label!=undefined){
+          var label = label.split(","), ln = label.length;
+          console.log(label ,label.length);
+            $('.tab').each(function() {
+                var t=$(this);
+                for(var i=0;i<ln;i++){
+                  var tag = label[i]; 
+                  t.append('<li><a>'+ tag +'</a></li>'); 
+                }
+            })
+            $('.tab-wrap').each(function() {	
+                var c=$(this);
+                for(var i=0;i<ln;i++){
+                  var tag = label[i]; 
+                  c.append('<div class="tab-container" tab-id="'+tag+'"/>'); 
+                }
+            })
+            $('.tab-container').each(function(){
+                var $this=$(this),label=$this.attr('tab-id'); 
+                //console.log($this,type, count ,label);
+                Posts($this, type, count, label)
+            });
+        }
+    })  
+    function Posts($this, type, count, label) {
+        console.log($this, type, count, label);
+        if ( type.match('hot') || type.match('tab') || type.match('list') ||type.match('related')) {
+        var url = '';
+          if (label == 'recent') {
+              url = '/feeds/posts/default?alt=json-in-script&max-results=' + count;
+            } else {
+              url = '/feeds/posts/default/-/' + label + '?alt=json-in-script&max-results=' + count;
+            }
+            $.ajax({
+                    url: url,
+                    type: 'get',
+                    dataType: 'jsonp',
+              beforeSend:function() {
+              if (type.match('hot')) {
+                $this.html('<div class="loader"/>').parent().addClass('show-slider');
+                        }  else if (type.match('tab')) {
+                $this.html('<div class="loader"/>')	
+                              //$this.html('<div class="loader"/>').parent().addClass('show-tab');
+                        }
+            },
+                    success: function(json) {
+              if (type.match('hot')) {
+                            var code = '<ul id="slider-wrap" class="slider-wrap owl-carousel owl-theme">';
+                        } else if (type.match('tab')) {
+                var code = '<ul class="tab-widget">';
+                        } else if (type.match('list')) {
+                var code = '<ul class="custom-widget">';
+                        } else if (type.match('related')) {
+                            var code = '<ul class="related-posts">';
+                        }
+              var entry = json.feed.entry;
+                        if (entry != undefined) {
+                for (var i = 0,feed = entry;i < entry.length; i++) {
+                  var link = l(feed,i);
+                                var title = t(feed,i);
+                                var date = e(feed, i);
+                                var	image = g(feed,i,title);
+                  var tag = p(feed, i);
+
+                  var content = '';
+                  if (type.match('list')) {                           
+                    content += '<li class="recent-item">' + image + '<div class="post-info"><h3><a href="' + link + '">' + title +'</a></h3>'+ date +'</div></li>';
+                                } else if (type.match('related')) {
+                                    content += '<li class="related-item">' + image + '<div class="post-info"><h3><a href="' + link + '">' + title + '</a></h3>'+ date +'</div></li>';
+                                } else if (type.match('hot')) {
+                                    content += '<li class="slider-item">' + image + '<div class="post-info"><h3><a href="' + link + '">' + title +'</a></h3>'+ date +'</div></li>';
+                                } else if (type.match('tab')) {
+                                    content += '<li class="tab-item">' + image + '<div class="post-info"><h3><a href="' + link + '">' + title +'</a></h3>'+ date +'</div></li>';
+                                }                                               
+                                code += content;                           
+                }
+                            code += '</ul>';     	
+                        } else {
+                            code = '<div class="no-posts">No Posts Found</div>';
+                        } if (type.match('hot')) {
+                            $this.html(code).parent().addClass('show-slider');			
+                $("#slider-wrap").owlCarousel({
+                                loop: true, 
+                                margin:15, 
+                                nav: true, 
+                                dots:false,  // dont's change
+                                autoplay: false,  // Automatic play(true or false)
+                                autoplayTimeout: 2000, // time
+                                autoplayHoverPause: true,  // Mouse over pause(true or false)
+                                responsive: {
+                                  0: {
+                                      items: 1  
+                                  }
+                                }
+                            })
+            
+                        } else {
+                            $this.html(code);
+                        }
+                        
+            }
+            });
+        }
+    }
+  </script>  
+   
+  </body>
+</html>

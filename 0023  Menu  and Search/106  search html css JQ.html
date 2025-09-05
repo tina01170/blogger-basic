@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+    <style>
+
+    </style>
+  </head>
+  <body>
+      <span class='show-search'></span>
+      <div id='nav-search'>
+        <form action='https://www.monsonwu.com/search' class='search-form' role='search'>
+          <input autocomplete='off' class='search-input' name='q' placeholder='搜尋此網誌' type='search' value=''/>
+          <span class='hide-search'></span>
+        </form>
+      </div>
+      <script>
+        //Blue heaster
+        $(".show-search, .show-mobile-search").on("click", function() {
+            $("#nav-search, .mobile-search-form").fadeIn(170).find("input").focus()
+        }), 
+        $(".hide-search, .hide-mobile-search").on("click", function() {
+            $("#nav-search, .mobile-search-form").fadeOut(170).find("input").blur()
+        }),
+
+        //polar
+        $('.show-search').on('click', function() {
+            $('#nav-search, .mobile-search-form').fadeIn(250).find('input').focus();
+        });
+        $('.hide-search').on('click', function() {
+            $('#nav-search, .mobile-search-form').fadeOut(250).find('input').blur();
+        });
+
+      </script>
+  </body>
+</html>

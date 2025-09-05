@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+      /*menu start*/	
+
+      #main-menu > .widget  h3 { display:none; }
+      .header-menu { position:relative; width:100%; height:50px;z-index:15; margin:0 0 35px; border-top:1px solid #ccc; border-bottom:1px solid #ccc; }
+      .header-menu .container { position:relative; max-width:100%; width:1280px; padding:0 20px; margin:0 auto; box-sizing:border-box; }
+
+      @media screen and (min-width: 820px) { 
+        .mobile-menu-wrap { display:none; }
+          #main-menu{  position:relative; height:50px; z-index:20; }
+          #main-menu ul > li { float:left; position:relative; margin:0; padding:0;  }
+        #main-menu ul > li > a { position:relative; color:$(title.color); font-size:20px; font-weight:600; line-height:50px; display:inline-block; text-decoration:none; margin:0; padding:0 15px; font-family:'Roboto',sans-serif; transition:color .4s ease;  }
+        #main-menu ul#nav > li:first-child > a{ padding:0 13px 0 0; }
+
+        #main-menu ul > li > ul { position:absolute; float:left; left:0; top:50px;width:200px;background-color:#fcfcfc; z-index:999; margin:0; padding:0; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; visibility:hidden; opacity:0;  }
+        #main-menu ul > li > ul > li > ul{ position:absolute;float:left;top:0; left:100%; margin:0; }
+          #main-menu ul > li > ul > li { display:block; float:none; position:relative;  }
+        #main-menu ul > li > ul > li a { display:block; height:40px; font-size:18px; font-weight:600; line-height:40px; box-sizing:border-box; margin:0; padding:0 15px; font-family:'Roboto',sans-serif;  transition:color .17s ease  }
+
+        #main-menu ul > li.has-menu > a:after{ content:'\f078'; float:right; font-family:'Font Awesome 5 Free';font-weight:900; margin:0 0 0 8px; font-size:18px; }
+          #main-menu ul > li > ul > li.has-menu > a:after { content:'\f105'; float:right; margin:0 font-size:16px; font-weight:600; }
+
+        #main-menu ul li a:hover{color:$(main.color) }
+          #main-menu ul > li:hover > ul, #main-menu ul > li > ul > li:hover > ul{ visibility:visible; opacity:1 }
+          #main-menu ul ul { transition:all .25s ease; }     
+      }
+
+      @media screen and (max-width: 991px) { 
+        #main-menu {display:none; }
+          .menu-toggle {  position: absolute; top:0; left:16px; display:block; width:45px; height:45px; margin:0; padding:0; border:none; cursor: pointer;}
+        .menu-toggle::before{ content:''; position:absolute; height:2px; left:2px; right:2px; width:36px;  top:0; bottom:0; margin:auto;  box-shadow: 0 8px 0 $(title.color), 0 -8px 0 $(title.color);  background:$(title.color);}     
+
+        .mobile-menu ul li a { color:$(title.color); font-family:'Roboto',sans-serif; padding:0;  margin:0; transition:color .17s ease; font-size:18px; display:block; height:36px; line-height:36px; }
+          .mobile-menu ul li a:hover { color:$(main.color) }
+          .mobile-menu ul > li { position:relative; display:block; overflow:hidden; width:100%; font-size:18px; font-weight:500; /*line-height:36px;*/  margin:0; padding:0;  }
+
+        .mobile-menu ul li.has-menu .submenu-toggle { position:absolute; top:0; right:0; font-size:16px; color:$(title.color); cursor:pointer; padding:0; z-index:10; line-height:36px;}
+        .mobile-menu ul li.has-menu .submenu-toggle:after { content:'\f078';font-family:'Font Awesome 5 Free';font-weight:900;float:right;width:40px;font-size:14px;text-align:center;  }
+        
+        .mobile-menu > ul { padding:15px 20px; margin:0; }
+        .mobile-menu > ul > li > ul, .mobile-menu > ul > li > ul > li > ul { margin:0; padding:0 0 0 10px; }
+        .mobile-menu > ul > li > ul > li a { padding:0 0 0 15px; }
+        .mobile-menu > ul > li > ul > li > ul > li > a { padding:0 0 0 30px;}
+              
+        .mobile-menu ul ul, .mobile-menu ul ul ul { padding:5px 0 0; display:none; }
+      .mobile-menu { margin:0; textalign:left; position: absolute; top:50px; left:0; width:100%; background-color:#fcfcfc;z-index:999; box-shadow:rgba(9,30,66,0.25) 0px 4px 8px -2px,rgba(9,30,66,0.08) 0px 0px 0px 1px;display:none;                    
+        }
+      
+      }			
+
+      .show-search {  position:absolute; top:8px; right:20px; display:block;height:25px;background-color:transparent;font-size:16px;line-height:38px; text-align:center; cursor:pointer; z-index:20; padding:0; color:#000; }
+      .show-search:before {content:"\f002";font-family:'Font Awesome 5 Free';font-weight:900}
+
+      #nav-search .search-form{ position:absolute; top:60px; right:0; height:40px; background-color:#fcfcfc; line-height:46px; 
+      z-index:999; overflow:hidden; padding:0;visibility: hidden;border:1px dashed #8E8E8E; padding:6px 15px 10px;  }
+
+      #nav-search .search-form.active { visibility: visible; z-index:99; }
+      #nav-search .search-input { width:170px; line-height:25px;  border:1px solid #ccc; }
+      #nav-search .search-input:focus{color:$(title.color);outline:none;}
+    </style>
+  </head>
+  <body>
+    <header class='header-area'>
+      <div class='container'>
+        <div class='main-logo-wrap'>
+          <b:section class='main-logo' id='main-logo' maxwidgets='1' name='Main Logo' showaddelement='yes'>
+          </b:section> 
+        </div>  
+        <nav class='header-menu'>
+          <div class='container row'>
+              <div class='mobile-menu-wrap'>
+                    <div class='mobile-menu'/>
+              </div>
+              <b:section class='main-menu' id='main-menu' maxwidgets='1' name='menu' showaddelement='yes'>
+
+              </b:section>
+              <div id='nav-search'>
+                <form class='search-form' expr:action='data:blog.searchUrl' role='search'>
+                  <input autocomplete='off' class='search-input' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q' type='search'/>
+                </form>
+              </div>
+              <span class='show-search'/>
+              <span class='menu-toggle'/> 
+          </div>
+        </nav> 
+        <div class='clearfix'/>   
+      </div>
+    </header>  
+
+    <div id='menu' class="menu">
+      <div id='menuleft'>              
+          <ul id='nav'>
+                <li ><a href="#">Home</a></li>
+                <li ><a href="#">Travel</a></li>
+                <li ><a href="#">Fashion</a></li>
+                <li class="has-menu"><a href="#">Life-style</a>
+                    <ul class="sub-menu">
+                      <li ><a href="#">Category-1</a></li>
+                      <li ><a href="#">Category-2</a></li>
+                        <li class="has-menu"><a href="#">Category-3</a>
+                          <ul class="sub-menu">
+                              <li><a href="#">item-1</a></li>
+                              <li><a href="#">item-2</a></li>
+                              <li><a href="#">item-3</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li ><a href="#">Tvshow</a></li>
+                <li ><a href="#">About</a></li>
+          </ul>
+      </div>
+      <div style="clear:both"></div>
+    </div>
+
+
+    <script>
+      $(".menu-toggle").click(function(){
+          $(".mobile-menu").slideToggle(1000);
+      })    
+      $('#nav').clone().appendTo('.mobile-menu');
+      $('.mobile-menu #nav li.has-menu > a').after( $('<div class="submenu-toggle"/>') );
+      $('.submenu-toggle').click(function() {
+          $(this).toggleClass('active');
+          $(this).next('.sub-menu').slideToggle(250);         
+      })
+      $(".show-search").on('click',function() {
+          $('#nav-search .search-form').toggleClass("active");
+      })
+    </script>
+   
+  </body>
+</html>

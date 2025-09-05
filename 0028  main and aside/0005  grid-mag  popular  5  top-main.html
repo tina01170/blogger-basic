@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+      /* top-main */
+
+      .top-main { margin:0 0 15px; padding:0;  }
+      .top-main .PopularPosts > h3 { font-size:22px; margin:0 0 30px; }
+      .top-main .PopularPosts .widget-content { display:flex; flex-wrap:wrap; margin:0 0 25px; }
+      .top-main .PopularPosts .widget-content .post  { width:50%; }
+      .top-main .PopularPosts .widget-content .post  { display:flex; margin:0 0 30px; }
+
+      /*.top-main .PopularPosts .widget-content .post .post-pic { width:20%; }*/
+      .top-main .PopularPosts .widget-content .post .post-image-link { display:block; width: 140px; height: 105px; object-fit:cover; vertical-align: middle;}
+      .top-main .PopularPosts .widget-content .post .post-info { width:70%; padding-left:10px;  }
+      .top-main .PopularPosts .widget-content .post .post-info .post-title { margin:0 0 20px; font-size:16px; line-height:28px; }
+      .top-main .PopularPosts .widget-content .post .post-info .post-meta { margin:0 0 15px; }
+      .top-main .PopularPosts .widget-content .post .post-info .post-meta span { margin:0 5px 0 0;}
+
+      .top-main .PopularPosts .widget-content .post:nth-child(1) { width:100%; margin:0 0 40px;}
+      .top-main .PopularPosts .widget-content .post:nth-child(1) .post-image-link { width: 680px; height: 300px; }
+      .top-main .PopularPosts .widget-content .post:nth-child(1) .post-info .post-title { font-size:22px; line-height:38px;}
+
+      @media screen and (max-width: 600px) {	
+        
+      }
+
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <b:section class='top-main' id='top-main' maxwidgets='1' name='top-main' showaddelement='yes'/>
+
+   
+  </body>
+</html>

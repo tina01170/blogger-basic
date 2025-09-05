@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>mega-menu  kellystory</title>
+    <style>
+    /*mega-menu label or recent*/  
+      #main-menu .mega-menu { position:static !important; }
+      #main-menu .mega-menu > ul { width:100%; background-color:#fff; box-sizing: border-box; padding:20px 10px; }
+      #main-menu .mega-menu > ul#mega-widget, #main-menu .mega-menu > ul.tab-widget, #main-menu .mega-menu > ul.complex-tabs { overflow:hidden; }
+                          
+      #main-menu ul li #mega-widget { position:absolute; left:0; top:60px; width:100%; padding:30px 0 10px; box-sizing:border-box; margin:0; border:1px solid #ccc; z-index:999; background-color: #fcfcfc; visibility: hidden; }
+      #main-menu ul li:hover #mega-widget { visibility:visible; opacity:1 }
+
+      #main-menu .mega-wrap {  }
+      #mega-widget .mega-item { float:left; width:25%;box-sizing:border-box;padding:0 10px}
+      .rtl .mega-widget .mega-item{float:right}
+      #mega-widget .mega-content { position:relative; width:100%; overflow:hidden; padding:0; }
+      #mega-widget .mega-content .post-image-link { display:block; position:relative; overflow:hidden; width:100%; height:150px; object-fit:cover; }
+      #mega-widget .mega-content .post-image-link img { position:relative; display: block; width:100%; height:100%; vertical-align:middle; object-fit: cover;  z-index: 1; }
+
+      #mega-widget .mega-content .post-info { width:100%; position:relative; overflow:hidden; }
+      #mega-widget .mega-content .post-info h4 { margin:15px 0 5px; line-height:1.6em;}
+      #mega-widget .mega-content .post-info a { display:block; color:#000; font-size:16px; font-weight:700; font-family:'Roboto',sans-serif; -webkit-transition:color 0.17s;-moz-transition:color 0.17s; transition:color 0.17s ease; }
+      #mega-widget .mega-content .post-info a:hover { color:$(main.color); }
+      #mega-widget .mega-content .post-info span { display:block; color:#000; font-size:16px; margin:0; }
+
+      /*tab-menu*/
+      #main-menu .tab-mega-wrap { }
+      #main-menu ul li.mega-menu .complex-tabs { position:absolute; left:0; top:60px; width:100%; padding:30px 0 0; box-sizing:border-box; margin:0; border:1px solid #ccc; z-index:99999; background-color: #fcfcfc; overflow:hidden; visibility:hidden; opacity:0; }
+      #main-menu ul li.mega-menu:hover .complex-tabs { visibility: visible; opacity:1; }
+
+      #main-menu ul li.mega-menu ul ul.select-tab { width:15%; float:left; display:flex; flex-direction:column; background:#F0F0F0; padding:30px 0 65px; margin:-30px 0 0; box-sizing:border-box; }
+      #main-menu ul li.mega-menu ul ul.select-tab li { width:100%; position:relative; overflow:hidden; }
+      #main-menu ul li.mega-menu ul ul.select-tab li.active { background:#fff; -webkit-transition:all 0.17s;-moz-transition:all 0.17s; transition:all 0.17s ease;  }
+      #main-menu ul li.mega-menu ul ul.select-tab li a { color:#000; font-size:16px; font-weight:600; line-height:60px;   margin:0; padding:0 20px; }
+
+      #main-menu ul li.mega-menu ul.complex-tabs .mega-tab { width:85%; float:right; display:none; } 
+      #main-menu ul li.mega-menu ul ul.select-tab li.active .mega-tab { display:block; }
+      #main-menu ul li #tab-widget { padding:0 10px; box-sizing:border-box; display:flex; }
+
+      #tab-widget .tab-item { width:25%; padding:0 12px; box-sizing:border-box; margin:0 0 10px;}
+      .rtl .mega-widget .tab-item{float:right}
+      #tab-widget .mega-content { position:relative; width:100%; overflow:hidden; padding:0; }
+      #tab-widget .mega-content .post-image-link { display:block; position:relative; overflow:hidden; width:100%; height:120px; object-fit:cover; }
+      #tab-widget .mega-content .post-image-link img { position:relative; display: block; width:100%; height:100%; vertical-align:middle; object-fit: cover;  z-index: 1; }
+
+      #tab-widget .mega-content .post-info { width:100%; position:relative; overflow:hidden; }
+      #tab-widget .mega-content .post-info h4 { margin:15px 0; line-height:1.6em;}
+      #tab-widget .mega-content .post-info a { display:block; color:#000; font-size:16px; font-weight:500; font-family:'Roboto',sans-serif; -webkit-transition:color 0.17s;-moz-transition:color 0.17s; transition:color 0.17s ease; }
+      #tab-widget .mega-content .post-info a:hover { color:$(main.color);  }
+      #tab-widget .mega-content .post-info span { display:block; color:#000; font-size:14px; margin:8px 0 0; }
+
+      .no-posts{display:block;font-size:14px;color:$(title.color);padding:30px 0;font-weight:400}
+      .mega-menu .no-posts{ color:#000; text-align:center; padding:0}
+
+
+    </style>
+  </head>
+  <body>
+    
+    <div class='menu-wrap'>
+      <b:section class='main-menu' id='main-menu' maxwidgets='1' name='menu' showaddelement='yes'>
+        <b:widget id='LinkList4' locked='true' title='Menu' type='LinkList' version='3' visible='true'>
+          <b:widget-settings>
+            <b:widget-setting name='sorting'>NONE</b:widget-setting>
+            <b:widget-setting name='text-1'>電影</b:widget-setting>
+            <b:widget-setting name='link-1'>megamenu/電影</b:widget-setting>
+            <b:widget-setting name='text-0'>Home</b:widget-setting>
+            <b:widget-setting name='link-2'>megatabs/tvshow,電影,小說</b:widget-setting>
+            <b:widget-setting name='link-0'>/</b:widget-setting>
+            <b:widget-setting name='text-2'>Tab menu</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id='main'>
+            <b:include name='widget-title'/>
+            <b:include name='content'/>
+          </b:includable>
+          <b:includable id='content'>
+            <div class='widget-content'>
+              <ul id='main-menu-nav' role='menubar'>
+                <b:loop values='data:links' var='link'>
+                  <li><a expr:href='data:link.target'><data:link.name/></a></li>
+                </b:loop>
+              </ul>
+            </div>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </div>  
+    
+  <script>
+    // 兩種 old
+    $('#main-menu ul > li').each(function() {
+        var t = $(this), a = t.find('a'), af = a.attr('href'), e = af.toLowerCase();
+      //console.log(t,a, af,e)
+      if( e.match('megamenu')){
+          t.addClass('has-sub mega-menu mobile-none').append('<div class="mega-wrap">'+e+'</div>')
+        } else if ( e.match('megatabs')){
+          t.addClass('has-sub mega-menu').append('<div class="tab-mega-wrap m-sub">'+e+'</div>')
+        }
+    });
+
+    // mega-menu of label or recent
+    $('.mega-wrap').each(function() {
+      var t = $(this), e=t.text();
+      var type = e.split("/")[0],label=e.split("/")[1]
+      var count = 4;
+        console.log(t, e,count, label);
+        t.text(' ');
+        Posts(t, e, count, label);
+      //if (type.match('megamenu')) {}
+    })
+
+    // tab-menu
+    $('.tab-mega-wrap').each(function() {
+      var t = $(this), e=t.text();
+      var type = e.split("/")[0], label=e.split("/")[1];
+      var count = 4;
+        console.log(t, e,count, label);
+      if(label!=undefined){
+        label = label.split(",")
+        //console.log(label ,label.length);
+      }
+        megaTabs(t,type,label,count)
+    })
+    function megaTabs(t,type,label,count) {
+      if(type=='megatabs'){
+        if(label!=undefined){
+          var ln= label.length; 
+          var code = '<ul class="complex-tabs">';
+          for(var i=0;i<ln;i++){
+            var tag = label[i]; 
+            if(tag){
+                      code+='<div class="mega-tab" tab-id="'+tag+'"/>'
+                    }  
+          }
+            code+='</ul>'; //console.log(code)
+          t.html(code);
+          //t.find('a:first').attr('href','javascript:;');
+          $('.mega-tab').each(function(){
+            var $this=$(this),label=$this.attr('tab-id'); 
+            //console.log($this,type, count ,label);
+            Posts($this, type, count, label)
+          });
+                $('.complex-tabs').prepend('<ul class="select-tab"></ul>');
+                $('.select-tab').each(function() {
+            var t=$(this);
+                  for(var i=0;i<ln;i++){
+                      var tag = label[i];
+              //t.append('<li><a>'+ tag +'</a></li>'); 
+                      //t.append('<li><a href="/search/label/'+tag+'?&amp;max-results=4">'+ tag +'</a></li>'); 
+              t.append('<li><a href="/search/label/'+tag+'">'+ tag +'</a></li>');
+                  }
+                })
+        } else {
+              li.addClass('mega-tabs').append('<ul class="no-posts">No Posts Found</ul>')
+            }
+        
+      }
+    }
+
+    // tab post 切換
+    $(".mega-tab:first").show();
+    $(".select-tab li:first-child").addClass("active");
+    var $tent= $('.mega-tab');
+    var curIndex = 0;
+    $(".select-tab li").click(function(){
+      index = $(this).index();
+        $(".select-tab li").removeClass('active');
+        $(this).addClass('active');
+      $tent[curIndex].style.display = 'none';
+      curIndex = $(this).index();
+      $tent[curIndex].style.display = 'block';
+    });
+
+
+
+
+    function Posts($this, type, count, label) {
+      //console.log($this, type, count, label);
+        if ( type.match('megatabs') || type.match('megamenu') || type.match('hot') || type.match('list') ||type.match('related')) {
+        var url = '';
+          if (label == 'recent') {
+              url = '/feeds/posts/default?alt=json-in-script&max-results=' + count;
+            } else {
+              url = '/feeds/posts/default/-/' + label + '?alt=json-in-script&max-results=' + count;
+            }
+            $.ajax({
+                    url: url,
+                    type: 'get',
+                    dataType: 'jsonp',
+            beforeSend:function() {
+                        if (type.match('hot')) {
+                            $this.html('<div class="loader"/>').parent().addClass('show-slider');
+                        } else if (type.match('list')) {
+                            $this.html('<div class="loader"/>').parent().addClass('show-list');
+                        }
+              /*
+              if (type.match('megamenu')) {
+                $this.html('<div class="loader"/>').parent().addClass('megamenu');
+                        }*/
+            },
+                    success: function(json) {
+              if (type.match('megatabs')) {
+                            var code = '<ul id="tab-widget">';
+              } else if (type.match('megamenu')) {
+                            var code = '<ul id="mega-widget">';
+              } else if (type.match('hot')) {
+                            var code = '<ul id="slider-wrap" class="owl-carousel owl-theme">';
+                        } else if (type.match('list')) {
+                var code = '<ul class="custom-widget">';
+                        } else if (type.match('related')) {
+                            var code = '<ul class="related-posts">';
+                        }
+              var entry = json.feed.entry;
+                        if (entry != undefined) {
+                for (var i = 0,feed = entry;i < entry.length; i++) {
+                  var link = l(feed,i);
+                                //console.log(link);
+                                var title = t(feed,i);
+                                //console.log(title);
+                                var date = e(feed, i);
+                                //console.log(date);
+                                var	image = g(feed,i,title);
+                                //console.log(image);
+                  var tag = p(feed, i);
+                  //console.log(tag);
+
+                  var content = '';
+                  if (type.match('list')) {                           
+                    content += '<li class="recent-item">' + image + '<div class="post-info"><h3><a href="' + link + '">' + title +'</a></h3>'+ date +'</div></li>';
+                                } else if (type.match('related')) {
+                                    content += '<li class="related-item">' + image + '<div class="post-info"><h3><a href="' + link + '">' + title + '</a></h3>'+ date +'</div></li>';
+                                } else if (type.match('hot')) {
+                                    content += '<li class="slider-item">' + image + '<div class="post-info"><h3><a href="' + link + '">' + title +'</a></h3>'+ date +'</div></li>';
+                                } else if (type.match('megamenu')) {	 
+                    content += '<li class="mega-item"><div class="mega-content">' + image + '<div class="post-info"><h4><a href="' + link + '">' + title +'</a></h4>'+ date +'</div></div></li>';
+                                } else if (type.match('megatabs')) {	 
+                    content += '<li class="tab-item"><div class="mega-content">' + image + '<div class="post-info"><h4><a href="' + link + '">' + title + date +'</a></h4></div></div></li>';
+                                }
+                                code += content;                           
+                }
+                            code += '</ul>';     	
+                        } else {
+                            code = '<ul class="no-posts">No Posts Found</ul>';
+                        } if (type.match('hot')) {
+                            $this.html(code).parent().addClass('show-slider');			
+                $("#slider-wrap").owlCarousel({
+                                loop: true, // 循環輪播
+                                margin:15, // 與右邊圖片的距離
+                                nav: true, // 導航文字
+                                dots:false,
+                                autoplay: false, // 自動輪播
+                                autoplayTimeout: 2000, // 切換時間
+                                autoplayHoverPause: true, // 滑鼠經過時暫停
+                                responsive: {
+                                  0: {
+                                      items: 1 // 螢幕大小為 0~600 顯示 1 個項目
+                                  },
+                                  860: {
+                                      items: 2 // 螢幕大小為 600~1000 顯示 3 個項目
+                                  }
+                                }
+                            })
+            
+                        } else {
+                            $this.html(code);
+                        }
+            }
+            });
+        }
+    }    
+  </script>
+  </body>
+</html>

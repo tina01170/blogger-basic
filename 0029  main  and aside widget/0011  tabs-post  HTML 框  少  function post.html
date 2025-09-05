@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+    <style>
+
+        /*tab posts*/
+        .tab {
+            padding:0;
+            margin:0;
+            list-style:none;
+        }
+        .tab li {
+              display: inline-block;
+              color:#000;
+              border:1px solid #ccc;
+              padding:5px 15px;
+			  /*margin:0 10px;*/
+              min-width:50px;
+              text-align: center;
+              cursor: pointer;
+              transition:all 0.3s ease-in-out;
+        }
+        .tab li+li {
+          margin:0 0 0 20px;
+        }
+
+        .tab li a { font-size:22px; }
+
+        .tab li:hover,
+        .tab li.active {
+              background-color:#ccc;
+        }
+        .tab-wrap {
+          padding-top:30px;
+        }
+
+        .tab-container {
+              color:#000;                     
+              border-radius:0 5px 5px 5px;
+              display: none;
+        }
+        .tab-container li { list-style:none; }
+			  .label-item a img {}
+		
+        .tab-container li{ 
+            list-style:none; 
+        }
+
+    </style>
+  </head>
+  <body>
+    <div class="tab-posts">
+      <ul class="tab">
+          <li><a>tvshow</a></li>
+          <li><a>novel</a></li>
+      </ul>
+      <div class="tab-wrap">
+          <div class="tab-container">
+            <script> 
+            var label = "tvshow", type = "list", count = 3;
+            </script> 
+          </div>
+          <div class="tab-container">
+           <script> 
+            var label = "novel", type = "list", count = 3;
+            </script> 
+          </div>
+      </div>
+    </div>
+
+
+    <script>
+    $('.tab li:first-child').each(function() {
+      var $this = $(this);
+      var label = $this.text();
+        $('.tab-wrap .tab-container:first-child').each(function() {
+          var $this = $(this);
+            //console.log($this, type, count, label);
+            Posts($this, 'list', 3, label); 
+        })    
+    });
+    $('.tab li:last-child').each(function() {
+        var $this = $(this);
+        var label = $this.text();
+        $('.tab-wrap .tab-container:last-child').each(function() {
+          var $this = $(this);
+            //console.log($this, type, count, label);
+            Posts($this, 'list', 3, label); 
+        })    
+    });
+    $(".tab-container:first").show();
+    $(".tab li:first").addClass('active');
+
+    $(".tab li").click(function(){
+      index = $(this).index();
+        $(".tab li").removeClass('active');
+        $(this).addClass('active');
+        $(".tab-container").hide();
+        $(".tab-container").eq(index).show();
+    });      
+
+    // 少 Posts($this, 'list', 3, label); 
+    </script>
+    
+
+    
+   
+  </body>
+</html>

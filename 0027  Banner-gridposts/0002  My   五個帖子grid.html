@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+    <style>
+     /* banner 五個帖子*/
+
+			.banner .PopularPosts { width:100%; }
+			.banner .PopularPosts .widget-content { padding:50px 0; }
+ 			.banner .PopularPosts .post{ position:relative; }
+			.banner .PopularPosts .post-content img { vertical-align: middle; height: 100%; object-fit: cover;}
+      .banner .PopularPosts .widget-content .post {padding-bottom:30px;}
+      .banner .PopularPosts .post-content { position:relative; }
+      .banner .PopularPosts .post-content .post-info { position:absolute;  top:40%;left:0; right:0; display: flex; flex-direction: column; justify-content:center; align-items:center;  }
+      .banner .PopularPosts .post .post-title { font-size:16px; margin:0 0 8px; font-weight:400; }
+      .banner .PopularPosts .post:first-child  .post-title { font-size:20px; }
+
+      .banner .PopularPosts .post-title a { display:block; color:#000;  text-decoration:none; }
+      .banner .PopularPosts .post-meta span { font-size:16px; color:#000;}
+
+      @media screen and (min-width: 992px) {
+				.banner .PopularPosts .widget-content .post {padding-bottom:0;}
+
+      	.banner .PopularPosts .widget-content  {
+					display: grid;
+          grid-template-columns: repeat(4,1fr);
+          /*grid-template-rows:1fr 200px; */
+          grid-gap:15px;
+        }
+				.banner .PopularPosts .widget-content .post:first-child { grid-column: span 2;grid-row: span 2;}
+				.banner .PopularPosts .widget-content .post:not(first-child) { grid-column: span 1; grid-row: span 1; margin:0; }
+				.banner .PopularPosts .widget-content .post:first-child { height:400px; }
+				.banner .PopularPosts .widget-content .post:not(first-child)  { height:190px; overflow:hidden; }
+      }
+
+    </style>
+  </head>
+  <body>
+    
+
+    
+   
+  </body>
+</html>

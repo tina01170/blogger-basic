@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+    .header-menu{float:left }
+    #main-menu .widget,#main-menu .widget > h3{display:none }
+    #main-menu .show-menu{display:block }
+    #main-menu{position:relative;height:70px;z-index:15 }
+    #main-menu ul > li{float:left;position:relative;margin:0;padding:0;transition:background .17s ease }
+    #main-menu ul > li > a{position:relative;color:$(menu.color);font-size:14px;font-weight:600;line-height:70px;display:inline-block;text-decoration:none;margin:0;padding:0 15px;transition:color .17s ease }
+    #main-menu ul#main-menu-nav > li:hover{background-color:rgba(255,255,255,0.05) }
+    #main-menu ul#main-menu-nav > li:hover > a{color:$(menu.color) }
+    #main-menu ul > li > ul{position:absolute;float:left;left:0;top:70px;width:180px;background-color:$(submenu.bg);z-index:99999;margin-top:0;padding:0;border:1px solid $(submenu.bg);box-shadow:0 2px 2px rgba(0,0,0,0.2);visibility:hidden;opacity:0 }
+    #main-menu ul > li > ul > li > ul{position:absolute;float:left;top:0;left:100%;margin:-1px 0 0 }
+    #main-menu ul > li > ul > li{display:block;float:none;position:relative;background-color:rgba(255,255,255,0.03);border-bottom:1px solid $(submenu.bg);transition:background .17s ease }
+    #main-menu ul > li > ul > li a{display:block;height:36px;font-size:13px;color:$(submenu.color);font-weight:600;line-height:36px;box-sizing:border-box;margin:0;padding:0 15px;transition:color .17s ease }
+    #main-menu ul > li > ul > li:last-child{border-bottom:0 }
+    #main-menu ul > li.has-sub > a:after{content:'\f107';float:right;font-family:FontAwesome;font-size:12px;font-weight:400;margin:0 0 0 6px }
+    #main-menu ul > li > ul > li.has-sub > a:after{content:'\f105';float:right;margin:0 }
+    #main-menu ul > li > ul > li a:hover{color:$(main.color) }
+    #main-menu ul > li:hover > ul,
+    #main-menu ul > li > ul > li:hover > ul{visibility:visible;opacity:1 }
+    #main-menu ul ul{transition:all .17s ease }
+    
+    .show-search,
+    .hide-search{position:absolute;top:0;right:0;display:block;width:58px;height:70px;background-color:rgba(255,255,255,0.05);line-height:70px;z-index:20;color:$(menu.color);font-size:16px;font-weight:400;text-align:center;cursor:pointer;transition:color .17s ease }
+    .show-search:hover,.hide-search:hover{color:$(menu.color) }
+    .show-search:before{content:"\f002";font-family:FontAwesome }
+    .hide-search:before{content:"\f00d";font-family:FontAwesome }
+    #nav-search{display:none;position:absolute;left:0;top:0;width:100%;height:70px;z-index:99;background-color:$(header.bg);box-sizing:border-box;padding:0 }
+    #nav-search .search-form{width:100%;height:70px;background-color:rgba(0,0,0,0);line-height:70px;overflow:hidden;padding:0 }
+    #nav-search .search-input{width:100%;height:70px;font-family:inherit;color:$(menu.color);margin:0;padding:0 58px 0 0;background-color:rgba(0,0,0,0);font-size:13px;font-weight:400;box-sizing:border-box;border:0 }
+    #nav-search .search-input:focus{color:$(menu.color);outline:none }
+    .mobile-menu-toggle{display:none;position:absolute;top:0;left:0;width:58px;height:70px;line-height:70px;background-color:rgba(255,255,255,0.05);z-index:20;color:$(menu.color);font-size:17px;font-weight:400;text-align:center;cursor:pointer;transition:color .17s ease }
+    .mobile-menu-toggle:hover{color:$(menu.color) }
+    .mobile-menu-toggle:before{content:"\f0c9";font-family:FontAwesome }
+    
+    .nav-active .mobile-menu-toggle:before{content:"\f00d";font-family:FontAwesome }
+    .overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:990;background:rgba(255,255,255,0.8) }
+    .mobile-menu-wrap{display:none;position:absolute;top:70px;left:0;width:100%;background-color:$(submenu.bg);box-sizing:border-box;visibility:hidden;z-index:1000;opacity:0;transition:all .17s ease }
+    .nav-active .mobile-menu-wrap{visibility:visible;opacity:1 }
+    .mobile-menu{position:relative;overflow:hidden;padding:20px;border-top:1px solid rgba(255,255,255,0.03) }
+    .mobile-menu > ul{margin:0 }
+    .mobile-menu .m-sub{display:none;padding:0 }
+    .mobile-menu ul li{position:relative;display:block;overflow:hidden;float:left;width:100%;font-size:14px;line-height:38px }
+    .mobile-menu > ul > li{font-weight:600 }
+    .mobile-menu > ul li ul{overflow:hidden }
+    .mobile-menu ul li a{color:$(submenu.color);padding:0;display:block;transition:all .17s ease }
+    .mobile-menu ul li.has-sub .submenu-toggle{position:absolute;top:0;right:0;color:$(submenu.color);cursor:pointer }
+    .mobile-menu ul li.has-sub .submenu-toggle:after{content:'\f105';font-family:FontAwesome;font-weight:400;float:right;width:34px;font-size:14px;text-align:center;transition:all .17s ease }
+    .mobile-menu ul li.has-sub.show > .submenu-toggle:after{transform:rotate(90deg) }
+    .mobile-menu > ul > li > ul > li > a{color:$(submenu.color);opacity:.7;padding:0 0 0 15px }
+    .mobile-menu > ul > li > ul > li > ul > li > a{color:$(submenu.color);opacity:.7;padding:0 0 0 30px }
+
+
+    </style>
+  </head>
+  <body>
+        <div class='header-menu'>
+          <b:section class='main-menu' id='main-menu' maxwidgets='1' name='Main Menu' showaddelement='yes'>
+            <b:widget id='LinkList74' locked='true' title='Link List' type='LinkList' version='2' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='text-10'>_Web Documentation</b:widget-setting>
+                <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                <b:widget-setting name='link-1'>#</b:widget-setting>
+                <b:widget-setting name='link-2'>#</b:widget-setting>
+                <b:widget-setting name='link-12'>#</b:widget-setting>
+                <b:widget-setting name='link-0'>/</b:widget-setting>
+                <b:widget-setting name='link-11'>#</b:widget-setting>
+                <b:widget-setting name='link-10'>#</b:widget-setting>
+                <b:widget-setting name='text-9'>Documentation</b:widget-setting>
+                <b:widget-setting name='link-9'>#</b:widget-setting>
+                <b:widget-setting name='text-8'>_Error Page</b:widget-setting>
+                <b:widget-setting name='link-7'>#</b:widget-setting>
+                <b:widget-setting name='link-8'>#</b:widget-setting>
+                <b:widget-setting name='link-5'>#</b:widget-setting>
+                <b:widget-setting name='link-6'>#</b:widget-setting>
+                <b:widget-setting name='link-3'>#</b:widget-setting>
+                <b:widget-setting name='link-4'>#</b:widget-setting>
+                <b:widget-setting name='text-1'>Features</b:widget-setting>
+                <b:widget-setting name='text-0'>Home</b:widget-setting>
+                <b:widget-setting name='text-3'>__DropDown 1</b:widget-setting>
+                <b:widget-setting name='text-2'>_Multi DropDown</b:widget-setting>
+                <b:widget-setting name='text-5'>__DropDown 3</b:widget-setting>
+                <b:widget-setting name='text-4'>__DropDown 2</b:widget-setting>
+                <b:widget-setting name='text-7'>_SiteMap</b:widget-setting>
+                <b:widget-setting name='text-6'>_ShortCodes</b:widget-setting>
+                <b:widget-setting name='text-11'>_Video Documentation</b:widget-setting>
+                <b:widget-setting name='text-12'>Download This Template</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <b:include name='content'/>
+              </b:includable>
+              <b:includable id='content'>
+                <ul id='main-menu-nav' role='menubar'>
+                  <b:loop values='data:links' var='link'>
+                    <li><a expr:href='data:link.target' role='menuitem'><data:link.name/></a></li>
+                  </b:loop>
+                </ul>
+              </b:includable>
+            </b:widget>
+          </b:section>
+        </div>
+        <div id='nav-search'>
+          <form class='search-form' expr:action='data:blog.searchUrl' role='search'>
+            <input autocomplete='off' class='search-input' expr:placeholder='data:messages.searchThisBlog' name='q' type='search' value=''/>
+            <span class='hide-search'/>
+          </form>
+        </div>
+        <span class='show-search'/>
+        <span class='mobile-menu-toggle'/> 
+      </div>
+    </div>
+
+    <div class='clearfix'/>    
+    
+  <script>
+    $('#main-menu').each(function() {
+        var iTms = $(this).find('.LinkList ul > li').children('a'),
+            iLen = iTms.length;
+        for (var i = 0; i < iLen; i++) {
+            var i1 = iTms.eq(i),
+                t1 = i1.text();
+            if (t1.charAt(0) !== '_') {
+                var i2 = iTms.eq(i + 1),
+                    t2 = i2.text();
+                if (t2.charAt(0) === '_') {
+                    var l1 = i1.parent();
+                    l1.append('<ul class="sub-menu m-sub"/>');
+                }
+            }
+            if (t1.charAt(0) === '_') {
+                i1.text(t1.replace('_', ''));
+                i1.parent().appendTo(l1.children('.sub-menu'));
+            }
+        }
+        for (var i = 0; i < iLen; i++) {
+            var i3 = iTms.eq(i),
+                t3 = i3.text();
+            if (t3.charAt(0) !== '_') {
+                var i4 = iTms.eq(i + 1),
+                    t4 = i4.text();
+                if (t4.charAt(0) === '_') {
+                    var l2 = i3.parent();
+                    l2.append('<ul class="sub-menu2 m-sub"/>');
+                }
+            }
+            if (t3.charAt(0) === '_') {
+                i3.text(t3.replace('_', ''));
+                i3.parent().appendTo(l2.children('.sub-menu2'));
+            }
+        }
+        $('#main-menu ul li ul').parent('li').addClass('has-sub');
+        $('#main-menu .widget').addClass('show-menu');
+    });
+
+    $('#main-menu-nav').clone().appendTo('.mobile-menu');
+    $('.mobile-menu .has-sub').append('<div class="submenu-toggle"/>');
+    $('.mobile-menu ul > li a').each(function() {
+        var $this = $(this),
+            text = $this.attr('href').trim(),
+            type = text.toLowerCase(),
+            map = text.split('/'),
+            label = map[0];
+        if (type.match('mega-menu')) {
+            $this.attr('href', '/search/label/' + label + '?&max-results=' + postPerPage);
+        }
+    });
+    $('.mobile-menu-toggle').on('click', function() {
+        $('body').toggleClass('nav-active');
+    });
+    $('.mobile-menu ul li .submenu-toggle').on('click', function($this) {
+        if ($(this).parent().hasClass('has-sub')) {
+            $this.preventDefault();
+            if (!$(this).parent().hasClass('show')) {
+                $(this).parent().addClass('show').children('.m-sub').slideToggle(170);
+            } else {
+                $(this).parent().removeClass('show').find('> .m-sub').slideToggle(170);
+            }
+        }
+    });
+    $('.show-search').on('click', function() {
+        $('#nav-search, .mobile-search-form').fadeIn(250).find('input').focus();
+    });
+    $('.hide-search').on('click', function() {
+        $('#nav-search, .mobile-search-form').fadeOut(250).find('input').blur();
+    });    
+  </script> 
+  </body>
+</html>

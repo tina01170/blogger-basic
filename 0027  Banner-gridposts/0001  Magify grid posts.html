@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Magify grid posts</title>
+   
+    <style>
+      #featured-wrapper{position:relative;float:left;width:100%;margin:0}
+      #featured-wrapper .container{margin:0 auto}
+      #featured .widget, #featured .widget.HTML .widget-content,#featured .widget > .widget-title{display:none}
+      #featured .widget.HTML{display:block}
+      #featured .widget.HTML.show-ify .widget-content{display:block}
+      #featured .widget{position:relative;overflow:hidden;background-color:$(widget.bg);height:402px;padding:20px;margin:30px 0 0;border:1px solid $(widget.border.color)}
+      .nb-style #featured .widget{border:0}
+      #featured .widget-content{position:relative;  overflow:hidden;  height:402px;  margin:0}
+      #featured .widget-content .no-posts{text-align:center;line-height:402px;padding:0}
+
+      .featured-posts{position:relative;height:402px;margin:0 -1px}
+      .featured-item{position:relative;float:right;width:25%;height:200px;overflow:hidden;box-sizing:border-box;padding:0 1px;margin:0}
+      .rtl .featured-item{float:left}
+      .featured-item.item-0{float:left;width:50%;height:402px}
+      .rtl .featured-item.item-0{float:right}
+      .featured-item.item-1{width:50%;margin:0 0 2px}
+
+      .featured-item-inner{position:relative;float:left;width:100%;height:100%;overflow:hidden;display:block;z-index:10}
+      .featured-item .entry-image-link{float:left;position:relative;width:100%;height:100%;/*一定要寫*/overflow:hidden;display:block;z-index:5;margin:0}
+      .featured-item .entry-category{top:20px;left:20px}
+      .rtl .featured-item .entry-category{left:unset;right:20px}
+      .featured-item .entry-info{padding:25px 20px 20px}
+      .featured-item .entry-title{font-size:14px;font-weight:700;display:block;line-height:1.4em; margin:0;   text-shadow:0 1px 2px rgba(0,0,0,0.5)}
+
+      .title-oswald .featured-item .entry-title{font-weight:500}
+      .featured-item.item-0 .entry-title{font-size:23px}
+      .featured-item.item-1 .entry-title{font-size:19px}
+      .featured-item .entry-meta{margin:7px 0 0}
+
+      @media screen and (max-width: 680px) {
+      .featured-item{width:50%;height:180px;margin:2px 0 0}
+      .featured-item.item-0{width:100%;height:200px;margin:0}
+      .featured-item.item-1{width:100%;height:180px;margin:2px 0 0}
+      }
+      @media screen and (max-width: 460px) {
+      .featured-item{width:100%}
+      .featured-item.item-0 .entry-title{font-size:20px}
+      .featured-item.item-1 .entry-title{font-size:14px}
+      .featured-item.item-1 .entry-author{display:none}
+      }
+      @media screen and (max-width: 360px) {
+      .featured-item,.featured-item.item-1{height:140px}
+      .featured-item.item-0,.block-posts-1 .block-inner,.column-inner{height:180px}
+      .featured-item.item-0 .entry-title{font-size:16px}
+      .featured-item .entry-category{display:none}
+      .featured-item.item-0 .entry-category{display:inline-block}
+      }
+
+    </style>
+    <script>
+      if (type.match('hot')) {  // add <div class="hot-item-inner"></div>
+        content += '<li class="hot-item"><div class="hot-item-inner">' + image + '<div class="post-info">'+ tag +'<h3 class="hot-title"><a href="' + link + '">' + title + '</a></h3>'+ date +'</div></div></li>';
+      } 
+    </script>
+
+    <style>
+      
+#featured-wrapper{position:relative;float:left;width:100%;margin:0}
+#featured-wrapper .container{margin:0 auto}
+#featured .widget,#featured .widget.HTML .widget-content,
+#featured .widget > .widget-title{display:none}
+#featured .widget.HTML{display:block}
+#featured .widget.HTML.show-ify .widget-content{display:block}
+
+#featured .widget{position:relative;overflow:hidden;background-color:$(widget.bg);height:402px;padding:20px;margin:30px 0 0;border:1px solid $(widget.border.color)}
+.nb-style #featured .widget{border:0}
+#featured .widget-content{position:relative;overflow:hidden;height:402px;margin:0}
+#featured .widget-content .no-posts{text-align:center;line-height:402px;padding:0}
+.featured-posts{position:relative;height:402px;margin:0 -1px}
+.featured-item{position:relative;float:right;width:25%;height:200px;overflow:hidden;box-sizing:border-box;padding:0 1px;margin:0}
+.rtl .featured-item{float:left}
+.featured-item.item-0{float:left;width:50%;height:402px}
+.rtl .featured-item.item-0{float:right}
+.featured-item.item-1{width:50%;margin:0 0 2px}
+.featured-item-inner{position:relative;float:left;width:100%;height:100%;overflow:hidden;display:block;z-index:10}
+.featured-item .entry-image-link{float:left;position:relative;width:100%;height:100%;overflow:hidden;display:block;z-index:5;margin:0}
+.featured-item .entry-category{top:20px;left:20px}
+.rtl .featured-item .entry-category{left:unset;right:20px}
+.featured-item .entry-info{padding:25px 20px 20px}
+.featured-item .entry-title{font-size:14px;font-weight:700;display:block;line-height:1.4em;margin:0;text-shadow:0 1px 2px rgba(0,0,0,0.5)}
+.title-oswald .featured-item .entry-title{font-weight:500}
+.featured-item.item-0 .entry-title{font-size:23px}
+.featured-item.item-1 .entry-title{font-size:19px}
+.featured-item .entry-meta{margin:7px 0 0}
+
+@media screen and (max-width: 680px) {
+#featured .widget,#featured .widget-content,.featured-posts{height:auto}
+#featured .widget-content .loader{height:200px}
+.featured-item{width:50%;height:180px;margin:2px 0 0}
+.featured-item.item-0{width:100%;height:200px;margin:0}
+.featured-item.item-1{width:100%;height:180px;margin:2px 0 0}
+}
+@media screen and (max-width: 460px) {
+.featured-item{width:100%}
+.featured-item.item-0 .entry-title{font-size:20px}
+.featured-item.item-1 .entry-title{font-size:14px}
+.featured-item.item-1 .entry-author{display:none}
+}
+@media screen and (max-width: 360px) {
+.featured-item,.featured-item.item-1{height:140px}
+.featured-item.item-0,.block-posts-1 .block-inner,.column-inner{height:180px}
+.featured-item.item-0 .entry-title{font-size:16px}
+.featured-item .entry-category{display:none}
+.featured-item.item-0 .entry-category{display:inline-block}
+}
+    </style>
+  </head>
+  <body>
+    
+
+    
+   
+  </body>
+</html>

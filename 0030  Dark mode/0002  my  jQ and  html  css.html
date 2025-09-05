@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+:root {
+  --title-color:$(title.color);
+  --text-color:$(text.color);  
+  --buttom-hover-color:$(buttom.hover.color);
+  --bg-color: $(body.background.color);  
+  --theme-text-color:$(theme.text.color);  
+  --text-color:$(main.color);         
+}
+
+.dark {
+  --title-color:$(dark.title.color);
+  --text-color:$(dark.text.color);
+  --buttom-hover-color:$(dark.buttom.hover.color);
+  --bg-color:$(dark.bg.color);
+}
+/* dark mode */
+.header-menu {  position:relative;}
+
+.slider-dark {
+    position:absolute;
+top:17px;
+right:45px;
+    width: 24px;
+    height: 24px;
+}
+
+.slider-dark .fa-moon,
+.slider-dark .fa-sun {
+    width: 22px;
+    height: 22px;
+font-size:22px;
+position:absolute;
+top:0;
+left:0;
+color:var(--title-color);
+cursor: pointer;
+}
+
+.slider-dark .sun {
+   display: none;
+}
+
+    </style>
+  </head>
+  <body>
+
+    <div class='slider-dark'>
+      <a class='moon'><i class='fas fa-moon'/></a>
+      <a class='sun'><i class='fas fa-sun'/></a>
+    </div>
+  
+    <script>
+      /*dark mode*/
+      $('.slider-dark').click(function(){
+        var element = document.body;
+        element.classList.toggle("dark"); 
+        $('.sun').toggle("active");
+        $('.moon').toggle("active");        
+      });
+
+    </script>
+
+    
+   
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+      .banner .HTML .widget-content { display:none; }
+      .banner .show-slider .widget-content {display:block!important; overflow:hidden;}
+      
+      
+      .loader{ position:relative; height:180px; overflow:hidden; display:block }
+      .loader:after{ content:''; position:absolute; top:50%; left:50%; width:30px; height:30px; margin:-16px 0 0 -16px; border:3px solid #ddd; border-right-color:#84a8c1; border-radius:100%; animation:spinner .8s infinite linear; transform-origin:center }
+      @-webkit-keyframes spinner {
+        0% { -webkit-transform:rotate(0deg); transform:rotate(0deg) }
+        to { -webkit-transform:rotate(1turn); transform:rotate(1turn) }
+      }
+      @keyframes spinner {
+        0%{ -webkit-transform:rotate(0deg); transform:rotate(0deg) }
+        to{ -webkit-transform:rotate(1turn); transform:rotate(1turn) }
+      }
+
+    </style>
+  </head>
+  <body>
+    <script>
+    $.ajax({
+        beforeSend:function() {
+          if (type.match('hot')) {
+            $this.html('<div class="loader"/>').parent().addClass('show-slider');
+          }
+        }
+    })
+    </script>
+    
+
+    
+   
+  </body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+    <style>
+
+    /*menu start*/
+
+    #main-menu h3 { display:none; }
+    .header-menu{ position:relative;width:100%;height:60px;z-index:15; margin:0 0 50px; border-top:1px solid #ccc; border-bottom:1px solid #ccc; }
+    .header-menu .container{ position:relative; margin:0 auto; padding:0; }
+    #main-menu .widget { display:none; }
+    #main-menu .show-menu{ display:block; }
+
+    @media screen and (min-width: 991px) { 
+        .mobile-menu{ display:none; }
+        #main-menu{  position:relative; height:60px; z-index:20 }
+        #main-menu ul > li { float:left; position:relative; margin:0; padding:0; transition:background .17s ease; }
+
+        #main-menu ul > li > a{ position:relative; color:$(title.color); font-size:20px; font-weight:600; line-height:65px; display:inline-block; text-decoration:none; margin:0; padding:0 15px; font-family:'Roboto',sans-serif; transition:color .4s ease; /*text-transform:uppercase;*/ }
+        #main-menu ul#main-menu-nav > li:first-child > a{ padding:0 13px 0 0; }
+
+        #main-menu ul > li > ul { position:absolute; float:left; left:0;top:55px;width:200px;background-color:#fcfcfc;     z-index:999; margin:0; padding:0; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; visibility:hidden; opacity:0;  }
+
+        #main-menu ul > li > ul > li > ul{ position:absolute; float:left; top:0; left:100%;  margin:0; }
+        #main-menu ul > li > ul > li { display:block; float:none; position:relative; transition:background .17s ease; }
+
+        #main-menu ul > li > ul > li a { display:block; height:40px; font-size:16px; font-weight:600; line-height:40px; box-sizing:border-box; margin:0; padding:0 15px; font-family:'Roboto',sans-serif; transition:color .4s ease;  }
+
+        #main-menu ul > li.has-sub > a:after{ content:'\f078'; float:right; font-family:'Font Awesome 5 Free';font-weight:900; margin:0 0 0 8px; font-size:16px; }
+
+        #main-menu ul > li > ul > li.has-sub > a:after{content:'\f105'; float:right; margin:0 font-size:16px; font-weight:600; }
+        #main-menu ul li a:hover{color:$(main.color) }
+        #main-menu ul > li:hover > ul, #main-menu ul > li > ul > li:hover > ul{ visibility:visible; opacity:1 }
+        #main-menu ul ul{ transition:all .25s ease; }
+    }
+
+    .show-search, .hide-search { position:absolute;top:0; right:0; display:block; background-color:#fff; color:$(menu.color); font-size:19px; text-align:center; cursor:pointer; z-index:20; height:60px; line-height:60px;}
+    .show-search:before{content:"\f002";font-family:'Font Awesome 5 Free';font-weight:900}
+    .hide-search:before{content:"\f00d";font-family:'Font Awesome 5 Free';font-weight:900}
+
+    #nav-search {position:absolute; left:0; top:0; width:100%; height:55px; z-index:99; background-color:#ffffff; box-sizing:border-box; padding:0; display:none; }
+    #nav-search .search-form { width:100%; height:60px; background-color:rgba(0,0,0,0); line-height:55px; overflow:hidden; padding:0; } 
+    #nav-search .search-input{ width:100%; height:55px; font-family:inherit; color:#000000; margin:0; padding:0 58px 0 0; background-color:rgba(0,0,0,0); font-size:18px; font-weight:400; box-sizing:border-box; border:0; }
+    #nav-search .search-input:focus {color:#203656; outline:none; }
+
+    @media screen and (max-width: 991px) { 
+
+      #main-menu { display:none; }
+
+      .header-menu { position:relative; }
+
+      .menu-toggle{ position:absolute;top:9px;left:0;display:block; width:45px;height:45px; margin:0; padding:0; border:none; cursor:pointer;}
+
+      .menu-toggle::before {content: '';position: absolute;height: 2px;left: 2px;right: 2px;width: 36px;background: #000000;top: 0;bottom: 0; margin: auto; box-shadow: 0 8px 0 #000000, 0 -8px 0 #000000; }
+
+      .mobile-menu > ul { position:absolute;top:62px;left:0;width:100%; background-color:#fff; margin:0; padding:20px 10px 20px 30px; box-sizing:border-box; z-index:999; box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; visibility:hidden; opacity:0;  }
+      .mobile-menu ul li a { color:$(title.color); font-family:'Roboto',sans-serif; padding:0;  margin:0; transition:all .17s ease; /*text-transform:uppercase; */ }
+      .mobile-menu ul li a:hover { color:$(main.color) }
+
+      .mobile-menu ul > li { position:relative; display:block; overflow:hidden; width:100%; font-size:18px; font-weight:500; line-height:36px;  margin:0; padding:0; text-transform:uppercase; /*float:left;*/ }
+
+      .mobile-menu .sub-menu { display:none; padding:0; }
+      .mobile-menu ul li.has-sub .submenu-toggle{position:absolute;top:0;right:0;color:$(title.color);cursor:pointer}
+      .mobile-menu ul li.has-sub .submenu-toggle:after { content:'\f054';font-family:'Font Awesome 5 Free';font-weight:900;float:right;width:40px;font-size:12px;text-align:center;transition:all .17s ease }
+
+      .mobile-menu ul li.has-sub.show > .submenu-toggle:after{ transform:rotate(90deg) }
+
+      .mobile-menu > ul > li > ul, .mobile-menu > ul > li > ul > li > ul { margin:0; padding:0 0 0 10px; }
+      .mobile-menu > ul > li > ul > li a { padding:0 0 0 15px; }
+      .mobile-menu > ul > li > ul > li > ul > li > a { padding:0 0 0 30px;}
+
+      .nav-active .mobile-menu > ul { visibility:visible; opacity:1 }
+
+    }
+
+
+
+    </style>
+  </head>
+  <body>
+    <SCript>
+      $('.LinkList').each(function() {
+          var itemA = $(this).find('ul > li').children('a');
+          var list = itemA.length;
+          for (var i = 0; i < list; i++) {
+                var i1 = itemA.eq(i), t1 = i1.text();
+                if (t1.charAt(0) !== '_') { 
+                    var i2 = itemA.eq(i + 1);
+                    var t2 = i2.text();
+                    if (t2.charAt(0) === '_') {
+                        var l1 = i1.parent();
+                        //console.log(l1);
+                        l1.append('<ul class="sub-menu m-sub"/>');
+                    }
+                }
+                if (t1.charAt(0) === '_') {
+                    i1.text(t1.replace('_', ''));
+                    i1.parent().appendTo(l1.children('.sub-menu'));
+            }
+          }
+          for (var i = 0; i < list; i++) {
+            var i3 = itemA.eq(i),t3 = i3.text();
+            if (t3.charAt(0) !== '_') {
+                    var i4 = itemA.eq(i + 1);
+                    var t4 = i4.text();
+              if (t4.charAt(0) === '_') {
+                var l2 = i3.parent();
+                        l2.append('<ul class="sub-menu2 m-sub"/>');
+                    }
+            }
+            if (t3.charAt(0) === '_') {
+                    i3.text(t3.replace('_', ''));
+                    i3.parent().appendTo(l2.children('.sub-menu2'));
+                }
+          }
+          $('.LinkList ul li ul').parent('li').addClass('has-sub');
+          $('#main-menu .widget').addClass('show-menu');
+      });
+
+      $('#main-menu-nav').clone().appendTo('.mobile-menu');
+      $('.mobile-menu li.has-sub').append('<div class="submenu-toggle"/>');
+      $('.menu-toggle').on('click', function() {
+        $('body').toggleClass('nav-active');
+      });
+        
+      $('.mobile-menu ul li .submenu-toggle').on('click',function($this){
+        console.log($this)
+          if($(this).parent().hasClass('has-sub')){
+            $this.preventDefault();
+            if(!$(this).parent().hasClass('show')){
+              $(this).parent().addClass('show').children('.m-sub').slideToggle(250);
+            }else{
+              $(this).parent().removeClass('show').find('>.m-sub').slideToggle(250);
+            }
+          }
+      })
+
+      $('.show-search').on('click', function() {
+        $('#nav-search, .mobile-search-form').fadeIn(250).find('input').focus();
+      });
+      $('.hide-search').on('click', function() {
+        $('#nav-search, .mobile-search-form').fadeOut(250).find('input').blur();
+      });
+    </SCript>
+    
+
+    
+   
+  </body>
+</html>

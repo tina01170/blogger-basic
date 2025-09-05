@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>mega-menu jQuery fix</title>
+    <style>
+    </style>
+  </head>
+  <body>
+    <!--mega-menu jQuery 要在 menu 的jQuery 前面 -->
+  <script>
+    // 手機版連結
+    $('.mobile-menu ul > li a').each(function() {
+      var t = $(this), a = t.attr('href').trim(),  type = a.toLowerCase(), m = a.split('/'),  label = m[1]; 
+      //var count = 4;
+        console.log(t,a, type,label)
+      if (type.match('megatabs')) {
+        t.attr('href', '/search/' );
+      }
+      else if (type.match('megamenu')) {
+        if (label.match('recent')) {
+          t.attr('href', '/search/' );
+        } else {
+            t.attr('href', '/search/label/' + label + '?&max-results=200');
+        }
+        }
+    });   
+
+    // mega-menu of recent and label
+    $('#main-menu ul > li').each(function() {
+        var t = $(this), a = t.find('a'), af = a.attr('href'), e = af.toLowerCase(),type = e.split("/")[0],label=e.split("/")[1];
+        //console.log(t,a, af,e,type,label)
+        if ( e.match('megatabs')){
+            t.addClass('has-sub mega-menu').append('<div class="tab-mega-wrap m-sub">'+e+'</div>')
+        a.attr('href', '/search/' );
+        } else if( e.match('megamenu')){
+          t.addClass('has-sub mega-menu mobile-none').append('<div class="mega-wrap">'+e+'</div>')
+        if (label.match('recent')) {
+          a.attr('href', '/search/' );
+        } else {
+            a.attr('href', '/search/label/' + label + '?&max-results=200');
+        }
+        }
+    });
+
+    $('.mega-wrap').each(function() {
+      var t = $(this), e=t.text();
+      var type = e.split("/")[0],label=e.split("/")[1]
+      var count = 4;
+        //console.log(t, e,count, label);
+        t.text(' ');
+        Posts(t, e, count, label);
+    })    
+
+
+    $('.tab-mega-wrap').each(function() {
+        var t = $(this), e=t.text();
+        var type = e.split("/")[0], label=e.split("/")[1];
+        var count = 4;
+          //console.log(t, e,count, label);
+        if(label!=undefined){
+          label = label.split(",")
+          //console.log(label ,label.length);
+        }
+          megaTabs(t,type,label,count)
+      })
+
+      function megaTabs(t,type,label,count) {
+        if(type=='megatabs'){
+          if(label!=undefined){
+            var ln= label.length; 
+            var code = '<ul class="complex-tabs">';
+            for(var i=0;i<ln;i++){
+              var tag = label[i]; 
+              if(tag){
+                        code+='<div class="mega-tab" tab-id="'+tag+'"/>'
+                      }  
+            }
+              code+='</ul>'; //console.log(code)
+            t.html(code);
+            //t.find('a:first').attr('href','javascript:;');
+            $('.mega-tab').each(function(){
+              var $this=$(this),label=$this.attr('tab-id'); 
+              //console.log($this,type, count ,label);
+              Posts($this, type, count, label)
+            });
+                  $('.complex-tabs').prepend('<ul class="select-tab"></ul>');
+                  $('.select-tab').each(function() {
+              var t=$(this);
+                    for(var i=0;i<ln;i++){
+                        var tag = label[i];
+                        //t.append('<li><a>'+ tag +'</a></li>'); 
+                        t.append('<li><a href="/search/label/'+tag+'?&amp;max-results=4">'+ tag +'</a></li>'); 
+                        //t.append('<li><a href="/search/label/'+tag+'">'+ tag +'</a></li>');
+                    }
+                  })
+          } else {
+                li.addClass('mega-tabs').append('<ul class="no-posts">No Posts Found</ul>')
+              }
+          
+        }
+      }
+      $(".mega-tab:first").show();
+      $(".select-tab li:first-child").addClass("active");
+      var $tent= $('.mega-tab');
+      var curIndex = 0;
+      $(".select-tab li").click(function(){
+        index = $(this).index();
+          $(".select-tab li").removeClass('active');
+          $(this).addClass('active');
+        $tent[curIndex].style.display = 'none';
+        curIndex = $(this).index();
+        $tent[curIndex].style.display = 'block';
+      });  
+      
+      
+      
+  </script>  
+   
+  </body>
+</html>

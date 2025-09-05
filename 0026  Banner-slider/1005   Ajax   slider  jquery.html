@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js' type='text/javascript'></script> 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'></script> 
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css' rel='stylesheet'></link>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css' rel='stylesheet'></link>
+    <style>
+
+
+
+    </style>
+  </head>
+  <body>
+   
+
+    <ul id="slider-b"></ul>
+
+    <script>
+    $(function() {  
+          $("#slider-b").addClass("owl-carousel owl-theme");
+          var  count ="5";  //文章篇數   
+
+          $.ajax({
+              url: '/feeds/posts/default?alt=json-in-script&max-results='+ count,
+              type: 'get',
+              dataType: 'jsonp',
+              success: xson,  
+          }); 
+
+          function xson(data) {
+            var tent = data.feed.entry;
+            var temp='';
+            if (!tent) { $('.owl-carousel').html('<span>沒文章 下載</span>'); return(0);}    
+            for(var i=0;i<tent.length;i++) {        
+                var recenthumb;
+                try {
+                  recenthumb = tent.media$thumbnail.url;
+                } catch (error) {
+                  s = tent[i].content.$t;
+                  a = s.indexOf("<img");
+                  b = s.indexOf("src=\"", a);
+                  c = s.indexOf("\"", b + 5);
+                  d = s.substr(b + 5, c - b - 5);
+                  if ((a != -1) && (b != -1) && (c != -1) && (d != "")) {
+                      recenthumb = d;
+                  } else recenthumb = 'http://2.bp.blogspot.com/-C3Mo0iKKiSw/VGdK808U7rI/AAAAAAAAAmI/W7Ae_dsEVAE/s1600/no-thumb.png';
+                }
+                var postImageUrl = recenthumb;
+                var posterImage = postImageUrl ? '<img src="' + postImageUrl + '" alt="' + tent[i].title.$t + '">' : '';
+                temp += '<li class="item">';
+                temp += posterImage; 
+                temp += '<div class="info"><a class="slider-title" href="' + tent[i].link[4].href + '">' +  tent[i].title.$t + '</a><span>';
+                temp += tent[i].published.$t.replace(/[T].*/,"")+'</span></div></li>';			
+            }
+            $('#slider-b').append(temp);
+              //code.append(temp);
+
+            $(".owl-carousel").owlCarousel({
+                    loop: true, // 循環輪播
+                    margin: 25, // 與右邊圖片的距離
+                    nav: true, // 導航文字
+                    dots:false,
+                    autoplay: false, // 自動輪播
+                    autoplayTimeout: 1000, // 切換時間
+                    autoplayHoverPause: true, // 滑鼠經過時暫停
+					
+                    responsive: {
+                      0: {
+                          items: 1 // 螢幕大小為 0~600 顯示 1 個項目
+                      },
+                      768: {
+                          items: 2 // 螢幕大小為 600~1000 顯示 3 個項目
+                      },
+                      992: {
+                          items: 3 // 螢幕大小為 1000 以上 顯示 5 個項目
+                      }
+                    }
+            })
+          } 
+    });
+    </script>
+   
+  </body>
+</html>

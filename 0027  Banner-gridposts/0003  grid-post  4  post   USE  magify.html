@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>banner is recent grid</title>
+   
+    <style>
+      /*  user magify */
+      /* banner is recent grid */
+/* banner recent and popular posts */
+
+.banner { position:relative; width:100%; margin:0 auto 20px; padding:0 20px; box-sizing:border-box; z-index:1; }
+.banner .HTML > h3, .banner .PopularPosts > h3 { display:none; } 
+
+.banner .HTML .widget-content { display:none; }
+.banner .show-hot .widget-content {display:block!important}
+.loader{position:relative;height:180px;overflow:hidden;display:block}
+.loader:after{content:'';position:absolute;top:50%;left:50%;width:26px;height:26px;margin:-16px 0 0 -16px;border:3px solid #ddd;border-right-color:$(main.color);border-radius:100%;animation:spinner .8s infinite linear;transform-origin:center}
+@-webkit-keyframes spinner {
+0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
+to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}
+}
+@keyframes spinner {
+0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
+to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}
+}
+.banner .widget { position:relative; overflow:hidden; padding:30px 0 40px; height:410px; /*margin:30px 0 0;*/  }
+.banner .widget-content { position:relative;overflow:hidden; margin:0; height:410px; }
+
+.hot-posts, .banner .PopularPosts { position:relative;height:402px; margin:0 -1px; }
+.hot-item, .banner .PopularPosts .post  { position:relative; float:right; width:25%; height:200px;overflow:hidden; box-sizing:border-box; padding:0 1px;margin:0}
+
+/*.rtl .hot-item{float:left}*/
+
+.hot-item:nth-child(1), .banner .PopularPosts .post:nth-child(1) { float:left;width:50%; height:410px}
+.hot-item:nth-child(2), .banner .PopularPosts .post:nth-child(2) { width:50%; margin:0 0 10px; }
+
+.hot-item-inner { position:relative; width:100%; height:100%; overflow:hidden; display:block;z-index:10;   }
+.hot-item .post-image-link, .banner .PopularPosts .post .post-image-link { position:relative; overflow:hidden; width:100%; height:100%; /*一定要寫*/ display:block; z-index:5; margin:0; }
+
+.hot-item .post-image-link:before, .banner .PopularPosts .post .post-image-link:before { content:''; position:absolute; left:0; right:0; bottom:0; height:47%;  background-image: linear-gradient(to bottom,transparent,rgba(0,0,0,0.8)); z-index: 2; opacity: 1; margin: 0; }
+.hot-item .post-image-link img, .banner .PopularPosts .post .post-image-link img { position:relative; display: block; width:100%; height:100%; vertical-align:middle; object-fit: cover;  z-index: 1; transition: opacity .30s ease,transform .30s ease; }
+
+.hot-item .post-info, .banner .PopularPosts .post .post-info {position: absolute;left:0; bottom:0; z-index:15; width: 100%; box-sizing:border-box; padding:10px 15px 20px;    }
+.hot-item:nth-child(1) .hot-title, .banner .PopularPosts .post:nth-child(1) .post-title { font-size:20px; }
+.hot-item:nth-child(2) .hot-title, .banner .PopularPosts .post:nth-child(2) .post-title  { font-size:18px; }
+.hot-item .post-info .hot-title a, .banner .PopularPosts .post-title a,.hot-item .post-info .post-date, .banner .PopularPosts .post-meta .post-date, .banner .PopularPosts post-tag a { font-size:16px; color:#fff;}
+
+.hot-item .post-info .post-tag, .banner .PopularPosts .post .post-tag { display:block; font-size: 16px; text-transform: capitalize; margin:8px 0 15px; color:#fff; background:$(main.color); width: fit-content; padding:4px 8px; }
+.banner .PopularPosts .post .post-tag a { font-size:16px; color:#fff; }
+.hot-item .hot-title, .banner .PopularPosts .post-title {  font-size:14px; font-weight:400; line-height:1.5em; margin:0 0 8px; display:block;  }
+
+/*
+@media screen and (max-width: 680px) {  .banner { display:none; }  }*/
+
+@media screen and (max-width: 680px) {
+  .banner .widget, .banner .widget-content {height:auto; }
+  .hot-item, .banner .PopularPosts .post { width:50%; height:180px; margin:0 0 10px; }
+  .hot-item:nth-child(1), .banner .PopularPosts .post:nth-child(1) {width:100%; height:200px; margin:0 0 10ox; }
+  .hot-item:nth-child(2), .banner .PopularPosts .post:nth-child(2) {width:100%; height:180px; margin:0 0 10px; }
+}
+@media screen and (max-width: 460px) {
+  .hot-item, .banner .PopularPosts .post {width:100%; }
+  .hot-item:nth-child(1) .entry-title, .banner .PopularPosts .post:nth-child(1) .post-title {font-size:20px; }
+  .hot-item:nth-child(2) .entry-title, .banner .PopularPosts .post:nth-child(2) .post-title  {font-size:14px; }
+}
+@media screen and (max-width: 360px) {
+	.hot-item .post-info .post-tag, .banner .PopularPosts post-tag a { display:block; font-size:14px; }
+}
+
+    </style>
+  </head>
+  <body>
+    
+
+    
+   
+  </body>
+</html>

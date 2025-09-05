@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>top main  featured-post</title>
+    <style>
+/* featured */
+
+.featured .FeaturedPost > h3 {display:none;}
+
+.featured .FeaturedPost .post {margin:0 0 50px;border-bottom:1px solid #ccc;}
+.featured .FeaturedPost .post .post-content {padding:0 0 50px;}
+.featured .FeaturedPost .post .post-content .post-pic {width: 100%;display: block;}
+.featured .FeaturedPost .post .post-content .post-pic .post-image-link {display:block; position:relative;overflow:hidden;width:100%;height:360px;margin:0;}     
+.featured .FeaturedPost .post .post-content .post-pic img {width: 100%;object-fit: cover;}
+.featured .FeaturedPost .post .post-content .post-text {}
+.featured .FeaturedPost .post .post-content .post-text .post-title {margin:20px 0;color:$(title.color);}
+.featured .FeaturedPost .post .post-content .post-text .post-title a {color: $(title.color);transition: color 0.17s ease;}
+.featured .FeaturedPost .post .post-content .post-text .post-title a:hover {color: $(main.color);}
+.featured .FeaturedPost .post .post-content .post-text .post-meta {margin:0 0 15px;}
+.featured .FeaturedPost .post .post-content .post-text .post-meta span {margin:0 5px 0 0;}
+
+
+    </style>
+  </head>
+  <body>
+    <b:if cond='data:view.isHomepage'>
+      <b:section class='featured' id='featured' maxwidgets='1' name='Featured' showaddelement='yes'/>
+    </b:if>  
+    
+
+    
+   
+  </body>
+</html>
