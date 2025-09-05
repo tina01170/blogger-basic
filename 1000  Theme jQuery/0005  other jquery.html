@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Other</title>
+<script>
+/*! Table of Contents | v0.4.0 - https://github.com/ndabas/toc */
+!function(t){"use strict";var n=function(n){return this.each(function(){var e,i,a=t(this),o=a.data(),c=[a],r=this.tagName,d=0;e=t.extend({content:"body",headings:"h1,h2,h3"},{content:o.toc||void 0,headings:o.tocHeadings||void 0},n),i=e.headings.split(","),t(e.content).find(e.headings).attr("id",function(n,e){return e||function(t){0===t.length&&(t="?");for(var n=t.replace(/\s+/g,"_"),e="",i=1;null!==document.getElementById(n+e);)e="_"+i++;return n+e}(t(this).text())}).each(function(){var n=t(this),e=t.map(i,function(t,e){return n.is(t)?e:void 0})[0];if(e>d){var a=c[0].children("li:last")[0];a&&c.unshift(t("<"+r+"/>").appendTo(a))}else c.splice(0,Math.min(d-e,Math.max(c.length-1,0)));t("<li/>").appendTo(c[0]).append(t("<a/>").text(n.text()).attr("href","#"+n.attr("id"))),d=e})})},e=t.fn.toc;t.fn.toc=n,t.fn.toc.noConflict=function(){return t.fn.toc=e,this},t(function(){n.call(t("[data-toc]"))})}(window.jQuery);  
+</script>
+  </head>
+  <body>
+  <script>
+$('.post-body strike').each(function() { 
+	var $this = $(this);
+	var type = $this.text();
+	if (type.match('left-sidebar')) {
+          $this.replaceWith("<style>.item #content-wrapper { flex-direction: row-reverse}</style>");
+    }
+    if (type.match('right-sidebar')) {
+         $this.replaceWith("<style>.item #content-wrapper { flex-direction: row}</style>");
+    }
+    if (type.match('full-width')) {
+         $this.replaceWith("<style>.item #main-wrapper{width:100%} .item #sidebar-wrapper{display:none}</style>");
+    }
+})    
+
+$(".post-body a").each(function() {  // if a.href is button
+	var t = $(this)
+	var e = t.text().trim()
+	var a = e.split("/"),s = a[0], i = a[1], r = a.pop();
+ 	e.match("button") && (t.addClass("button").text(s), "button" != i && t.addClass(i), "button" != r && t.addClass("colored-button").css({ "background-color": r }))
+})
+
+$(".post-body blockquote").each(function() {
+	var e=$(this),
+        t=e.text().toLowerCase().trim(),
+        h=e.html();
+    if(t.match("(alert-success)")){
+    	const t = h.replace("(alert-success)","");
+        e.replaceWith('<div class="alert-message alert-success">'+ t +"</div>")
+    }
+	if(t.match("(alert-info)")){
+    	const t = h.replace("(alert-success)","");
+        e.replaceWith('<div class="alert-message alert-info">'+ t +"</div>")
+    }
+	if(t.match("(alert-warning)")){
+    	const t = h.replace("(alert-success)","");
+        e.replaceWith('<div class="alert-message alert-warning">'+ t +"</div>")
+    }
+	if(t.match("(alert-error)")){
+    	const t = h.replace("(alert-success)","");
+        e.replaceWith('<div class="alert-message alert-error">'+ t +"</div>")
+    }
+	if(t.match("(codebox)")){
+    	const t = h.replace("(codebox)","");
+        e.replaceWith('<pre class="code-box">' + t + "</pre>")
+    }
+	
+	if(t.match("(contact-form)")){
+    	//const t = h.replace("(contact-form)","");
+        e.replaceWith('<div class="contact-form"/>');	
+    }$(".contact-form").append($("#ContactForm1"))
+	/*
+	t.match("contact-form") && (e.replaceWith('<div class="contact-form"/>'), 
+    $(".contact-form").append($("#ContactForm1")))*/
+	
+})
+
+// catalog
+$(".post-body b").each(function() {
+	var e = $(this),
+		t = e.text(),
+		a = t.toLowerCase().trim();  console.log(t,a);
+		if (a.match('catalog')) {
+			e.replaceWith('<div class="anchor-wrap"><div class="anchor-top"><span class="anchor-title">' + t + '</span><a href="javascript:;" class="tocify-title" role="button" title="' + t + '"><span class="show"></span></a></div><div class="anchor-inner"><ol id="anchor"></ol></div></div>')
+    	}
+		$(".tocify-title").each(function(e) {
+            (e = $(this)).on("click", function() {
+                e.toggleClass("is-expanded"), $("#anchor").slideToggle(500)
+            })
+        }), 
+        $("#anchor").toc({
+            content: ".post-body",
+            headings: "h2,h3,h4"
+        }),
+		$("#anchor li a").each(function(e) {
+            (e = $(this)).click(function() {
+                return $("html,body").animate({
+                    scrollTop: ($(e.attr("href")).offset().top) - 70
+                }, 1000)
+            })
+		})
+})
+  </script>
+    
+
+    
+   
+  </body>
+</html>

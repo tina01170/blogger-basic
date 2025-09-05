@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>my category</title>
+    <style>
+        .anchor-wrap {margin-top:50px; border:1px solid #ccc; padding:15px; width:280px; overflow:hidden;}
+        .anchor-title { font-size:18px;  }
+        .anchor-text { float:right; border:none; background:transparent; font-size:18px; cursor:pointer; }
+        .anchor-wrap .anchor-list  {margin-top:25px; }
+        .anchor-list li a { text-decoration:none; color:$(title.color); }
+        .anchor-list li h2 {padding:0 15px; margin:10px 0; font-size:18px;}
+        .anchor-list li h3 {padding:0 25px; margin:10px 0; font-size:16px;}
+        .anchor-list li h4 {padding:0 35px; margin:10px 0; font-size:14px;}
+    </style>
+    <script>
+    
+   </script>
+  </head>
+  <body>
+    <script>
+    $(".post-body").each(function() {	  
+        var $head = $('.post-body h1,.post-body h2, .post-body h3, .post-body h4');
+        var $wrap =  $('<div class="anchor-wrap"><div class="list-inner"><span class="anchor-title">目錄</span><button class="anchor-text">顯示</button></div>');
+        var $list =  $('<ul class="anchor-list"></ul>');
+        var $item;
+        if ($head .length > 0) { 
+            $head.each(function(index,obj) {
+                $(obj).prepend('<a id="link-' + index + '"></a>');
+                $item =  $('<li></li>');
+                if ($(obj).prop("tagName") == 'H2') {
+                    $item.html('<h2><a href="#link-' + index + '">' + $(obj).text() + '</a></h2>');      
+                  } else if ($(obj).prop("tagName") == 'H3') {
+                      $item.html('<h3><a href="#link-' + index + '">' + $(obj).text() + '</a></h3>');
+                  } else if ($(obj).prop("tagName") == 'H4') {
+                      $item.html('<h4><a href="#link-' + index + '">' + $(obj).text() + '</a></h4>');
+                  }          
+                  $list.append($item);
+              });
+              $wrap.append($list);
+            $('.separator').after($wrap);
+        }          
+        $list.find('a').on('click',function(){
+          varlink_id=$(this).attr('href');
+          var$anchor=$(link_id);
+          if($anchor.length){
+            $('html,body').animate({
+                scrollTop:$anchor.offset().top-70
+            },1000);
+          returnfalse;				
+          } 
+        })
+        $(".anchor-text").each(function(e) {
+        (e = $(this)).on("click", function() {
+            $(".anchor-list").slideToggle(1000);
+        })
+        })
+    })
+</script>
+
+    
+   
+  </body>
+</html>

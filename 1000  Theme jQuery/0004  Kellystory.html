@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+  </head>
+  <body>
+  <script>
+    function l(feed,i){
+      for (var k = 0; k < feed[i].link.length; k++) {
+        if (feed[i].link[k].rel == 'alternate') {
+              link = feed[i].link[k].href;
+              break;
+            }                           
+      }
+      return link;
+    }
+    function t(feed,i){
+      return feed[i].title.$t;
+    }
+    function e(feed, i) {
+      var d = feed[i].published.$t, y = d.substring(0, 4), m = d.substring(5, 7), a = d.substring(8, 10);	
+      var h = monthFormat[parseInt(m, 10) - 1] + "/" + a + ", " + y;
+      return '<span class="post-date">'+ monthFormat[parseInt(m, 10) - 1] + "/" + a + ", " + y +'</span>';	
+    }
+    function p(feed, i) { 
+      if (feed[i].category != undefined) {
+        var tag = feed[i].category[0].term;
+        code = '<span class="post-tag">' + tag + '</span>';
+      } else {
+        code = '';
+      }
+      return code;	
+    }
+    function g(feed,i,title) {
+      var recenthumb;
+        try {
+          recenthumb = feed.media$thumbnail.url;
+          // entry.media$thumbnail.replace(/\/s72\-c\//,'/s400/');
+        } catch (error) {
+          s = feed[i].content.$t;
+          a = s.indexOf("<img");
+          b = s.indexOf("src=\"", a);
+          c = s.indexOf("\"", b + 5);
+          d = s.substr(b + 5, c - b - 5);
+          if ((a != -1) && (b != -1) && (c != -1) && (d != "")) {
+              recenthumb = d;
+          } else recenthumb = 'https://4.bp.blogspot.com/-O3EpVMWcoKw/WxY6-6I4--I/AAAAAAAAB2s/KzC0FqUQtkMdw7VzT6oOR_8vbZO6EJc-ACK4BGAYYCw/w680/nth.png';
+          }
+      var postImageUrl = recenthumb;
+      var posterImage = postImageUrl ? '<a class="post-image-link" href="'+ link +'"><img class="post-thumb" src="' + postImageUrl + '" alt="' + title + '"></a>' : ''; 	
+      return posterImage;
+    }	
+
+    function Posts($this, type, count, label) {
+      //console.log($this, type, count, label);
+        if ( type.match('megatabs') || type.match('megamenu') || type.match('hot') || type.match('list') ||type.match('related')) {
+        var url = '';
+          if (label == 'recent') {
+              url = '/feeds/posts/default?alt=json-in-script&max-results=' + count;
+            } else {
+              url = '/feeds/posts/default/-/' + label + '?alt=json-in-script&max-results=' + count;
+            }
+            $.ajax({
+                    url: url,
+                    type: 'get',
+                    dataType: 'jsonp',
+            beforeSend:function() {
+                        if (type.match('hot')) {
+                            $this.html('<div class="loader"/>').parent().addClass('show-slider');
+                        } else if (type.match('list')) {
+                            $this.html('<div class="loader"/>').parent().addClass('show-list');
+                        }
+              /*
+              if (type.match('megamenu')) {
+                $this.html('<div class="loader"/>').parent().addClass('megamenu');
+                        }*/
+            },
+                    success: function(json) {
+              if (type.match('megatabs')) {
+                            var code = '<ul id="tab-widget">';
+              } else if (type.match('megamenu')) {
+                            var code = '<ul id="mega-widget">';
+              } else if (type.match('hot')) {
+                            var code = '<ul id="slider-wrap" class="owl-carousel owl-theme">';
+                        } else if (type.match('list')) {
+                var code = '<ul class="custom-widget">';
+                        } else if (type.match('related')) {
+                            var code = '<ul class="related-posts">';
+                        }
+              var entry = json.feed.entry;
+                        if (entry != undefined) {
+                for (var i = 0,feed = entry;i < entry.length; i++) {
+                  var link = l(feed,i);
+                                //console.log(link);
+                                var title = t(feed,i);
+                                //console.log(title);
+                                var date = e(feed, i);
+                                //console.log(date);
+                                var	image = g(feed,i,title);
+                                //console.log(image);
+                  var tag = p(feed, i);
+                  //console.log(tag);
+
+                  var content = '';
+                  if (type.match('list')) {                           
+                    content += '<li class="recent-item">' + image + '<div class="post-info"><h3><a href="' + link + '">' + title +'</a></h3>'+ date +'</div></li>';
+                                } else if (type.match('related')) {
+                                    content += '<li class="related-item">' + image + '<div class="post-info"><h3><a href="' + link + '">' + title + '</a></h3>'+ date +'</div></li>';
+                                } else if (type.match('hot')) {
+                                    content += '<li class="slider-item">' + image + '<div class="post-info"><h3><a href="' + link + '">' + title +'</a></h3>'+ date +'</div></li>';
+                                } else if (type.match('megamenu')) {	 
+                    content += '<li class="mega-item"><div class="mega-content">' + image + '<div class="post-info"><h4><a href="' + link + '">' + title +'</a></h4>'+ date +'</div></div></li>';
+                                } else if (type.match('megatabs')) {	 
+                    content += '<li class="tab-item"><div class="mega-content">' + image + '<div class="post-info"><h4><a href="' + link + '">' + title + date +'</a></h4></div></div></li>';
+                                }
+                                code += content;                           
+                }
+                            code += '</ul>';     	
+                        } else {
+                            code = '<ul class="no-posts">No Posts Found</ul>';
+                        } if (type.match('hot')) {
+                            $this.html(code).parent().addClass('show-slider');			
+                $("#slider-wrap").owlCarousel({
+                                loop: true, // 循環輪播
+                                margin:15, // 與右邊圖片的距離
+                                nav: true, // 導航文字
+                                dots:false,
+                                autoplay: false, // 自動輪播
+                                autoplayTimeout: 2000, // 切換時間
+                                autoplayHoverPause: true, // 滑鼠經過時暫停
+                                responsive: {
+                                  0: {
+                                      items: 1 // 螢幕大小為 0~600 顯示 1 個項目
+                                  },
+                                  860: {
+                                      items: 2 // 螢幕大小為 600~1000 顯示 3 個項目
+                                  }
+                                }
+                            })
+            
+                        } else {
+                            $this.html(code);
+                        }
+            }
+            });
+        }
+    }
+    $(window).on('scroll', function() { if ($(this).scrollTop() < 50) { $('.topbutton') .fadeOut(); }
+    else { $('.topbutton') .fadeIn();} 
+    })
+    $(".topbutton").on('click',function() { $('html ,body').animate({scrollTop : 0},"slow"); })
+
+    $('.mobile-menu ul > li a').each(function() {
+          var t = $(this), a = t.attr('href').trim(),  type = a.toLowerCase(), m = a.split('/'),  label = m[1]; 
+            console.log(t,a, type,label)
+          if (type.match('megatabs')) {
+              t.attr('href', '/search/' );
+          }
+          else if (type.match('megamenu')) {
+            if (label.match('recent')) {
+              t.attr('href', '/search/' );
+            } else {
+              t.attr('href', '/search/label/' + label + '?&max-results=200');
+            }
+          }
+    });
+
+    $('#main-menu ul > li').each(function() {
+      var t = $(this), a = t.find('a'), af = a.attr('href'), e = af.toLowerCase(),type = e.split("/")[0],label=e.split("/")[1];
+        //console.log(t,a, af,e,type,label)
+        if ( e.match('megatabs')){
+            t.addClass('has-sub mega-menu').append('<div class="tab-mega-wrap m-sub">'+e+'</div>')
+            a.attr('href', '/search/' );
+        } else if( e.match('megamenu')){
+            t.addClass('has-sub mega-menu mobile-none').append('<div class="mega-wrap">'+e+'</div>')
+            if (label.match('recent')) {
+              a.attr('href', '/search/' );
+            } else {
+                a.attr('href', '/search/label/' + label + '?&max-results=200');
+            }
+        }
+    });
+
+    $('.mega-wrap').each(function() {
+      var t = $(this), e=t.text();
+      var type = e.split("/")[0],label=e.split("/")[1]
+      var count = 4;
+        console.log(t, e,count, label);
+        t.text(' ');
+        Posts(t, e, count, label);
+    })
+
+    $('.tab-mega-wrap').each(function() {
+      var t = $(this), e=t.text();
+      var type = e.split("/")[0], label=e.split("/")[1];
+      var count = 4;
+        console.log(t, e,count, label);
+      if(label!=undefined){
+        label = label.split(",")
+        //console.log(label ,label.length);
+      }
+        megaTabs(t,type,label,count)
+    })
+    function megaTabs(t,type,label,count) {
+      if(type=='megatabs'){
+        if(label!=undefined){
+          var ln= label.length; 
+          var code = '<ul class="complex-tabs">';
+          for(var i=0;i<ln;i++){
+            var tag = label[i]; 
+            if(tag){
+                      code+='<div class="mega-tab" tab-id="'+tag+'"/>'
+                    }  
+          }
+            code+='</ul>'; //console.log(code)
+          t.html(code);
+          //t.find('a:first').attr('href','javascript:;');
+          $('.mega-tab').each(function(){
+            var $this=$(this),label=$this.attr('tab-id'); 
+            //console.log($this,type, count ,label);
+            Posts($this, type, count, label)
+          });
+                $('.complex-tabs').prepend('<ul class="select-tab"></ul>');
+                $('.select-tab').each(function() {
+            var t=$(this);
+                  for(var i=0;i<ln;i++){
+                      var tag = label[i];
+              //t.append('<li><a>'+ tag +'</a></li>'); 
+                      //t.append('<li><a href="/search/label/'+tag+'?&amp;max-results=4">'+ tag +'</a></li>'); 
+              t.append('<li><a href="/search/label/'+tag+'">'+ tag +'</a></li>');
+                  }
+                })
+        } else {
+              li.addClass('mega-tabs').append('<ul class="no-posts">No Posts Found</ul>')
+            }
+        
+      }
+    }
+    $(".mega-tab:first").show();
+    $(".select-tab li:first-child").addClass("active");
+    var $tent= $('.mega-tab');
+    var curIndex = 0;
+    $(".select-tab li").click(function(){
+      index = $(this).index();
+        $(".select-tab li").removeClass('active');
+        $(this).addClass('active');
+      $tent[curIndex].style.display = 'none';
+      curIndex = $(this).index();
+      $tent[curIndex].style.display = 'block';
+    });
+
+    $('.LinkList').each(function() {
+      var itemA = $(this).find('ul > li').children('a');
+        var list = itemA.length;
+      for (var i = 0; i < list; i++) {
+            var i1 = itemA.eq(i), t1 = i1.text();
+            if (t1.charAt(0) !== '_') { 
+                var i2 = itemA.eq(i + 1);
+                var t2 = i2.text();
+                if (t2.charAt(0) === '_') {
+                    var l1 = i1.parent();
+                    //console.log(l1);
+                    l1.append('<ul class="sub-menu m-sub"/>');
+                }
+            }
+            if (t1.charAt(0) === '_') {
+                i1.text(t1.replace('_', ''));
+                i1.parent().appendTo(l1.children('.sub-menu'));
+        }
+      }
+      for (var i = 0; i < list; i++) {
+        var i3 = itemA.eq(i),t3 = i3.text();
+        if (t3.charAt(0) !== '_') {
+                var i4 = itemA.eq(i + 1);
+                var t4 = i4.text();
+          if (t4.charAt(0) === '_') {
+            var l2 = i3.parent();
+                    l2.append('<ul class="sub-menu2 m-sub"/>');
+                }
+        }
+        if (t3.charAt(0) === '_') {
+                i3.text(t3.replace('_', ''));
+                i3.parent().appendTo(l2.children('.sub-menu2'));
+            }
+      }
+      $('.LinkList ul li ul').parent('li').addClass('has-sub');
+        $('#main-menu .widget').addClass('show-menu');
+    });
+
+    $('#main-menu-nav').clone().appendTo('.mobile-menu');
+    $('.mobile-menu li.has-sub').append('<div class="submenu-toggle"/>');
+    $('.menu-toggle').on('click', function() {
+      $('body').toggleClass('nav-active');
+    });   
+    $('.mobile-menu ul li .submenu-toggle').on('click',function($this){
+      console.log($this)
+        if($(this).parent().hasClass('has-sub')){
+          $this.preventDefault();
+          if(!$(this).parent().hasClass('show')){
+            $(this).parent().addClass('show').children('.m-sub').slideToggle(250);
+          }else{
+            $(this).parent().removeClass('show').find('>.m-sub').slideToggle(250);
+          }
+        }
+    })
+    $(".show-search").on('click',function() {
+        $('#nav-search .search-form').toggleClass("active");
+    })
+
+
+    $('#main-wrapper, #sidebar-wrapper').each(function() {
+      if (fixedSidebar == true) {
+        $(this).theiaStickySidebar({
+            additionalMarginTop: 35,
+            additionalMarginBottom: 35
+        });
+      }
+    })
+
+    $('.banner .HTML .widget-content, .sidebar .HTML .widget-content, #footer .HTML .widget-content').each(function() {
+      var t = $(this);  
+      var e = (t.text().trim().toLowerCase())
+      var	a =	e.split('/');  //console.log(" e =" + e );
+      var count = a[0], label=a[1], type=a[2];
+      return Posts(t, e, count, label);
+    })
+
+
+    $(".Label a, .post-tag a").attr("href",function($this,href) {
+      return href.replace(href,href + '?&max-results=' + postPerPage);
+    })
+
+
+    $(".author-profile .author-desc a, .profile-info  .profile-textblock a").each(function(){$(this).attr("target","_blank")}),
+
+    $('#related-content').each(function() {
+      var $this = $(this);  //console.log($this); 
+      label = $this.find('.related-tag').data('label');
+      Posts($this, 'related', 3, label); 
+    })
+
+    $('.post-nav').each(function() {
+      var prev = $('a.blog-pager-newer-link').attr('href');
+      $.ajax({
+          url: prev,
+            type: 'get',
+            success: function(prev) {
+          var oldtitle = $('a.blog-pager-newer-link').text();
+                var title = $(prev).find('.item-post h1.post-title').text();
+          $('a.blog-pager-newer-link').html('<span>'+ oldtitle +'</span><p>' + title + '</p>');
+            }
+        });  
+      var next = $('a.blog-pager-older-link').attr('href');
+        $.ajax({
+          url: next,
+            type: 'get',
+            success: function(next) {
+          var oldtitle = $('a.blog-pager-older-link').text()
+              var title = $(next).find('.item-post h1.post-title').text();  
+                $('a.blog-pager-older-link').html('<span>'+ oldtitle +'</span><p>' + title + '</p>');
+            }
+        });
+    })
+
+    $(".blog-post-comments").each(function() {
+      var system = commentsSystem,
+            fk = '<div class="fb-comments" data-width="100%" data-href="' + disqus_blogger_current_url + '" data-numposts="5"></div>',
+            c = 'comments-system-' + system;
+        if (system == 'blogger') {
+              $(this).addClass(c).show();
+        } else if (system == 'disqus') {
+            (function() {
+              var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqusShortname + '.disqus.com/embed.js';
+                  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();     
+              $("#comments, #gpluscomments").remove(),
+              $(this).append('<div id="disqus_thread"/>').addClass(c).show();    
+        } else if (system == 'facebook') {
+              $('#comments, #gpluscomments').remove();
+              $(this).append(fk).addClass(c).show();    
+        } else if (system == 'hide') {
+              $(this).hide();
+        } else {
+            $(this).addClass('comments-system-default').show();
+        } 
+    })    
+  </script>  
+
+    
+   
+  </body>
+</html>

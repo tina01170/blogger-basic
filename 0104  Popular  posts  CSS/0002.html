@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>help blogger </title>
+    <style>
+.sidebar .PopularPosts ul li {
+	float: left;
+	max-height: 130px;
+	min-width: 250px;
+	position: relative;
+ 
+}
+
+.sidebar .PopularPosts .item-thumbnail::after {
+	color: rgba(255, 255, 255, .63);
+	content: counter(popularcount, decimal);
+	counter-increment: popularcount;
+	list-style-type: none;
+	position: absolute;
+	left: 5px;
+	top: -5px;
+	z-index: 4;
+}
+
+.sidebar .PopularPosts .item-thumbnail::before {
+	background: rgba(0, 0, 0, .3);
+	bottom: 0px;
+	height: 100px;
+	width: 100px;
+	left: 0px;
+	right: 0px;
+	margin: 0px auto;
+	position: absolute;
+	z-index: 3;
+}
+
+.sidebar .PopularPosts .item-thumbnail a {
+	clip: auto;
+	display: block;
+	height: auto;
+	overflow: hidden;
+}
+
+.sidebar .PopularPosts .item-thumbnail {
+	width: 100px;
+	height: 100px;
+	margin: 0px 10px 0px 0px !important;
+	position: relative;
+}
+
+.sidebar .PopularPosts .item-thumbnail:hover:before {
+	display: none;
+}
+
+.sidebar .PopularPosts .item-thumbnail img {
+	position: relative;
+	padding-right: 0px !important;
+	height: auto;
+	width: 100%;
+}
+
+.sidebar .PopularPosts .item-title {
+	text-transform: uppercase;
+	padding: 0px 5px 10px;
+}
+
+.sidebar .PopularPosts .item-title a {
+	color: #000;
+	text-decoration: none;
+}
+
+.sidebar .PopularPosts .item-snippet {}
+
+.sidebar .PopularPosts .widget-content ul li {
+	padding: 0px 5px 0px 0px !important;
+}
+
+.sidebar .PopularPosts .item-content {
+	padding: 5px 0px;
+	border-bottom: 1px dotted #dedede;
+	overflow: hidden;
+	height: 100px;
+	position: relative;
+}
+
+    </style>
+  </head>
+  <body>
+  
+    
+
+    
+   
+  </body>
+</html>

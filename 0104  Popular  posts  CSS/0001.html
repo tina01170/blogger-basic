@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>style 通用橫式</title>
+    <style>
+    /* style 通用橫式 */
+#sidebar .PopularPosts .post, #footer .PopularPosts .post {margin:0 0 25px;overflow:hidden;display:flex;}
+#sidebar .PopularPosts .post > a, #footer .PopularPosts .post > a {width:35%;}
+#sidebar .PopularPosts .post .post-image-link , #footer .PopularPosts .post .post-image-link {display: block;width: 102px;height: 76px;overflow: hidden;}    
+
+#sidebar .PopularPosts .post .post-info, #footer .PopularPosts .post .post-info {width:65%;padding-left:15px;overflow:hidden;}
+#sidebar .PopularPosts .post-title, #footer .PopularPosts .post-title {font-size:15px;margin:0 0 8px;font-weight:700;line-height:1.7em;}
+#sidebar .PopularPosts .post-title a, #footer .PopularPosts .post-title a {display:block;color:$(title.color);transition:color 0.2s;}	 
+#sidebar .PopularPosts .post-title a:hover, #footer .PopularPosts .post-title a:hover {color:$(main.color);}
+#sidebar .PopularPosts .post-meta .post-date, #footer.PopularPosts .post-meta .post-date {font-size:16px; margin:0 0 0 1px;}
+#sidebar .PopularPosts .post .post-info .post-tag, #footer .PopularPosts .post .post-info .post-tag {display:block;margin:0 0 10px;}
+#sidebar .PopularPosts .post .post-info .post-tag, #footer .PopularPosts .post .post-info .post-tag a {display:block;font-size:14px;}
+
+    </style>
+    <style>
+    /* style box 燈箱 */  
+#sidebar .PopularPosts .post {display:block;position:relative;overflow:hidden;margin:0 0 35px;}
+#sidebar .PopularPosts .post .post-image-link {position:relative;overflow:hidden;width:100%;display:block;z-index:5;margin:0;height:100%;}
+#sidebar .PopularPosts .post .post-image-link:before {content:'';position:absolute;left:0;right:0;bottom:0;height:40%;z-index: 2;opacity: 1;margin: 0;background-image: linear-gradient(to bottom,transparent,#3C3C3C);}
+
+#sidebar .PopularPosts .post .post-info {position: absolute;left:0;bottom: 0;z-index: 15;width: 100%;box-sizing: border-box;padding:20px 15px 20px;}
+#sidebar .PopularPosts .post .post-title {font-size:18px;font-weight:400;line-height:1.5em;margin:0 0 8px;display:block;}
+#sidebar .PopularPosts .post .post-title a, #sidebar .PopularPosts .post .post-meta span, #sidebar .PopularPosts .post .post-tag a {color:#fff;}
+#sidebar .PopularPosts .post .post-tag {display:block;font-size:15px;padding:4px 8px;margin:8px 0 15px;width: fit-content;text-transform: capitalize;background: $(main.color);}      
+    </style>
+    <style>
+    /* style 通用橫式 有數字*/
+#sidebar .PopularPosts .post, 
+#footer .PopularPosts .post {margin:0 0 25px;overflow:hidden;display:flex;z-index:1;position:relative;}
+.PopularPosts .post::before {content: attr(data-number);display:block;position: absolute; top:-3px;left:-5px; font-size:14px;color: #fff;background-color: #000;width: 10px;height: 10px; text-align: center;line-height: 12px;z-index:9;border-radius: 50%;padding:5px 8px 7px;}
+
+.PopularPosts .post:nth-child(1)::before {content:'1';}
+.PopularPosts .post:nth-child(2)::before {content:'2';}
+.PopularPosts .post:nth-child(3)::before {content:'3';}
+.PopularPosts .post:nth-child(4)::before {content:'4';}
+.PopularPosts .post:nth-child(5)::before {content:'5';}
+
+#sidebar .PopularPosts .post > a, #footer .PopularPosts .post > a {width:35%;}
+#sidebar .PopularPosts .post .post-image-link , #footer .PopularPosts .post .post-image-link {display: block;width: 102px;height: 76px;overflow: hidden;}
+
+#sidebar .PopularPosts .post .post-image-link img, #footer .PopularPosts .post .post-image-link img { }
+
+#sidebar .PopularPosts .post .post-info, #footer .PopularPosts .post .post-info {width:65%;padding-left:15px;overflow:hidden;}
+#sidebar .PopularPosts .post-title, #footer .PopularPosts .post-title {font-size:15px;margin:0 0 8px;font-weight:700;line-height:1.7em;}
+#sidebar .PopularPosts .post-title a, #footer .PopularPosts .post-title a {display:block;color:$(title.color);transition:color 0.2s;}	 
+#sidebar .PopularPosts .post-title a:hover, #footer .PopularPosts .post-title a:hover {color:$(main.color);}
+#sidebar .PopularPosts .post-meta .post-date, #footer.PopularPosts .post-meta .post-date {font-size:16px; margin:0 0 0 1px;}
+#sidebar .PopularPosts .post .post-info .post-tag, #footer .PopularPosts .post .post-info .post-tag {display:block;margin:0 0 10px;}
+#sidebar .PopularPosts .post .post-info .post-tag, #footer .PopularPosts .post .post-info .post-tag a {display:block;font-size:14px;}      
+    </style>
+    <style>
+#sidebar .PopularPosts .post, #footer .PopularPosts .post {margin:0 0 25px;overflow:hidden;width:50%;float:left;}
+#sidebar .PopularPosts .post:nth-child(odd), #footer .PopularPosts .post:nth-child(odd) {padding-right:20px;box-sizing: border-box;}
+
+#sidebar .PopularPosts .post .post-image-link , #footer .PopularPosts .post .post-image-link {display:block;overflow: hidden; width: 100%;height:auto;}
+#sidebar .PopularPosts .post .post-info, #footer .PopularPosts .post .post-info {overflow:hidden;}
+#sidebar .PopularPosts .post-title, #footer .PopularPosts .post-title {font-size:14px;margin:0 0 8px;font-weight:700;line-height:1.7em;}
+#sidebar .PopularPosts .post-title a, #footer .PopularPosts .post-title a {display:block;color:$(title.color);transition:color 0.2s;}	 
+#sidebar .PopularPosts .post-title a:hover, #footer .PopularPosts .post-title a:hover {color:$(main.color);}
+#sidebar .PopularPosts .post-meta .post-date, #footer.PopularPosts .post-meta .post-date {font-size:12px; margin:0 0 0 1px;}
+#sidebar .PopularPosts .post .post-info .post-tag, #footer .PopularPosts .post .post-info .post-tag {display:block;margin:10px 0;}
+#sidebar .PopularPosts .post .post-info .post-tag a, #footer .PopularPosts .post .post-info .post-tag a {display:block;font-size:18px;color:#000;}
+
+    </style>
+  </head>
+  <body>
+  
+    
+
+    
+   
+  </body>
+</html>

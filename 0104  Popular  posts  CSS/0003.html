@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.post {
+    display: flex;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative; /* 添加相對定位 */
+}
+
+.post::before {
+    content: attr(data-number); /* 使用 data-number 屬性作為內容 */
+    position: absolute; /* 添加絕對定位 */
+    left:-12px; /* 調整數字位置 */
+    top:-10px; /* 調整數字位置 */
+    font-size:14px; /* 放大數字 */
+    font-weight: bold; /* 加粗數字 */
+    color: #333; /* 調整數字顏色 */
+    background-color: #f0f0f0; /* 添加背景顏色 */
+    padding:5px; /* 添加內邊距 */
+    border-radius: 50%; /* 創建圓形背景 */
+    width: 25px; /* 設定寬度 */
+    height: 25px; /* 設定高度 */
+    text-align: center; /* 文字置中 */
+    line-height: 32px; /* 垂直置中 */
+    z-index: 99; /* 將數字置於圖片上方 */
+}
+
+.post:nth-child(2)::before {
+    content: "2";
+}
+
+.post:nth-child(3)::before {
+    content: "3";
+}
+
+.post:nth-child(4)::before {
+    content: "4";
+}
+
+.post-image img {
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+}
+
+.post-content {
+    padding: 20px;
+}
+
+.category {
+    background-color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+}
+    </style>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html lang="zh-Hant">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>熱門貼文</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>熱門貼文</h1>
+            <div class="post">
+                <div class="post-image">
+                    <img src="images/29-01.jpg" alt="貼文 1">
+                </div>
+                <div class="post-content">
+                    <span class="category">電影</span>
+                    <h2>Free "Milk Egg Roll Ice Cream"</h2>
+                    <p>By - Kelly 8月13, 2024</p>
+                </div>
+            </div>
+            <div class="post">
+                <div class="post-image">
+                    <img src="images/29-02.jpg" alt="貼文 2">
+                </div>
+                <div class="post-content">
+                    <span class="category">電視劇</span>
+                    <h2>2022年值得一看的二十部日劇 (五)</h2>
+                    <p>3月31, 2023</p>
+                </div>
+            </div>
+            <div class="post">
+                <div class="post-image">
+                    <img src="images/29-03.jpg" alt="貼文 3">
+                </div>
+                <div class="post-content">
+                    <span class="category">電影</span>
+                    <h2>Sweet and sour mango season is here</h2>
+                    <p>9月25, 2024</p>
+                </div>
+            </div>
+            <div class="post">
+                <div class="post-image">
+                    <img src="post4.jpg" alt="貼文 4">
+                </div>
+                <div class="post-content">
+                    <span class="category">電視劇</span>
+                    <h2>日劇分享 《持續可能的戀愛？》</h2>
+                    <p>8月26, 2022</p>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+    
+
+    
+   
+  </body>
+</html>

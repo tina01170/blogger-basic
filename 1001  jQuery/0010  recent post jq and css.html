@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+      /*recent posts */
+/*recent posts*/
+.sidebar .HTML .widget-content, .footer .HTML .widget-content {display:none;}
+.sidebar .show-list .widget-content, .footer .show-list .widget-content {display:block!important}
+.loader{position:relative;height:180px;overflow:hidden;display:block}
+.loader:after{content:'';position:absolute;top:50%;left:50%;width:26px;height:26px;margin:-16px 0 0 -16px;border:3px solid #ddd;border-right-color:$(main.color);border-radius:100%;animation:spinner .8s infinite linear;transform-origin:center}
+@-webkit-keyframes spinner {
+    0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
+    to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}
+}
+    @keyframes spinner {
+    0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
+    to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}
+}			
+
+.custom-widget {overflow:hidden;display:block;}
+.custom-widget .list-item {display:flex;margin:0 0 20px;overflow:hidden;}
+.custom-widget .list-item img {display:block;overflow:hidden;width:96px;height:72px;object-fit:cover;}
+.custom-widget .list-item .post-info {margin-left:15px;}
+.custom-widget .list-item .post-info h3 {overflow:hidden;font-size:14px;font-weight: 700;line-height:1.6em;margin:0 0 5px;}
+.custom-widget .list-item .post-info h3 a {display:block;color:$(title.color);font-family:'Roboto',sans-serif;transition:color 0.2s;}
+.custom-widget .list-item .post-info h3 a:hover {color:$(main.color);}
+.custom-widget .list-item .post-info .post-date {font-size:16px; color:#000;} 
+
+    </style>
+  </head>
+  <body>
+    
+  <script>
+  function Posts($this, type, count, label) {
+    if ( type.match('hot') || type.match('list') ||type.match('related')) {
+		var url = '';
+    	if (label == 'recent') {
+           url = '/feeds/posts/default?alt=json-in-script&max-results=' + count;
+        } else {
+           url = '/feeds/posts/default/-/' + label + '?alt=json-in-script&max-results=' + count;
+        }
+        $.ajax({
+                url: url,
+                type: 'get',
+                dataType: 'jsonp',
+                beforeSend:function() {
+                  if (type.match('list')) {
+                    $this.html('<div class="loader"/>').parent().addClass('show-list'); //sidebar recents
+                  }
+                },
+                  success: function(json) {
+                  if (type.match('list')) {
+                        var code = '<ul class="custom-widget">'; //sidebar recents
+                    } else if (type.match('related')) {
+                        var code = '<ul class="related-posts">';
+                    }
+					          var entry = json.feed.entry;
+                    if (entry != undefined) {
+                    for (var i = 0,feed = entry;i < entry.length; i++) {
+                      var link = l(feed,i);
+                                    var title = t(feed,i);
+                                    var date = e(feed, i);
+                                    var	image = g(feed,i,title);
+                      var tag = p(feed, i);
+                      var content = '';
+                      if (type.match('list')) {   //sidebar recent                            
+								            content += '<li class="list-item">' + image + '<div class="post-info"><h3><a href="' + link + '">' + title +'</a></h3>'+ date +'</div></li>';
+                      } else if (type.match('related')) {
+                            content += '<li class="related-item">' + image + '<div class="post-info"><h3><a href="' + link + '">' + title + '</a></h3>'+ date +'</div></li>';
+                      }                                                
+                      code += content;                           
+						}
+                        code += '</ul>';     	
+                    } else {
+                        code = '<ul class="no-posts">No Posts Found</ul>';
+                    }
+                    $this.html(code);
+			  }
+        });
+    }
+}  
+  </script>
+    
+   
+  </body>
+</html>

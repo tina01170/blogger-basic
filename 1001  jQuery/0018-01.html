@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <script src="jquery-3.6.0.min.js"></script>
+    <style>
+      .item-post {
+        margin: 50px;
+        border: 1px solid #ccc;
+      }
+      .postmeta {
+        text-align: right;
+          display: flex;
+          border-bottom: 1px solid #ccc;
+          justify-content: flex-end;
+          padding:20px 0;
+      }
+      .postmeta .btn {
+        cursor: pointer;
+        display: block;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #ccc;
+        line-height: 25px;
+        height: 25px;
+        font-size: 20px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .postbody {
+        margin: 30px;
+      }
+
+      .postbody p {
+        font-size: 18px;
+        line-height: 1.7em;
+        color: #282828;
+      }
+    </style>
+  </head>
+  <body>
+   
+    <div class="item-post">
+      <div class="postmeta">
+          <span class="btn" id="bigxl">特</span>
+          <span class="btn" id="big">大</span>
+          <span class="btn" id="medium">中</span>
+          <span class="btn" id="small">小</span>
+      </div>
+      <div class="postbody">
+        <p>
+        另一方面真正的偵探，江南孝明向警察說明他的代稱是柯南.道爾，而另一個人向警察說明自己的代稱是……。</p>
+      </div>
+    </div>
+    <script>
+    $(function(){
+      $("#bigxl").on('click',function(){
+        $(".postbody p").css("font-size","28px");
+      })
+      $("#big").on('click',function(){
+        $(".postbody p").css("font-size","22px");
+      })
+      $("#medium").on('click',function(){
+        $(".postbody p").css("font-size","18px");
+      })
+      $("#small").on('click',function(){
+        $(".postbody p").css("font-size","14px");
+      })
+
+      
+    })
+    </script>
+
+    <div class="item-post">
+      <div class="postmeta">
+          <span class="btn" id="add">+</span>
+          <span class="btn" id="reduce">-</span>
+      </div>
+      <div class="post-body">
+        <p>
+        另一方面真正的偵探，江南孝明向警察說明他的代稱是柯南.道爾，而另一個人向警察說明自己的代稱是……。</p>
+      </div>
+    </div>
+
+    <script>
+    $(function(){ 
+      $("#add").on('click',function(){          
+          var fontsize = $(".post-body p").css("font-size");
+          var currentSize = parseInt(fontsize);
+          if ( currentSize < 28 ){
+              $(".post-body p").css("font-size", currentSize + 4 + "px");
+          }
+      })
+      $("#reduce").on('click',function(){
+          var fontsize = $(".post-body p").css("font-size");
+          var currentSize = parseInt(fontsize);
+          if ( currentSize > 14 ){
+              $(".post-body p").css("font-size", currentSize - 4 + "px");
+          }
+      })
+    })
+    </script>
+  </body>
+</html>

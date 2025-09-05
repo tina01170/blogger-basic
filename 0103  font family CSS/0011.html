@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+body {box-sizing:border-box;margin:0;padding:0;word-wrap:break-word;background-color:$(body.background.color);}
+
+.header-area h1 {font-size: 60px;line-height:70px;margin:0;font-family:'Roboto',sans-serif;color: $(header.color);}
+.header-area h1 a {color: $(header.color);}
+
+#main-menu ul > li > a {position:relative;color:$(menu.color);font-size:20px;font-weight:600;line-height:60px;display:inline-block;text-decoration:none;margin:0;padding:0 15px;transition:color 0.2s ease;}
+
+#main-menu ul > li > ul > li a {display:block;height:40px;font-size:16px;font-weight:600;line-height:40px;box-sizing:border-box;margin:0;padding:0 15px;color:$(submenu.text.color);transition:color 0.2s ease;}
+
+.mobile-menu ul li {position:relative;display:block;overflow:hidden;width:100%;font-size:18px;line-height:36px;font-weight:500;margin:0;padding:0;float:left;}
+.mobile-menu ul li a {color:$(title.color);padding:0;margin:0;transition:color 0.2s;}
+
+.index-post .post-title {margin:0 0 10px;}
+.index-post .post-title a {display:block;color:$(title.color);font-size:20px;line-height:1.6em;transition:color 0.2s; }	
+
+.post-snippet {position: relative; font-size:14px; font-weight:400;color:$(text.color);line-height:1.7em;overflow: hidden;display:block;padding: 0 10px 0 0;margin:0 0 15px;}
+.jump-link a {position: relative;display: inline-block;background-color:$(buttom.bg.color);height: 30px;font-size: 14px;font-weight: 400;line-height: 30px;padding: 0 10px;margin: 15px 0 0;color:$(buttom.text.color);text-transform:capitalize;transition:background-color 0.3s ease;}
+
+#breadcrumb {font-size:18px;font-weight:500;padding:0;margin:0 0 20px;}
+#breadcrumb a, #breadcrumb .delimiter {display:inline-block;}
+
+.item-post h1.post-title {font-size: 26px;color: #000;font-weight: 700;line-height: 1.5em;margin: 0 0 20px;position: relative;}
+
+.post-body h1, .post-body h2, .post-body h3, .post-body h4 {font-weight:700;margin:0 0 15px;}
+
+
+.share-links li a {display:block;cursor:pointer;width: 100%;height: 32px;line-height: 32px;color: #fff;font-weight: 400;font-size: 17px;text-align: center;box-sizing: border-box;opacity: 1;border-radius: 3px;}
+.post-share li a:before {display:inline-block;font-family:'Font Awesome 5 Brands';font-style:normal;font-weight:400;color:#fff;}
+
+
+.author-profile .author-name a {display:block; font-size:19px;color:$(title.color);font-weight:700;margin:0;transition:color 0.2s;}
+.author-profile .author-name a:hover {color:$(main.color);}
+.author-profile .author-text {overflow:hidden; display:block;font-size:15px;color:$(text.color);font-weight:400;line-height:1.6em;}
+
+
+#related-posts h2 {font-size:24px;line-height:34px;color:$(title.color);margin:0 0 40px;padding:0;border-bottom:1px solid #E0E0E0;}
+
+.related-posts h3 {font-size:18px;font-weight:700;line-height:1.7em;margin:5px 0;}
+.related-posts h3 a {display: block;color:$(title.color);transition:color 0.2s}
+
+
+#blog-pager .blog-pager-newer-link, #blog-pager .blog-pager-older-link {font-size:16px; display:inline-block;height:38px;line-height:38px;font-weight:400;padding:0 14px;text-transform:capitalize;background-color:$(main.color);color:#fff;transition:background-color 0.3s ease;}
+.post-nav .blog-pager-newer-link, .post-nav .blog-pager-older-link {font-size:18px;font-weight:400;color:$(postnav.text.color);}
+
+.post-nav a p {font-weight:500; margin:10px 0 0; line-height:34px; text-decoration:underline; text-transform:capitalize;}
+
+
+.comments-title > h3{position:relative;width:100%;font-size:20px;font-weight:700;margin:0 0 20px;color:$(title.color);font-weight:700;border-bottom:1px solid #ccc;}
+
+.comments > h3 {font-size:18px;font-weight:500;padding:10px 0 0;margin:0 0 30px;}
+
+.comments .comment-header .user{font-size:18px;color:$(title.color);display:inline-block;font-style:normal;font-weight:700;margin:0}
+
+.comments .comment-header .icon.blog-author{display:inline-block;font-size:14px;font-weight:400;vertical-align:top;margin:0 0 0 15px}
+
+.comments .comment-header .icon.blog-author:before{content:'\f058';font-family:'Font Awesome 5 Free';font-weight:400}
+.comments .continue a {padding:0 0 0 50px;font-weight:400;}
+
+
+#footer .widget > h3, #sidebar .widget > h3, .Followers > h2 {position:relative;font-size:20px;font-weight:600;margin:0 0 30px;padding:0;text-transform:capitalize;border-bottom:1px solid #E0E0E0;}
+
+#sidebar .FeaturedPost .post-title, #footer .FeaturedPost  .post-title {font-size:20px;margin:10px 0;font-weight:700;line-height:34px;} 
+
+#sidebar .PopularPosts .post-title, #footer .PopularPosts .post-title {font-size:15px;margin:0 0 8px;font-weight:700;line-height:1.7em;}
+
+#sidebar .PopularPosts .post:first-child .post-title {font-size:18px;font-weight:400;line-height:1.5em;margin:0 0 8px;display:block;}
+
+
+.BlogSearch .search-input {float:left;width:75%;background-color:#fff;font-weight:400;font-size:12px;line-height:32px;box-sizing:border-box;height:32px;border:1px solid #ccc;border-radius:3px ;font-family:inherit;padding:0 5px;}
+
+
+.Profile .profile-data a {font-size:24px; color:$(title.color);font-weight:600;transition:color 0.2s;}
+
+
+#ArchiveList ul li > a {display:block;cursor:pointer;font-size:18px;text-transform:capitalize;font-weight:600;text-transform:capitalize;}
+
+.widget-ready .PageList ul li a, .widget-ready .LinkList ul li a, .footer .PageList ul li a, .footer .LinkList ul li a 
+{display:block;font-size:18px;font-weight:600;color:#000;line-height:34px;height:34px;color:#000;cursor:pointer;text-transform:capitalize;transition:color 0.2s;}
+
+.list-label ul li a {display:block;font-size:18px;font-weight:500;line-height:28px;height:28px;text-transform:capitalize;border-bottom:1px solid #E0E0E0;margin:5px 0 0;}
+
+.contact-form-widget form{ font-family:inherit; font-weight:400;}
+
+.contact-form-button-submit{height:30px;background-color:$(main.color);font-family:inherit;font-size:14px;font-weight:600;color:#fff;line-height:30px;cursor:pointer;box-sizing:border-box;padding:0 10px;margin:15px 0;border:0;border-radius:3px;width:100%;text-transform:uppercase;transition:background-color 0.3s ease;}
+
+
+.Attribution a {display:flex;align-items:center;font-size:18px;font-weight:400;line-height:1.7em;padding:10px 0;border-top:1px solid #ccc;}
+
+.custom-widget .recent-item .post-info h3 {overflow:hidden;font-size:14px;font-weight: 700;line-height:1.6em;margin:0 0 5px;}
+
+
+#menu-footer ul li a {font-size:18px;font-weight:500;color:$(dark.text.color);display:block;line-height:30px;padding:0;text-transform:capitalize;transition:color 0.2s;}
+    </style>
+    <style>
+
+    </style>
+  </head>
+  <body>
+  
+    
+
+    
+   
+  </body>
+</html>

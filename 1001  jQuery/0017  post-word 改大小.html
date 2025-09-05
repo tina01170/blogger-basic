@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+    .item-post .post-meta {  display:flex; justify-content: space-between; }
+    .item-post .post-meta .font { display:flex; }
+    .item-post .post-meta .font .btn { 
+      cursor: pointer; 
+      display: block; 
+      width: 25px;  
+      height: 25px; 
+      border: 1px solid #ccc; 
+      line-height: 25px; 
+      height: 25px; 
+      font-size: 20px; 
+      text-decoration: none; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+    } 
+    </style>
+  </head>
+  <body>
+    <b:includable id='headerByline' var='post'>
+        <b:if cond='data:view.isMultipleItems'>
+          <!-- index Meta -->
+          <div class='post-meta'>
+              <b:include data='post' name='postTimestamp'/>
+              <b:include data='post' name='postCategory'/>
+          </div>
+        </b:if>
+        <b:if cond='data:view.isSingleItem'>
+          <!-- Post Header Meta -->  
+          <div class='post-meta'>
+            <div class='meta-left'>
+                <b:include data='post' name='postAuthor'/>
+                  <b:include data='post' name='postTimestamp'/>
+                  <b:if cond='data:post.numberOfComments &gt;= 0'>
+                  <a class='comments-number' expr:href='data:post.url + &quot;#comments&quot;'><data:post.numberOfComments/></a></b:if>    
+                </div>      
+                <div class='meta-right'>
+                <b:include data='post' name='postsize'/>
+            </div>
+          </div>
+        </b:if>
+		</b:includable>
+    <b:includable id='postsize'>
+      <div class='font'>
+          <span class='btn' id='add'>+</span>
+          <span class='btn' id='reduce'>-</span>
+      </div>
+    </b:includable>
+
+    <script>
+      $("#add").on('click',function(){          
+          var fontsize = $(".post-body p").css("font-size");
+          var currentSize = parseInt(fontsize);
+          if ( currentSize < 28 ){
+              $(".post-body p").css("font-size", currentSize + 4 + "px");
+          }
+      })
+      $("#reduce").on('click',function(){
+          var fontsize = $(".post-body p").css("font-size");
+          var currentSize = parseInt(fontsize);
+          if ( currentSize > 14 ){
+              $(".post-body p").css("font-size", currentSize - 4 + "px");
+          }
+      })
+    </script>
+  
+    
+
+    
+   
+  </body>
+</html>

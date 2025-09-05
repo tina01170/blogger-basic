@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+    <style>
+      /*調整文字大小*/
+      #enlarge_font_size {
+          display: inline-block;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          color: #777;
+          font-size: 16px;
+          text-align: center;
+          background: #ddd;
+          border: 1px solid #bebebb;
+          border-radius: 15%;
+          cursor: pointer;
+      }
+      
+      #enlarge_font_size:active {
+          position: relative;
+          top: 1px;
+      }
+      
+      #enlarge_font_size:hover {
+          box-shadow: 0 0 10px #546893
+      }
+      </style>
+  </head>
+  <body>
+
+    <span id="enlarge_font_size" title="調整文章文字大小">A+</span>
+
+    
+  <!--  放在</head>前面   -->
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
+    <!--調整文字大小-->
+    <script>
+    //<![CDATA[
+      $(function() {
+        var postBody = ".post-body", // 文章區塊
+            minSize = 16, // 最小文字 px 值
+            maxSize = 32, // 最大文字 px 值
+            addSize = 4, // 每次點擊按鈕增加的尺寸 px 值
+        size = parseInt(localStorage.postFontSize) || minSize;
+
+        $(postBody).css("font-size", (localStorage.postFontSize || minSize) + "px");
+        
+        $("#enlarge_font_size").click(function() {
+          size += addSize;
+          size = size > maxSize ? minSize : size;
+          localStorage.postFontSize = size;
+          $(postBody).css("font-size", size + "px");
+        });
+      });
+    //]]>
+    </script>
+    <!-- Designed by WFU BLOG-->
+    
+
+    
+   
+  </body>
+</html>

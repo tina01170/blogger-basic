@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+
+    <script>
+    /* Blue-heaster */
+    /*! ResizeIfy - LazyIfy on Scroll by Templateify | v1.2.0 - https://www.templateify.com */
+    !function(a){
+      a.fn.lazyify=function(){
+      return this.each(function(){
+        var t=a(this),
+            dImg=t.attr('data-image'),
+            iWid=Math.round(t.width()),
+            iHei=Math.round(t.height()),
+            iSiz='w'+iWid+'-h'+iHei+'-p-k-no-nu',
+            img='';
+
+        if(dImg.match('/s72-c')){
+          img=dImg.replace('/s72-c','/'+iSiz);
+        } else if(dImg.match('/w72-h')){
+          img=dImg.replace('/w72-h72-p-k-no-nu','/'+iSiz);
+        } else if(dImg.match('=w72-h')){
+          img=dImg.replace('=w72-h72-p-k-no-nu','='+iSiz);
+        } else{
+          img=dImg;
+        }
+
+        //BH
+        a(window).on('load resize scroll',lazyOnScroll);
+        function lazyOnScroll(){
+          var wHeight = a(window).height(),
+                          scrTop=a(window).scrollTop(),
+                          offTop=t.offset().top;         
+          if(scrTop + wHeight > offTop){
+            var n=new Image();
+            n.onload=function(){
+              t.attr('style','background-image:url('+this.src+')').addClass('lazy-ify');
+            },n.src=img;
+          }
+        }
+        lazyOnScroll();
+        });
+    }}(jQuery);
+    </script>
+
+    <script>
+
+      /*! LazyIfy on Scroll by Templateify | v1.6.0 - https://www.templateify.com */
+      !function(n){
+        n.fn.lazyify=function(){
+          return this.each(function(){
+            var o,
+                t=n(this),
+                a=n(window),
+                e=t.attr("data-image"),
+                h="w"+Math.round(t.width()+t.width()/10)+"-h"+Math.round(t.height()+t.height()/10)+"-p-k-no-nu";
+                noThumbnail="undefined"!=typeof noThumbnail?noThumbnail:"//4.bp.blogspot.com/-eALXtf-Ljts/WrQYAbzcPUI/AAAAAAAABjY/vptx-N2H46oFbiCqbSe2JgVSlHhyl0MwQCK4BGAYYCw/s72-c/nth-ify.png",
+                e.match("resources.blogblog.com")&&(e=noThumbnail),
+                o=e.match("/s72-c")?e.replace("/s72-c","/"+h):e.match("/w72-h")?e.replace("/w72-h72-p-k-no-nu","/"+h):e.match("=w72-h")?e.replace("=w72-h72-p-k-no-nu","="+h):e,
+                t.is(":hidden")||a.on("load resize scroll",
+                function n(){
+                  if(a.scrollTop()+a.height()>=t.offset().top){
+                    a.off("load resize scroll",n);
+                    var e=new Image;
+                    e.onload=function(){
+                      t.attr("style","background-image:url("+this.src+")").addClass("lazy-ify")
+                    }
+                    ,e.src=o
+                  }
+                }).trigger("scroll")
+          })
+      }}(jQuery);   
+    </script>
+  </head>
+  <body>
+    
+
+    
+   
+  </body>
+</html>

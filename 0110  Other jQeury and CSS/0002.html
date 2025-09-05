@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+/* alert */
+    .alert-message {position:relative; display:block; padding:20px; font-size:20px; border:1px solid #f0f0f0; border-radius:3px}
+		.alert-message.alert-success{ color:#3ed37c; background-color:rgba(62,211,124,0.05) }
+    .alert-message.alert-info{color:#3799dc;background-color:rgba(55,153,220,0.05)}
+    .alert-message.alert-warning{color:#8a6d3b;background-color:rgba(138,109,59,0.05)}
+    .alert-message.alert-error{color:#e74c3c;background-color:rgba(231,76,60,0.05)}
+    .alert-message:before{font-family:'Font Awesome 5 Free';font-size:18px;font-weight:900;display:inline-block;margin:0 5px 0 0}
+        
+		.alert-message.alert-success:before{content:"\f058"}
+    .alert-message.alert-info:before{content:"\f05a"}
+    .alert-message.alert-warning:before{content:"\f06a"}
+    .alert-message.alert-error:before{content:"\f057"}
+
+		.code-box{
+            position:relative;
+            display:block;
+            background-color:#404040;
+            font-size:16px;
+            color:#ffffff;
+            white-space:pre-wrap;
+            line-height:1.67em;
+            padding:15px 20px;
+            border:1px solid #404040;
+            border-radius:3px
+         }
+		.contact-form{
+            overflow:hidden
+         }
+         .contact-form .widget-title{
+            display:none
+         }
+         .contact-form .contact-form-name{
+            width:calc(50% - 5px)
+         }
+         .contact-form .contact-form-email{
+            width:calc(50% - 5px);
+            float:right
+         }
+
+         .post-body strike{text-decoration:line-through }
+		.post-body a { text-decoration:none; /*font-size:18px;*/}
+		.post-body a.button{
+            display:inline-block;
+            height:32px;
+            background-color:#84a8c1;
+            font-size:16px;
+            color:#fff;
+            font-weight:400;
+            line-height:32px;
+            text-align:center;
+            text-decoration:none;
+            cursor:pointer;
+            padding:3px 20px;
+            margin:10px;
+            border-radius:3px;
+            transition:background .5s
+        }
+        .post-body a.button:hover{
+        	background-color:#000;
+        }
+        .colored-button:hover{
+        	background-color:#161619!important
+        }         
+    </style>
+  </head>
+  <body>
+  <script>
+$(".post-body a").each(function() {  // if a.href is button
+	var t = $(this)
+	var e = t.text().trim()
+	var a = e.split("/"),s = a[0], i = a[1], r = a.pop();
+ 	e.match("button") && (t.addClass("button").text(s), "button" != i && t.addClass(i), "button" != r && t.addClass("colored-button").css({ "background-color": r }))
+})
+
+$(".post-body blockquote").each(function() {
+	var e=$(this),
+        t=e.text().toLowerCase().trim(),
+        h=e.html();
+    if(t.match("(alert-success)")){
+    	const t = h.replace("(alert-success)","");
+        e.replaceWith('<div class="alert-message alert-success">'+ t +"</div>")
+    }
+	if(t.match("(alert-info)")){
+    	const t = h.replace("(alert-success)","");
+        e.replaceWith('<div class="alert-message alert-info">'+ t +"</div>")
+    }
+	if(t.match("(alert-warning)")){
+    	const t = h.replace("(alert-success)","");
+        e.replaceWith('<div class="alert-message alert-warning">'+ t +"</div>")
+    }
+	if(t.match("(alert-error)")){
+    	const t = h.replace("(alert-success)","");
+        e.replaceWith('<div class="alert-message alert-error">'+ t +"</div>")
+    }
+	if(t.match("(codebox)")){
+    	const t = h.replace("(codebox)","");
+        e.replaceWith('<pre class="code-box">' + t + "</pre>")
+    }
+	
+	if(t.match("(contact-form)")){
+    	//const t = h.replace("(contact-form)","");
+        e.replaceWith('<div class="contact-form"/>');	
+    }$(".contact-form").append($("#ContactForm1"))
+	/*
+	t.match("contact-form") && (e.replaceWith('<div class="contact-form"/>'), 
+    $(".contact-form").append($("#ContactForm1")))*/
+	
+})    
+  </script>
+    
+
+    
+   
+  </body>
+</html>

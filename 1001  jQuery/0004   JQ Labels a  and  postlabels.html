@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+    <SCript>
+    // BH  
+    $(".Label a").attr("href", function(t, e) {
+        return e = e.replace(e, e + "?&max-results=" + postPerPage)
+    })
+
+    // polar
+    $('.Label a, a.b-label, a.post-tag').attr('href', function($this, href) {
+        return href.replace(href, href + '?&max-results=' + postPerPage);
+    });
+    </SCript>
+  </head>
+  <body>
+  <!--BH-->
+  <b:includable id='postLabels' var='post'>
+    <b:if cond='data:post.labels'>
+      <div class='post-labels Label'>
+        <span><data:allBylineItems.labels.label/></span>
+        <b:loop values='data:post.labels' var='label'>
+          <a class='label-link' expr:href='data:label.url' rel='tag'><data:label.name/></a>
+        </b:loop>
+      </div>
+    </b:if>
+  </b:includable>
+
+            <b:includable id='postCategory' var='post'>
+              <!-- Post Label/Category -->
+              <b:if cond='data:post.labels'>
+                <span class='post-tag Label'>
+                  <a expr:href='data:post.labels.first.url'><data:post.labels.first.name/></a>
+                </span>
+              </b:if>
+            </b:includable>
+            
+  <!--polar-->
+  
+  <b:includable id='postLabels' var='post'>
+    <b:if cond='data:allBylineItems.labels'>
+      <b:if cond='data:post.labels'>
+        <div class='post-labels'>
+          <div class='label-head Label'>
+            <b:loop values='data:post.labels' var='label'>
+              <a class='label-link' expr:href='data:label.url' rel='tag'><data:label.name/></a>
+            </b:loop>
+          </div>
+        </div>
+      </b:if>
+    </b:if> 
+  </b:includable>   
+
+    
+   
+  </body>
+</html>

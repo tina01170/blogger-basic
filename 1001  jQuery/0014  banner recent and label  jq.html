@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+    /*  banner is column four posts*/
+    /* banner recent and popular posts and popular posts*/
+
+    .banner { margin:0 auto; padding:0 20px; box-sizing:border-box; }
+    #banner { margin:0; padding:0;  }
+    .banner .HTML > h3, .banner .PopularPosts > h3 { display:none;} 
+
+    .banner .HTML .widget-content { display:none; }
+    .banner .show-hot .widget-content {display:block!important}
+    .banner .hot-posts, .banner .PopularPosts .widget-content { overflow:hidden; display:flex; margin:0 -15px;}
+    .banner .hot-posts .hot-item, .banner .PopularPosts .post { margin:0 0 50px; display: block; width:23%; padding:0 15px;}
+    .banner .hot-posts .hot-item img, .banner .PopularPosts .post .post-image-link { display: block; overflow:hidden; width:100%; height:150px; object-fit:cover; vertical-align: middle;}
+    .banner .hot-posts .hot-item .post-info, .banner .PopularPosts .post .post-info { overflow:hidden; margin:0; }
+    .banner .hot-posts .hot-item .post-info .post-tag,  .banner .PopularPosts .post .post-info .post-tag a { display:block; margin-top:15px; width:fit-content; padding:5px; color:#fff; font-size:12px; text-transform: capitalize; font-weight:700; background:$(main.color); }
+    .banner .hot-posts .hot-item .post-info h3, .banner .PopularPosts .post-title { overflow:hidden; font-size:16px; font-weight: 700; line-height:1.6em; margin:10px 0; }
+    .banner .hot-posts .hot-item .post-info h3 a, .banner .PopularPosts .post-title a { display:block; color:$(title.color); font-family:'Roboto',sans-serif;  -webkit-transition: color 0.2s; -moz-transition: color 0.2s; transition:color 0.2s;}
+    .banner .hot-posts .hot-item .post-info h3 a:hover, .banner .PopularPosts .post-title a:hover { color:$(main.color);}
+    .banner .hot-posts .hot-item .post-info .post-date, .banner .PopularPosts .post-meta .post-date { font-size:16px; color:#000; }
+    </style>
+  </head>
+  <body>
+  <script>
+    function l(feed,i){
+      for (var k = 0; k < feed[i].link.length; k++) {
+        if (feed[i].link[k].rel == 'alternate') {
+              link = feed[i].link[k].href;
+              break;
+            }                           
+      }
+      return link;
+    }
+    function t(feed,i){
+      return feed[i].title.$t;
+    }
+    function e(feed, i) {
+      var d = feed[i].published.$t, y = d.substring(0, 4), m = d.substring(5, 7), a = d.substring(8, 10);	
+      var h = monthFormat[parseInt(m, 10) - 1] + "/" + a + ", " + y;
+      return '<span class="post-date">'+ monthFormat[parseInt(m, 10) - 1] + "/" + a + ", " + y +'</span>';	
+    }
+    // label 新加的
+    function p(feed, i) { 
+      if (feed[i].category != undefined) {
+        var tag = feed[i].category[0].term;
+        code = '<span class="post-tag">' + tag + '</span>';
+      } else {
+        code = '';
+      }
+      return code;	
+    }
+    function g(feed,i,title) {
+      var recenthumb;
+        try {
+          recenthumb = feed.media$thumbnail.url;
+          // entry.media$thumbnail.replace(/\/s72\-c\//,'/s400/');
+        } catch (error) {
+          s = feed[i].content.$t;
+          a = s.indexOf("<img");
+          b = s.indexOf("src=\"", a);
+          c = s.indexOf("\"", b + 5);
+          d = s.substr(b + 5, c - b - 5);
+          if ((a != -1) && (b != -1) && (c != -1) && (d != "")) {
+              recenthumb = d;
+          } else recenthumb = 'https://4.bp.blogspot.com/-O3EpVMWcoKw/WxY6-6I4--I/AAAAAAAAB2s/KzC0FqUQtkMdw7VzT6oOR_8vbZO6EJc-ACK4BGAYYCw/w680/nth.png';
+          }
+      var postImageUrl = recenthumb;
+      var posterImage = postImageUrl ? '<a class="post-image-link" href="'+ link +'"><img class="post-thumb" src="' + postImageUrl + '" alt="' + title + '"></a>' : ''; 	
+      return posterImage;
+    }		
+    function Posts($this, type, count, label) {
+      //console.log($this, type, count, label);
+        if ( type.match('hot') || type.match('list') ||type.match('related')) {
+        var url = '';
+          if (label == 'recent') {
+              url = '/feeds/posts/default?alt=json-in-script&max-results=' + count;
+            } else {
+              url = '/feeds/posts/default/-/' + label + '?alt=json-in-script&max-results=' + count;
+            }
+            $.ajax({
+                    url: url,
+                    type: 'get',
+                    dataType: 'jsonp',
+            beforeSend:function() {
+              if (type.match('list')) {
+                $this.html('<div class="loader"/>').parent().addClass('show-list');
+                        } else if (type.match('hot')) {
+                $this.html('<div class="loader"/>').parent().addClass('show-hot');
+                        }
+            },
+                    success: function(json) {
+              if (type.match('hot')) {
+                            var code = '<ul class="hot-posts">';
+              } else if (type.match('list')) {
+                var code = '<ul class="custom-widget">';
+                        } else if (type.match('related')) {
+                            var code = '<ul class="related-posts">';
+                        }
+              var entry = json.feed.entry;
+                        if (entry != undefined) {
+                for (var i = 0,feed = entry;i < entry.length; i++) {
+                  var link = l(feed,i);
+                                var title = t(feed,i);
+                                var date = e(feed, i);
+                                var	image = g(feed,i,title);
+                  var tag = p(feed, i);  console.log
+                  var content = '';
+                  if (type.match('list')) {                           
+                    content += '<li class="recent-item">' + image + '<div class="post-info"><h3><a href="' + link + '">' + title +'</a></h3>'+ date +'</div></li>';
+                                } else if (type.match('related')) {
+                                    content += '<li class="related-item">' + image + '<div class="post-info"><h3><a href="' + link + '">' + title + '</a></h3>'+ date +'</div></li>';
+                                } else if (type.match('hot')) {
+                                    content += '<li class="hot-item"><div class="hot-item-inner">' + image + '<div class="post-info">'+tag+'<h3 class="hot-title"><a href="' + link + '">' + title + '</a></h3>'+ date +'</div></div></li>';
+                                }                                                
+                                code += content;                           
+                }
+                            code += '</ul>';     	
+                        } else {
+                            code = '<ul class="no-posts">No Posts Found</ul>';
+                        }
+                        $this.html(code);
+            }
+            });
+        }
+    }    
+  </script>  
+
+    
+   
+  </body>
+</html>

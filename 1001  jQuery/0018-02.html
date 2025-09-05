@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>fontsize</title>
+    <script src="jquery-3.6.0.min.js"></script>
+    <style>
+.item-post .post-meta {display: flex; justify-content: space-between; align-items: center;}
+.fontsize .btn { border: 1px solid #ccc;cursor: pointer; padding:5px;}
+
+    </style>
+  </head>
+  <body>
+    <b:includable id='headerByline' var='post'>
+                         <b:if cond='data:view.isMultipleItems'>
+                            <!-- index Meta -->
+                            <div class='post-meta'>
+                                <b:include data='post' name='postTimestamp'/>
+                                <b:include data='post' name='postCategory'/>
+                            </div>
+                         </b:if>
+                         <b:if cond='data:view.isSingleItem'>
+                            <!-- Post Header Meta -->  
+                           <div class='post-meta'>
+                               <div class='meta-left'>
+                                   <b:include data='post' name='postAuthor'/>
+                                   <b:include data='post' name='postTimestamp'/>
+                                   <b:if cond='data:post.numberOfComments &gt;= 0'>
+                                      <a class='comments-number' expr:href='data:post.url + &quot;#comments&quot;'><data:post.numberOfComments/></a>                
+                               </b:if>
+                               </div>
+                               <div class='meta-right'>
+                                <b:include data='post' name='fontsize'/>
+                               </div>
+                          </div>
+                         </b:if>
+			 		 </b:includable>
+    <b:includable id='fontsize'>
+      <div class='fontsize'>
+        <span class='btn large'>大</span>
+        <span class='btn medium'>中</span>
+        <span class='btn small'>小</span>
+     </div>
+    </b:includable>
+    
+
+    <script>
+        $(".large").click(function (e) {
+          $(".entry-content p").css("font-size", "28px");
+        });
+
+        $(".medium").click(function (e) {
+          $(".entry-content p").css("font-size", "20px");
+        });
+
+        $(".small").click(function (e) {
+          $(".entry-content p").css("font-size", "14px");
+        });
+    </script>
+   
+  </body>
+</html>

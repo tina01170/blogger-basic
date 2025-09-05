@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title> 
+    <style>
+
+      #topic { margin:0 0 50px; background: rgba(0, 0, 0, 0.03); border:1px dashed #ccc;}
+			#topic .catalog { padding:15px; font-size:24px; color:#000;  }
+			#topic .anchor-list { margin:10px 0; }
+			#topic .anchor-list a { text-decoration:none; font-size:20px; color:#000;  }
+      #topic button { 
+        cursor: pointer;
+      }
+    </style>
+    <script>
+        var $head = $('.post-body h1,.post-body h2, .post-body h3, .post-body h4');
+        var $list =  $('<ul class="anchor-list"></ul>');
+        var $item;
+        if ($head .length > 0) { 
+          $head.each(function(index,obj) {
+              $(obj).prepend('<a id="link-' + index + '"></a>');
+              $item =  $('<li></li>');
+              if ($(obj).prop("tagName") == 'H2') {
+                  $item.html('<h2><a href="#link-' + index + '">' + $(obj).text() + '</a></h2>');      
+              } else if ($(obj).prop("tagName") == 'H3') {
+                  $item.html('<h3><a href="#link-' + index + '">' + $(obj).text() + '</a></h3>');
+              }           
+              $list.append($item);
+          });
+        }          
+        var $title ='<h3 class="catalog">目錄</h3>';
+        $('#topic').prepend($list)
+        $('#topic').prepend($title);
+
+        $list.find('a').on('click', function() {
+          var link_id = $(this).attr('href');
+          var $anchor =  $(link_id);
+          if ($anchor.length) {
+            $('html, body').animate({
+                scrollTop: $anchor.offset().top - 70
+            }, 1000);
+            return false;				
+          }
+        }); 
+    </script>
+  </head>
+  <body>
+    <div class="post-body">
+        <!--加在文章區-->
+        <div id="topic"></div>
+
+    </div>
+    
+
+    
+   
+  </body>
+</html>

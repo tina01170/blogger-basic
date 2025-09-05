@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+.anchor-wrap { padding:20px;  border:1px solid #5B5B5B; }
+.anchor-wrap .anchor-top { /*display:flex;*/ }
+.anchor-wrap .anchor-title { display:inline-block; font-size:24px; color:#000; margin:10px 0; text-transform:capitalize; }
+.anchor-wrap .show { float:right; margin:10px 0; font-size:18px; color:#000; text-transform:capitalize; }
+.anchor-wrap .show:after { content: "\f0d7"; font-family:'Font Awesome 5 Free'; font-size:28px; font-weight: 900; color:#000; text-align:center; width:25px; height:25px; margin-left:8px; }
+.anchor-wrap .anchor-inner { padding:10px 0; border-top:1px solid #ccc;}
+.anchor-inner > ol { margin:0; padding:0; }
+.anchor-inner ol li a { font-size:18px; color:#000; display:block; }
+.anchor-inner > ol > li > a, .anchor-inner > ol > li > ol > li > a,  .anchor-inner > ol > li > ol > li > ol > li > a { line-height:34px; height:34px; } 			
+
+    </style>
+  </head>
+  <body>
+  
+    <script>
+$(".post-body b").each(function() {
+	  var e = $(this),
+        t = e.text(),
+        a = t.toLowerCase().trim();  console.log(t,a);
+		if (a.match('catalog')) {
+			  e.replaceWith('<div class="anchor-wrap"><div class="anchor-top"><span class="anchor-title">' + t + '</span><a href="javascript:;" class="tocify-title" role="button" title="' + t + '"><span class="show"></span></a></div><div class="anchor-inner"><ol id="anchor"></ol></div></div>')
+    }
+		$(".tocify-title").each(function(e) {
+        (e = $(this)).on("click", function() {
+            e.toggleClass("is-expanded"), $("#anchor").slideToggle(500)
+        })
+    }), 
+    $("#anchor").toc({
+        content: ".post-body",
+        headings: "h2,h3,h4"
+    }),
+		$("#anchor li a").each(function(e) {
+        (e = $(this)).click(function() {
+            return $("html,body").animate({
+              scrollTop: ($(e.attr("href")).offset().top) - 70
+            }, 1000)
+        })
+		})
+})
+
+    </script>
+
+    
+   
+  </body>
+</html>
