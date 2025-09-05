@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+ 
+  <style>
+    
+  </style>
+  <script>
+      /*  方式二：專門用來對付字符串
+
+        * parseInt()把一個字符串轉換為一個整數：
+          可以將一個字符串中的有效整數部分取出來，
+          然後轉換為Number
+
+        * parseFloat()把一個字符串轉換為一個浮點數：
+          可以將一個字符串中的有效小數部分取出來，
+          然後轉換為Number
+
+        * 如果對非String使用parseInt()或parseFloat()，
+          它會先將其轉換為String，然後再操作
+          
+
+        一般來說，只要是數字都能轉型，
+        不過要透過 parseInt 轉型，
+        即使是數字仍然是有規則的。
+        parseInt(string, radix);  
+
+
+        string
+        將要轉成數字的字串。例外的情況是，
+        如果此時 string 不是字串，就會先經過 ToString 
+        再執行 parseInt，如果是空白值則會被忽略。
+
+        radix (基數)
+
+        代入數字為 2 到 36，
+        代表二進位、八進位、十進位或十六進位，
+        譬如指定 10 就代表十進位，
+        一定要定義這個參數，
+        避免給出的結果因實做不同而產生變化，
+        通常預設不是 10 進位，
+        因此如果 radix 為 0 或沒有設置參數的時候
+        則會根據 string 做判斷。
+      */
+        //整數
+        var a1 = "123";
+        a1 = parseInt(a1);
+        console.log(typeof a1); // number
+        console.log(a1);        // 123
+
+        //浮點數
+        var a2 = "123.456";
+        a2 = parseInt(a2);
+        //console.log(typeof a2); // number
+       // console.log(a2);        // 123
+
+        
+        var a3 = "123px";
+        a3 = parseInt(a3);
+        //console.log(typeof a3); // number
+       // console.log(a3);        // 123 
+
+        //非String
+    
+        // var a4 = null;
+        // var a4 = undefined;
+        // var a4 = '';
+        // var a4 = 'abc';
+        // var a4 = true;
+        /*
+        var a4 = false;
+        a4 = parseInt(a4);
+        console.log(typeof a4); // number
+        console.log(a4);        // NaN
+      */
+
+        var monthFormat = ["January", "February", "March",
+         "April", "May", "June", "July", "August",
+          "September", "October", "November", "December"]
+
+          //console.log(monthFormat.length)
+          var number = monthFormat.length;
+          console.log(number)
+         
+          
+          for(i=0;i<number;i++) {
+            var mouth = monthFormat[i];
+            console.log(mouth)
+          }
+          //console.log(mouth)
+      //h = monthFormat[parseInt(f, 10) - 1] + ' ' + m + ', ' + d,
+
+        var mouth1 = parseInt(monthFormat[1]);
+       // console.log(mouth1)  //NaN
+        //console.log(typeof mouth1);  //number
+
+        var mouth = monthFormat[parseInt(1,10)-1];
+        console.log(mouth)
+        console.log(typeof mouth);
+
+
+       
+        
+  </script>
+</head>
+<body>
+   
+
+
+  
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+
+    </head> 這個字串，找到後在此字串的前一行，插入以下程式碼：
+
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
+    <style>
+    /* 延伸閱讀 */
+    .extPost { /* 整個區塊 */
+    margin: 20px 0;
+    font-size: 14px;
+    }
+    a.extPost_caption { /* 標題文字 */
+    text-decoration: none;
+    font-weight: bold;
+    color: #666;
+    }
+    </style>
+    
+    </body> 這個字串，找到後在此字串的前一行，插入以下程式碼：
+    
+    <!-- 延伸閱讀 start -->
+    <b:if cond='data:blog.pageType == "item"'>
+    <script>
+    //<![CDATA[
+          var extPost = {
+          show: 5, // 延伸閱讀的數量
+          caption: "延伸閱讀 :", // 大標題字樣
+          location: ".post-body", // 延伸閱讀出現位置
+          //]]>
+          postUrl: "<data:blog.canonicalUrl/>"
+          };
+          //<![CDATA[
+          (function() {
+          var url = "https://drive.google.com/file/d/1bap0AR22bIue9FklODfKPWnAjD9_WMgO/view",
+          script = document.createElement("script");
+          script.src = url;
+          document.documentElement.firstChild.appendChild(script);
+          })();
+    //]]>
+    </script>
+    </b:if>
+    <!-- 延伸閱讀 end, designed by WFU BLOG-->
+    
+
+    
+   
+  </body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+
+        .post-body a.button{
+            display:inline-block;
+            height:30px;
+            background-color:#84a8c1;
+            font-size:13px;
+            color:#fff;
+            font-weight:600;
+            line-height:30px;
+            text-align:center;
+            text-decoration:none;
+            cursor:pointer;
+            padding:0 20px;
+            margin:5px;
+            border-radius:3px;
+            transition:background .17s
+        }
+        .post-body a.button:hover{
+            background-color:#161619
+        }
+        .button:before{
+            font-family:'Font Awesome 5 Free';
+            font-weight:900;
+            display:inline-block;
+            margin:0 5px 0 0
+        }
+        .button.preview:before{
+            content:"\f06e"
+        }
+        .button.download:before{
+            content:"\f019"
+        }
+        .button.link:before{
+            content:"\f0c1"
+        }
+        .button.cart:before{
+            content:"\f07a"
+        }
+        .button.info:before{
+            content:"\f06a"
+        }
+        .button.share:before{
+            content:"\f1e0"
+        }
+        .colored-button:hover{
+            background-color:#161619!important
+        }
+    </style>
+    <style>
+        /*my coding*/
+        .post-body a { text-decoration:none; /*font-size:18px;*/}
+		.post-body a.button{
+            display:inline-block;
+            height:32px;
+            background-color:#84a8c1;
+            font-size:16px;
+            color:#fff;
+            font-weight:400;
+            line-height:32px;
+            text-align:center;
+            text-decoration:none;
+            cursor:pointer;
+            padding:3px 20px;
+            margin:10px;
+            border-radius:3px;
+            transition:background .5s
+        }
+        .post-body a.button:hover{
+        	background-color:#000;
+        }
+        .colored-button:hover{
+        	background-color:#161619!important
+        }
+      
+    </style>
+  </head>
+  <body>
+    <!-- 電商平台才會用到 -->
+    <!--Amia 沒有-->
+    <!--BH -->
+    <script>
+      $(".post-body a").each(function() { // 如果a 是button 增加 class 名稱，樣式
+        var t = $(this),
+            e = t.text().trim(), //text
+            a = e.split("/"),
+            s = a[0],
+            i = a[1],
+            r = a.pop(); //pop() 方法用于删除数组的最后一个元素并返回删除的元素
+        e.match("button") && (t.addClass("button").text(s), "button" != i && t.addClass(i), "button" != r && t.addClass("colored-button").css({
+              "background-color": r
+        })) 
+      })
+    </script>
+    <!--Polar 不要用-->
+    <script>
+      $(".post-body a").each(function() {
+          var e = $(this),
+              t = e.html(),
+              a = t.toLowerCase(),
+              s = shortCodeIfy(t, "text"),
+              i = shortCodeIfy(t, "icon"),
+              r = shortCodeIfy(t, "color");
+          a.match("getbutton") && 0 != s && (e.addClass("button btn").text(s), 0 != i && e.addClass(i), 0 != r && e.addClass("colored-button").attr("style", "background-color:" + r + ";"))
+      })
+    </script>
+
+
+   
+
+  
+   
+  </body>
+</html>

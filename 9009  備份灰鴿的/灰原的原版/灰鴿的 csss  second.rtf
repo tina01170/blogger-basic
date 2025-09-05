@@ -1,0 +1,1786 @@
+{\rtf1\ansi\ansicpg950\deff0\deflang1033\deflangfe1028{\fonttbl{\f0\fnil\fcharset136 \'b7\'73\'b2\'d3\'a9\'fa\'c5\'e9;}}
+{\colortbl ;\red255\green0\blue0;\red0\green176\blue80;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\lang1028\f0\fs36\par
+\cf1 * \{ margin:0;\par
+    padding:0;\}\par
+table \{ border-collapse:collapse;\par
+      border-spacing:0;\}\par
+fieldset,img \{ border:0;\}\par
+address,caption,cite,code,dfn,em,th,var \{\par
+    font-style:normal;\par
+    font-weight:normal;\}\par
+ol,ul,li \{ list-style:none;\}\par
+caption,th \{ text-align:left;\}\par
+q:before,q:after \{ content:'';\}\par
+abbr,acronym \{ border:0;\}\par
+pre\{ font-size: 1em ;\}\par
+textarea\{font-size: 13px;\}\par
+.hidden\{\par
+display:none\par
+\}\par
+.invisible\{\par
+visibility:hidden\par
+\}\par
+\par
+\cf0 .container::after,.float-container::after\{\par
+clear:both;\par
+content:"";\par
+display:table\par
+\}\par
+.clearboth\{\par
+clear:both\par
+\}\par
+\cf2 /*safe*/\par
+#comments .comment .comment-actions,.subscribe-popup .FollowByEmail .follow-by-email-submit,.widget.Profile .profile-link,.widget.Profile .profile-link.visit-profile\{\par
+background:0 0;\par
+border:0;\par
+box-shadow:none;\par
+color:$(body.link.color);\par
+cursor:pointer;\par
+font-size:14px;\par
+font-weight:700;\par
+outline:0;\par
+text-decoration:none;\par
+text-transform:uppercase;\par
+width:auto\par
+\}\par
+\cf0 img\{ max-width:100% \}\par
+h3\{\par
+color:$(body.text.color);\par
+font-size:16px\par
+\}\par
+a, a:visited\{\par
+text-decoration:none;\par
+color:$(body.link.color)\par
+\}\par
+a:hover\{\par
+color:$(body.link.hover.color)\par
+\}\par
+\cf1 ::selection \{\par
+\tab background: pink;\par
+\tab color:#686;\par
+\}\par
+\cf0\par
+\par
+/*-- setup --*/\par
+body\{\par
+overflow-wrap:break-word;\par
+word-break:break-word;\par
+word-wrap:break-word\par
+color:$(body.text.color);\par
+font:$(body.text.font);\par
+min-height:100vh;\par
+background:$(body.background);\par
+background-color:$(body.background.color);\par
+background-size: 100% 100vh;\par
+\}\par
+/*--- header --*/\par
+header h1\{ \par
+font:$(blog.title.font);\par
+color: $(blog.title.color);\par
+margin-left:$(blog.title.left);\par
+\}\par
+.header-widget P\{\par
+ margin-left:$(descript.left);\par
+color:$(description.text.color);\par
+font:$(descript.font);\par
+text-shadow: 1px 2px 5px rgb(21 16 16 / 67%);\par
+\}\par
+.header-widget\{\par
+\par
+\par
+padding:5px;\par
+overflow:hidden;\par
+\}\par
+@media all and (max-width: 1000px) \{.header-widget\{max-height: calc(100vw/1.6);\} \}\par
+\par
+/*---*/\par
+#navbar\{ position: sticky; top:0; z-index:200; background:$(navbar.bgcolor);\}\par
+#Menubar\{display:flex; justify-content: center;\}\par
+\par
+.page_body .centered\{\par
+box-sizing:border-box;\par
+display:-webkit-flex;\par
+display:flex;\par
+flex-wrap:wrap;\par
+align-items: flex-start;\par
+margin:0 auto;\par
+width:$(main.width);\par
+max-width: 100%;\par
+min-height:100vh;\par
+padding: 0 6px;\par
+\}\par
+ \par
+#main\{\par
+outline:0;\par
+flex:3 1 $(asider.width + 180px);\par
+min-width:420px;\par
+ margin:0 6px;\par
+\}\par
+\par
+/*-- \'b0\'bc\'c4\'e6 --*/\par
+.sidebar-cont\{\par
+flex:1 0 $(asider.width); \par
+margin:0 6px; padding:12px $(sidebar.padd);\par
+\}\par
+\par
+.sidebar-cont .widget .title\{\par
+font:$(widget.title.font);\par
+color:$(widget.title.color);\par
+\}\par
+.sidebar-cont .widget\{\par
+background:$(des.bgColor);\par
+font:$(des.font);\par
+color:$(des.text.color);\par
+\}\par
+.sidebar-cont .widget+.widget\{\par
+border-top:1px dashed $(sidebar.separator.color)\par
+\}\par
+.sidebar-cont .svg-icon-24\{\par
+fill:$(sidebar.icons.color)\par
+\}\par
+\par
+/* --- \'ba\'eb\'bf\'ef\'a4\'e5\'b3\'b9 -- */ \par
+.main .FeaturedPost .widget-content\{\par
+border:0;\par
+position:relative;\par
+padding-bottom:.25em\par
+\}\par
+.FeaturedPost img\{\par
+margin-top:2em\par
+\}\par
+.FeaturedPost .snippet-container\{\par
+margin:2em 0\par
+\}\par
+.FeaturedPost .snippet-item\{\par
+ font:$(fea.text.font);\par
+ color:$(fea.text.color);\par
+\}\par
+.FeaturedPost .snippet-container p\{\par
+margin:0\par
+\}\par
+.FeaturedPost .snippet-thumbnail\{\par
+float:none;\par
+height:auto;\par
+margin-bottom:2em;\par
+margin-$endSide:0;\par
+overflow:hidden;\par
+max-height:calc(600px + 2em);\par
+max-width:100%;\par
+text-align:center;\par
+width:100%\par
+\}\par
+.FeaturedPost .snippet-thumbnail img\{\par
+max-width:100%;\par
+width:100%\par
+\}\par
+.FeaturedPost\{background:$(fea.bgcolor); padding:$(fea.padd);\}\par
+\par
+ #page_body.section div.widget.FeaturedPost h3 a\{font:$(fea.title.font); color:$(fea.title.color);\}\par
+\par
+.FeaturedPost .svg-icon-24\{\par
+fill:$(fea.icon.color)\par
+\}\par
+\par
+/*--------------------------------------*/\par
+input::-ms-clear\{\par
+display:none\par
+\}\par
+.blogger-logo,.svg-icon-24.blogger-logo\{\par
+fill:#ff9800;\par
+opacity:1\par
+\}\par
+.loading-spinner-large\{\par
+-webkit-animation:mspin-rotate 1.568s infinite linear;\par
+animation:mspin-rotate 1.568s infinite linear;\par
+height:48px;\par
+overflow:hidden;\par
+position:absolute;\par
+width:48px;\par
+z-index:200\par
+\}\par
+.loading-spinner-large>div\{\par
+-webkit-animation:mspin-revrot 5332ms infinite steps(4);\par
+animation:mspin-revrot 5332ms infinite steps(4)\par
+\}\par
+.loading-spinner-large>div>div\{\par
+-webkit-animation:mspin-singlecolor-large-film 1333ms infinite steps(81);\par
+animation:mspin-singlecolor-large-film 1333ms infinite steps(81);\par
+background-size:100%;\par
+height:48px;\par
+width:3888px\par
+\}\par
+.mspin-black-large>div>div,.mspin-grey_54-large>div>div\{\par
+background-image:url(https://www.blogblog.com/indie/mspin_black_large.svg)\par
+\}\par
+.mspin-white-large>div>div\{\par
+background-image:url(https://www.blogblog.com/indie/mspin_white_large.svg)\par
+\}\par
+.mspin-grey_54-large\{\par
+opacity:.54\par
+\}\par
+@-webkit-keyframes mspin-singlecolor-large-film\{\par
+from\{\par
+-webkit-transform:translateX(0);\par
+transform:translateX(0)\par
+\}\par
+to\{\par
+-webkit-transform:translateX(-3888px);\par
+transform:translateX(-3888px)\par
+\}\par
+\}\par
+@keyframes mspin-singlecolor-large-film\{\par
+from\{\par
+-webkit-transform:translateX(0);\par
+transform:translateX(0)\par
+\}\par
+to\{\par
+-webkit-transform:translateX(-3888px);\par
+transform:translateX(-3888px)\par
+\}\par
+\}\par
+@-webkit-keyframes mspin-rotate\{\par
+from\{\par
+-webkit-transform:rotate(0);\par
+transform:rotate(0)\par
+\}\par
+to\{\par
+-webkit-transform:rotate(360deg);\par
+transform:rotate(360deg)\par
+\}\par
+\}\par
+@keyframes mspin-rotate\{\par
+from\{\par
+-webkit-transform:rotate(0);\par
+transform:rotate(0)\par
+\}\par
+to\{\par
+-webkit-transform:rotate(360deg);\par
+transform:rotate(360deg)\par
+\}\par
+\}\par
+@-webkit-keyframes mspin-revrot\{\par
+from\{\par
+-webkit-transform:rotate(0);\par
+transform:rotate(0)\par
+\}\par
+to\{\par
+-webkit-transform:rotate(-360deg);\par
+transform:rotate(-360deg)\par
+\}\par
+\}\par
+@keyframes mspin-revrot\{\par
+from\{\par
+-webkit-transform:rotate(0);\par
+transform:rotate(0)\par
+\}\par
+to\{\par
+-webkit-transform:rotate(-360deg);\par
+transform:rotate(-360deg)\par
+\}\par
+\}\par
+.main-heading\{\par
+position:absolute;\par
+clip:rect(1px,1px,1px,1px);\par
+padding:0;\par
+border:0;\par
+height:1px;\par
+width:1px;\par
+overflow:hidden\par
+\}\par
+.BLOG_mobile_video_class\{\par
+display:none\par
+\}\par
+body .CSS_LIGHTBOX\{\par
+z-index:900\par
+\}\par
+.extendable .show-less,.extendable .show-more\{\par
+border-color:$(body.link.color);\par
+color:$(body.link.color);\par
+margin-top:8px\par
+\}\par
+.extendable .show-less.hidden,.extendable .show-more.hidden\{\par
+display:none\par
+\}\par
+.inline-ad\{\par
+display:none;\par
+max-width:100%;\par
+overflow:hidden\par
+\}\par
+.adsbygoogle\{\par
+display:block\par
+\}\par
+#cookieChoiceInfo\{\par
+bottom:0;\par
+top:auto\par
+\}\par
+iframe.b-hbp-video\{\par
+border:0\par
+\}\par
+.post-body img\{\par
+max-width:100%\par
+\}\par
+.post-body iframe\{\par
+max-width:100%\par
+\}\par
+.post-body a[imageanchor="1"]\{\par
+display:inline-block\par
+\}\par
+.byline\{\par
+margin-$endSide:1em\par
+\}\par
+.byline:last-child\{\par
+margin-$endSide:0\par
+\}\par
+.link-copied-dialog\{\par
+max-width:520px;\par
+outline:0\par
+\}\par
+.link-copied-dialog .modal-dialog-buttons\{\par
+margin-top:8px\par
+\}\par
+.link-copied-dialog .goog-buttonset-default\{\par
+background:0 0;\par
+border:0\par
+\}\par
+.link-copied-dialog .goog-buttonset-default:focus\{\par
+outline:0\par
+\}\par
+.paging-control-container\{\par
+margin-bottom:16px\par
+\}\par
+.paging-control-container .paging-control\{\par
+display:inline-block\par
+\}\par
+.paging-control-container .comment-range-text::after,.paging-control-container .paging-control\{\par
+color:$(body.link.color)\par
+\}\par
+.paging-control-container .comment-range-text,.paging-control-container .paging-control\{\par
+margin-$endSide:8px\par
+\}\par
+.paging-control-container .comment-range-text::after,.paging-control-container .paging-control::after\{\par
+content:"\\b7";\par
+cursor:default;\par
+padding-$startSide:8px;\par
+pointer-events:none\par
+\}\par
+.paging-control-container .comment-range-text:last-child::after,.paging-control-container .paging-control:last-child::after\{\par
+content:none\par
+\}\par
+.byline.reactions iframe\{\par
+height:20px\par
+\}\par
+.b-notification\{\par
+color:#000;\par
+background-color:#fff;\par
+border-bottom:solid 1px #000;\par
+box-sizing:border-box;\par
+padding:16px 32px;\par
+text-align:center\par
+\}\par
+.b-notification.visible\{\par
+-webkit-transition:margin-top .3s cubic-bezier(.4,0,.2,1);\par
+transition:margin-top .3s cubic-bezier(.4,0,.2,1)\par
+\}\par
+.b-notification.invisible\{\par
+position:absolute\par
+\}\par
+.b-notification-close\{\par
+position:absolute;\par
+right:8px;\par
+top:8px\par
+\}\par
+.no-posts-message\{\par
+line-height:40px;\par
+text-align:center\par
+\}\par
+@media screen and (max-width:800px)\{\par
+body.item-view .post-body a[imageanchor="1"][style*="float: left;"],body.item-view .post-body a[imageanchor="1"][style*="float: right;"]\{\par
+float:none!important;\par
+clear:none!important\par
+\}\par
+body.item-view .post-body a[imageanchor="1"] img\{\par
+display:block;\par
+height:auto;\par
+margin:0 auto\par
+\}\par
+body.item-view .post-body>.separator:first-child>a[imageanchor="1"]:first-child\{\par
+margin-top:20px\par
+\}\par
+.post-body a[imageanchor]\{\par
+display:block\par
+\}\par
+body.item-view .post-body a[imageanchor="1"]\{\par
+margin-left:0!important;\par
+margin-right:0!important\par
+\}\par
+body.item-view .post-body a[imageanchor="1"]+a[imageanchor="1"]\{\par
+margin-top:16px\par
+\}\par
+\}\par
+.item-control\{\par
+display:none\par
+\}\par
+#comments\{\par
+border-top:1px dashed rgba(0,0,0,.54);\par
+margin-top:20px;\par
+padding:10px\par
+\}\par
+#comments .comment-thread ol\{\par
+margin:0;\par
+padding-left:0;\par
+padding-$startSide:0\par
+\}\par
+#comments .comment .comment-replybox-single,#comments .comment-thread .comment-replies\{\par
+margin-left:50px\par
+\}\par
+#comments .comment-thread .thread-count\{\par
+display:none\par
+\}\par
+.comment .avatar-image-container\{\par
+position:absolute\par
+\}\par
+.comment .avatar-image-container img\{\par
+border-radius:50%\par
+\}\par
+.avatar-image-container svg,.comment .avatar-image-container .avatar-icon\{\par
+border-radius:50%;\par
+border:solid 1px $(posts.icons.color);\par
+box-sizing:border-box;\par
+fill:$(posts.icons.color);\par
+height:35px;\par
+margin:0;\par
+padding:7px;\par
+width:35px\par
+\}\par
+.comment .comment-block\{\par
+margin-top:10px;\par
+margin-$startSide:60px;\par
+padding-bottom:0\par
+\}\par
+#comments .comment-author-header-wrapper\{\par
+margin-left:40px\par
+\}\par
+#comments .comment .thread-expanded .comment-block\{\par
+padding-bottom:20px\par
+\}\par
+#comments .comment .comment-header .user,#comments .comment .comment-header .user a\{\par
+color:$(posts.title.color);\par
+font-style:normal;\par
+font-weight:700\par
+\}\par
+#comments .comment .comment-actions\{\par
+bottom:0;\par
+margin-bottom:15px;\par
+position:absolute\par
+\}\par
+#comments .comment .comment-actions>*\{\par
+margin-right:8px\par
+\}\par
+#comments .comment .comment-header .datetime\{\par
+bottom:0;\par
+color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.color.blue),.54);\par
+display:inline-block;\par
+font-size:13px;\par
+font-style:italic;\par
+margin-$startSide:8px\par
+\}\par
+#comments .comment .comment-footer .comment-timestamp a,#comments .comment .comment-header .datetime a\{\par
+color:rgba($(posts.title.color.red),$(posts.title.color.green),$(posts.title.color.blue),.54)\par
+\}\par
+#comments .comment .comment-content,.comment .comment-body\{\par
+margin:12px 5px 18px;\par
+word-break:break-word\par
+\}\par
+.comment-body\{\par
+margin-bottom:12px\par
+\}\par
+#comments.embed[data-num-comments="0"]\{\par
+border:0;\par
+margin-top:0;\par
+padding-top:0\par
+\}\par
+#comments.embed[data-num-comments="0"] #comment-post-message,#comments.embed[data-num-comments="0"] div.comment-form>p,#comments.embed[data-num-comments="0"] p.comment-footer\{\par
+display:none\par
+\}\par
+#comment-editor-src\{\par
+display:none\par
+\}\par
+.comments .comments-content .loadmore.loaded\{\par
+max-height:0;\par
+opacity:0;\par
+overflow:hidden\par
+\}\par
+.extendable .remaining-items\{\par
+height:0;\par
+overflow:hidden;\par
+-webkit-transition:height .3s cubic-bezier(.4,0,.2,1);\par
+transition:height .3s cubic-bezier(.4,0,.2,1)\par
+\}\par
+.extendable .remaining-items.expanded\{\par
+height:auto\par
+\}\par
+.svg-icon-24,.svg-icon-24-button\{\par
+cursor:pointer;\par
+height:24px;\par
+width:24px;\par
+min-width:24px\par
+\}\par
+.touch-icon\{\par
+margin:-12px;\par
+padding:12px\par
+\}\par
+.touch-icon:active,.touch-icon:focus\{\par
+background-color:rgba(153,153,153,.4);\par
+border-radius:50%\par
+\}\par
+svg:not(:root).touch-icon\{\par
+overflow:visible\par
+\}\par
+html[dir=rtl] .rtl-reversible-icon\{\par
+-webkit-transform:scaleX(-1);\par
+-ms-transform:scaleX(-1);\par
+transform:scaleX(-1)\par
+\}\par
+.svg-icon-24-button,.touch-icon-button\{\par
+background:0 0;\par
+border:0;\par
+margin:0;\par
+outline:0;\par
+padding:0\par
+\}\par
+.touch-icon-button .touch-icon:active,.touch-icon-button .touch-icon:focus\{\par
+background-color:transparent\par
+\}\par
+.touch-icon-button:active .touch-icon,.touch-icon-button:focus .touch-icon\{\par
+background-color:rgba(153,153,153,.4);\par
+border-radius:50%\par
+\}\par
+.Profile .default-avatar-wrapper .avatar-icon\{\par
+border-radius:50%;\par
+border:solid 1px $(posts.icons.color);\par
+box-sizing:border-box;\par
+fill:$(posts.icons.color);\par
+margin:0\par
+\}\par
+.Profile .individual .default-avatar-wrapper .avatar-icon\{\par
+padding:25px\par
+\}\par
+.Profile .individual .avatar-icon,.Profile .individual .profile-img\{\par
+height:120px;\par
+width:120px\par
+\}\par
+.Profile .team .default-avatar-wrapper .avatar-icon\{\par
+padding:8px\par
+\}\par
+.Profile .team .avatar-icon,.Profile .team .default-avatar-wrapper,.Profile .team .profile-img\{\par
+height:40px;\par
+width:40px\par
+\}\par
+.snippet-container\{\par
+margin:0;\par
+position:relative;\par
+overflow:hidden\par
+\}\par
+.snippet-fade\{\par
+bottom:0;\par
+box-sizing:border-box;\par
+position:absolute;\par
+width:96px\par
+\}\par
+.snippet-fade\{\par
+$endSide:0\par
+\}\par
+.snippet-fade:after\{\par
+content:"\\2026"\par
+\}\par
+.snippet-fade:after\{\par
+float:$endSide\par
+\}\par
+.post-bottom\{\par
+-webkit-align-items:center;\par
+align-items:center;\par
+display:-webkit-flex;\par
+display:flex;\par
+-webkit-flex-wrap:wrap;\par
+flex-wrap:wrap\par
+\}\par
+.post-footer\{\par
+-webkit-flex:1 1 auto;\par
+flex:1 1 auto;\par
+-webkit-flex-wrap:wrap;\par
+flex-wrap:wrap;\par
+-webkit-order:1;\par
+order:1\par
+\}\par
+.post-footer>*\{\par
+-webkit-flex:0 1 auto;\par
+flex:0 1 auto\par
+\}\par
+.post-footer .byline:last-child\{\par
+margin-$endSide:1em\par
+\}\par
+.jump-link\{\par
+-webkit-flex:0 0 auto;\par
+flex:0 0 auto;\par
+-webkit-order:2;\par
+order:2\par
+\}\par
+.collapsible\{\par
+-webkit-transition:height .3s cubic-bezier(.4,0,.2,1);\par
+transition:height .3s cubic-bezier(.4,0,.2,1)\par
+\}\par
+.collapsible,.collapsible>summary\{\par
+display:block;\par
+overflow:hidden\par
+\}\par
+.collapsible>:not(summary)\{\par
+display:none\par
+\}\par
+.collapsible[open]>:not(summary)\{\par
+display:block\par
+\}\par
+.collapsible:focus,.collapsible>summary:focus\{\par
+outline:0\par
+\}\par
+.collapsible>summary\{\par
+cursor:pointer;\par
+display:block;\par
+padding:0\par
+\}\par
+.collapsible:focus>summary,.collapsible>summary:focus\{\par
+background-color:transparent\par
+\}\par
+.collapsible>summary::-webkit-details-marker\{\par
+display:none\par
+\}\par
+.collapsible-title\{\par
+-webkit-align-items:center;\par
+align-items:center;\par
+display:-webkit-flex;\par
+display:flex\par
+\}\par
+.collapsible-title .title\{\par
+-webkit-flex:1 1 auto;\par
+flex:1 1 auto;\par
+-webkit-order:0;\par
+order:0;\par
+overflow:hidden;\par
+text-overflow:ellipsis;\par
+white-space:nowrap\par
+\}\par
+.collapsible-title .chevron-down,.collapsible[open] .collapsible-title .chevron-up\{\par
+display:block\par
+\}\par
+.collapsible-title .chevron-up,.collapsible[open] .collapsible-title .chevron-down\{\par
+display:none\par
+\}\par
+.flat-button\{\par
+cursor:pointer;\par
+display:inline-block;\par
+font-weight:700;\par
+text-transform:uppercase;\par
+border-radius:2px;\par
+padding:8px;\par
+margin:-8px\par
+\}\par
+.flat-icon-button\{\par
+background:0 0;\par
+border:0;\par
+margin:0;\par
+outline:0;\par
+padding:0;\par
+margin:-12px;\par
+padding:12px;\par
+cursor:pointer;\par
+box-sizing:content-box;\par
+display:inline-block;\par
+line-height:0\par
+\}\par
+.flat-icon-button,.flat-icon-button .splash-wrapper\{\par
+border-radius:50%\par
+\}\par
+.flat-icon-button .splash.animate\{\par
+-webkit-animation-duration:.3s;\par
+animation-duration:.3s\par
+\}\par
+.overflowable-container\{\par
+max-height:$(body.text.font.size * 1.2 + 2 * 8px + 2 * 4px + 4px);\par
+overflow:hidden;\par
+position:relative\par
+\}\par
+.overflow-button\{\par
+cursor:pointer\par
+\}\par
+#overflowable-dim-overlay\{\par
+background:0 0\par
+\}\par
+.overflow-popup\{\par
+box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);\par
+background-color:$(tabs.overflow.background.color);\par
+left:0;\par
+max-width:calc(100% - 32px);\par
+position:absolute;\par
+top:0;\par
+visibility:hidden;\par
+z-index:101\par
+\}\par
+.overflow-popup ul\{\par
+list-style:none\par
+\}\par
+.overflow-popup .tabs li,.overflow-popup li\{\par
+display:block;\par
+height:auto\par
+\}\par
+.overflow-popup .tabs li\{\par
+padding-left:0;\par
+padding-right:0\par
+\}\par
+.overflow-button.hidden,.overflow-popup .tabs li.hidden,.overflow-popup li.hidden\{\par
+display:none\par
+\}\par
+.pill-button\{\par
+background:0 0;\par
+border:1px solid;\par
+border-radius:12px;\par
+cursor:pointer;\par
+display:inline-block;\par
+padding:4px 16px;\par
+text-transform:uppercase\par
+\}\par
+.ripple\{\par
+position:relative\par
+\}\par
+.ripple>*\{\par
+z-index:1\par
+\}\par
+.splash-wrapper\{\par
+bottom:0;\par
+left:0;\par
+overflow:hidden;\par
+pointer-events:none;\par
+position:absolute;\par
+right:0;\par
+top:0;\par
+z-index:0\par
+\}\par
+.splash\{\par
+background:#ccc;\par
+border-radius:100%;\par
+display:block;\par
+opacity:.6;\par
+position:absolute;\par
+-webkit-transform:scale(0);\par
+-ms-transform:scale(0);\par
+transform:scale(0)\par
+\}\par
+.splash.animate\{\par
+-webkit-animation:ripple-effect .4s linear;\par
+animation:ripple-effect .4s linear\par
+\}\par
+@-webkit-keyframes ripple-effect\{\par
+100%\{\par
+opacity:0;\par
+-webkit-transform:scale(2.5);\par
+transform:scale(2.5)\par
+\}\par
+\}\par
+@keyframes ripple-effect\{\par
+100%\{\par
+opacity:0;\par
+-webkit-transform:scale(2.5);\par
+transform:scale(2.5)\par
+\}\par
+\}\par
+.search\{\par
+display:-webkit-flex;\par
+display:flex;\par
+line-height:24px;\par
+width:24px\par
+\}\par
+.search.focused\{\par
+width:100%\par
+\}\par
+.search.focused .section\{\par
+width:100%\par
+\}\par
+.search form\{\par
+z-index:101\par
+\}\par
+.search h3\{\par
+display:none\par
+\}\par
+.search form\{\par
+display:-webkit-flex;\par
+display:flex;\par
+-webkit-flex:1 0 0;\par
+flex:1 0 0;\par
+border-bottom:solid 1px transparent;\par
+padding-bottom:8px\par
+\}\par
+.search form>*\{\par
+display:none\par
+\}\par
+.search.focused form>*\{\par
+display:block\par
+\}\par
+.search .search-input label\{\par
+display:none\par
+\}\par
+.search.focused form\{\par
+border-color:$(blog.title.color);\par
+position:relative;\par
+width:auto\par
+\}\par
+.search-expand\{\par
+-webkit-flex:0 0 auto;\par
+flex:0 0 auto\par
+\}\par
+.search-expand-text\{\par
+display:none\par
+\}\par
+.search-close\{\par
+display:inline;\par
+vertical-align:middle\par
+\}\par
+.search-input\{\par
+-webkit-flex:1 0 1px;\par
+flex:1 0 1px\par
+\}\par
+.search-input input\{\par
+background:0 0;\par
+border:0;\par
+box-sizing:border-box;\par
+color:$(blog.title.color);\par
+display:inline-block;\par
+outline:0;\par
+width:calc(100% - 48px)\par
+\}\par
+.search-input input.no-cursor\{\par
+color:transparent;\par
+text-shadow:0 0 0 $(blog.title.color)\par
+\}\par
+.search-focused>*\{\par
+visibility:hidden\par
+\}\par
+.search-focused .search,.search-focused .search-icon\{\par
+visibility:visible\par
+\}\par
+.search.focused .search-action\{\par
+display:block\par
+\}\par
+.search.focused .search-action:disabled\{\par
+opacity:.3\par
+\}\par
+.widget.Sharing .sharing-button\{\par
+display:none\par
+\}\par
+.widget.Sharing .sharing-buttons li\{\par
+padding:0\par
+\}\par
+.widget.Sharing .sharing-buttons li span\{\par
+display:none\par
+\}\par
+.post-share-buttons\{\par
+position:relative\par
+\}\par
+.centered-bottom .share-buttons .svg-icon-24,.share-buttons .svg-icon-24\{\par
+fill:$(sharing.icons.color)\par
+\}\par
+.sharing-open.touch-icon-button:active .touch-icon,.sharing-open.touch-icon-button:focus .touch-icon\{\par
+background-color:transparent\par
+\}\par
+.share-buttons\{\par
+background-color:$(sharing.background.color);\par
+border-radius:2px;\par
+box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);\par
+color:$(sharing.text.color);\par
+list-style:none;\par
+margin:0;\par
+padding:8px 0;\par
+position:absolute;\par
+top:-11px;\par
+min-width:200px;\par
+z-index:101\par
+\}\par
+.share-buttons.hidden\{\par
+display:none\par
+\}\par
+.sharing-button\{\par
+background:0 0;\par
+border:0;\par
+margin:0;\par
+outline:0;\par
+padding:0;\par
+cursor:pointer\par
+\}\par
+.share-buttons li\{\par
+margin:0;\par
+height:48px\par
+\}\par
+.share-buttons li:last-child\{\par
+margin-bottom:0\par
+\}\par
+.share-buttons li .sharing-platform-button\{\par
+box-sizing:border-box;\par
+cursor:pointer;\par
+display:block;\par
+height:100%;\par
+margin-bottom:0;\par
+padding:0 16px;\par
+position:relative;\par
+width:100%\par
+\}\par
+.share-buttons li .sharing-platform-button:focus,.share-buttons li .sharing-platform-button:hover\{\par
+background-color:rgba(128,128,128,.1);\par
+outline:0\par
+\}\par
+.share-buttons li svg[class*=" sharing-"],.share-buttons li svg[class^=sharing-]\{\par
+position:absolute;\par
+top:10px\par
+\}\par
+.share-buttons li span.sharing-platform-button\{\par
+position:relative;\par
+top:0\par
+\}\par
+.share-buttons li .platform-sharing-text\{\par
+display:block;\par
+font-size:16px;\par
+line-height:48px;\par
+white-space:nowrap\par
+\}\par
+.share-buttons li .platform-sharing-text\{\par
+margin-$startSide:56px\par
+\}\par
+.BlogArchive li\{\par
+margin:16px 0\par
+\}\par
+.BlogArchive li:last-child\{\par
+margin-bottom:0\par
+\}\par
+.Label li a\{\par
+display:inline-block\par
+\}\par
+.BlogArchive .post-count,.Label .label-count\{\par
+float:$endSide;\par
+margin-$startSide:.25em\par
+\}\par
+.BlogArchive .post-count::before,.Label .label-count::before\{\par
+content:"("\par
+\}\par
+.BlogArchive .post-count::after,.Label .label-count::after\{\par
+content:")"\par
+\}\par
+.widget.Translate .skiptranslate>div\{\par
+display:block!important\par
+\}\par
+.widget.Profile .profile-link\{\par
+display:-webkit-flex;\par
+display:flex\par
+\}\par
+.widget.Profile .team-member .default-avatar-wrapper,.widget.Profile .team-member .profile-img\{\par
+-webkit-flex:0 0 auto;\par
+flex:0 0 auto;\par
+margin-$endSide:1em\par
+\}\par
+.widget.Profile .individual .profile-link\{\par
+-webkit-flex-direction:column;\par
+flex-direction:column\par
+\}\par
+.widget.Profile .team .profile-link .profile-name\{\par
+-webkit-align-self:center;\par
+align-self:center;\par
+display:block;\par
+-webkit-flex:1 1 auto;\par
+flex:1 1 auto\par
+\}\par
+.dim-overlay\{\par
+background-color:rgba(0,0,0,.54);\par
+z-index:100\par
+\}\par
+.dialog\{\par
+box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);\par
+background:$(posts.background.color);\par
+box-sizing:border-box;\par
+color:$(body.text.color);\par
+padding:30px;\par
+position:fixed;\par
+text-align:center;\par
+width:calc(100% - 24px);\par
+z-index:101\par
+\}\par
+.dialog input[type=email],.dialog input[type=text]\{\par
+background-color:transparent;\par
+border:0;\par
+border-bottom:solid 1px rgba($(body.text.color.red),$(body.text.color.green),$(body.text.color.blue),.12);\par
+color:$(body.text.color);\par
+display:block;\par
+font-family:$(body.text.font.family);\par
+font-size:16px;\par
+line-height:24px;\par
+margin:auto;\par
+padding-bottom:7px;\par
+outline:0;\par
+text-align:center;\par
+width:100%\par
+\}\par
+.dialog input[type=email]::-webkit-input-placeholder,.dialog input[type=text]::-webkit-input-placeholder\{\par
+color:$(body.text.color)\par
+\}\par
+.dialog input[type=email]::-moz-placeholder,.dialog input[type=text]::-moz-placeholder\{\par
+color:$(body.text.color)\par
+\}\par
+.dialog input[type=email]:-ms-input-placeholder,.dialog input[type=text]:-ms-input-placeholder\{\par
+color:$(body.text.color)\par
+\}\par
+.dialog input[type=email]::-ms-input-placeholder,.dialog input[type=text]::-ms-input-placeholder\{\par
+color:$(body.text.color)\par
+\}\par
+.dialog input[type=email]::placeholder,.dialog input[type=text]::placeholder\{\par
+color:$(body.text.color)\par
+\}\par
+.dialog input[type=email]:focus,.dialog input[type=text]:focus\{\par
+border-bottom:solid 2px $(body.link.color);\par
+padding-bottom:6px\par
+\}\par
+.dialog input.no-cursor\{\par
+color:transparent;\par
+text-shadow:0 0 0 $(body.text.color)\par
+\}\par
+.dialog input.no-cursor:focus\{\par
+outline:0\par
+\}\par
+.dialog input.no-cursor:focus\{\par
+outline:0\par
+\}\par
+.dialog input[type=submit]\{\par
+font-family:$(body.text.font.family)\par
+\}\par
+.dialog .goog-buttonset-default\{\par
+color:$(body.link.color)\par
+\}\par
+.subscribe-popup\{\par
+max-width:364px\par
+\}\par
+.subscribe-popup h3\{\par
+color:$(posts.title.color);\par
+font-size:1.8em;\par
+margin-top:0\par
+\}\par
+.subscribe-popup .FollowByEmail h3\{\par
+display:none\par
+\}\par
+.subscribe-popup .FollowByEmail .follow-by-email-submit\{\par
+color:$(body.link.color);\par
+display:inline-block;\par
+margin:0 auto;\par
+margin-top:24px;\par
+width:auto;\par
+white-space:normal\par
+\}\par
+.subscribe-popup .FollowByEmail .follow-by-email-submit:disabled\{\par
+cursor:default;\par
+opacity:.3\par
+\}\par
+.centered-bottom .share-buttons .svg-icon-24,.share-buttons .svg-icon-24\{\par
+fill:$(sharing.icons.color)\par
+\}\par
+.tabs\{\par
+list-style:none;\par
+background:$(tabs.bgcolor);\par
+\}\par
+.tabs li\{\par
+display:inline-block\par
+\}\par
+.tabs li a\{\par
+cursor:pointer;\par
+display:inline-block;\par
+font-weight:700;\par
+text-transform:uppercase;\par
+padding:12px 8px\par
+\}\par
+.tabs .selected\{\par
+border-bottom:4px solid $(tabs.selected.color)\par
+\}\par
+.tabs .selected a\{\par
+color:$(tabs.selected.color)\par
+\}\par
+.pill-button\{\par
+font-size:12px\par
+\}\par
+.search\{\par
+border-bottom:solid 1px $(blog.title.color.transparent);\par
+float:right;\par
+position:relative;\par
+-webkit-transition-property:width;\par
+transition-property:width;\par
+-webkit-transition-duration:.5s;\par
+transition-duration:.5s;\par
+-webkit-transition-timing-function:cubic-bezier(.4,0,.2,1);\par
+transition-timing-function:cubic-bezier(.4,0,.2,1);\par
+z-index:101\par
+\}\par
+.search .dim-overlay\{\par
+background-color:transparent\par
+\}\par
+.search form\{\par
+height:36px;\par
+-webkit-transition-property:border-color;\par
+transition-property:border-color;\par
+-webkit-transition-delay:.5s;\par
+transition-delay:.5s;\par
+-webkit-transition-duration:.2s;\par
+transition-duration:.2s;\par
+-webkit-transition-timing-function:cubic-bezier(.4,0,.2,1);\par
+transition-timing-function:cubic-bezier(.4,0,.2,1)\par
+\}\par
+.search.focused\{\par
+width:calc(100% - 48px)\par
+\}\par
+.search.focused form\{\par
+display:-webkit-flex;\par
+display:flex;\par
+-webkit-flex:1 0 1px;\par
+flex:1 0 1px;\par
+border-color:$(blog.title.color);\par
+margin-$startSide:-24px;\par
+padding-$startSide:36px;\par
+position:relative;\par
+width:auto\par
+\}\par
+.item-view .search\{\par
+$endSide:0;\par
+float:none;\par
+margin-left:0;\par
+position:absolute\par
+\}\par
+.item-view .search.focused\{\par
+width:calc(100% - 50px)\par
+\}\par
+.item-view .search.focused form\{\par
+border-bottom-color:$(posts.text.color)\par
+\}\par
+.search_button\{\par
+-webkit-flex:0 0 24px;\par
+flex:0 0 24px;\par
+-webkit-flex-direction:column;\par
+flex-direction:column\par
+\}\par
+.search_button svg\{\par
+margin-top:0\par
+\}\par
+.search-input input\{\par
+display:block;\par
+color:#999;\par
+font:$(search.input.font);\par
+background:$(search.input.color);\par
+line-height:2;\par
+padding-left: 6px;\par
+width:120px;\par
+box-shadow: 1px 2px 3px #666;\par
+transition: 0.3s linear;\par
+\}\par
+.search-input input::-webkit-input-placeholder,\par
+.search-input input::-moz-placeholder\{\par
+color:$(search.placeholder.color);\par
+opacity:.8\par
+\}\par
+.search-input input:-ms-input-placeholder,\par
+.search-input input::-ms-input-placeholder\{\par
+color:$(search.placeholder.color);\par
+opacity:.8\par
+\}\par
+.search-input input::placeholder\{\par
+color:$(search.placeholder.color);\par
+opacity:.8\par
+\}\par
+.search-input input:focus\{width:100%\}\par
+\par
+.search-action\{\par
+background:0 0;\par
+border:0;\par
+color:$(blog.title.color);\par
+cursor:pointer;\par
+display:none;\par
+height:48px;\par
+margin-top:0\par
+\}\par
+.search.focused .search-action\{\par
+display:block\par
+\}\par
+.search.focused .search-action:disabled\{\par
+opacity:.3\par
+\}\par
+\par
+.page_body .widget\{\par
+margin-bottom:16px\par
+\}\par
+\par
+.page_body .centered>#footer\{\par
+margin-top:auto\par
+\}\par
+.blog-name\{\par
+margin:0;\par
+\}\par
+.item-view .return_link\{\par
+margin-bottom:12px;\par
+margin-top:12px;\par
+position:absolute\par
+\}\par
+.item-view .subscribe-section-container\{\par
+-webkit-flex:0 0 auto;\par
+flex:0 0 auto\par
+\}\par
+.item-view .post-share-buttons-bottom\{\par
+margin-$endSide:16px\par
+\}\par
+.search-focused>*\{\par
+visibility:visible\par
+\}\par
+.page_body.has-vertical-ads .centered .centered-bottom\{\par
+display:inline-block;\par
+width:calc(100% - 176px)\par
+\}\par
+\}\par
+.widget .title\{\par
+line-height:28px\par
+\}\par
+.BlogArchive li\{\par
+font-size:16px\par
+\}\par
+.BlogArchive .post-count\{\par
+color:$(posts.text.color)\par
+\}\par
+.Blog .blog-posts .post-outer-container\{\par
+border:1px solid #ccc;\par
+min-height:40px;\par
+padding:30px 40px;\par
+width:auto\par
+\}\par
+.Blog .blog-posts .post-outer-container:last-child\{\par
+margin-bottom:0\par
+\}\par
+.Blog .blog-posts .post-outer-container .post-outer\{\par
+border:0;\par
+position:relative;\par
+padding-bottom:.25em\par
+\}\par
+.post-outer-container\{\par
+margin-bottom:16px\par
+\}\par
+.post:first-child\{\par
+margin-top:0\par
+\}\par
+.post .thumb\{\par
+float:left;\par
+height:20%;\par
+width:20%\par
+\}\par
+.post-share-buttons-bottom,.post-share-buttons-top\{\par
+float:$(endSide)\par
+\}\par
+.post-share-buttons-bottom\{\par
+margin-$endSide:24px\par
+\}\par
+.post-footer,.post-header\{\par
+clear:$(startSide);\par
+color:$(posts.byline.color);\par
+margin:0;\par
+width:inherit\par
+\}\par
+.post-title\{\par
+font:$(posts.title.font);\par
+margin:0 0 8px 0;\par
+max-width:calc(100% - 48px)\par
+\}\par
+\par
+.post-title,.post-title a,.post-title a:hover,.post-title a:visited\{\par
+color:$(posts.title.color)\par
+\}\par
+.post-bottom svg\{fill:$(posts.icons.color);\}\par
+\par
+.post-body\{\par
+color:$(posts.text.color);\par
+font:$(posts.text.font);\par
+line-height:1.6em;\par
+margin:1.5em 0 2em 0;\par
+display:block\par
+\}\par
+.post-body img\{\par
+height:inherit\par
+\}\par
+.post-body .snippet-thumbnail\{\par
+float:$(startSide);\par
+margin:0;\par
+margin-$endSide:2em;\par
+max-height:280px;\par
+max-width:46%;\par
+width:$(posts.img.width);\par
+overflow:hidden;\par
+\}\par
+.post-body .snippet-thumbnail img\{\par
+width:100%; transition:.6s;\par
+\}\par
+.hfeed.container article:hover .snippet-thumbnail img \{transform:scale(1.1)\}\par
+\par
+.byline\{\par
+color:$(posts.byline.color);\par
+display:inline-block;\par
+line-height:24px;\par
+margin-top:8px;\par
+vertical-align:top\par
+\}\par
+.byline.post-author:first-child\{\par
+margin-$endSide:0\par
+\}\par
+.byline.reactions .reactions-label\{\par
+line-height:22px;\par
+vertical-align:top\par
+\}\par
+.byline.post-share-buttons\{\par
+position:relative;\par
+display:inline-block;\par
+margin-top:0;\par
+width:100%\par
+\}\par
+.byline.post-share-buttons .sharing\{\par
+float:$(endSide)\par
+\}\par
+.flat-button.ripple:hover\{\par
+background-color:rgba($(body.link.color.red),$(body.link.color.green),$(body.link.color.blue),.12)\par
+\}\par
+.flat-button.ripple .splash\{\par
+background-color:rgba($(body.link.color.red),$(body.link.color.green),$(body.link.color.blue),.4)\par
+\}\par
+a.timestamp-link,a:active.timestamp-link,a:visited.timestamp-link\{\par
+color:inherit;\par
+font:inherit;\par
+text-decoration:inherit\par
+\}\par
+.post-share-buttons\{\par
+margin-left:0\par
+\}\par
+.clear-sharing\{\par
+min-height:24px\par
+\}\par
+.comment-link\{\par
+color:$(body.link.color);\par
+position:relative\par
+\}\par
+.comment-link .num_comments\{\par
+margin-left:8px;\par
+vertical-align:top\par
+\}\par
+#comment-holder .continue\{\par
+display:none\par
+\}\par
+\par
+#comments .comment-form h4,#comments h3.title\{\par
+position:absolute;\par
+clip:rect(1px,1px,1px,1px);\par
+padding:0;\par
+border:0;\par
+height:1px;\par
+width:1px;\par
+overflow:hidden\par
+\}\par
+.post-filter-message\{\par
+background-color:rgba(0,0,0,.7);\par
+color:#fff;\par
+display:table;\par
+margin-bottom:16px;\par
+width:100%\par
+\}\par
+.post-filter-message div\{\par
+display:table-cell;\par
+padding:15px 28px\par
+\}\par
+.post-filter-message div:last-child\{\par
+padding-$startSide:0;\par
+text-align:$(endSide)\par
+\}\par
+.post-filter-message a\{\par
+white-space:nowrap\par
+\}\par
+.post-filter-message .search-label,.post-filter-message .search-query\{\par
+font-weight:700;\par
+color:$(body.link.color)\par
+\}\par
+#blog-pager\{\par
+margin:2em 0;\par
+text-align:center\par
+\}\par
+#blog-pager a\{ \par
+font:$(navigation.link.font);\par
+cursor:pointer;\par
+margin:0 30px;\par
+color:$(posts.navigation.link.color)\par
+\}\par
+#blog-pager a:hover\{\par
+color:$(posts.navigation.link.hover.color)\par
+\}\par
+.subscribe-button\{\par
+border-color:$(blog.title.color);\par
+color:$(blog.title.color)\par
+\}\par
+.tabs\{\par
+margin:0 auto;\par
+padding:0\par
+\}\par
+.tabs li\{\par
+margin:0 8px;\par
+vertical-align:top\par
+\}\par
+.tabs .overflow-button a,.tabs li a\{\par
+color:$(tabs.color);\par
+font:$(tabs.font);\par
+line-height:$(body.text.font.size * 1.2)\par
+\}\par
+.tabs .overflow-button a\{\par
+padding:12px 8px\par
+\}\par
+.overflow-popup .tabs li\{\par
+text-align:left\par
+\}\par
+.overflow-popup li a\{\par
+color:$(tabs.overflow.color);\par
+display:block;\par
+padding:8px 20px\par
+\}\par
+.overflow-popup li.selected a\{\par
+color:$(tabs.overflow.selected.color)\par
+\}\par
+a.report_abuse\{\par
+font-weight:400\par
+\}\par
+.Label li,.Label span.label-size,.byline.post-labels a\{\par
+background-color:$(labels.background.color);\par
+border:1px solid $(labels.background.color);\par
+border-radius:15px;\par
+display:inline-block;\par
+margin:4px 4px 4px 0;\par
+padding:3px 8px\par
+\}\par
+.Label a,.byline.post-labels a\{\par
+color:$(labels.text.color);\par
+font:$(labels.font);\par
+\}\par
+.Label ul\{\par
+list-style:none;\par
+padding:0\par
+\}\par
+.PopularPosts\{\par
+background-color:$(popularposts.background.color);\par
+padding:30px 40px\par
+\}\par
+.PopularPosts .item-content\{\par
+font:$(Popu.text.font);\par
+color:$(popu.text.color);\par
+margin-top:24px\par
+\}\par
+.PopularPosts a,.PopularPosts a:hover,.PopularPosts a:visited\{\par
+color:$(popularposts.link.color)\par
+\}\par
+.PopularPosts .post-title,.PopularPosts .post-title a,.PopularPosts .post-title a:hover\{\par
+color:$(popu.title.color);\par
+font:$(Popu.title.font);\par
+font-weight:700;\par
+line-height:1.5;\par
+\}\par
+.main .PopularPosts\{\par
+padding:16px 30px\par
+\}\par
+.PopularPosts h3.title\{\par
+font-size:14px;\par
+margin:0\par
+\}\par
+.PopularPosts h3.post-title\{\par
+margin-bottom:0\par
+\}\par
+.PopularPosts .byline\{\par
+color:$(popularposts.byline.color)\par
+\}\par
+.PopularPosts .jump-link\{\par
+float:$(endSide);\par
+margin-top:16px\par
+\}\par
+.PopularPosts .post-header .byline\{\par
+font-size:.9em;\par
+font-style:italic;\par
+margin-top:6px\par
+\}\par
+.PopularPosts ul\{\par
+list-style:none;\par
+padding:0;\par
+margin:0\par
+\}\par
+.PopularPosts .post\{\par
+padding:20px 0\par
+\}\par
+.PopularPosts .post+.post\{\par
+border-top:1px dashed $(Popu.spa.color)\par
+\}\par
+.PopularPosts .item-thumbnail\{\par
+float:$(startSide);\par
+margin-$endSide:32px;\par
+max-width:46%;\par
+\}\par
+.PopularPosts .item-thumbnail img\{ \par
+max-height:280px;\par
+padding:0;\par
+width:$(popu.img.width);\par
+\}\par
+.inline-ad\{\par
+margin-bottom:16px\par
+\}\par
+.desktop-ad .inline-ad\{\par
+display:block\par
+\}\par
+.adsbygoogle\{\par
+overflow:hidden\par
+\}\par
+.vertical-ad-container\{\par
+float:$(endSide);\par
+margin-$endSide:16px;\par
+width:128px\par
+\}\par
+.vertical-ad-container .AdSense+.AdSense\{\par
+margin-top:16px\par
+\}\par
+.inline-ad-placeholder,.vertical-ad-placeholder\{\par
+background:$(posts.background.color);\par
+border:1px solid #000;\par
+opacity:.9;\par
+vertical-align:middle;\par
+text-align:center\par
+\}\par
+.inline-ad-placeholder span,.vertical-ad-placeholder span\{\par
+margin-top:290px;\par
+display:block;\par
+text-transform:uppercase;\par
+font-weight:700;\par
+color:$(posts.title.color)\par
+\}\par
+.vertical-ad-placeholder\{\par
+height:600px\par
+\}\par
+.vertical-ad-placeholder span\{\par
+margin-top:290px;\par
+padding:0 40px\par
+\}\par
+.inline-ad-placeholder\{\par
+height:90px\par
+\}\par
+.inline-ad-placeholder span\{\par
+margin-top:36px\par
+\}\par
+\par
+.widget.Profile\{\par
+margin:0;\par
+width:100%\par
+\}\par
+.widget.Profile h2\{\par
+display:none\par
+\}\par
+.widget.Profile h3.title\{\par
+color:$(profile.title.color);\par
+margin:16px 32px\par
+\}\par
+.widget.Profile .individual\{\par
+text-align:center\par
+\}\par
+.widget.Profile .individual .profile-link\{\par
+padding:1em\par
+\}\par
+.widget.Profile .individual .default-avatar-wrapper .avatar-icon\{\par
+margin:auto\par
+\}\par
+.widget.Profile .team\{\par
+margin-bottom:32px;\par
+margin-left:32px;\par
+margin-right:32px\par
+\}\par
+.widget.Profile ul\{\par
+list-style:none;\par
+padding:0\par
+\}\par
+.widget.Profile li\{\par
+margin:10px 0\par
+\}\par
+.widget.Profile .profile-img\{\par
+border-radius:50%;\par
+float:none\par
+\}\par
+.widget.Profile .profile-link\{\par
+color:$(profile.link.color);\par
+font-size:.9em;\par
+margin-bottom:1em;\par
+opacity:.87;\par
+overflow:hidden\par
+\}\par
+.widget.Profile .profile-link.visit-profile\{\par
+border-style:solid;\par
+border-width:1px;\par
+border-radius:12px;\par
+cursor:pointer;\par
+font-size:12px;\par
+font-weight:400;\par
+padding:5px 20px;\par
+display:inline-block;\par
+line-height:normal\par
+\}\par
+.widget.Profile dd\{\par
+color:$(profile.text.color);\par
+margin:0 16px\par
+\}\par
+.widget.Profile location\{\par
+margin-bottom:1em\par
+\}\par
+.widget.Profile .profile-textblock\{\par
+font-size:14px;\par
+line-height:24px;\par
+position:relative\par
+\}\par
+\par
+.post-snippet.snippet-container\{\par
+max-height:120px\par
+\}\par
+.post-snippet .snippet-item\{\par
+line-height:24px\par
+\}\par
+.post-snippet .snippet-fade\{\par
+background:-webkit-linear-gradient($startSide,$(posts.background.color) 0,$(posts.background.color) 20%,$(posts.background.color.transparent) 100%);\par
+background:linear-gradient(to $startSide,$(posts.background.color) 0,$(posts.background.color) 20%,$(posts.background.color.transparent) 100%);\par
+color:$(body.text.color);\par
+height:24px\par
+\}\par
+\par
+.popular-posts-snippet .snippet-item\{\par
+line-height:24px\par
+\}\par
+.PopularPosts .popular-posts-snippet .snippet-fade\{\par
+color:$(body.text.color);\par
+height:24px\par
+\}\par
+.main .popular-posts-snippet .snippet-fade\{\par
+background:-webkit-linear-gradient($startSide,$(popularposts.background.color) 0,$(popularposts.background.color) 20%,$(popularposts.background.color.transparent) 100%);\par
+background:linear-gradient(to $startSide,$(popularposts.background.color) 0,$(popularposts.background.color) 20%,$(popularposts.background.color.transparent) 100%)\par
+\}\par
+.sidebar-cont .popular-posts-snippet .snippet-fade\{\par
+background:-webkit-linear-gradient($startSide,$(sidebar.bgColor) 0,$(sidebar.bgColor) 20%,$(sidebar.bgColor.transparent) 100%);\par
+background:linear-gradient(to $startSide,$(sidebar.bgColor) 0,$(sidebar.bgColor) 20%,$(sidebar.bgColor.transparent) 100%)\par
+\}\par
+.profile-snippet.snippet-container\{\par
+max-height:192px\par
+\}\par
+.has-location .profile-snippet.snippet-container\{\par
+max-height:144px\par
+\}\par
+.profile-snippet .snippet-item\{\par
+line-height:24px\par
+\}\par
+.profile-snippet .snippet-fade\{\par
+background:-webkit-linear-gradient($startSide,$(sidebar.bgColor) 0,$(sidebar.bgColor) 20%,$(sidebar.bgColor.transparent) 100%);\par
+background:linear-gradient(to $startSide,$(sidebar.bgColor) 0,$(sidebar.bgColor) 20%,$(sidebar.bgColor.transparent) 100%);\par
+color:$(profile.text.color);\par
+height:24px\par
+\}\par
+@media screen and (max-width:800px)\{\par
+.centered-bottom\{\par
+padding:8px\par
+\}\par
+body.item-view .centered-bottom\{\par
+padding:0\par
+\}\par
+.page_body .centered\{\par
+padding:10px 0\par
+\}\par
+body.item-view #header,body.item-view .widget.Header\{\par
+margin-right:0\par
+\}\par
+.search-action,.search-input\{\par
+margin-bottom:-8px\par
+\}\par
+.search form\{\par
+margin-bottom:8px\par
+\}\par
+body.item-view .subscribe-section-container\{\par
+margin:5px 0 0 0;\par
+width:100%\par
+\}\par
+#page_body.section div.widget.FeaturedPost,div.widget.PopularPosts\{\par
+padding:16px\par
+\}\par
+div.widget.Blog .blog-posts .post-outer-container\{\par
+padding:16px\par
+\}\par
+div.widget.Blog .blog-posts .post-outer-container .post-outer\{\par
+padding:0\par
+\}\par
+.post:first-child\{\par
+margin:0\par
+\}\par
+.post-body .snippet-thumbnail\{\par
+margin:0 3vw 3vw 0\par
+\}\par
+div.widget.PopularPosts div.item-thumbnail\{\par
+margin:0 3vw 3vw 0\par
+\}\par
+div.widget.PopularPosts div.item-thumbnail img\{\par
+height:20vw;\par
+width:20vw;\par
+max-height:100px;\par
+max-width:100px\par
+\}\par
+.post-title\{\par
+line-height:1\par
+\}\par
+.post-title,.post-title a\{\par
+font-size:20px\par
+\}\par
+.mobile-ad .inline-ad\{\par
+display:block\par
+\}\par
+.page_body.has-vertical-ads .vertical-ad-container,.page_body.has-vertical-ads .vertical-ad-container ins\{\par
+display:none\par
+\}\par
+.page_body.has-vertical-ads .centered .centered-bottom\{\par
+display:block;\par
+width:auto\par
+\}\par
+div.post-filter-message div\{\par
+padding:8px 16px\par
+\}\par
+\}\par
+\par
+/*-- \'af\'64\'a8\'a5\'a6\'5e\'c0\'b3 --*/\par
+#comment-editor\{\par
+ border: 10px solid #f0f0f0;\par
+    border-radius: 10px;\par
+    padding: 8px;\par
+    margin: 20px;\par
+    box-shadow: 2px 2px 3px #aaa, -1px -1px 10px #999;\par
+    width: 92%;\par
+    outline: 2px solid #e0e0e0;\par
+    outline-offset: -13px;\par
+    background-color: #fff;         \par
+\}\par
+\par
+#comments .comment \{\par
+    border: 1px solid #aaa;\par
+    padding: 10px 10px 30px;\par
+    margin-bottom: 20px;\par
+list-style-type:none;\par
+position:relative\par
+\}\par
+\par
+#comments .comment .comment \{\par
+    margin-top: 10px;\par
+    margin-left: 20px;\par
+    padding: 6px;\par
+    border-radius: 0 10px 10px 0;\par
+    box-shadow: 1px 1px 3px -1px rgb(51 51 102 / 70%), 0px 3px 8px 2px rgb(50 50 60 / 40%);\par
+    border-left: 8px solid #8affe8;\par
+\}\par
+}
+ 

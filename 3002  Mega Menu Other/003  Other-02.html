@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>old </title>
+    <script crossorigin='anonymous' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' src='https://code.jquery.com/jquery-3.6.0.min.js'>
+    </script>
+    <style>
+        /*m menu*/
+        .mega-menu {
+            width:100%;
+            height: 60px;
+        }
+
+        .mega-menu>ul {
+            width:100%;
+            height: 100%;
+            background-color: white;
+            text-align: center;
+           /* line-height: 60px;*/
+            /*position: relative;*/
+        }
+
+        .mega-menu ul a {
+            color:black;
+        }
+
+        .mega-menu > ul > li { 
+            display: inline-block;
+            padding:0;
+            margin: 0 15px;
+        }
+
+        .mega-menu>ul>li>a {
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+		.mega-menu ul li  #submenu,
+        .mega-menu ul li .related-posts,
+        .mega-menu ul li .sub-menu {
+            position: absolute;
+            background-color: #fcfcfc;
+            width: 80%;
+            left:60px;
+            top:60px;
+            padding:20px 10px;
+            margin:0 40px;
+            display: flex;
+            justify-content: space-around;
+            line-height:35px;
+            /*visibility: hidden;*/
+            border:1px solid #ccc;
+			z-index:9999;
+        }
+
+		
+        .mega-menu ul li:hover  #submenu,
+        .mega-menu ul li:hover .related-posts,
+        .mega-menu ul li:hover .sub-menu {
+            visibility: visible;
+
+        }
+		
+ 		.mega-menu ul li #submenu li {
+			padding:10px;
+		}
+
+        .mega-menu ul li  #submenu li img,
+        .mega-menu ul li .related-posts .col img,
+        .mega-menu ul li .sub-menu .col img {
+          width:100%;
+        }
+	
+		.mega-menu ul li  #submenu li a {
+			display:block;
+			text-decoration: none;
+			font-size:13px;
+			font-weight:500;
+			margin:0;
+		}
+     
+
+    </style>
+  </head>
+  <body>
+    
+    <div class="mega-menu">
+        <ul>
+            <li><a href="#">FASHION</a></li>
+            <li><a href="#">Travel</a> 
+                <div id="submenu-01">
+
+                </div>
+            </li>
+            <li><a href="https://kellyfangcoding.blogspot.com/search/label/tvshow">TVSHOW</a>
+                <div id="submenu">
+
+                </div>
+            </li>
+            <li><a href="#">SHOPPING</a></li>
+            <li><a href="#">movie</a></li>
+        </ul>
+    </div>
+
+<script src="https://kellyfangcoding.blogspot.com/feeds/posts/summary?alt=json-in-script&max-results=100&callback=subMenuPosts"></script>
+    
+   <!--recent post-->
+
+    <script> //<![CDATA[
+      var number = 4;
+      function subMenuPosts(json) {
+        var Postsarr = [];	
+        for (var i = 0; i < number; i++) {
+            var entry = json.feed.entry[i];
+                  var postTitle = entry.title.$t;
+           
+                  var postUrl;
+                  if (i == json.feed.entry.length) break;
+    
+                  // 取得url
+                  for (var k = 0; k < entry.link.length; k++) { 
+                      if (entry.link[k].rel == 'alternate') {
+                          postUrl = entry.link[k].href;
+                          break;
+                      }
+                  }
+    
+                  var recenthumb;
+                  try {
+               //thumburl[relatedTitlesNum]=entry.media$thumbnail.replace(/\/s72\-c\//,'/s1600/')
+                      recenthumb = entry.media$thumbnail.url;
+    
+                      //recenthumb = entry.media$thumbnail.replace(/\/s72\-c\//,'/s400/');
+                  } catch (error) {
+                      s = entry.content.$t;
+                      a = s.indexOf("<img");
+                      b = s.indexOf("src=\"", a);
+                      c = s.indexOf("\"", b + 5);
+                      d = s.substr(b + 5, c - b - 5);
+                      if ((a != -1) && (b != -1) && (c != -1) && (d != "")) {
+                          recenthumb = d;
+                      } else recenthumb = 'http://2.bp.blogspot.com/-C3Mo0iKKiSw/VGdK808U7rI/AAAAAAAAAmI/W7Ae_dsEVAE/s1600/no-thumb.png';
+                  }
+    
+           
+          var postImageUrl = recenthumb;
+          var posterImage = postImageUrl ? '<img src="' + postImageUrl + '" alt="' + postTitle + '">' : '';
+          console.log(posterImage);
+          Postsarr.push('<li>' + posterImage + '<a href="' + postUrl + '">' + postTitle + '</a></li>');
+          //console.log(Postsarr);
+        }
+         document.getElementById('submenu').innerHTML = Postsarr.join('');
+      }
+    
+    $(document).ready(function() {
+     $('#submenu').find('img').each(function(n, image){
+        var image = $(image);
+      image.attr({src : image.attr('src').replace("s72", "s300")});
+    
+     });
+    });
+     
+     //]]></script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Javascript Cookie </title>
+   
+    <style>
+
+    </style>
+    <script>
+      <!-- Javascript Cookie - v1.5.1 | https://github.com/js-cookie/js-cookie  -->
+      !function(e){var n;if("function"==typeof define&&define.amd)define(["jquery"],e);else if("object"==typeof exports){try{n=require("jquery")}catch(e){}module.exports=e(n)}else{var o=window.Cookies,r=window.Cookies=e(window.jQuery);r.noConflict=function(){return window.Cookies=o,r}}}(function(e){var n=/\+/g;function o(e){return u.raw?e:encodeURIComponent(e)}function r(e){return o(u.json?JSON.stringify(e):String(e))}function t(e,o){var r=u.raw?e:function(e){0===e.indexOf('"')&&(e=e.slice(1,-1).replace(/\\"/g,'"').replace(/\\\\/g,"\\"));try{return e=decodeURIComponent(e.replace(n," ")),u.json?JSON.parse(e):e}catch(e){}}(e);return c(o)?o(r):r}function i(){for(var e,n,o=0,r={};o<arguments.length;o++)for(e in n=arguments[o])r[e]=n[e];return r}function c(e){return"[object Function]"===Object.prototype.toString.call(e)}var u=function(e,n,f){if(arguments.length>1&&!c(n)){if("number"==typeof(f=i(u.defaults,f)).expires){var s=f.expires,a=f.expires=new Date;a.setMilliseconds(a.getMilliseconds()+864e5*s)}return document.cookie=[o(e),"=",r(n),f.expires?"; expires="+f.expires.toUTCString():"",f.path?"; path="+f.path:"",f.domain?"; domain="+f.domain:"",f.secure?"; secure":""].join("")}for(var d,p=e?void 0:{},l=document.cookie?document.cookie.split("; "):[],m=0,v=l.length;m<v;m++){var g=l[m].split("="),w=(d=g.shift(),u.raw?d:decodeURIComponent(d)),j=g.join("=");if(e===w){p=t(j,n);break}e||void 0===(j=t(j))||(p[w]=j)}return p};return u.get=u.set=u,u.defaults={},u.remove=function(e,n){return u(e,"",i(n,{expires:-1})),!u(e)},e&&(e.cookie=u,e.removeCookie=u.remove),u});
+    </script>
+
+
+    <script>
+
+      //Grid mag 的 cookie 引用
+      $("#cookies-iki").each((function(){
+          var a=$(this),e=a.find(".widget.HTML").text(),s=a.find(".cookies-bt");
+          a.length>0 &&( e&&( buttons=tShortcode(e,"buttons"), days=tShortcode(e,"days"), 0!=buttons&&s.text(buttons),days=0!=days?Number(days):7),     
+                         "1"!==$.cookie("cookiesgmag")&&(a.css("display","block"),
+                         setTimeout((function(){a.addClass("cookies-show")}),10)),
+                         $(".cookies-bt").off("click").on("click",(function(e){
+                            e.preventDefault(),e.stopPropagation(),
+                            $.cookie("cookiesgmag","1",{expires:days,path:"/"}),
+                            a.removeClass("cookies-show"),
+                            setTimeout((function(){a.css("display","none")}),500)})),
+                            cookieChoices={}
+                       )
+      }))
+    </script>
+
+    <script>
+      function h(a,e,s){
+        return s=a[e].author[0].gd$image.src.replace("/s220","/w55-h55-p-k-no-nu"),
+        blankImg="//1.bp.blogspot.com/-QN2lgvtYZco/YN3mUSryAVI/AAAAAAAAADs/KrR-etCcvUMcPl06jopTs9pzq59IAXhMQCLcBGAsYHQ/w72-h72-p-k-no-nu/avatar.jpg",
+        s=s.replace("//img1.blogblog.com/img/blank.gif",blankImg).replace("//img1.blogblog.com/img/b16-rounded.gif",blankImg)
+      }
+    </script>
+  </head>
+  <body>
+    
+
+    
+   
+  </body>
+</html>

@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Amalia 外掛</title>
+    <style></style>
+  </head>
+  <body>
+      <!-- Amalia  -->
+      <!-- Hosted Plugins -->
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js' type='text/javascript'></script>
+      <!-- Main Scripts -->
+      <script type='text/javascript'>
+      //<![CDATA[
+      /*! Theia Sticky Sidebar | v1.7.0 - https://github.com/WeCodePixels/theia-sticky-sidebar */
+      (function($){$.fn.theiaStickySidebar=function(options){var defaults={'containerSelector':'','additionalMarginTop':0,'additionalMarginBottom':0,'updateSidebarHeight':true,'minWidth':0,'disableOnResponsiveLayouts':true,'sidebarBehavior':'modern','defaultPosition':'relative','namespace':'TSS'};options=$.extend(defaults,options);options.additionalMarginTop=parseInt(options.additionalMarginTop)||0;options.additionalMarginBottom=parseInt(options.additionalMarginBottom)||0;tryInitOrHookIntoEvents(options,this);function tryInitOrHookIntoEvents(options,$that){var success=tryInit(options,$that);if(!success){console.log('TSS: Body width smaller than options.minWidth. Init is delayed.');$(document).on('scroll.'+options.namespace,function(options,$that){return function(evt){var success=tryInit(options,$that);if(success){$(this).unbind(evt)}}}(options,$that));$(window).on('resize.'+options.namespace,function(options,$that){return function(evt){var success=tryInit(options,$that);if(success){$(this).unbind(evt)}}}(options,$that))}}function tryInit(options,$that){if(options.initialized===true){return true}if($('body').width()<options.minWidth){return false}init(options,$that);return true}function init(options,$that){options.initialized=true;var existingStylesheet=$('#theia-sticky-sidebar-stylesheet-'+options.namespace);if(existingStylesheet.length===0){$('head').append($('<style id="theia-sticky-sidebar-stylesheet-'+options.namespace+'">.theiaStickySidebar:after {content: ""; display: table; clear: both;}</style>'))}$that.each(function(){var o={};o.sidebar=$(this);o.options=options||{};o.container=$(o.options.containerSelector);if(o.container.length==0){o.container=o.sidebar.parent()}o.sidebar.parents().css('-webkit-transform','none');o.sidebar.css({'position':o.options.defaultPosition,'overflow':'visible','-webkit-box-sizing':'border-box','-moz-box-sizing':'border-box','box-sizing':'border-box'});o.stickySidebar=o.sidebar.find('.theiaStickySidebar');if(o.stickySidebar.length==0){var javaScriptMIMETypes=/(?:text|application)\/(?:x-)?(?:javascript|ecmascript)/i;o.sidebar.find('script').filter(function(index,script){return script.type.length===0||script.type.match(javaScriptMIMETypes)}).remove();o.stickySidebar=$('<div>').addClass('theiaStickySidebar').append(o.sidebar.children());o.sidebar.append(o.stickySidebar)}o.marginBottom=parseInt(o.sidebar.css('margin-bottom'));o.paddingTop=parseInt(o.sidebar.css('padding-top'));o.paddingBottom=parseInt(o.sidebar.css('padding-bottom'));var collapsedTopHeight=o.stickySidebar.offset().top;var collapsedBottomHeight=o.stickySidebar.outerHeight();o.stickySidebar.css('padding-top',1);o.stickySidebar.css('padding-bottom',1);collapsedTopHeight-=o.stickySidebar.offset().top;collapsedBottomHeight=o.stickySidebar.outerHeight()-collapsedBottomHeight-collapsedTopHeight;if(collapsedTopHeight==0){o.stickySidebar.css('padding-top',0);o.stickySidebarPaddingTop=0}else{o.stickySidebarPaddingTop=1}if(collapsedBottomHeight==0){o.stickySidebar.css('padding-bottom',0);o.stickySidebarPaddingBottom=0}else{o.stickySidebarPaddingBottom=1}o.previousScrollTop=null;o.fixedScrollTop=0;resetSidebar();o.onScroll=function(o){if(!o.stickySidebar.is(":visible")){return}if($('body').width()<o.options.minWidth){resetSidebar();return}if(o.options.disableOnResponsiveLayouts){var sidebarWidth=o.sidebar.outerWidth(o.sidebar.css('float')=='none');if(sidebarWidth+50>o.container.width()){resetSidebar();return}}var scrollTop=$(document).scrollTop();var position='static';if(scrollTop>=o.sidebar.offset().top+(o.paddingTop-o.options.additionalMarginTop)){var offsetTop=o.paddingTop+options.additionalMarginTop;var offsetBottom=o.paddingBottom+o.marginBottom+options.additionalMarginBottom;var containerTop=o.sidebar.offset().top;var containerBottom=o.sidebar.offset().top+getClearedHeight(o.container);var windowOffsetTop=0+options.additionalMarginTop;var windowOffsetBottom;var sidebarSmallerThanWindow=(o.stickySidebar.outerHeight()+offsetTop+offsetBottom)<$(window).height();if(sidebarSmallerThanWindow){windowOffsetBottom=windowOffsetTop+o.stickySidebar.outerHeight()}else{windowOffsetBottom=$(window).height()-o.marginBottom-o.paddingBottom-options.additionalMarginBottom}var staticLimitTop=containerTop-scrollTop+o.paddingTop;var staticLimitBottom=containerBottom-scrollTop-o.paddingBottom-o.marginBottom;var top=o.stickySidebar.offset().top-scrollTop;var scrollTopDiff=o.previousScrollTop-scrollTop;if(o.stickySidebar.css('position')=='fixed'){if(o.options.sidebarBehavior=='modern'){top+=scrollTopDiff}}if(o.options.sidebarBehavior=='stick-to-top'){top=options.additionalMarginTop}if(o.options.sidebarBehavior=='stick-to-bottom'){top=windowOffsetBottom-o.stickySidebar.outerHeight()}if(scrollTopDiff>0){top=Math.min(top,windowOffsetTop)}else{top=Math.max(top,windowOffsetBottom-o.stickySidebar.outerHeight())}top=Math.max(top,staticLimitTop);top=Math.min(top,staticLimitBottom-o.stickySidebar.outerHeight());var sidebarSameHeightAsContainer=o.container.height()==o.stickySidebar.outerHeight();if(!sidebarSameHeightAsContainer&&top==windowOffsetTop){position='fixed'}else if(!sidebarSameHeightAsContainer&&top==windowOffsetBottom-o.stickySidebar.outerHeight()){position='fixed'}else if(scrollTop+top-o.sidebar.offset().top-o.paddingTop<=options.additionalMarginTop){position='static'}else{position='absolute'}}if(position=='fixed'){var scrollLeft=$(document).scrollLeft();o.stickySidebar.css({'position':'fixed','width':getWidthForObject(o.stickySidebar)+'px','transform':'translateY('+top+'px)','left':(o.sidebar.offset().left+parseInt(o.sidebar.css('padding-left'))-scrollLeft)+'px','top':'0px'})}else if(position=='absolute'){var css={};if(o.stickySidebar.css('position')!='absolute'){css.position='absolute';css.transform='translateY('+(scrollTop+top-o.sidebar.offset().top-o.stickySidebarPaddingTop-o.stickySidebarPaddingBottom)+'px)';css.top='0px'}css.width=getWidthForObject(o.stickySidebar)+'px';css.left='';o.stickySidebar.css(css)}else if(position=='static'){resetSidebar()}if(position!='static'){if(o.options.updateSidebarHeight==true){o.sidebar.css({'min-height':o.stickySidebar.outerHeight()+o.stickySidebar.offset().top-o.sidebar.offset().top+o.paddingBottom})}}o.previousScrollTop=scrollTop};o.onScroll(o);$(document).on('scroll.'+o.options.namespace,function(o){return function(){o.onScroll(o)}}(o));$(window).on('resize.'+o.options.namespace,function(o){return function(){o.stickySidebar.css({'position':'static'});o.onScroll(o)}}(o));if(typeof ResizeSensor!=='undefined'){new ResizeSensor(o.stickySidebar[0],function(o){return function(){o.onScroll(o)}}(o))}function resetSidebar(){o.fixedScrollTop=0;o.sidebar.css({'min-height':'1px'});o.stickySidebar.css({'position':'static','width':'','transform':'none'})}function getClearedHeight(e){var height=e.height();e.children().each(function(){height=Math.max(height,$(this).height())});return height}})}function getWidthForObject(object){var width;try{width=object[0].getBoundingClientRect().width}catch(err){}if(typeof width==="undefined"){width=object.width()}return width}return this}})(jQuery);
+
+      /*! Shortcode.js by @nicinabox | v1.1.0 - https://github.com/nicinabox/shortcode.js */
+      var Shortcode=function(el,tags){if(!el){return}this.el=el;this.tags=tags;this.matches=[];this.regex='\\[{name}(\\s[\\s\\S]*?)?\\]'+'(?:((?!\\s*?(?:\\[{name}|\\[\\/(?!{name})))[\\s\\S]*?)'+'(\\[\/{name}\\]))?';if(this.el.jquery){this.el=this.el[0]}this.matchTags();this.convertMatchesToNodes();this.replaceNodes()};Shortcode.prototype.matchTags=function(){var html=this.el.outerHTML,instances,match,re,contents,regex,tag,options;for(var key in this.tags){if(!this.tags.hasOwnProperty(key)){return}re=this.template(this.regex,{name:key});instances=html.match(new RegExp(re,'g'))||[];for(var i=0,len=instances.length;i<len;i++){match=instances[i].match(new RegExp(re));contents=match[3]?'':undefined;tag=match[0];regex=this.escapeTagRegExp(tag);options=this.parseOptions(match[1]);if(match[2]){contents=match[2].trim();tag=tag.replace(contents,'').replace(/\n\s*/g,'');regex=this.escapeTagRegExp(tag).replace('\\]\\[','\\]([\\s\\S]*?)\\[')}this.matches.push({name:key,tag:tag,regex:regex,options:options,contents:contents})}}};Shortcode.prototype.convertMatchesToNodes=function(){var html=this.el.innerHTML,excludes,re,replacer;replacer=function(match,p1,p2,p3,p4,offset,string){if(p1){return match}else{var node=document.createElement('span');node.setAttribute('data-sc-tag',this.tag);node.className='templateify-sc-node templateify-sc-node-'+this.name;return node.outerHTML}};for(var i=0,len=this.matches.length;i<len;i++){excludes='((data-sc-tag=")|(<pre.*)|(<code.*))?';re=new RegExp(excludes+this.matches[i].regex,'g');html=html.replace(re,replacer.bind(this.matches[i]))}this.el.innerHTML=html};Shortcode.prototype.replaceNodes=function(){var self=this,html,match,result,done,node,fn,replacer,nodes=this.el.querySelectorAll('.templateify-sc-node');replacer=function(result){if(result.jquery){result=result[0]}result=self.parseCallbackResult(result);node.parentNode.replaceChild(result,node)};for(var i=0,len=this.matches.length;i<len;i++){match=this.matches[i];node=this.el.querySelector('.templateify-sc-node-'+match.name);if(node&&node.dataset.scTag===match.tag){fn=this.tags[match.name].bind(match);done=replacer.bind(match);result=fn(done);if(result!==undefined){done(result)}}}};Shortcode.prototype.parseCallbackResult=function(result){var container,fragment,children;switch(typeof result){case'function':result=document.createTextNode(result());break;case'string':container=document.createElement('div');fragment=document.createDocumentFragment();container.innerHTML=result;children=container.childNodes;if(children.length){for(var i=0,len=children.length;i<len;i++){fragment.appendChild(children[i].cloneNode(true))}result=fragment}else{result=document.createTextNode(result)}break;case'object':if(!result.nodeType){result=JSON.stringify(result);result=document.createTextNode(result)}break;case'default':break}return result};Shortcode.prototype.parseOptions=function(stringOptions){var options={},set;if(!stringOptions){return}set=stringOptions.replace(/(\w+=)/g,'\n$1').split('\n');set.shift();for(var i=0;i<set.length;i++){var kv=set[i].split('=');options[kv[0]]=kv[1].replace(/\'|\"/g,'').trim()}return options};Shortcode.prototype.escapeTagRegExp=function(regex){return regex.replace(/[\[\]\/]/g,'\\$&')};Shortcode.prototype.template=function(s,d){for(var p in d){s=s.replace(new RegExp('{'+p+'}','g'),d[p])}return s};String.prototype.trim=String.prototype.trim||function(){return this.replace(/^\s+|\s+$/g,'')};if(window.jQuery){var pluginName='shortcode';$.fn[pluginName]=function(tags){this.each(function(){if(!$.data(this,pluginName)){$.data(this,pluginName,new Shortcode(this,tags))}});return this}}
+
+      /*! ResizeIfy - LazyIfy on Scroll by Templateify | v1.2.0 - https://www.templateify.com */
+      !function(a){a.fn.lazyify=function(){return this.each(function(){var t=a(this),dImg=t.attr('data-image'),iWid=Math.round(t.width()),iHei=Math.round(t.height()),iSiz='w'+iWid+'-h'+iHei+'-p-k-no-nu',img='';if(dImg.match('/s72-c')){img=dImg.replace('/s72-c','/'+iSiz);}else if(dImg.match('/w72-h')){img=dImg.replace('/w72-h72-p-k-no-nu','/'+iSiz);}else if(dImg.match('=w72-h')){img=dImg.replace('=w72-h72-p-k-no-nu','='+iSiz);}else{img=dImg;}
+      a(window).on('load resize scroll',lazyOnScroll);function lazyOnScroll(){var wHeight=a(window).height(),scrTop=a(window).scrollTop(),offTop=t.offset().top;if(scrTop+wHeight>offTop){var n=new Image();n.onload=function(){t.attr('style','background-image:url('+this.src+')').addClass('lazy-ify');},n.src=img;}}
+      lazyOnScroll();});}}(jQuery);
+      //]]>
+      </script>
+      <script>
+      ! function(a) {
+      	a.fn.lazyify = function() {
+      		return this.each(function() {
+      			var t = a(this),
+      				dImg = t.attr('data-image'),
+      				iWid = Math.round(t.width()),
+      				iHei = Math.round(t.height()),
+      				iSiz = 'w' + iWid + '-h' + iHei + '-p-k-no-nu',
+      				img = '';
+      			if(dImg.match('/s72-c')) {
+      				img = dImg.replace('/s72-c', '/' + iSiz);
+      			} else if(dImg.match('/w72-h')) {
+      				img = dImg.replace('/w72-h72-p-k-no-nu', '/' + iSiz);
+      			} else if(dImg.match('=w72-h')) {
+      				img = dImg.replace('=w72-h72-p-k-no-nu', '=' + iSiz);
+      			} else {
+      				img = dImg;
+      			}
+      			a(window).on('load resize scroll', lazyOnScroll);
+
+      			function lazyOnScroll() {
+      				var wHeight = a(window).height(),
+      					scrTop = a(window).scrollTop(),
+      					offTop = t.offset().top;
+      				if(scrTop + wHeight > offTop) {
+      					var n = new Image();
+      					n.onload = function() {
+      						t.attr('style', 'background-image:url(' + this.src + ')').addClass('lazy-ify');
+      					}, n.src = img;
+      				}
+      			}
+      			lazyOnScroll();
+      		});
+      	}
+      }(jQuery);  
+      </script>
+
+      <!--blue heaster-->
+      <script type='text/javascript'>
+      //<![CDATA[
+      var postResults=postPerPage;
+      var numOfPages=2;
+      /*! BlogPager Pagination Scripts */
+      eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('5 J;5 m;5 l;5 s;5 n=1k.9;5 w="/";18();C 1a(a){5 b=\'\';M=I(V/2);4(M==V-M){V=M*2+1}B=l-M;4(B<1)B=1;k=I(a/o)+1;4(k-1==a/o)k=k-1;D=B+V-1;4(D>k)D=k;5 c=I(l)-1;4(l>1){4(l==2){4(m==\'3\'){b+=\'<a 6="3-7 3-W" 9="\'+w+\'"></a>\'}i{b+=\'<a 6="3-7 3-W" 9="/v/u/\'+s+\'?&h-r=\'+o+\'"></a>\'}}i{4(m==\'3\'){b+=\'<a 6="3-7 3-W" 9="#" A="K(\'+c+\');z y"></a>\'}i{b+=\'<a 6="3-7 3-W" 9="#" A="L(\'+c+\');z y"></a>\'}}}4(B>1){4(m=="3"){b+=\'<a 6="3-7" 9="\'+w+\'">1</a>\'}i{b+=\'<a 6="3-7" 9="/v/u/\'+s+\'?&h-r=\'+o+\'">1</a>\'}}4(B>2){b+=\'<E 6="3-7 3-17">...</E>\'}15(5 d=B;d<=D;d++){4(l==d){b+=\'<E 6="3-7 3-1x">\'+d+\'</E>\'}i 4(d==1){4(m==\'3\'){b+=\'<a 6="3-7" 9="\'+w+\'">1</a>\'}i{b+=\'<a 6="3-7" 9="/v/u/\'+s+\'?&h-r=\'+o+\'">1</a>\'}}i{4(m==\'3\'){b+=\'<a 6="3-7" 9="#" A="K(\'+d+\');z y">\'+d+\'</a>\'}i{b+=\'<a 6="3-7" 9="#" A="L(\'+d+\');z y">\'+d+\'</a>\'}}}4(D<k-1){b+=\'<E 6="3-7 3-17">...</E>\'}4(D<k){4(m=="3"){b+=\'<a 6="3-7" 9="#" A="K(\'+k+\');z y">\'+k+\'</a>\'}i{b+=\'<a 6="3-7" 9="#" A="L(\'+k+\');z y">\'+k+\'</a>\'}}5 e=I(l)+1;4(l<k){4(m==\'3\'){b+=\'<a 6="3-7 3-1c" 9="#" A="K(\'+e+\');z y"></a>\'}i{b+=\'<a 6="3-7 3-1c" 9="#" A="L(\'+e+\');z y"></a>\'}}b+=\'\';5 f=x.1t(\'1p\');5 g=x.1r(\'1s-1q\');15(5 p=0;p<f.R;p++){f[p].1b=b}4(f&&f.R>0){b=\'\'}4(g){g.1b=b}}C 11(a){5 b=a.1i;5 c=I(b.1B$1z.$t,10);1a(c)}C 18(){5 a=n;4(a.j(\'/v/u/\')!=-1){4(a.j(\'?Q-h\')!=-1){s=a.G(a.j(\'/v/u/\')+14,a.j(\'?Q-h\'))}i{s=a.G(a.j(\'/v/u/\')+14,a.j(\'?&h\'))}}4(a.j(\'?q=\')==-1&&a.j(\'.1C\')==-1){4(a.j(\'/v/u/\')==-1){m=\'3\';4(n.j(\'#H=\')!=-1){l=n.G(n.j(\'#H=\')+8,n.R)}i{l=1}x.16(\'<F P=\\\'\'+w+\'O/S/N?h-r=1&T=U&X=11\\\'><\\/F>\')}i{m=\'u\';4(a.j(\'&h-r=\')==-1){o=1y}4(n.j(\'#H=\')!=-1){l=n.G(n.j(\'#H=\')+8,n.R)}i{l=1}x.16(\'<F P="\'+w+\'O/S/N/-/\'+s+\'?T=U&X=11&h-r=1" ><\\/F>\')}}}C K(a){Y=(a-1)*o;J=a;5 b=x.1f(\'1d\')[0];5 c=x.1m(\'F\');c.1n=\'1o/1l\';c.1j(\'P\',w+\'O/S/N?1e-1g=\'+Y+\'&h-r=1&T=U&X=12\');b.1h(c)}C L(a){Y=(a-1)*o;J=a;5 b=x.1f(\'1d\')[0];5 c=x.1m(\'F\');c.1n=\'1o/1l\';c.1j(\'P\',w+\'O/S/N/-/\'+s+\'?1e-1g=\'+Y+\'&h-r=1&T=U&X=12\');b.1h(c)}C 12(a){Z=a.1i.1A[0];5 b=Z.13.$t.G(0,19)+Z.13.$t.G(1w,1v);5 c=1u(b);4(m==\'3\'){5 d=\'/v?Q-h=\'+c+\'&h-r=\'+o+\'#H=\'+J}i{5 d=\'/v/u/\'+s+\'?Q-h=\'+c+\'&h-r=\'+o+\'#H=\'+J}1k.9=d}',62,101,'|||page|if|var|class|num||href||||||||max|else|indexOf|lastPageNo|currentPageNo|currentPage|locationUrl|postResults|||results|postLabel||label|search|home_page|document|false|return|onclick|pageStart|function|pageEnd|span|script|substring|PageNo|parseInt|noPage|getPage|getLabelPage|pageNumber|summary|feeds|src|updated|length|posts|alt|json|numOfPages|prev|callback|jsonstart|post||dataFeed|findPostDate|published||for|write|dots|pageCurrentBlogger||startPagination|innerHTML|next|head|start|getElementsByTagName|index|appendChild|feed|setAttribute|location|javascript|createElement|type|text|pageArea|pager|getElementById|blog|getElementsByName|encodeURIComponent|29|23|active|20|totalResults|entry|openSearch|html'.split('|'),0,{}))
+      //]]>
+      </script>
+    
+    <script type='text/javascript'>
+    //<![CDATA[
+      $("#main-menu").each(function() {
+          for (var t = $(this).find(".LinkList ul > li").children("a"), e = t.length, a = 0; a < e; a++) {
+              var s = t.eq(a),
+                  i = s.text();
+              if ("_" !== i.charAt(0))
+                  if ("_" === t.eq(a + 1).text().charAt(0)) {
+                      var r = s.parent();
+                      r.append('<ul class="sub-menu m-sub"/>')
+                  }
+                  "_" === i.charAt(0) && (s.text(i.replace("_", "")), s.parent().appendTo(r.children(".sub-menu")))
+          }
+          for (a = 0; a < e; a++) {
+              var l = t.eq(a),
+                  n = l.text();
+              if ("_" !== n.charAt(0))
+                  if ("_" === t.eq(a + 1).text().charAt(0)) {
+                      var o = l.parent();
+                      o.append('<ul class="sub-menu2 m-sub"/>')
+                  }
+                  "_" === n.charAt(0) && (l.text(n.replace("_", "")), l.parent().appendTo(o.children(".sub-menu2")))
+          }
+          $("#main-menu ul li ul").parent("li").addClass("has-sub"), 
+          $("#main-menu .widget").addClass("show-menu"), 
+          $("#main-menu-nav").each(function() {
+              var t = $(this).data("title").trim();
+              $(".show-mobile-menu").text(t)
+          })
+      }), $("#main-ad-top .widget").each(function() {
+          var t = $(this);
+          t.length && $("#ad-top").append(t).show()
+      }), $("#main-ad-footer .widget").each(function() {
+          var t = $(this);
+          t.length && $("#ad-footer").append(t).show()
+      }), 
+      
+      $(function() {
+          function t(t, e) {
+              for (var a = 0; a < t[e].link.length; a++)
+                  if ("alternate" == t[e].link[a].rel) {
+                      var s = t[e].link[a].href;
+                      break
+                  }
+              return s
+          }
+      
+          function e(t, e, a) {
+              return '<a href="' + a + '">' + t[e].title.$t + "</a>"
+          }
+      
+          function a(t, e) {
+              var a = t[e].published.$t,
+                  s = a.substring(0, 4),
+                  i = a.substring(5, 7),
+                  r = a.substring(8, 10);
+              return '<time class="item-date published" datetime="' + a + '">' + (monthFormat[parseInt(i, 10) - 1] + " " + r + ", " + s) + "</time>"
+          }
+      
+          function s(t, e) {
+              t[e].title.$t;
+              var a = t[e].content.$t,
+                  s = $("<div>").html(a);
+              if ("media$thumbnail" in t[e]) {
+                  var i = t[e].media$thumbnail.url,
+                      r = i.replace("/s72-c", "/w280"),
+                      l = i.replace("/s72-c", "/w120");
+                  i.match("img.youtube.com") && (r = i.replace("/default.", "/mqdefault."), l = i)
+              } else a.indexOf("<img") > -1 ? l = r = s.find("img:first").attr("src") : (r = noThumbnail.replace("/s680", "/w280"), l = noThumbnail.replace("/s680", "/w120"));
+              return ['<span class="post-thumb" data-image="' + r + '"/>', '<span class="post-thumb" data-image="' + l + '"/>']
+          }
+          function getFirstImage($c, img) {
+          var $h = $('<div>').html($c),
+              $t = $h.find('img:first').attr('src'),
+              $a = $t.lastIndexOf('/') || 0,
+              $b = $t.lastIndexOf('/', $a - 1) || 0,
+              $p0 = $t.substring(0, $b),
+              $p1 = $t.substring($b, $a),
+              $p2 = $t.substring($a);
+          if ($p1.match(/\/s[0-9]+/g) || $p1.match(/\/w[0-9]+/g) || $p1 == '/d') {
+              $p1 = '/w72-h72-p-k-no-nu'
+          }
+          img = $p0 + $p1 + $p2;
+          return img
+          }
+      
+              function getPostImage(t, e, img) {
+                  var $c = t[e].content.$t;
+                  if (t[e].media$thumbnail) {
+                      var src = t[e].media$thumbnail.url
+                  } else {
+                      src = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCseaUHb98U0ROXsgO1TRdkurJf8v01Mpivc4n7W2O5DQZZpj5NpEX7IxQ0moeABGJsNl_fa5tNZ0OJM8eBEGR5A_F6lNyIhkTQ6wUUbzNTUNry8SkK-YVvKS1ucLZt2G3AxsLmeaAeZk/s72-c/nth-ify.png'
+                  }
+                  if ($c.indexOf($c.match(/<iframe(?:.+)?src=(?:.+)?(?:www.youtube.com)/g)) > -1) {
+                      if ($c.indexOf('<img') > -1) {
+                          if ($c.indexOf($c.match(/<iframe(?:.+)?src=(?:.+)?(?:www.youtube.com)/g)) < $c.indexOf('<img')) {
+                              img = src.replace('/default.', '/0.')
+                          } else {
+                              img = getFirstImage($c)
+                          }
+                      } else {
+                          img = src.replace('/default.', '/0.')
+                      }
+                  } else if ($c.indexOf('<img') > -1) {
+                      img = getFirstImage($c)
+                  } else {
+                      img = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCseaUHb98U0ROXsgO1TRdkurJf8v01Mpivc4n7W2O5DQZZpj5NpEX7IxQ0moeABGJsNl_fa5tNZ0OJM8eBEGR5A_F6lNyIhkTQ6wUUbzNTUNry8SkK-YVvKS1ucLZt2G3AxsLmeaAeZk/s72-c/nth-ify.png'
+                  }
+                  return img
+              }
+          function i(i, r, l, n) {
+              switch (r) {
+                  case "list":
+                  case "related":
+                      null == n && (n = "geterror.x5j7a");
+                      var o = function(t, e, a) {
+                          var s = "";
+                          switch (a) {
+                              case "recent":
+                                  s = "/feeds/posts/default?alt=json&max-results=" + e;
+                                  break;
+                              default:
+                                  s = "/feeds/posts/default/-/" + a + "?alt=json&max-results=" + e
+                          }
+                          return s
+                      }(0, l, n);
+                      $.ajax({
+                          url: o,
+                          type: "GET",
+                          cache: !0,
+                          dataType: "json",
+                          beforeSend: function(t) {
+                              switch (r) {
+                                  case "related":
+                                      i.html('<div class="loader"/>'), i.parent().addClass("show-ify");
+                                      break;
+                                  default:
+                                      i.html('<div class="loader"/>')
+                              }
+                          },
+                          success: function(l) {
+                              var n = "";
+                              switch (r) {
+                                  case "list":
+                                      n = '<div class="custom-widget">';
+                                      break;
+                                  case "related":
+                                      n = '<div class="related-posts">'
+                              }
+                              var o = l.feed.entry;
+                              if (null != o)
+                                  for (var c = 0, h = o; c < h.length; c++) {
+                                      var d = t(h, c),
+                                          m = e(h, c, d),
+                                          u = getPostImage(h, c, d),
+                                          p = a(h, c),
+                                          f = "";
+                                      switch (r) {
+                                          case "list":
+                                              f += '<article class="custom-item item-' + c + '"><a class="post-image" href="' + d + '"><span class="post-thumb" data-image="' + u + '"/></a><div class="post-header"><div class="post-meta">' + p + '</div><h2 class="post-title">' + m + "</h2></div></article>";
+                                              break;
+                                          case "related":
+                                              f += '<article class="related-item item-' + c + '"><a class="post-image" href="' + d + '"><span class="post-thumb" data-image="' + u + '"/></a><div class="post-header"><h2 class="post-title">' + m + '</h2><div class="post-meta">' + p + "</div></div></article>"
+                                      }
+                                      n += f
+                                  } else n = '<span class="no-posts">Error: No Results Found.</span>';
+                              n += "</div>", i.html(n), i.find("span.post-thumb").lazyify()
+                          }
+                      })
+              }
+          }
+      
+          
+          $("#main-menu-nav").clone().appendTo(".mobile-menu"),
+          $(".mobile-menu .has-sub").append('<div class="submenu-toggle"/>'), 
+          $("#social-icons .widget ul.social").clone().appendTo(".slide-menu-header .social-mobile"), 
+          $(".show-mobile-menu, .hide-mobile-menu").on("click", function() {
+              $("body").toggleClass("nav-active"), $(".overlay").fadeToggle(170)
+          }), 
+          $(".mobile-menu ul li .submenu-toggle").on("click", function(t) {
+              $(this).parent().hasClass("has-sub") && (t.preventDefault(), $(this).parent().hasClass("show") ? $(this).parent().removeClass("show").find("> .m-sub").slideToggle(170) : $(this).parent().addClass("show").children(".m-sub").slideToggle(170))
+          }), 
+          $(".social-toggle").on("click", function() {
+              $("body").toggleClass("social-active"), $("#social-icons").fadeToggle(170)
+          }),
+           $(".show-search, .show-mobile-search").on("click", function() {
+              $("#nav-search, .mobile-search-form").fadeIn(170).find("input").focus()
+          }),
+           $(".hide-search, .hide-mobile-search").on("click", function() {
+              $("#nav-search, .mobile-search-form").fadeOut(170).find("input").blur()
+          }),
+           $(".follow-by-email-text").text(followByEmailText),
+           
+              $(".Label a").attr("href", function(t, e) {
+              return e = e.replace(e, e + "?&max-results=" + postPerPage)
+          }), 
+          $(".avatar-image-container img").attr("src", function(t, e) {
+              return e = (e = (e = e.replace("//resources.blogblog.com/img/blank.gif", "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTS9dDxOi74P22543JKDRvcALMLbBNHQlZgAZKzdaRBboTafSzwDJaD7q-0BAJVPC1nYegdS7HwG_uYPabDNQBx2vhaiYAHwtBDZ-Dg9JSoKVtwKPen2zboW9N3YRNVQudYgMjbxzXTx4/s35-c/avatar.jpg")).replace("//lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35", "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTS9dDxOi74P22543JKDRvcALMLbBNHQlZgAZKzdaRBboTafSzwDJaD7q-0BAJVPC1nYegdS7HwG_uYPabDNQBx2vhaiYAHwtBDZ-Dg9JSoKVtwKPen2zboW9N3YRNVQudYgMjbxzXTx4/s356-c/avatar.jpg")).replace("/s35-c", "/s35-c")
+          }), 
+          $(".index-post .post-image .post-thumb, .PopularPosts .post-image .post-thumb, .FeaturedPost .post-image .post-thumb, .about-author .author-avatar, .Profile .profile-img, .post-meta .author-picture .author-avatar").lazyify(), 
+          
+          $(".share-links .window-ify").on("click", function() {
+              var t = $(this),
+                  e = t.data("url"),
+                  a = t.data("width"),
+                  s = t.data("height"),
+                  i = window.screen.width,
+                  r = window.screen.height,
+                  l = Math.round(i / 2 - a / 2),
+                  n = Math.round(r / 2 - s / 2);
+              window.open(e, "_blank", "scrollbars=yes,resizable=yes,toolbar=no,location=yes,width=" + a + ",height=" + s + ",left=" + l + ",top=" + n).focus()
+          }), 
+          $(".post-body a").each(function() {
+              var t = $(this),
+                  e = t.text().trim(),
+                  a = e.split("/"),
+                  s = a[0],
+                  i = a[1],
+                  r = a.pop();
+              e.match("button") && (t.addClass("button").text(s), "button" != i && t.addClass(i), "button" != r && t.addClass("colored-button").css({
+                  "background-color": r
+              }))
+          }), 
+          $(".post-body strike").each(function() {
+              var t = $(this),
+                  e = t.text().trim(),
+                  a = t.html();
+              e.match("contact-form") && (t.replaceWith('<div class="contact-form"/>'), 
+              $(".contact-form").append($("#ContactForm1"))), 
+              e.match("alert-success") && t.replaceWith('<div class="alert-message alert-success short-b">' + a + "</div>"), 
+              e.match("alert-info") && t.replaceWith('<div class="alert-message alert-info short-b">' + a + "</div>"), 
+              e.match("alert-warning") && t.replaceWith('<div class="alert-message alert-warning short-b">' + a + "</div>"), 
+              e.match("alert-error") && t.replaceWith('<div class="alert-message alert-error short-b">' + a + "</div>"), 
+              e.match("left-sidebar") && t.replaceWith("<style>.item #main-wrapper{float:right}.item #sidebar-wrapper{float:left}</style>"), e.match("right-sidebar") && t.replaceWith("<style>.item #main-wrapper{float:left}.item #sidebar-wrapper{float:right}</style>"), e.match("full-width") && t.replaceWith("<style>.item #main-wrapper{width:100%}.item #sidebar-wrapper{display:none}</style>"), e.match("code-box") && t.replaceWith('<pre class="code-box short-b">' + a + "</pre>"), 
+              
+              
+              $(".post-body .short-b").find("b").each(function() {
+                  var t = $(this),
+                      e = t.text().trim();
+                  (e.match("alert-success") || e.match("alert-info") || e.match("alert-warning") || e.match("alert-error") || e.match("code-box")) && t.replaceWith("")
+              })
+          }), 
+          $(".about-author .author-description span a").each(function() {
+              var t = $(this),
+                  e = t.attr("href");
+              e.match("facebook") ? t.replaceWith('<li class="facebook"><a href="' + e + '" title="Facebook" target="_blank"/></li>') : e.match("twitter") ? t.replaceWith('<li class="twitter"><a href="' + e + '" title="Twitter" target="_blank"/></li>') : e.match("google") ? t.replaceWith('<li class="gplus"><a href="' + e + '" title="Google Plus" target="_blank"/></li>') : e.match("pinterest") ? t.replaceWith('<li class="pinterest"><a href="' + e + '" title="Pinterest" target="_blank"/></li>') : e.match("instagram") ? t.replaceWith('<li class="instagram"><a href="' + e + '" title="Instagram" target="_blank"/></li>') : e.match("linkedin") ? t.replaceWith('<li class="linkedin"><a href="' + e + '" title="Linkedin" target="_blank"/></li>') : e.match("youtube") ? t.replaceWith('<li class="youtube"><a href="' + e + '" title="YouTube" target="_blank"/></li>') : t.replaceWith('<li class="external-link"><a href="' + e + '" title="Site" target="_blank"/></li>'), 
+              
+              $(".author-description").append($(".author-description span li")), 
+              $(".author-description").addClass("show-icons")
+          }), 
+          $("#main-wrapper, #sidebar-wrapper").each(function() {
+              1 == fixedSidebar && $(this).theiaStickySidebar({
+                  additionalMarginTop: 40,
+                  additionalMarginBottom: 40
+              })
+          }), 
+          $(".back-top").each(function() {
+              var t = $(this);
+              $(window).on("scroll", function() {
+                  $(this).scrollTop() >= 100 ? t.fadeIn(250) : t.fadeOut(250)
+              }), t.click(function() {
+                  $("html, body").animate({
+                      scrollTop: 0
+                  }, 500)
+              })
+          }), 
+          $(".widget-ready .HTML .widget-content").each(function() {
+              var t = $(this),
+                  e = t.text().trim().toLowerCase();
+              t.shortcode({
+                  getWidget: function() {
+                      var a = this.options.results,
+                          s = this.options.label,
+                          r = this.options.type;
+                      ! function(t, e, a, s, r) {
+                          if (r.match("getwidget")) {
+                              if ("list" == e) return i(t, e, a, s);
+                              t.html('<span class="no-posts">Error: No Results Found.</span>')
+                          }
+                      }(t, r, a, s, e)
+                  },
+                  getInstagram: function() {
+                      var a = this.options.results,
+                          s = this.options.token;
+                      ! function(t, e, a, s) {
+                          if (s.match("getinstagram")) {
+                              if (null == e && (e = 6), null != a) return function(t, e, a) {
+                                  $.ajax({
+                                      url: "https://api.instagram.com/v1/users/self/media/recent",
+                                      type: "get",
+                                      dataType: "json",
+                                      data: {
+                                          access_token: a,
+                                          count: e
+                                      },
+                                      beforeSend: function() {
+                                          t.html('<div class="loader"/>')
+                                      },
+                                      success: function(e) {
+                                          var a = '<ul class="insta-widget">',
+                                              s = e.meta.error_message,
+                                              i = e.data;
+                                          if (null != i)
+                                              for (var r = 0; r < i.length; r++) {
+                                                  var l = i[r].link,
+                                                      n = i[r].images.thumbnail.url,
+                                                      o = "";
+                                                  a += o += '<li class="insta-item item-' + r + '"><a class="insta-image" href="' + l + '" target="_blank"><span class="insta-thumb" data-image="' + n + '"/></a></li>'
+                                              } else a = '<span class"insta-error">' + s + "</span>";
+                                          a += "</ul>", t.html(a), t.find("span.insta-thumb").lazyify()
+                                      }
+                                  })
+                              }(t, e, a);
+                              t.html('<span class="no-posts">Error: No Results Found.</span>')
+                          }
+                      }(t, a, s, e)
+                  }
+              })
+          }), 
+          $(".related-content").each(function() {
+              var t = $(this),
+                  e = t.find(".related-tag").attr("data-label");
+              ! function(t, e, a, s, r) {
+                  if (r.match("getrelated")) i(t, e, a, s)
+              }(t, "related", 3, e, "getrelated")
+          }), 
+          $(".blog-post-comments").each(function() {
+              var t, e = commentsSystem,
+                  a = '<div class="fb-comments" data-width="100%" data-href="' + disqus_blogger_current_url + '" data-numposts="5"></div>',
+                  s = "comments-system-" + e;
+              switch (e) {
+                  case "blogger":
+                      $(this).addClass(s).show();
+                      break;
+                  case "disqus":
+                      (t = document.createElement("script")).type = "text/javascript", t.async = !0, t.src = "//" + disqusShortname + ".disqus.com/embed.js", (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(t), $("#comments, #gpluscomments").remove(), $(this).append('<div id="disqus_thread"/>').addClass(s).show();
+                      break;
+                  case "facebook":
+                      $("#comments, #gpluscomments").remove(), $(this).append(a).addClass(s).show();
+                      break;
+                  case "hide":
+                      $(this).hide();
+                      break;
+                  default:
+                      $(this).addClass("comments-system-default").show()
+              }
+          })
+      });
+    //]]>
+    </script> 
+  </body>
+</html>

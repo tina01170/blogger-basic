@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title> 
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <script>
+       // Amalia
+      $(".post-body strike").each(function() {
+          var t = $(this),
+              e = t.text().trim(),
+              a = t.html();
+          e.match("contact-form") && (t.replaceWith('<div class="contact-form"/>'), 
+          
+          $(".contact-form").append($("#ContactForm1"))), 
+          
+          e.match("alert-success") && t.replaceWith('<div class="alert-message alert-success short-b">' + a + "</div>"), 
+          
+          e.match("alert-info") && t.replaceWith('<div class="alert-message alert-info short-b">' + a + "</div>"), 
+          
+          e.match("alert-warning") && t.replaceWith('<div class="alert-message alert-warning short-b">' + a + "</div>"), 
+          
+          e.match("alert-error") && t.replaceWith('<div class="alert-message alert-error short-b">' + a + "</div>"), 
+          
+          e.match("left-sidebar") && t.replaceWith("<style>.item #main-wrapper{float:right}.item #sidebar-wrapper{float:left}</style>"), 
+          e.match("right-sidebar") && t.replaceWith("<style>.item #main-wrapper{float:left}.item #sidebar-wrapper{float:right}</style>"), 
+          e.match("full-width") && t.replaceWith("<style>.item #main-wrapper{width:100%}.item #sidebar-wrapper{display:none}</style>"), 
+         
+          e.match("code-box") && t.replaceWith('<pre class="code-box short-b">' + a + "</pre>"), 
+        
+          $(".post-body .short-b").find("b").each(function() {
+              var t = $(this),
+                  e = t.text().trim();
+              (e.match("alert-success") || e.match("alert-info") || e.match("alert-warning") || e.match("alert-error") || e.match("code-box")) && t.replaceWith("")
+          })
+      })
+
+    </script>
+
+    <script>
+      $(".post-body strike").each(function(){
+        var t=$(this),e=t.text();
+
+        e.match("left-sidebar")&&t.replaceWith("<style>.item #main-wrapper{float:right}.item #sidebar-wrapper{float:left}</style>"),
+        e.match("right-sidebar")&&t.replaceWith("<style>.item #main-wrapper{float:left}.item #sidebar-wrapper{float:right}</style>"),
+        e.match("full-width")&&t.replaceWith("<style>.item #main-wrapper{width:100%}.item #sidebar-wrapper{display:none}</style>")
+      
+      }),
+      
+    </script>
+
+    <script>
+      // polar
+      $('.post-body strike').each(function() {
+          var $this = $(this),
+              type = $this.text();
+          if (type.match('left-sidebar')) {
+              $this.replaceWith('<style>.item #main-wrapper{float:right}.item #sidebar-wrapper{float:left}</style>');
+          }
+          if (type.match('right-sidebar')) {
+              $this.replaceWith('<style>.item #main-wrapper{float:left}.item #sidebar-wrapper{float:right}</style>');
+          }
+          if (type.match('full-width')) {
+              $this.replaceWith('<style>.item #main-wrapper{width:100%}.item #sidebar-wrapper{display:none}</style>');
+          }
+      });
+    </script>
+
+    
+
+    
+   
+  </body>
+</html>

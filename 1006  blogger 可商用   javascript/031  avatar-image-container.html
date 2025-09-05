@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+    .comments .avatar-image-container img { max-width: 35px;   }
+    </style>
+    <script>
+    $(".avatar-image-container img").attr("src", function(t, g) {
+      g = g.replace('/s35-c/','/s35-c/');  // comments 頭像設定沒有作用不如"不要做"
+      g = g.replace('//resources.blogblog.com/img/blank.gif','https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjw5tu4EZBaIgQ1RtWW72Sx1nSMkQU09fjJlqfDBmNXrbP2lvg3FKbQhJj20Ctny2SE1gUv6uhW497ofXABjfjttve1wCnczNlcreey7DqfuzUKmKe2ZNpMTBsqAHLtx-qSG17DPQHNKOV8h1AH3MKx-tWEgGP3lgB4ImFV2e32ZOiy690FKO30llZLrnGa/s35/avatar.jpg');
+      return g;
+    });
+    </script>
+  </head>
+  <body>
+    
+
+    
+   
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+
+  </head>
+  <body>
+    <script>
+        $(".post-body a").each(function() {
+            var e = $(this),
+            t = e.html(),
+            a = t.toLowerCase(),
+            s = shortCodeIfy(t, "text"),
+            i = shortCodeIfy(t, "icon"),
+            r = shortCodeIfy(t, "color");
+            a.match("getbutton") && 0 != s && (e.addClass("button btn").text(s), 0 != i && e.addClass(i), 0 != r && e.addClass("colored-button").attr("style", "background-color:" + r + ";"))
+        }),
+        
+        $(".post-body b").each(function() {
+            var e = $(this),
+              t = e.text(),
+              a = t.toLowerCase().trim();
+            a.match("{tocify}") && (t = 0 != shortCodeIfy(t, "title") ? shortCodeIfy(t, "title") : "Table of Contents", e.replaceWith('<div class="tocify-wrap"><div class="tocify-inner"><a href="javascript:;" class="tocify-title" role="button" title="' + t + '"><span class="tocify-title-text">' + t + '</span></a><ol id="tocify"></ol></div></div>'), 
+              
+              $(".tocify-title").each(function(e) {
+              (e = $(this)).on("click", function() {
+                e.toggleClass("is-expanded"), $("#tocify").slideToggle(170)
+              })
+            }), 
+              $("#tocify").toc({
+              content: "#post-body",
+              headings: "h2,h3,h4"
+            }), 
+              $("#tocify li a").each(function(e) {
+              (e = $(this)).click(function() {
+                return $("html,body").animate({
+                  scrollTop: ($(e.attr("href")).offset().top) - 20
+                }, 500), !1
+              })
+	          })),
+    
+            a.match("{contactform}") && (e.replaceWith('<div class="contact-form"/>'), $(".contact-form").append($("#ContactForm1")))
+        }),
+
+        $(".post-body blockquote").each(function() {
+            var e = $(this),
+              t = e.text().toLowerCase().trim(),
+              a = e.html();
+            if(t.match("{alertsuccess}")) {
+              const t = a.replace("{alertSuccess}", "");
+              e.replaceWith('<div class="alert-message alert-success">' + t + "</div>")
+            }
+            if(t.match("{alertinfo}")) {
+              const t = a.replace("{alertInfo}", "");
+              e.replaceWith('<div class="alert-message alert-info">' + t + "</div>")
+            }
+            if(t.match("{alertwarning}")) {
+              const t = a.replace("{alertWarning}", "");
+              e.replaceWith('<div class="alert-message alert-warning">' + t + "</div>")
+            }
+            if(t.match("{alerterror}")) {
+              const t = a.replace("{alertError}", "");
+              e.replaceWith('<div class="alert-message alert-error">' + t + "</div>")
+            }
+            if(t.match("{codebox}")) {
+              const t = a.replace("{codeBox}", "");
+              e.replaceWith('<pre class="code-box">' + t + "</pre>")
+            }
+        }), 
+        // bh, amia 沒有
+        $("#post-body iframe").each(function() {
+          var e = $(this);
+          e.attr("src").match("www.youtube.com") && e.wrap('<div class="responsive-video-wrap"/>')
+        })
+
+        // amia 有
+        $('.Label a, a.b-label, a.post-tag').attr('href', function($this, href) {
+          return href.replace(href, href + '?&max-results=' + postPerPage);
+        });
+
+       
+
+    </script>
+    
+
+    
+   
+  </body>
+</html>

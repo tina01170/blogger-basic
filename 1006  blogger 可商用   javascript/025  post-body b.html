@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+
+        /* alert */
+        .alert-message {position:relative;display:block;padding:20px;border:1px solid #f0f0f0;border-radius:3px}
+		    .alert-message.alert-success{ color:#3ed37c; background-color:rgba(62,211,124,0.05) }
+        .alert-message.alert-info{color:#3799dc;background-color:rgba(55,153,220,0.05)}
+        .alert-message.alert-warning{color:#8a6d3b;background-color:rgba(138,109,59,0.05)}
+        .alert-message.alert-error{color:#e74c3c;background-color:rgba(231,76,60,0.05)}
+        .alert-message:before{font-family:'Font Awesome 5 Free';font-size:16px;font-weight:900;display:inline-block;margin:0 5px 0 0}
+        .alert-message.alert-success:before{content:"\f058"}
+        .alert-message.alert-info:before{content:"\f05a"}
+        .alert-message.alert-warning:before{content:"\f06a"}
+        .alert-message.alert-error:before{content:"\f057"}
+
+        .code-box{
+            position:relative;
+            display:block;
+            background-color:#404040;
+            font-size:16px;
+            color:#f0f0f0;
+            white-space:pre-wrap;
+            line-height:1.67em;
+            padding:10px;
+            border:1px solid #ccc;
+            border-radius:3px
+        }
+        .contact-form{
+            overflow:hidden
+         }
+         .contact-form .widget-title{
+            display:none
+         }
+         .contact-form .contact-form-name{
+            width:calc(50% - 5px)
+         }
+         .contact-form .contact-form-email{
+            width:calc(50% - 5px);
+            float:right
+         }
+
+
+        /*contact-form */
+
+          .contact-form-widget{max-width:100%; box-sizing:border-box; }
+        
+          .form {
+              overflow:hidden
+          }          
+
+          .contact-form-widget form{
+              font-weight:400;
+              width:100%; 
+              margin:0 0 50px;
+          } 
+          .contact-form-widget form > p{
+              margin:0
+          }
+          .contact-form-widget form > span{
+              color:blue;
+          }
+          .contact-form-name, .contact-form-email {
+              height:30px;
+              font-family:inherit;
+              font-size:14px;
+              line-height:30px;
+              box-sizing:border-box;
+              padding:5px 0 0;
+              margin:0 0 10px;
+              border:1px solid #ccc;
+              border-radius:3px;
+              /*float:left;*/
+              width:100%; 
+              max-width:280px;
+          }
+
+      .contact-form-email-message{
+          /*float:left;*/
+          width:100%;
+           max-width:540px;
+          font-family:inherit;
+          font-size:14px;
+          box-sizing:border-box;
+          padding:5px 0 0;
+          margin:0 0 10px;
+          border:1px solid #ccc;
+          border-radius:3px;
+       }
+       .contact-form-button-submit{
+          /*float:left;*/
+          width:100%;
+          height:30px;
+          /*background-color:#84a8c1; */              
+          font-family:inherit;
+          font-size:14px;
+          color:#fff;
+          line-height:30px;
+          cursor:pointer;
+          box-sizing:border-box;
+          padding:0 10px;
+          margin:15px 0 0;
+          border:0;
+          border-radius:3px;
+       }
+     
+       .contact-form-error-message-with-border{
+          /*float:left;*/
+          width:100%;
+          background-color:#fbe5e5;
+          font-size:12px;
+          text-align:center;
+          line-height:12px;
+          padding:5px 0;
+          margin:15px 0;
+          box-sizing:border-box;
+          border:1px solid #ff2d2d;
+       }
+       .contact-form-success-message-with-border{
+         
+          width:100%;
+          background-color:#eaf6ff;
+          font-size:12px;
+          text-align:center;
+          line-height:12px;
+          padding:5px 0;
+          margin:15px 0;
+          box-sizing:border-box;
+          border:1px solid #5ab6f9;
+       }
+      .contact-form-error-message,.contact-form-success-message{
+          margin:0
+       } 
+
+      .Image .caption{font-size:16px;line-height:1.6em;margin:10px 0 0;display:block}
+      .Text .widget-content{ font-size:16px; line-height:1.7em; }
+
+    </style>
+    <style>
+        /* alert */
+        .alert-message {position:relative; display:block; padding:20px; font-size:20px; border:1px solid #f0f0f0; border-radius:3px}
+		    .alert-message.alert-success{ color:#3ed37c; background-color:rgba(62,211,124,0.05) }
+        .alert-message.alert-info{color:#3799dc;background-color:rgba(55,153,220,0.05)}
+        .alert-message.alert-warning{color:#8a6d3b;background-color:rgba(138,109,59,0.05)}
+        .alert-message.alert-error{color:#e74c3c;background-color:rgba(231,76,60,0.05)}
+        .alert-message:before{font-family:'Font Awesome 5 Free';font-size:18px;font-weight:900;display:inline-block;margin:0 5px 0 0}
+        
+		    .alert-message.alert-success:before{content:"\f058"}
+        .alert-message.alert-info:before{content:"\f05a"}
+        .alert-message.alert-warning:before{content:"\f06a"}
+        .alert-message.alert-error:before{content:"\f057"}
+
+		    .code-box{
+            position:relative;
+            display:block;
+            background-color:#404040;
+            font-size:16px;
+            color:#ffffff;
+            white-space:pre-wrap;
+            line-height:1.67em;
+            padding:15px 20px;
+            border:1px solid #404040;
+            border-radius:3px
+         }
+
+    </style>
+  </head>
+  <body>
+     <!--BH-->
+    <script>
+    $(".post-body strike").each(function() {
+      var t = $(this),
+          e = t.text().trim(),
+          a = t.html();
+      e.match("contact-form") && (t.replaceWith('<div class="contact-form"/>'), 
+      
+      $(".contact-form").append($("#ContactForm1"))), 
+      
+      e.match("alert-success") && t.replaceWith('<div class="alert-message alert-success short-b">' + a + "</div>"), 
+      e.match("alert-info") && t.replaceWith('<div class="alert-message alert-info short-b">' + a + "</div>"), 
+      e.match("alert-warning") && t.replaceWith('<div class="alert-message alert-warning short-b">' + a + "</div>"), 
+      e.match("alert-error") && t.replaceWith('<div class="alert-message alert-error short-b">' + a + "</div>"), 
+      e.match("left-sidebar") && t.replaceWith("<style>.item #main-wrapper{float:right}.item #sidebar-wrapper{float:left}</style>"), e.match("right-sidebar") && t.replaceWith("<style>.item #main-wrapper{float:left}.item #sidebar-wrapper{float:right}</style>"), e.match("full-width") && t.replaceWith("<style>.item #main-wrapper{width:100%}.item #sidebar-wrapper{display:none}</style>"), 
+      e.match("code-box") && t.replaceWith('<pre class="code-box short-b">' + a + "</pre>"), 
+      
+      
+      $(".post-body .short-b").find("b").each(function() {
+          var t = $(this),
+              e = t.text().trim();
+          (e.match("alert-success") || e.match("alert-info") || e.match("alert-warning") || e.match("alert-error") || e.match("code-box")) && t.replaceWith("")
+      })
+  })
+  </script>
+
+  <b:if cond='data:view.isSingleItem'>
+  <!-- Hidden Widgets -->
+  <div class='hidden-widgets' style='display:none!important'>
+    <b:section class='hidden-widgets' id='hidden-widgets' maxwidgets='3' showaddelement='no'>
+      <b:widget id='ContactForm1' locked='true' title='聯絡表單' type='ContactForm' version='2' visible='true'>
+        <b:includable id='main'>
+          <b:include name='widget-title'/>
+          <b:include name='content'/>
+        </b:includable>
+        <b:includable id='content'>
+          <div class='contact-form-widget'>
+            <div class='form'>
+              <form name='contact-form'>
+                <input class='contact-form-name' expr:id='data:widget.instanceId + &quot;_contact-form-name&quot;' expr:placeholder='data:contactFormNameMsg' name='name' size='30' type='text' value=''/>
+                <input class='contact-form-email' expr:id='data:widget.instanceId + &quot;_contact-form-email&quot;' expr:placeholder='data:contactFormEmailMsg + &quot;*&quot;' name='email' size='30' type='text' value=''/>
+                <textarea class='contact-form-email-message' cols='25' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' expr:placeholder='data:contactFormMessageMsg + &quot;*&quot;' name='email-message' rows='5'/>
+                <input class='contact-form-button contact-form-button-submit' expr:id='data:widget.instanceId + &quot;_contact-form-submit&quot;' expr:value='data:contactFormSendMsg' type='button'/>
+                <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
+                <p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;'/>
+              </form>
+            </div>
+          </div>
+        </b:includable>
+      </b:widget>
+    </b:section>
+  </div>
+  </b:if>
+  <!--Polar -->
+  <script>
+     $(".post-body blockquote").each(function() {
+            var e = $(this),
+              t = e.text().toLowerCase().trim(),
+              a = e.html();
+            if(t.match("{alertsuccess}")) {
+              const t = a.replace("{alertSuccess}", "");
+              e.replaceWith('<div class="alert-message alert-success">' + t + "</div>")
+            }
+            if(t.match("{alertinfo}")) {
+              const t = a.replace("{alertInfo}", "");
+              e.replaceWith('<div class="alert-message alert-info">' + t + "</div>")
+            }
+            if(t.match("{alertwarning}")) {
+              const t = a.replace("{alertWarning}", "");
+              e.replaceWith('<div class="alert-message alert-warning">' + t + "</div>")
+            }
+            if(t.match("{alerterror}")) {
+              const t = a.replace("{alertError}", "");
+              e.replaceWith('<div class="alert-message alert-error">' + t + "</div>")
+            }
+            if(t.match("{codebox}")) {
+              const t = a.replace("{codeBox}", "");
+              e.replaceWith('<pre class="code-box">' + t + "</pre>")
+            }
+        })
+  </script>
+  <b:widget id='ContactForm2' locked='false' title='聯絡表單' type='ContactForm' visible='true'>
+    <b:includable id='main'>
+      <b:include name='widget-title'/>
+      <b:include name='content'/>
+      </b:includable>
+          <b:includable id='content'>
+      <div class='contact-form-widget'>
+      <div class='form'>
+      <form name='contact-form'>
+      <p/>
+      <data:contactFormNameMsg/>
+      <br/>
+      <input class='contact-form-name' expr:id='data:widget.instanceId + &quot;_contact-form-name&quot;' name='name' size='30' type='text' value=''/>
+      <p/>
+      <data:contactFormEmailMsg/> <span style='font-weight: bolder;'>*</span>
+      <br/>
+      <input class='contact-form-email' expr:id='data:widget.instanceId + &quot;_contact-form-email&quot;' name='email' size='30' type='text' value=''/>
+      <p/>
+      <data:contactFormMessageMsg/> <span style='font-weight: bolder;'>*</span>
+      <br/>
+      <textarea class='contact-form-email-message' cols='25' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='5'/>
+      <p/>
+      <input class='contact-form-button contact-form-button-submit' expr:id='data:widget.instanceId + &quot;_contact-form-submit&quot;' expr:value='data:contactFormSendMsg' type='button'/>
+      <p/>
+      <div style='text-align: center; max-width: 222px; width: 100%'>
+        <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
+        <p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;'/>
+      </div>
+      </form>
+      </div>
+      </div>
+      </b:includable>
+        </b:widget>
+
+  <script>
+    $(".post-body blockquote").each((function(){
+        var a=$(this),
+            e=a.text().toLowerCase().trim(),
+            s=a.html();
+        if(e.match("(alert-success)")){
+          const e=s.replace("(alert-success)","");
+          a.replaceWith('<div class="alert-message success">'+e+"</div>")
+        }
+        
+        if(e.match("(alert-passed)")){
+          const e=s.replace("(alert-passed)","");
+          a.replaceWith('<div class="alert-message passed">'+e+"</div>")
+        }
+        
+        if(e.match("(alert-warning)")){
+          const e=s.replace("(alert-warning)","");
+          a.replaceWith('<div class="alert-message warning">'+e+"</div>")
+        }
+        
+        if(e.match("(alert-error)")){
+          const e=s.replace("(alert-error)","");
+          a.replaceWith('<div class="alert-message error">'+e+"</div>")
+      
+        }
+        
+        if(e.match("(code-box)")){
+          const e=s.replace("(code-box)","");
+          newTemp=e.replace(/"/g,"'"),
+          a.replaceWith('<pre class="code-box">'+e+'<input id="showlink" readonly="readonly" type="text" value=" '+newTemp+' "/></pre>')
+        }
+
+        if(t.match("(contact-form)")){
+          //const t = h.replace("(contact-form)","");
+            e.replaceWith('<div class="contact-form"/>');	
+        }$(".contact-form").append($("#ContactForm1"))
+    }))
+    
+  </script>
+    
+   
+  </body>
+</html>

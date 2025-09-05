@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+
+    </style>
+    <!-- Global Variables -->
+    <script>
+       
+        //<![CDATA[
+        // Global variables with content. "Available for Edit"
+        var monthFormat = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            noThumbnail = "https://4.bp.blogspot.com/-O3EpVMWcoKw/WxY6-6I4--I/AAAAAAAAB2s/KzC0FqUQtkMdw7VzT6oOR_8vbZO6EJc-ACK4BGAYYCw/w680/nth.png",
+            postPerPage = 7,
+            fixedSidebar = true,
+            commentsSystem = "blogger",
+            disqusShortname = "soratemplates";
+        //]]>
+      
+    </script>
+  </head>
+  <body>
+    <script>
+
+      //Polar
+      $('.blog-post-comments').each(function() {
+          var system = commentsSystem,
+              disqus_url = disqus_blogger_current_url,
+              disqus = '<div id="disqus_thread"/>',
+              current_url = $(location).attr('href'),
+              facebook = '<div class="fb-comments" data-width="100%" data-href="' + current_url + '" data-numposts="5"></div>',
+              sClass = 'comments-system-' + system;
+          if (system == 'blogger') {
+              $(this).addClass(sClass).show();
+          } else if (system == 'disqus') {
+            (function() {
+              var dsq = document.createElement('script');
+              dsq.type = 'text/javascript';
+              dsq.async = true;
+              dsq.src = '//' + disqusShortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();  
+            $('#comments, #gpluscomments').remove();
+            $(this).append(disqus).addClass(sClass).show();
+        } else if (system == 'facebook') {
+            $('#comments, #gpluscomments').remove();
+            $(this).append(facebook).addClass(sClass).show();
+        } else if (system == 'hide') {
+            $(this).hide();
+        } else {
+            $(this).addClass('comments-system-default').show();
+        }
+    });
+
+    </script>
+    <script>
+      
+
+
+    </script>
+
+    <script>
+       // Blue heaster 
+        $(".blog-post-comments").each(function() {
+            var t, e = commentsSystem,
+                a = '<div class="fb-comments" data-width="100%" data-href="' + disqus_blogger_current_url + '" data-numposts="5"></div>',
+                s = "comments-system-" + e;
+            switch (e) {
+                case "blogger":
+                    $(this).addClass(s).show();
+                    break;
+                case "disqus":
+                    (t = document.createElement("script")).type = "text/javascript",
+                     t.async = !0, t.src = "//" + disqusShortname + ".disqus.com/embed.js",
+                    (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(t),
+                    $("#comments, #gpluscomments").remove(),
+                    $(this).append('<div id="disqus_thread"/>').addClass(s).show();
+                    break;
+                case "facebook":
+                    $("#comments, #gpluscomments").remove(),$(this).append(a).addClass(s).show();
+                  
+                    break;
+                case "hide":
+                    $(this).hide();
+                    break;
+                default:
+                    $(this).addClass("comments-system-default").show()
+            }
+        })
+
+      
+    </script>
+
+    <script>
+        $(".blog-post-comments").each(function() {
+            var system = commentsSystem,
+                fk = '<div class="fb-comments" data-width="100%" data-href="' + disqus_blogger_current_url + '" data-numposts="5"></div>',
+                c = 'comments-system-' + system;
+            if (system == 'blogger') {
+                $(this).addClass(c).show();
+            } else if (system == 'disqus') {
+                (function() {
+                    var dsq = document.createElement('script');
+                    dsq.type = 'text/javascript';
+                    dsq.async = true;
+                    dsq.src = '//' + disqusShortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();     
+                $("#comments, #gpluscomments").remove(),
+                $(this).append('<div id="disqus_thread"/>').addClass(c).show();    
+            } else if (system == 'facebook') {
+                $('#comments, #gpluscomments').remove();
+                $(this).append(fk).addClass(c).show();    
+            } else if (system == 'hide') {
+                $(this).hide();
+            } else {
+                $(this).addClass('comments-system-default').show();
+            }       
+        })
+    </script>
+    
+
+    
+   
+  </body>
+</html>

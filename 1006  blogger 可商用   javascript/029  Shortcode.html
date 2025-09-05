@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+    <style>
+
+
+
+
+
+
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <!--Grid Mag-->
+    <script>
+       function tShortcode(a,e,s){
+        return!!(a=[].concat(_shortcodeiki(a.matchAll(/(?:(#[a-zA-Z]{0,})=\(([^\)]+)\))/g))).find((function(a){
+          return a[1].split("#")[1]===e})))&&a[2]
+      }
+
+      function f(){
+        $(".post-body a").each((function(a,e,s,t){
+          var i=$(this);
+          "post"==tShortcode((t=i.text()).toLowerCase().trim(),"type")
+          &&
+          (i.removeAttr("href"),
+          t=0!=(t=tShortcode(t,"title"))?t:"You Might Like",$(window).on("load resize scroll",(function a(){$(window).scrollTop()+$(window).height()>=i.offset().top&&($(window).off("load resize scroll",a),g(i,"1","random","card",t))})).trigger("scroll"))}))
+      }
+
+      $(".post-body a").each((function(){
+            var a=$(this),e=a.text(),s=tShortcode(e,"text");
+            if(e.match("getButton")&&s&&
+              ( a.replaceText(/([^{\(]+(?=\)))/,""), 
+                a.each((function(){
+                    var a=$(this),e=a.text(),
+                        s=tShortcode(e,"text"),
+                        t=tShortcode(e,"icon"),
+                        i=tShortcode(e,"color"),
+                        o=tShortcode(e,"size");
+                    a.addClass(o?"main-button button l-bt":"main-button button").text(s),0!=t&&a.addClass(t),0!=i&&a.attr("style","background:"+i+";")
+                }))
+              ),
+              e.match("getCard")){
+                var t=tShortcode(e,"type");
+                e=tShortcode(e,"title");
+                var i=a.attr("href"),o=a.attr("target");
+                switch(t){case"download":case"product":case"custom":a.replaceText(/([^{\(]+(?=\)))/,""),a.each((function(){var a=$(this),e=a.text(),s=tShortcode(e,"button"),n=tShortcode(e,"icon"),c=tShortcode(e,"title"),l=tShortcode(e,"info");l=l?'<span class="card-data">'+l+"</span>":"",a.replaceWith('<div class="card-wrap"><div class="card-header"><div class="card-icon"><i class="bi" data-icon="'+(n||("download"==t?"&#xF30A;":"product"==t?"&#xF23A;":"&#xF26C;"))+'"></i></div><div class="card-info"><span class="card-title">'+(c||tMessages.noTitle)+"</span>"+l+'</div></div><a class="card-button main-button" href="'+(i||"#")+'" target="'+(o||"_self")+'">'+s+"</a></div>")}))}}})),
+        
+       
+    </script>
+
+    
+    <!--Polar-->
+    <script>
+    function shortCodeIfy(e, t, a) {
+        for(var s = e.split("$"), i = /[^{\}]+(?=})/g, r = 0; r < s.length; r++) {
+          var o = s[r].split("=");
+          if(o[0].trim() == t) return null != (a = o[1]).match(i) && String(a.match(i)).trim()
+        }
+        return !1
+    }  
+    $(".post-body a").each(function() {
+        var e = $(this),
+            t = e.html(),
+            a = t.toLowerCase(),
+            s = shortCodeIfy(t, "text"),
+            i = shortCodeIfy(t, "icon"),
+            r = shortCodeIfy(t, "color");
+        a.match("getbutton") && 0 != s && (e.addClass("button btn").text(s), 0 != i && e.addClass(i), 0 != r && e.addClass("colored-button").attr("style", "background-color:" + r + ";"))
+    })
+
+    </script>
+  </body>
+</html>
