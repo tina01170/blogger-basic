@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+      
+/*-- Reset CSS Start Here --*/
+html.rtl {
+--body-font: Cairo,sans-serif;
+--meta-font: Cairo,sans-serif;
+--title-font: Cairo,sans-serif;
+--text-font: Cairo,sans-serif;
+}
+:root{
+--body-font:'$(main.font.family)', sans-serif;
+--title-font:'$(title.font.family)', sans-serif;
+--meta-font:'$(meta.font.family)', sans-serif;
+--text-font:'$(text.font.family)', sans-serif;
+--icons-font:"bootstrap-icons",bootstrap-icons;
+--text-font-color:$(text.post.inner);
+--runs-solid-color:#c1bbbb;
+--black-color:#404040;
+--hero-color:#aaaaaa;
+--main-menu-bg:$(main.menu.bg);
+--snippet-color:#aba4a4;
+--solid-border:#ddd;
+--featured-posts-title:$(featured.posts.title);
+--button-bg-color:$(main.button.color);
+--button-text-color:$(main.button.text.color);
+--lables-buttons-color:$(lables.buttons.color);
+--lables-text-color:$(lables.text.color);
+--email-bg-color:$(email.bg.color);
+--email-text-color:$(email.text.color);
+--cloud-bg-color:$(cloud.bg.color);
+--cloud-border-color:$(cloud.bg.color);
+--list-text-color:$(list.text.color);
+--theme-text-color:$(theme.text.color);
+--featured-gadgets-title:$(featured.gadgets.title);
+--placeholder-text-color:#3e3e3e;
+--main-menu-text-color:$(main.menu.text.color);
+--sub-menu-text-color:$(sub.menu.text.color);
+--footer-title-color:$(footer.title.color);
+--footer-copyright-bg:$(footer.copyright.bg);
+--body-color-main:$(body.background);
+--all-link-color:$(main.link.color);
+--black-text:#343434;
+--sp-bg:#fcfbf6;
+--topbar-bg:$(topbar.bg);
+--bg-cards-search:#f5f8fc;
+--main-text-color:$(main.text.color);
+--iljxXmm-bg:$(mobile.menu.bg.color);
+--mobile-text-color:$(mobile.text.color);
+--white-bg:#ffffff;
+--ticker-bg:#F7F7F7;
+--block-bg:#ffffff;
+--featured-posts-title-featured:#ffffff;
+--white-label-color:#ffffff;
+--bg-cards:#ffffff;
+--bg-cards-video:#121212;
+--bg-cards-shadow:0px 3px 3px 0 rgb(0 0 0 / 0.08);
+--bt-breaking:rgba(0 0 0 / 0.08);
+--bt-breaking-text:#626262;
+--shadow-top:0 0 20px rgba(0,0,0,.15);
+--shadow-top-fixed:5px 5px 8px 0px rgba(224 223 223 / 0.48);
+--ads-bg:rgb(143 183 255 / 0.20);
+--ads-text:#898989;
+--buttons-category-text:#1d1d1d;
+--snip-text-color:#eeeeee;
+--comments-dec:#333;
+--sticky-bg:#f1f1f1;
+--input-form:transparent;
+--bt-home:#f2f7fb;
+--cm-count:#555555;
+--shadow-light:0px 2px 5px 1px rgb(0 0 0 / 0.10);
+--ilipm-text:#4e4e4e;
+--sticky-lists:#f7fcff;
+--post-snip-data:#707070;
+--post-snip-open:#383838;
+--ico-relative:#c11111;
+--front-bg-lists:#fff;
+--share-author-links:#585858;
+--box-posts-share:#FAFAFC;
+--title-share:#1c1c1c;
+--title-share-fa:#5c5c5c;
+--footer-text-color:$(footer.text.color);
+--footer-about-text:$(footer.about.color);
+--footer-bg-color:$(footer.background.color);
+--footer-gadgets-title:$(footer.gadgets.title);
+--main-logo-text-color:$(main.logo.text.color);
+--submenu-bg-color:$(submenu.background.color);
+--comment-content:#f6f6f6;
+--comment-text:#5e5e5e;
+--label-text-color:#2c2c2c;
+--pager-text-color:$(body.text.color);
+--back-top:rgb(90 90 90 / 0.18);
+--box-shadows:rgb(102 102 102 / 0.13);
+}
+body.dark{
+--main-logo-text-color:#d4d4d4;
+--all-link-color:rgba(255,255,255,.7);
+--body-color-main:#292929;
+--main-menu: #383838;
+--sp-bg:#212121;
+--text-font-color:#d3d3d3;
+--shadow-top:none;
+--top-bar:#2d2d2d;
+--cloud-border-color:rgb(100 100 100 / 0.66);
+--cloud-bg-color:#ffffff;
+--iljxXmm-bg:#212121;
+--main-menu-bg:#212121;
+--ticker-bg:#1e1e1e;
+--input-form:rgb(112 112 112 / 0.34);
+--shadow-top-fixed:none;
+--white-label-color:#464646;
+--main-menu-text-color:#dadada;
+--list-text-color:#fff;
+--sub-menu-text-color:#dadada;
+--title-share:#dddddd;
+--black-color:#d9d9d9;
+--title-share-fa:#dddddd;
+--front-bg-lists:#292929;
+--box-shadows:transparent;
+--bt-home:#212121;
+--sticky-lists:#212121;
+--post-snip-open:#eee;
+--footer-gadgets-title:#c3c3c3;
+--footer-title-color:#adadad;
+--op-bg:0.1;
+--sticky-bg:#212121;
+--placeholder-text-color:#dadada;
+--theme-text-color:#dadada;
+--featured-gadgets-title:#dadada;
+--mobile-text-color:#ffffff;
+--ads-bg:#212121;
+--box-posts-share:#323232;
+--submenu-bg-color:#212121;
+--label-text-color:#a1a1a1;
+--featured-posts-title: #c3c3c3;
+--ads-text:#dadada;
+--buttons-category-text:#dadada;
+--bg-cards:#212121;
+--bg-cards-search:#222222;
+--block-bg:#3a3a3a;
+--black-text:#f3f8fb;
+--post-snip-data:#a5a5a5;
+--comments-dec:#cecece;
+--comment-content:#353535;
+--comment-text:#c1c1c1;
+--footer-bg-color:#181818;
+--footer-text-color:#E4E4E4;
+--cm-count:#E4E4E4;
+--main-text-color:#E4E4E4;
+--ilipm-text:#c3c3c3;
+--share-author-links:#E4E4E4;
+--footer-copyright-bg:#292929;
+}
+
+form,textarea,input,button{font-family:var(--body-font);-webkit-appearance:none;-moz-appearance:none;appearance:none;border-radius:5px;outline:none;box-sizing:border-box;border:none;}
+body{position:relative;background:var(--body-color-main);font-family:var(--body-font);font-size:14px;font-weight:400;color:var(--black-text);word-wrap:break-word;margin:0;padding:0;font-style:normal;line-height:1.4em}
+.Translate .goog-te-combo{width:100%;background:rgb(153 153 153 / 0.13);font-family:var(--body-font);color:var(--featured-posts-title);font-size:13px;padding:10px;margin:0 0 0.25rem!important;border:1px solid rgb(112 112 112 / 0.15);border-radius:5px;}
+    
+h1,h2,h3,h4,h5,h6{font-family:var(--title-font);font-weight:600}
+.widget-title h3{position:relative;float:left;font-family:var(--title-font);height:32px;font-size:24px;color:var(--theme-text-color);background: var(--body-color-main);font-weight:600;line-height:32px;padding:0 12px 0 0;margin:0;z-index:1;}    
+
+.item-post .post-body{width:100%;font-family:var(--text-font);color:var(--text-font-color);font-size:15px;line-height:1.8em;padding:0;margin:0}
+.comments .comments-content .comment-content{float:left;font-family:var(--text-font);font-size:13px;color:var(--comment-text);font-weight:500;text-align:left;line-height:1.4em;width:100%;padding:20px 0px 20px 8px;background:rgb(110 110 110 / 0.08);margin:5px 0 9px;border-radius:3px;}
+.Text .widget-content{font-family:var(--text-font);font-size:14px;color:var(--main-text-color);margin:0}
+    </style>
+  </head>
+  <body>
+  
+    <Group description="Theme Fonts" selector="body">
+      <Variable name="main.font" description="Site Font" type="font" family="Inter" default="normal 400 14px $(family)"  value="normal 400 14px $(family)"/>
+      <Variable name="title.font" description="Title Font" type="font" family="Inter" default="normal 400 14px $(family)"  value="normal 400 14px $(family)"/>
+      <Variable name="meta.font" description="Meta Font" type="font" family="Inter" default="normal 400 14px $(family)"  value="normal 400 14px $(family)"/>
+      <Variable name="text.font" description="Text Font" type="font" family="Inter" default="normal 400 14px $(family)"  value="normal 400 14px $(family)"/>
+    </Group>
+   
+  </body>
+</html>

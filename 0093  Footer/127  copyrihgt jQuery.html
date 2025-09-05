@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
+    <style>
+      .footer-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+
+
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <div class="outer-wrapper"> 
+     
+    </div>
+    <div class="outer"> 
+
+    </div>
+    
+    <script>
+    $(function(){
+        var outline = $(".outer-wrapper")
+
+        outline.append("<footer class='footer'><div class='footer-info'><div class='copyright'><p>Designed by<a href='https://alicewangcoding.blogspot.com/'>Kelly Fang</a></p></div></div></footer>")
+
+    })
+    </script>
+    <script>
+      let outline = document.querySelector(".outer");
+      //console.log(outline);
+      let footer = document.createElement("footer")
+      footer.className = "footer";
+      footer.innerHTML = `
+      <div class='footer-info'><div class='copyright'>
+      <p>Designed by<a href='https://alicewangcoding.blogspot.com/'>Kelly Fang</a></p>
+      </div></div>      
+      `
+      outline.appendChild(footer)
+
+    </script>
+    
+
+    
+   
+  </body>
+</html>

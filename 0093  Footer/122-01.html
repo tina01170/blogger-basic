@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+      #footer .Image .widget-content { position:relative; width:100%;  display:flex; padding:30px 0; box-sizing:border-box; }
+      #footer .Image .footer-logo { display:flex; align-items: center; margin:0 30px 0 0; }
+      #footer .Image img { display:block;  }
+      #footer .Image .footer-text { overflow: hidden; position: relative; }
+      #footer .Image .footer-text .title { color: $(dark.title.color); font-size:24px;  margin:0 0 15px; /*font-family:'Roboto',sans-serif;*/ }
+      #footer .Image .footer-text .caption { color: $(dark.text.color); font-size:16px;  margin:0; }
+    </style>
+  </head>
+  <body>
+    <!--my theme-->
+    <!--step 1-->
+    <b:defaultmarkup type='Image'>
+        <b:includable id='main'>
+            <b:include name='widget-title'/>
+            <b:include name='content'/>
+        </b:includable>
+        <b:includable id='content'>
+          <div class='widget-content'>
+            <div class='footer-logo'>
+              <b:tag cond='data:link' expr:href='data:link' name='a'>
+                <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_img&quot;' expr:src='data:sourceUrl' expr:width='data:width'>
+                  <b:attr cond='data:sourceSet' expr:value='data:sourceSet' name='srcset'/>
+                </img>
+              </b:tag>
+            </div>    
+            <b:if cond='data:caption'><span class='caption'><data:caption/></span></b:if>
+          </div>
+      	</b:includable>
+    </b:defaultmarkup> 
+
+    <!--step 2-->
+        <b:includable id='main'>
+            <b:include name='content'/>
+        </b:includable>
+        <b:includable id='content'>
+            <div class='widget-content'>
+              	<div class='footer-logo'>
+                    <b:tag cond='data:link' expr:href='data:link' name='a'>
+                    <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_img&quot;' expr:src='data:sourceUrl' expr:width='data:width'>
+                    <b:attr cond='data:sourceSet' expr:value='data:sourceSet' name='srcset'/></img>
+                    </b:tag>
+                </div>
+                <div class='footer-text'>
+                    <b:include name='widget-title'/>
+                	<b:if cond='data:caption'><span class='caption'><data:caption/></span></b:if>
+                </div>
+            </div>
+        </b:includable>
+    <!--MAGIFY-->
+    <b:defaultmarkup type='Image'>
+        <b:includable id='main' var='this'>
+          <b:include name='widget-title'/>
+          <b:include name='content'/>
+        </b:includable>
+        <b:includable id='content'>
+          <div class='widget-content'>
+            <div class='custom-image'>
+              <b:tag cond='data:link' expr:href='data:link' name='a'>
+                <img expr:alt='data:blog.title' expr:id='data:widget.instanceId + &quot;_img&quot;' expr:src='data:sourceUrl'/>
+              </b:tag>
+            </div>
+            <b:if cond='data:caption'><span class='image-caption excerpt'><data:caption/></span></b:if>
+          </div>
+        </b:includable>
+    </b:defaultmarkup> 
+
+          <b:includable id='main' var='this'>
+            <b:include name='content'/>
+          </b:includable>
+          <b:includable id='content'>
+            <div class='widget-content'>
+              <b:if cond='data:link == &quot;hide-image&quot;'>
+                <b:class name='no-image'/>
+              </b:if>
+              <b:if cond='data:link != &quot;hide-image&quot;'>
+                <div class='footer-logo custom-image'>
+                  <a expr:href='data:blog.homepageUrl'>
+                    <img expr:alt='data:blog.title' expr:id='data:widget.instanceId + &quot;_img&quot;' expr:src='data:sourceUrl'/>
+                  </a>
+                </div>
+              </b:if>
+              <div class='about-content'>
+                <b:include name='widget-title'/>
+                <b:if cond='data:caption'>
+                  <span class='image-caption excerpt'><data:caption/></span>
+                </b:if>
+              </div>
+            </div>
+          </b:includable>
+
+
+    <!--Grid Mag-->
+    <b:defaultmarkup type='Image'>
+          <b:includable id='main'>
+            <b:include name='widget-title'/>
+            <b:include name='content'/>
+          </b:includable>
+          <b:includable id='content'>
+            <div class='widget-content'>
+              <b:tag cond='data:link' expr:href='data:link' name='a'>
+                  <img expr:alt='data:title' expr:height='data:height' expr:id='data:widget.instanceId + &quot;_img&quot;' expr:src='data:sourceUrl' expr:width='data:width'>
+                      <b:attr cond='data:sourceSet' expr:value='data:sourceSet' name='srcset'/>
+                  </img>
+              </b:tag>
+              <b:if cond='data:caption'><span class='caption'><data:caption/></span></b:if>
+            </div>
+          </b:includable>
+    </b:defaultmarkup>
+
+          <b:includable id='main' var='this'>
+              <b:include name='content'/>
+          </b:includable>
+          <b:includable id='content'>
+            <div class='widget-content'>
+                <div class='about-content'>
+                    <div class='footer-logo custom-image'><a expr:href='data:blog.homepageUrl'>
+                    <img expr:alt='data:blog.title.escaped' expr:data-normal='data:sourceUrl' expr:height='data:height' expr:src='data:sourceUrl' expr:width='data:width' id='darkroom2'>
+                    <b:loop values='[&quot;.png&quot;,&quot;.jpg&quot;,&quot;.gif&quot;,&quot;.webp&quot;,&quot;img&quot;]' var='imageType'>
+                    <b:attr cond='data:link and contains(data:link, data:imageType)' expr:value='data:link' name='data-dark'/>
+                    </b:loop></img>
+                    </a></div>
+                    <div class='bio-data'>
+                      <h3 class='title'><data:title/></h3>
+                      <span class='image-caption'><b:eval expr='data:caption'/></span>
+                    </div>
+                </div>
+            </div>
+          </b:includable>
+
+
+
+    
+
+    
+   
+  </body>
+</html>

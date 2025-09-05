@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Casper   https://probloggertemplates.com/</title>
+    <style>
+/*-- CSS Variables --*/
+html.rtl{
+--body-font:'Tajawal',Arial,sans-serif;
+--menu-font:'Tajawal',Arial,sans-serif;
+--title-font:'Tajawal',Arial,sans-serif;
+--text-font:'Tajawal',Arial,sans-serif;
+}
+:root{
+--body-font:'$(main.font.family)', Arial, sans-serif;
+--menu-font:'$(main.font.family)', Arial, sans-serif;
+--title-font:'$(main.font.family)', Arial, sans-serif;
+--text-font:'$(text.font.family)', Arial, sans-serif;
+--body-bg-color:$(background.color);
+--body-bg:$(body.background);
+--outer-bg:$(outer.bg);
+--main-color:$(main.color);
+--title-color:$(title.color);
+--title-hover-color:$(title.hover.color);
+--meta-color:$(meta.color);
+--text-color:$(text.color);
+--header-bg:linear-gradient(135deg,$(header.bg1) 0%,$(header.bg2) 40%,$(header.bg3) 95%);
+--header-color:$(header.color);
+--header-hover-color:$(header.hover.color);
+--submenu-bg:$(submenu.bg);
+--submenu-color:$(submenu.color);
+--submenu-hover-color:$(submenu.hover.color);
+--mobilemenu-bg:$(mobilemenu.bg);
+--mobilemenu-color:$(mobilemenu.color);
+--mobilemenu-hover-color:$(mobilemenu.hover.color);
+--widget-title:$(widget.title);
+--footer-bg:$(footer.bg);
+--footer-color:$(footer.color);
+--footer-text-color:$(footer.text.color);
+--footerbar-bg:$(footerbar.bg);
+--footerbar-color:$(footerbar.color);
+--footerbar-hover-color:$(footerbar.hover.color);
+--modal-bg:$(outer.bg);
+--button-bg:$(btn.bg);
+--button-color:$(btn.color);
+--title-weight:700;
+--gray-bg:rgba(155,155,155,0.05);
+--border-color:rgba(155,155,155,0.12);
+--shadow:0 0 10px rgba(0,0,0,0.05);
+--radius:4px;
+}
+
+h1,h2,h3,h4,h5,h6{font-family:var(--title-font);font-weight:var(--title-weight)}
+    </style>
+  </head>
+  <body>
+  
+  <Group description="Fonts" selector="body">
+    <Variable name="main.font" description="Main Font" type="font" family="Inter" default="normal 400 14px $(family)" value="normal 400 14px $(family)"/>
+    <Variable name="text.font" description="Text Font" type="font" family="Inter" default="normal 400 14px $(family)" value="normal 400 14px $(family)"/>
+  </Group>    
+
+  <Group description="Fix Blur (Fonts)" selector="body">
+    <!-- Site Font -->
+    <Variable name="mainfont.italic" description="Main Font Italic" type="font" default="italic 400 14px $(main.font.family)" value="italic 400 14px $(family)"/>
+    <Variable name="mainfont.medium" description="Main Font Medium" type="font" default="normal 500 14px $(main.font.family)" value="normal 500 14px $(family)"/>
+    <Variable name="mainfont.medium.italic" description="Main Font Medium Italic" type="font" default="italic 500 14px $(main.font.family)" value="italic 500 14px $(family)"/>
+    <Variable name="mainfont.semibold" description="Main Font SemiBold" type="font" default="normal 600 14px $(main.font.family)" value="normal 600 14px $(family)"/>
+    <Variable name="mainfont.semibold.italic" description="Main Font SemiBold Italic" type="font" default="italic 600 14px $(main.font.family)" value="italic 600 14px $(family)"/>
+    <Variable name="mainfont.bold" description="Main Font Bold" type="font" default="normal 700 14px $(main.font.family)" value="normal 700 14px $(family)"/>
+    <Variable name="mainfont.bold.italic" description="Main Font Bold Italic" type="font" default="italic 700 14px $(main.font.family)" value="italic 700 14px $(family)"/>
+    <!-- Text Font -->
+    <Variable name="textfont.italic" description="Text Font Italic" type="font" default="italic 400 14px $(text.font.family)" value="italic 400 14px $(family)"/>
+    <Variable name="textfont.bold" description="Text Font Bold" type="font" default="normal 700 14px $(text.font.family)" value="normal 700 14px $(family)"/>
+    <Variable name="textfont.bold.italic" description="Text Font Bold Italic" type="font" default="italic 700 14px $(text.font.family)" value="italic 700 14px $(family)"/>
+</Group>  
+   
+  </body>
+</html>

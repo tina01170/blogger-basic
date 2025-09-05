@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>layout-2 footer</title>
+    <style>
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+* {
+	box-sizing: border-box;
+}      
+body{
+  word-wrap:break-word;
+}
+.header {width:100%;padding:0;margin:0;background:#000;}	
+.header > .wrapper {margin:0 auto;padding:0 20px;max-width:1280px;}
+.header-wrapper{display:flex;justify-content: space-between;align-items: center;}
+.header .logo {
+  display:block;
+  font-size: 48px;
+  color:#fff;
+  text-decoration: none;
+  padding:15px 0;
+}
+.header p{
+  font-size: 24px;
+  color: red;;
+}
+
+.content {width:100%;padding:50px 0;margin:0}	
+.content > .wrapper {margin:0 auto;padding:0 20px;max-width:1280px;display: flex;justify-content: space-between;}
+.main{width:67%;padding-right:30px;overflow:hidden;}
+.aside{width:33%;padding-left:25px;overflow:hidden;}
+.main, .aside {
+  text-align: justify;
+}
+.main{
+  background-color: lightblue;
+}
+.aside{
+  background-color: lemonchiffon;
+}
+
+.footer {width:100%;padding:0;box-sizing:border-box;background:#000;}	
+.footer > .wrapper {margin:0 auto;padding:0 20px;max-width:1280px;}
+.footer-wrapper {display:flex;position:relative;margin:0 -20px;justify-content: space-between;} 
+.footer-1, .footer-2, .footer-3 {width:33.33%;padding:30px 20px;box-sizing:border-box;}  
+
+.footer-1 h3, .footer-2 h3, .footer-3 h3{
+  color:#fff;
+  border-bottom: 1px solid #fff;
+}
+.footer-1 p, .footer-2 p, .footer-3 p{color:#fff}
+
+
+@media screen and (max-width: 819px){
+  .content > .wrapper {flex-direction: column;}
+  .main, .aside{
+    width: 100%;
+    padding:0;
+  }
+  .aside {
+    margin-top: 30px;
+  }
+  .footer-wrapper  {flex-direction: column;padding:0;margin:0;}
+  .footer-1, .footer-2, .footer-3 {
+    width: 100%;
+    padding:0;
+  }
+}
+    </style>
+  </head>
+  <body>
+      <header class="header">
+        <div class="wrapper">
+          <div class="header-wrapper">
+            <h1><a href="" title="logo" class="logo">Maglite</a></h1>
+            <p>more</p>
+           </div>
+        </div>
+      </header>
+      <div class="content">
+        <div class="wrapper">
+          <main class="main">
+            <h3>This is main section</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio alias veritatis officia voluptatibus cum velit, rerum quaerat odit laboriosam corrupti suscipit rem earum provident expedita optio voluptatum odio labore laudantium ea? Optio assumenda eveniet non quae voluptas, illo sed necessitatibus. Aut illo quos sint iure. Porro facilis iure aspernatur provident magni quae, similique a earum amet minima natus non autem consequuntur sunt nobis soluta repudiandae placeat eum debitis accusamus nesciunt incidunt obcaecati et dolore. A voluptatum blanditiis molestiae unde deleniti sequi ea soluta in consectetur. Error ullam consectetur cum blanditiis corrupti neque ratione et sint voluptates! Numquam expedita corrupti odio?</p>
+          </main>
+          <aside class="aside">
+            <h3>This is aside section</h3>
+           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio alias veritatis officia voluptatibus cum velit, rerum quaerat odit laboriosam corrupti suscipit rem earum provident expedita optio voluptatum odio labore laudantium ea? Optio assumenda eveniet non quae voluptas, illo sed necessitatibus. Aut illo quos sint iure. Porro facilis iure aspernatur provident magni quae, similique a earum amet minima natus non autem consequuntur sunt nobis soluta repudiandae placeat eum debitis accusamus nesciunt incidunt obcaecati et dolore. A voluptatum blanditiis molestiae unde deleniti sequi ea soluta in consectetur. Error ullam consectetur cum blanditiis corrupti neque ratione et sint voluptates! Numquam expedita corrupti odio?</p>
+          </aside>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="wrapper">
+          <div class="footer-wrapper">
+            <div class="footer-1">
+              <h3>post tittle</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            </div>
+            <div class="footer-2">
+              <h3>post tittle</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            </div>
+            <div class="footer-3">
+              <h3>post tittle</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+
+    
+   
+  </body>
+</html>

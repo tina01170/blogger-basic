@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>change font and color 預處理$()</title>
+   
+    <style>
+    a,a:visited {text-decoration:none;}
+    a:visited {color:#000;}
+    a:hover, a:focus{outline:none;}
+    h1,h2,h3,h4,h5,h6{font-weight:700;font-family:$(title.font.family);}
+
+    body {box-sizing:border-box;margin:0;padding:0;word-wrap:break-word;background-color:$(body.background.color);font-family:$(body.font.family);}
+    
+    /*header*/
+    .header-area h1 {color: $(header.color);font-size: 60px;margin:0;line-height:70px;font-family:$(header.font.family);}
+    .header-area h1 a {color: $(header.color);}
+
+    .index-post .post-title {margin:0 0 10px;font-family:$(title.font.family);}
+    .index-post .post-title a {display:block;color:$(title.color);font-size:20px;line-height:1.6em;transition:color 0.5s;}
+
+    .item-post .post-body {width: 100%;font-size: 16px;line-height: 1.6em;overflow: hidden;padding:30px 0 0;font-family:$(text.font.family);}
+    
+    #footer .widget > h3, #sidebar .widget > h3, .Followers > h2 {position:relative;font-size:20px;font-weight:600;margin:0 0 30px;padding:0;text-transform:capitalize;border-bottom:1px solid #E0E0E0;font-family:$(title.font.family);}
+
+    </style>
+  </head>
+  <body>
+    
+    <!--easy-->
+    <Group description="Fonts" selector="fonts">
+      <Variable name="body.font" description="Body Font" type="font" default="normal bold 18px Open Sans, sans-serif" value="normal bold 18px Open Sans, sans-serif"/>
+       <Variable name="header.font" description="Header Title Font" type="font" default="normal bold 40px Open Sans, sans-serif" value="normal bold 40px Open Sans"/>
+       <Variable name="title.font" description="Title Font" type="font" default="normal bold 18px Open Sans, sans-serif" value="normal bold 18px Open Sans, sans-serif"/>
+       <Variable name="text.font" description="Text Font" type="font" default="normal normal 18px Open Sans, sans-serif" value="normal normal 18px Open Sans, sans-serif"/>
+    </Group> 
+  
+    
+   
+  </body>
+</html>

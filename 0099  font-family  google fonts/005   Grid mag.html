@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+/*-- Reset CSS Start Here --*/
+html.rtl {
+--body-font: Cairo,sans-serif;
+--meta-font: Cairo,sans-serif;
+--title-font: Cairo,sans-serif;
+--text-font: Cairo,sans-serif;
+}
+:root{
+--body-font:'$(main.font.family)', sans-serif;
+--title-font:'$(title.font.family)', sans-serif;
+--meta-font:'$(meta.font.family)', sans-serif;
+--text-font:'$(text.font.family)', sans-serif;
+--icons-font:"bootstrap-icons",bootstrap-icons;
+}
+    </style>
+  </head>
+  <body>
+    
+    <Group description="Theme Fonts" selector="body">
+      <Variable name="main.font" description="Site Font" type="font" family="Inter" default="normal 400 14px $(family)"  value="normal 400 14px $(family)"/>
+      <Variable name="title.font" description="Title Font" type="font" family="Inter" default="normal 400 14px $(family)"  value="normal 400 14px $(family)"/>
+      <Variable name="meta.font" description="Meta Font" type="font" family="Inter" default="normal 400 14px $(family)"  value="normal 400 14px $(family)"/>
+      <Variable name="text.font" description="Text Font" type="font" family="Inter" default="normal 400 14px $(family)"  value="normal 400 14px $(family)"/>
+    </Group>
+    
+   
+  </body>
+</html>

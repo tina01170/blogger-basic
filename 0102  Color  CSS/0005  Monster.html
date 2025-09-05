@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Monster https://pikitemplates.com/</title>
+    <style>
+html.rtl {
+--body-font: 'Cairo',sans-serif;
+--meta-font: 'Cairo',sans-serif;
+--title-font: 'Cairo',sans-serif;
+--text-font: 'Cairo',sans-serif;
+}
+:root{
+--body-font:'$(main.font.family)', sans-serif;
+--title-font:'$(title.font.family)', sans-serif;
+--meta-font:'$(meta.font.family)', sans-serif;
+--text-font:'$(text.font.family)', sans-serif;
+--text-font-color:$(text.post.inner);
+--runs-solid-color:#c1bbbb;
+--black-color:#404040;
+--hero-color:#aaaaaa;
+--main-menu-bg:$(main.menu.bg);
+--snippet-color:#aba4a4;
+--solid-border:#ddd;
+--top-bar:$(top.bar);
+--featured-posts-title:$(featured.posts.title);
+--button-bg-color:$(main.button.color);
+--button-text-color:$(main.button.text.color);
+--lables-buttons-color:$(lables.buttons.color);
+--lables-text-color:$(lables.text.color);
+--email-bg-color:$(email.bg.color);
+--email-text-color:$(email.text.color);
+--cloud-bg-color:$(cloud.bg.color);
+--cloud-border-color:$(cloud.bg.color);
+--list-text-color:$(list.text.color);
+--theme-text-color:$(theme.text.color);
+--featured-gadgets-title:$(featured.gadgets.title);
+--placeholder-text-color:#3e3e3e;
+--main-menu-text-color:$(main.menu.text.color);
+--sub-menu-text-color:$(sub.menu.text.color);
+--footer-title-color:$(footer.title.color);
+--footer-copyright-bg:$(footer.copyright.bg);
+--body-color-main:$(body.background);
+--all-link-color:$(main.link.color);
+--black-text:#343434;
+--main-text-color:$(main.text.color);
+--iljxXmm-bg:$(mobile.menu.bg.color);
+--top-menu-text:$(top.bar.menufont);
+--white-bg:#ffffff;
+--block-bg:#ffffff;
+--featured-posts-title-featured:#ffffff;
+--white-label-color:#ffffff;
+--bg-cards:#ffffff;
+--bg-cards-video:#121212;
+--bg-cards-shadow:0px 3px 3px 0 rgb(0 0 0 / 0.08);
+--bt-breaking:rgba(0 0 0 / 0.08);
+--bt-breaking-text:#626262;
+--shadow-top:0 0 20px rgba(0,0,0,.15);
+--shadow-top-fixed:5px 5px 8px 0px rgba(224 223 223 / 0.48);
+--ads-bg:rgb(143 183 255 / 0.20);
+--ads-text:#898989;
+--buttons-category-text:#1d1d1d;
+--snip-text-color:#eeeeee;
+--search-bt-text:$(featured.posts.title);
+--comments-dec:#333;
+--sticky-bg:#f1f1f1;
+--input-form:transparent;
+--bt-home:#f2f7fb;
+--cm-count:#555555;
+--shadow-light:0px 2px 5px 1px rgb(0 0 0 / 0.10);
+--navigation-runs-text:#4e4e4e;
+--sticky-lists:#f7fcff;
+--post-snip-data:#707070;
+--post-snip-open:#383838;
+--ico-relative:#ff0000;
+--front-bg-lists:#fff;
+--share-author-links:#585858;
+--box-posts-share:#f1f1f1;
+--title-share:#1c1c1c;
+--title-share-fa:#5c5c5c;
+--footer-text-color:$(footer.text.color);
+--footer-about-text:$(footer.about.color);
+--footer-bg-color:$(footer.background.color);
+--footer-gadgets-title:$(footer.gadgets.title);
+--main-logo-text-color:$(main.logo.text.color);
+--submenu-bg-color:$(submenu.background.color);
+--comment-content:#f6f6f6;
+--comment-text:#5e5e5e;
+--label-text-color:#2c2c2c;
+--pager-text-color:$(body.text.color);
+--back-top:rgb(90 90 90 / 0.18);
+--box-shadows:rgb(102 102 102 / 0.13);
+}
+body.dark{
+--main-logo-text-color:#d4d4d4;
+--all-link-color:rgba(255,255,255,.7);
+--body-color-main:#292929;
+--main-menu: #383838;
+--text-font-color:#d3d3d3;
+--shadow-top:none;
+--top-bar:#2d2d2d;
+--cloud-border-color:rgb(100 100 100 / 0.66);
+--cloud-bg-color:#ffffff;
+--iljxXmm-bg:#212121;
+--input-form:rgb(112 112 112 / 0.34);
+--shadow-top-fixed:none;
+--white-label-color:#464646;
+--search-bt-text:#b5b5b5;
+--main-menu-text-color:#dadada;
+--list-text-color:#fff;
+--sub-menu-text-color:#dadada;
+--title-share:#dddddd;
+--black-color:#d9d9d9;
+--title-share-fa:#dddddd;
+--front-bg-lists:#292929;
+--box-shadows:transparent;
+--bt-home:#212121;
+--sticky-lists:#212121;
+--main-menu-bg:#232323;
+--post-snip-open:#eee;
+--footer-gadgets-title:#c3c3c3;
+--top-menu-text:#ffffff;
+--footer-title-color:#adadad;
+--sticky-bg:#212121;
+--placeholder-text-color:#dadada;
+--theme-text-color:#dadada;
+--featured-gadgets-title:#dadada;
+--ads-bg:#212121;
+--box-posts-share:#323232;
+--submenu-bg-color:#212121;
+--label-text-color:#a1a1a1;
+--featured-posts-title: #c3c3c3;
+--ads-text:#dadada;
+--buttons-category-text:#dadada;
+--bg-cards:#212121;
+--block-bg:#3a3a3a;
+--black-text:#f3f8fb;
+--post-snip-data:#a5a5a5;
+--comments-dec:#cecece;
+--comment-content:#353535;
+--comment-text:#c1c1c1;
+--footer-bg-color:#181818;
+--footer-text-color:#E4E4E4;
+--cm-count:#E4E4E4;
+--main-text-color:#E4E4E4;
+--navigation-runs-text:#c3c3c3;
+--share-author-links:#E4E4E4;
+--footer-copyright-bg:#292929;
+}
+    </style>
+  </head>
+  <body>
+  
+    <Group description="Theme Fonts" selector="body">
+      <Variable name="main.font" description="Site Font" type="font" family="Raleway" default="normal 400 14px $(family)"  value="normal 400 14px $(family)"/>
+      <Variable name="title.font" description="Title Font" type="font" family="Raleway" default="normal 400 14px $(family)"  value="normal 400 14px $(family)"/>
+      <Variable name="meta.font" description="Meta Font" type="font" family="Raleway" default="normal 400 14px $(family)"  value="normal 400 14px $(family)"/>
+      <Variable name="text.font" description="Text Font" type="font" family="Raleway" default="normal 400 14px $(family)"  value="normal 400 14px $(family)"/>
+    </Group>    
+
+    
+    <Group description="Reset (All Theme Fonts)">
+      <!-- Site Font -->
+      <Variable name="mainfont.normal" description="Main Font Normal" type="font" default="normal 500 14px $(main.font.family)" value="normal 500 14px $(family)"/>
+      <Variable name="mainfont.italic" description="Main Font Italic" type="font" default="italic 400 14px $(main.font.family)" value="italic 400 14px $(family)"/>
+      <Variable name="mainfont.semibold" description="Main Font SemiBold" type="font" default="normal 600 14px $(main.font.family)" value="normal 600 14px $(family)"/>
+      <Variable name="mainfont.semibolditalic" description="Main Font SemiBold Italic" type="font" default="italic 600 14px $(main.font.family)" value="italic 600 14px $(family)"/>
+      <Variable name="mainfont.bold" description="Main Font Bold" type="font" default="normal 700 14px $(main.font.family)" value="normal 700 14px $(family)"/>
+      <Variable name="mainfont.bolditalic" description="Main Font Bold Italic" type="font" default="italic 700 14px $(main.font.family)" value="italic 700 14px $(family)"/>
+      <!-- Title Font -->
+      <Variable name="titlefont.italic" description="Title Font Italic" type="font" default="italic 400 14px $(title.font.family)" value="italic 400 14px $(family)"/>
+      <Variable name="titlefont.normal" description="Title Font Normal" type="font" default="normal 500 14px $(title.font.family)" value="normal 500 14px $(family)"/>
+      <Variable name="titlefont.normalitalic" description="Title Font Normal Italic" type="font" default="italic 500 14px $(title.font.family)" value="italic 500 14px $(family)"/>
+      <Variable name="titlefont.semibold" description="Title Font SemiBold" type="font" default="normal 600 14px $(title.font.family)" value="normal 600 14px $(family)"/>
+      <Variable name="titlefont.semibolditalic" description="Title Font SemiBold Italic" type="font" default="italic 600 14px $(title.font.family)" value="italic 600 14px $(family)"/>
+      <Variable name="titlefont.bold" description="Title Font Bold" type="font" default="normal 700 14px $(title.font.family)" value="normal 700 14px $(family)"/>
+      <Variable name="titlefont.bolditalic" description="Title Font Bold Italic" type="font" default="italic 700 14px $(title.font.family)" value="italic 700 14px $(family)"/>
+      <!-- Meta Font -->
+      <Variable name="metafont.italic" description="Meta Font Italic" type="font" default="italic 400 14px $(meta.font.family)" value="italic 400 14px $(family)"/>
+      <Variable name="metafont.normal" description="Meta Font Normal" type="font" default="normal 500 14px $(meta.font.family)" value="normal 500 14px $(family)"/>
+      <Variable name="metafont.normalitalic" description="Meta Font Normal Italic" type="font" default="italic 500 14px $(meta.font.family)" value="italic 500 14px $(family)"/>
+      <!-- Text Font -->
+      <Variable name="textfont.italic" description="Text Font Italic" type="font" default="italic 400 14px $(text.font.family)" value="italic 400 14px $(family)"/>
+      <Variable name="textfont.normal" description="Text Font Normal" type="font" default="normal 500 14px $(text.font.family)" value="normal 500 14px $(family)"/>
+      <Variable name="textfont.normalitalic" description="Text Font Normal Italic" type="font" default="italic 500 14px $(text.font.family)" value="italic 500 14px $(family)"/>
+      <Variable name="textfont.semibold" description="Text Font SemiBold" type="font" default="normal 600 14px $(text.font.family)" value="normal 600 14px $(family)"/>
+      <Variable name="textfont.semibolditalic" description="Text Font SemiBold Italic" type="font" default="italic 600 14px $(text.font.family)" value="italic 600 14px $(family)"/>
+      <Variable name="textfont.bold" description="Text Font Bold" type="font" default="normal 700 14px $(text.font.family)" value="normal 700 14px $(family)"/>
+      <Variable name="textfont.bolditalic" description="Text Font Bold Italic" type="font" default="italic 700 14px $(text.font.family)" value="italic 700 14px $(family)"/>
+      </Group>
+   
+  </body>
+</html>

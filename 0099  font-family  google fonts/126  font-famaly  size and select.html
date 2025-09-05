@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>font-family and font-size 官方</title>
+    <style>
+
+      .index-post h2.post-title a {
+        text-decoration: none; 
+        color:$(title.color); 
+        font-size:20px; 
+        transition:color 0.5s; 
+        -webkit-transition: color 0.5s;
+        -moz-transition: color 0.5s; 
+        font-weight:900; 
+        font-family:$(body.title.font.family); 
+      }	
+
+      .post-snippet { 
+        font-size:14px; 
+        color:$(text.color); 
+        line-height:1.6; 
+        font-weight:400; 
+        font-family:$(body.text.font.family);   
+      }
+
+      .entry-content p { 
+        font-size:18px; 
+        line-height:1.7; 
+        color:var(--text-color); 
+        font-family:$(body.text.font.family), sans-serif; 
+        font-weight:400; 
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- Extra Variable definitions -->
+    <Variable name="body.text.font" description="Font" hideEditor="true" type="font" default="14px Open Sans, sans-serif"  value="14px Open Sans, sans-serif"/>
+    <Variable name="tabs.font" description="Font 2" hideEditor="false" type="font" default="14px Open Sans, sans-serif"  value="14px Open Sans, sans-serif"/>
+
+    <Variable name="posts.background.color" description="Post background color" hideEditor="true" type="color" default="#ffffff"  value="#ffffff"/>
+    <Variable name="posts.title.color" description="Post title color" hideEditor="true" type="color" default="$(title.color)"  value="#272727"/>
+    <Variable name="posts.text.color" description="Post text color" hideEditor="true" type="color" default="$(body.text.color)"  value="#656565"/>
+    <Variable name="posts.icons.color" description="Post icons color" hideEditor="true" type="color" default="$(main.color)"  value="#84a8c1"/>
+    <Variable name="labels.background.color" description="Label background color" hideEditor="true" type="color" default="$(main.color)"  value="#84a8c1"/>
+
+
+    
+
+    
+   
+  </body>
+</html>

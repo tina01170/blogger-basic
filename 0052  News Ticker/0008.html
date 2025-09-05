@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>左右滾動</title>
+    <style>
+/*popular news*/
+
+.news-ticker { position:relative; width:100%; margin: 0 auto; padding: 0 20px; box-sizing: border-box; }
+.news .PopularPosts { display:flex; height:45px; }
+.news .PopularPosts h3 { background:$(main.color); color:#fff; height:45px; margin:0; padding:0 5px; font-size:16px; line-height:50px; width:80px; }
+.news .PopularPosts .widget-content { width:100%; border:1px solid #ccc; overflow:hidden; }
+.news .PopularPosts .widget-content .ticker-news {  display: flex;  animation: scroll 15s infinite linear;  } 
+.news .PopularPosts .widget-content .ticker-news li { line-height:45px; white-space: nowrap; padding:10px 50px; position: relative; }
+.news .PopularPosts .widget-content .ticker-news li h2 {  margin:0;  line-height:50px; }
+.news .PopularPosts .widget-content .ticker-news li h2 a { display:block; color:#282828; height:50px; margin:0; font-size:16px; line-height:45px; }
+
+@keyframes scroll {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-1400px); }
+}
+@media (max-width: 767px) { 
+	.news .PopularPosts .widget-content .ticker-news li h2 a { font-size:14px;} 
+}
+@media (max-width: 480px) { 
+ .news .PopularPosts .widget-content .ticker-news li h2 a { font-size:14px;}    
+ .news .HTML .widget-content, .news .PopularPosts .widget-content { padding-left:0; }
+.news .PopularPosts .widget-content .ticker-news li{ padding-top:5px; }
+.news .PopularPosts .widget-content .ticker-news li h2 a { line-height:22px; }
+ .news .PopularPosts > h3 { font-size:0; width:40px; }
+
+}
+    </style>
+  </head>
+  <body>
+  
+    
+
+    
+   
+  </body>
+</html>

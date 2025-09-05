@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+      /*-- Body Content CSS --*/
+
+      body { box-sizing:border-box; word-break:break-word; margin:0; padding:0;  }
+      #outer-wrapper { margin:0 auto;  }
+      .header-area { width:100%; position:relative; }	
+      .header-area .container { margin:0 auto; }
+      #content-wrapper { margin:0 auto; padding:30px 20px 70px; overflow: hidden; display:flex; box-sizing: border-box; max-width: 1280px; }
+      #main-wrapper{ width:70%; padding-right:25px; box-sizing:border-box; overflow:hidden; position:relative; }
+      #sidebar-wrapper{ width:30%; padding-left:25px;  box-sizing:border-box; overflow:hidden; }
+
+      #footer { width:100%; padding:0; box-sizing:border-box; background: $(dark.bg.color); }	
+      #footer > .container { margin:0 auto; padding:0 20px; box-sizing:border-box; max-width:1280px; position:relative;}
+      #footer-wrapper { display:flex; margin:0 -15px;  position:relative; background-color:#8080C0; width:100%; } 
+      #footer-1, #footer-2, #footer-3 { width:33.33%; padding:0 15px; box-sizing:border-box; } 
+      .footer-info { overflow:hidden; width:100%;  margin:0; background:$(dark.bg.color); border-top:1px solid #ccc; }
+      .footer-info .container { overflow:hidden; margin:0 auto; padding:0 20px; box-sizing:border-box; max-width:1280px; display:flex; justify-content: space-between; align-items:center;  }
+
+      @media screen and (max-width: 992px) {
+        .item-post { padding-right:0; }
+        #content-wrapper { flex-direction:column;  }
+        #main-wrapper, #sidebar-wrapper { width:100%; }		
+        #main-wrapper, #sidebar-wrapper { padding:0; }			
+      }
+      @media screen and (max-width: 860px) {
+        #footer-wrapper { flex-direction: column; }
+        #footer-1, #footer-2, #footer-3, #about, #footer-social { width:100%; margin:0;}
+        #about { border-bottom:1px solid #ccc; }
+        #footer-social { padding:0; }
+      }
+
+
+      body#layout #outer-wrapper, body#layout .row { width:auto; padding:0}
+      body#layout{ width:800px; position:relative; padding:50px 10px 0; margin:0}
+      body#layout div.section{margin:0 5px 10px!important;padding:16px 16px 18px!important}
+      body#layout .header-area  { width:100%; padding:0; margin:0; }
+	    body#layout .header-menu { width:100%; height:auto; }
+	    body#layout .header-menu > .container { width:100%; margin:0 auto; padding:0; display:flex;}
+      body#layout .menu-wrap  { width:100%; padding:0;}
+	    body#layout #content-wrapper {display:flex; padding:10px 0; padding:0;}
+      body#layout #main-wrapper {width:70%; padding:0; }
+      body#layout #sidebar-wrapper { width:30%; padding:0; }   
+      body#layout #footer  {width:100%; padding:0; }
+	    body#layout #footer > .container { width:100%; margin:0; padding:0; }
+ 	    body#layout #footer-wrapper { width:100%; display:flex; margin:0; padding:0;}
+      body#layout #footer-1, body#layout #footer-2, body#layout #footer-3 { width:33%; margin:0; padding:0;}
+ 	    body#layout .footer-info .container { padding:0; margin:0; }
+	    body#layout .footer-info #menu-footer {width:100%; padding:0; margin:0; }
+    </style>
+  </head>
+  <body>
+    
+
+    
+   
+  </body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+      /*social*/
+
+      #sidebar .LinkList ul.social-counter, #footer .LinkList ul.social-counter { margin:0; }
+      #sidebar .LinkList ul.social-counter li { width:20%; margin:0 0 20px; }
+      #sidebar .LinkList ul.social-counter li a {display:block; height:40px; line-height:40px; font-size:22px; text-align:center;  border:1px solid #ccc; }
+      #sidebar .LinkList ul.social-counter a:before { display:block; font-family:'Font Awesome 5 Brands'; font-size: 18px; color: $(main.color); text-align:center; background:#fff;  }
+
+      #sidebar .LinkList ul.social-counter .rss a:before, #footer .LinkList ul.social-counter .rss a:before {content:"\f09e";font-family:'Font Awesome 5 Free';font-weight:900}
+      #sidebar .LinkList ul.social-counter .email a:before, #footer .LinkList ul.social-counter .email a:before {content:"\f0e0";font-family:'Font Awesome 5 Free';font-weight:400}
+      #sidebar .LinkList ul.social-counter .external-link a:before, #footer .LinkList ul.social-counter .external-link a:before {content:"\f35d";font-family:'Font Awesome 5 Free';font-weight:900}	
+  
+
+      #footer #footer-social .widget > h3 { border-bottom:none; padding:0; font-size:22px; display:none; }
+      #footer #footer-social .widget > h3:after { display:none; }
+      #footer-social .LinkList  { /*padding:60px 0 0; box-sizing:border-box;*/ }
+      #footer-social .LinkList .widget-content { float:right; margin:0; padding: 30px 0; box-sizing: border-box; overflow:hidden; }
+      #footer-social .LinkList .widget-content .title { font-size:24px; margin:0 0 15px; color: $(dark.title.color); /*font-family:'Roboto',sans-serif;*/  /*visibility: hidden;*/}  
+
+      #footer .LinkList ul.social-counter li { float:left; margin:0 10px 0 0 ; }
+      #footer .LinkList ul.social-counter li:last-child { margin:0; }
+      #footer .LinkList ul.social-counter li a { display:block; width: 36px; height:36x; line-height:36px; font-size:22px; text-align:center;  background: rgb(155,155,155,0.2);  }
+      #footer .LinkList ul.social-counter a:before { display:block; font-family:'Font Awesome 5 Brands'; font-size: 22px; text-align:center; color: $(dark.title.color); }
+    </style>
+  </head>
+  <body>
+  <!--my theme-->
+      <b:includable id='main'>
+        <b:include name='content'/>
+      </b:includable>
+      <b:includable id='content'>
+        <div class='widget-content'>
+          <b:include name='widget-title'/>
+          <ul class='social-counter social social-color'>
+          <!--<ul class='social-footer social social-bg-hover'>-->
+            <b:loop values='data:links' var='link'>
+              <!--<li><a expr:href='data:link.target'><data:link.name/></a></li>-->
+              <li expr:class='data:link.name'><a expr:class='data:link.name' expr:href='data:link.target' target='_blank'/></li>
+            </b:loop>
+          </ul>
+        </div>
+      </b:includable>
+  <!--MAGIFY-->
+        <b:widget id='LinkList158' locked='true' title='Follow Us' type='LinkList' version='2' visible='true'>
+          <b:widget-settings>
+            <b:widget-setting name='link-3'>#</b:widget-setting>
+            <b:widget-setting name='sorting'>NONE</b:widget-setting>
+            <b:widget-setting name='link-4'>#</b:widget-setting>
+            <b:widget-setting name='text-1'>twitter</b:widget-setting>
+            <b:widget-setting name='link-1'>#</b:widget-setting>
+            <b:widget-setting name='text-0'>facebook-f</b:widget-setting>
+            <b:widget-setting name='link-2'>#</b:widget-setting>
+            <b:widget-setting name='text-3'>instagram</b:widget-setting>
+            <b:widget-setting name='link-0'>#</b:widget-setting>
+            <b:widget-setting name='text-2'>youtube</b:widget-setting>
+            <b:widget-setting name='text-4'>rss</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id='main'>
+            <b:include name='content'/>
+          </b:includable>
+          <b:includable id='content'>
+            <div class='widget-content'>
+              <b:include name='widget-title'/>
+              <ul class='social-footer social social-bg-hover'>
+                <b:loop values='data:links' var='link'>
+                  <li expr:class='data:link.name'><a expr:class='data:link.name' expr:href='data:link.target' target='_blank'/></li>
+                </b:loop>
+              </ul>
+            </div>
+          </b:includable>
+        </b:widget>
+    
+    <!--Grid Mag-->
+          <b:widget id='LinkList7' locked='true' title='Follow Us' type='LinkList' version='2' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='link-3'>https://www.instagram.com/</b:widget-setting>
+              <b:widget-setting name='sorting'>NONE</b:widget-setting>
+              <b:widget-setting name='link-4'>https://telegram.me/</b:widget-setting>
+              <b:widget-setting name='text-1'>twitter-x</b:widget-setting>
+              <b:widget-setting name='link-1'>https://twitter.com/</b:widget-setting>
+              <b:widget-setting name='text-0'>facebook</b:widget-setting>
+              <b:widget-setting name='link-2'>https://youtube.com/</b:widget-setting>
+              <b:widget-setting name='text-3'>instagram</b:widget-setting>
+              <b:widget-setting name='link-0'>https://facebook.com/</b:widget-setting>
+              <b:widget-setting name='text-2'>youtube</b:widget-setting>
+              <b:widget-setting name='text-4'>telegram</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+                <b:include name='content'/>
+            </b:includable>
+            <b:includable id='content'>
+                <div class='widget-content'>
+                    <ul class='colorful-ico colorful'>
+                    <b:loop values='data:links' var='link'><li expr:class='data:link.name'><a expr:aria-label='data:link.name' expr:class='&quot;bi-&quot; + data:link.name' expr:href='data:link.target' rel='noopener noreferrer' target='_blank'/></li></b:loop>
+                    </ul>
+                </div>
+            </b:includable>
+          </b:widget>
+    
+   
+  </body>
+</html>

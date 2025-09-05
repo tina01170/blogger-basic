@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Groovify</title>
+    <style>
+/*-- CSS Variables --*/
+:root{
+--body-font:'$(main.font.family)', Arial, sans-serif;
+--menu-font:'$(menu.font.family)', Arial, sans-serif;
+--title-font:'$(title.font.family)', Arial, sans-serif;
+--meta-font:'$(main.font.family)', Arial, sans-serif;
+--text-font:'$(text.font.family)', Arial, sans-serif;
+--body-bg-color:$(background.color);
+--body-bg:$(body.background);
+--outer-bg:$(outer.bg);
+--main-color:$(main.color);
+--title-color:$(title.color);
+--title-hover-color:$(title.hover.color);
+--meta-color:$(meta.color);
+--text-color:$(text.color);
+--tag-bg:$(main.color)aa;
+--topbar-bg:$(topbar.bg);
+--topbar-color:$(topbar.color);
+--topbar-hover-color:$(topbar.hover.color);
+--header-bg:$(header.bg);
+--header-color:$(header.color);
+--header-hover-color:$(header.hover.color);
+--submenu-bg:$(submenu.bg);
+--submenu-color:$(submenu.color);
+--submenu-hover-color:$(submenu.hover.color);
+--megamenu-bg:$(megamenu.bg);
+--megamenu-color:$(megamenu.color);
+--megamenu-hover-color:$(megamenu.hover.color);
+--mobilemenu-bg:$(mmenu.bg);
+--mobilemenu-color:$(mmenu.color);
+--mobilemenu-hover-color:$(mmenu.hover.color);
+--widget-title-color:$(wtitle.color);
+--post-title-color:$(post.title.color);
+--post-title-hover-color:$(post.title.hover.color);
+--post-text-color:$(post.text.color);
+--footer-bg:$(footer.bg);
+--footer-color:$(footer.color);
+--footer-hover-color:$(footer.hover.color);
+--footer-text-color:$(footer.text.color);
+--footerbar-bg:$(footerbar.bg);
+--footerbar-color:$(footerbar.color);
+--footerbar-hover-color:$(footerbar.hover.color);
+--cookie-bg:$(cookie.bg);
+--cookie-color:$(cookie.color);
+--button-bg:$(button.bg);
+--button-lite-bg:$(button.bg)10;
+--button-color:$(button.color);
+--button-hover-bg:$(button.hover.bg);
+--button-hover-color:$(button.hover.color);
+--border-color:rgba(155,155,155,0.1);
+--border-radius:3px;
+--widget-shadow:0 1px 2px rgba(0,0,0,0.025);
+--avatar-shadow:0px 1px 4px rgba(0,0,0,0.05);
+}
+html.rtl{
+--body-font:'Tajawal',Arial,sans-serif;
+--title-font:'Tajawal',Arial,sans-serif;
+--meta-font:'Tajawal',Arial,sans-serif;
+--text-font:'Tajawal',Arial,sans-serif;
+}
+
+a{
+    color:var(--main-color)
+}
+h1,h2,h3,h4,h5,h6{
+    font-family:var(--title-font);
+    font-weight:700
+}
+ .entry-category{
+    display:block;
+    font-size:13px;
+    color:var(--main-color);  /*var()*/
+    font-weight:500;
+    text-transform:uppercase;
+    margin:0 0 5px
+}
+#footer-wrapper{
+    position:relative;
+    float:left;
+    width:100%;
+    background-color:var(--footer-bg);
+    border-top: 1px solid rgb(39 39 39 / 75%);
+    color:var(--footer-text-color);
+    z-index:2;
+    box-shadow:0 -1px 2px rgba(0,0,0,0.025)
+}
+
+.entry-meta{
+    display:flex;
+    font-family:var(--meta-font);
+    font-size:12px;
+    color:var(--meta-color);
+    font-weight:400;
+    margin:4px 0 0
+}
+#breadcrumb{
+    float:left;
+    display:flex;
+    width:100%;
+    font-family:var(--meta-font);
+    font-size:14px;
+    color:var(--meta-color);
+    font-weight:400;
+    line-height:1;
+    margin:0 0 13px
+}
+.comment-header .datetime a{
+    font-family:var(--meta-font);
+    font-size:12px;
+    color:var(--meta-color);
+    font-weight:400;
+    padding:0
+}
+.post-nav{
+    float:left;
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    font-family:var(--meta-font);
+    font-size:14px;
+    font-weight:400;
+    margin:25px 0 0
+}
+
+    </style>
+  </head>
+  <body>
+    <Group description="Theme Fonts">
+      <Variable name="main.font" description="Site Font" type="font" family="Roboto" default="normal 400 14px $(family)" value="normal 400 14px $(family)"/>
+      <Variable name="menu.font" description="Menu Font" type="font" family="Roboto Condensed" default="normal 400 14px $(family)" value="normal 400 14px $(family)"/>
+      <Variable name="title.font" description="Title Font" type="font" family="Roboto Condensed" default="normal 400 14px $(family)" value="normal 400 14px $(family)"/>
+      <Variable name="text.font" description="Text Font" type="font" family="Roboto" default="normal 400 14px $(family)" value="normal 400 14px $(family)"/>
+    </Group>  
+    
+    <Group description="Theme Fonts (Reset)">
+      <!-- Site Font -->
+      <Variable name="mainfont.italic" description="Main Font Italic" type="font" default="italic 400 14px $(main.font.family)" value="italic 400 14px $(family)"/>
+      <Variable name="mainfont.medium" description="Main Font Medium" type="font" default="normal 500 14px $(main.font.family)" value="normal 500 14px $(family)"/>
+      <Variable name="mainfont.mediumitalic" description="Main Font Medium Italic" type="font" default="italic 500 14px $(main.font.family)" value="italic 500 14px $(family)"/>
+      <Variable name="mainfont.bold" description="Main Font Bold" type="font" default="normal 700 14px $(main.font.family)" value="normal 700 14px $(family)"/>
+      <Variable name="mainfont.bolditalic" description="Main Font Bold Italic" type="font" default="italic 700 14px $(main.font.family)" value="italic 700 14px $(family)"/>
+      <!-- Menu Font -->
+      <Variable name="menufont.italic" description="Menu Font Italic" type="font" default="italic 400 14px $(menu.font.family)" value="italic 400 14px $(family)"/>
+      <Variable name="menufont.bold" description="Menu Font Bold" type="font" default="normal 700 14px $(menu.font.family)" value="normal 700 14px $(family)"/>
+      <Variable name="menufont.bolditalic" description="Menu Font Bold Italic" type="font" default="italic 700 14px $(menu.font.family)" value="italic 700 14px $(family)"/>
+      <!-- Title Font -->
+      <Variable name="titlefont.italic" description="Title Font Italic" type="font" default="italic 400 14px $(title.font.family)" value="italic 400 14px $(family)"/>
+      <Variable name="titlefont.bold" description="Title Font Bold" type="font" default="normal 700 14px $(title.font.family)" value="normal 700 14px $(family)"/>
+      <Variable name="titlefont.bolditalic" description="Title Font Bold Italic" type="font" default="italic 700 14px $(title.font.family)" value="italic 700 14px $(family)"/>
+      <!-- Text Font -->
+      <Variable name="textfont.italic" description="Text Font Italic" type="font" default="italic 400 14px $(text.font.family)" value="italic 400 14px $(family)"/>
+      <Variable name="textfont.medium" description="Text Font Medium" type="font" default="normal 500 14px $(text.font.family)" value="normal 500 14px $(family)"/>
+      <Variable name="textfont.mediumitalic" description="Text Font Medium Italic" type="font" default="italic 500 14px $(text.font.family)" value="italic 500 14px $(family)"/>
+      <Variable name="textfont.bold" description="Text Font Bold" type="font" default="normal 700 14px $(text.font.family)" value="normal 700 14px $(family)"/>
+      <Variable name="textfont.bolditalic" description="Text Font Bold Italic" type="font" default="italic 700 14px $(text.font.family)" value="italic 700 14px $(family)"/>
+    </Group>
+    
+   
+  </body>
+</html>

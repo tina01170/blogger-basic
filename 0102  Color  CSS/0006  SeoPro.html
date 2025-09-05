@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SeoPro  https://www.dizzycloud.my.id/</title>
+    <style>
+/*-- CSS Variables --*/
+html{
+    --body-font:'$(main.font.family)', Arial, sans-serif;
+    --title-font:'$(title.font.family)', Arial, sans-serif;
+    --meta-font:'$(meta.font.family)', Arial, sans-serif;
+    --text-font:'$(text.font.family)', Arial, sans-serif;
+    --body-bg-color:$(body.background.color);
+    --body-bg:$(body.background);
+    --outer-bg:$(outer.bg);
+    --main-color:$(main.color);
+    --title-color:$(title.color);
+    --title-hover-color:$(title.hover.color);
+    --meta-color:$(meta.color);
+    --text-color:$(text.color);
+    --header-bg:$(header.bg);
+    --header-color:$(header.color);
+    --header-hover-color:$(header.hover.color);
+    --submenu-bg:$(submenu.bg);
+    --submenu-color:$(submenu.color);
+    --submenu-hover-color:$(submenu.hover.color);
+    --megamenu-bg:$(megamenu.bg);
+    --megamenu-color:$(megamenu.color);
+    --megamenu-hover-color:$(megamenu.hover.color);
+    --mobilemenu-bg:$(mmenu.bg);
+    --mobilemenu-color:$(mmenu.color);
+    --mobilemenu-hover-color:$(mmenu.hover.color);
+    --widget-bg:$(widget.bg);
+    --widget-title-color:$(wtitle.color);
+    --widget-shadow:0 2px 6px 0 rgba(0,0,0,0.05);
+    --post-title-color:$(post.title.color);
+    --post-title-hover-color:$(post.title.hover.color);
+    --post-text-color:$(post.text.color);
+    --footer-bg:$(footer.bg);
+    --footer-color:$(footer.color);
+    --footer-hover-color:$(footer.hover.color);
+    --footer-text-color:$(footer.text.color);
+    --footerbar-bg:$(footerbar.bg);
+    --footerbar-color:$(footerbar.color);
+    --footerbar-hover-color:$(footerbar.hover.color);
+    --cookie-bg:$(cookie.bg);
+    --cookie-color:$(cookie.color);
+    --button-bg:$(button.bg);
+    --button-color:$(button.color);
+    --button-hover-bg:$(button.hover.bg);
+    --button-hover-color:$(button.hover.color);
+    --border-color:rgba(155,155,155,0.1);
+    --avatar-shadow:0px 1px 4px rgba(0,0,0,0.05);
+    --button-shadow:0px 1px 4px rgba(0,0,0,0.05);
+}
+html.is-dark{
+--body-bg-color:#25353D;
+--body-bg:#F4F5FA none repeat scroll top left;
+--outer-bg:#2c3e48;
+--main-color:#4285F4;
+--title-color:#f6f7f8;
+--title-hover-color:#4285F4;
+--meta-color:#cfd6da;
+--text-color:#b4c1cc;
+--header-bg:#344955;
+--header-color:#f6f7f8;
+--header-hover-color:#4285F4;
+--submenu-bg:#4a6572;
+--submenu-color:#f6f7f8;
+--submenu-hover-color:#4285F4;
+--megamenu-bg:#4a6572;
+--megamenu-color:#f6f7f8;
+--megamenu-hover-color:#4285F4;
+--mobilemenu-bg:#2c3e48;
+--mobilemenu-color:#f6f7f8;
+--mobilemenu-hover-color:#4285F4;
+--widget-bg:#344955;
+--widget-title-color:#f6f7f8;
+--widget-shadow:0 2px 6px 0 rgba(0,0,0,0.05);
+--post-title-color:#f6f7f8;
+--post-title-hover-color:#4285F4;
+--post-text-color:#b4c1cc;
+--footer-bg:#344955;
+--footer-color:#f6f7f8;
+--footer-hover-color:#4285F4;
+--footer-text-color:#b4c1cc;
+--footerbar-bg:#2c3e48;
+--footerbar-color:#f6f7f8;
+--footerbar-hover-color:#4285F4;
+--cookie-bg:#4a6572;
+--cookie-color:#f6f7f8;
+--button-bg:#4285F4;
+--button-color:#ffffff;
+--button-hover-bg:#3367D6;
+--button-hover-color:#FFFFFF;
+--border-color:rgba(155,155,155,0.1);
+--avatar-shadow:0px 1px 4px rgba(0,0,0,0.05);
+--button-shadow:0px 1px 4px rgba(0,0,0,0.05);
+}
+html.rtl{
+--body-font:'Tajawal',Arial,sans-serif;
+--title-font:'Tajawal',Arial,sans-serif;
+--meta-font:'Tajawal',Arial,sans-serif;
+--text-font:'Tajawal',Arial,sans-serif;
+}
+
+html {
+background-color:var(--outer-bg);
+}
+h1,h2,h3,h4,h5,h6{font-family:var(--title-font);font-weight:700}
+    </style>
+  </head>
+  <body>
+  
+    <Group description="Theme Fonts" selector="body">
+      <Variable name="main.font" description="Site Font" type="font" family="Work Sans" default="normal 400 14px $(family)"  value="normal 400 14px $(family)"/>
+      <Variable name="title.font" description="Title Font" type="font" family="Work Sans" default="normal 400 14px $(family)"  value="normal 400 14px $(family)"/>
+      <Variable name="meta.font" description="Meta Font" type="font" family="Work Sans" default="normal 400 14px $(family)"  value="normal 400 14px $(family)"/>
+      <Variable name="text.font" description="Text Font" type="font" family="Work Sans" default="normal 400 14px $(family)"  value="normal 400 14px $(family)"/>
+    </Group>    
+
+    
+    <Group description="Reset (Theme Fonts)">
+      <!-- Site Font -->
+      <Variable name="mainfont.medium" description="Main Font Medium" type="font" default="normal 500 14px $(main.font.family)" value="normal 500 14px $(family)"/>
+      <Variable name="mainfont.semibold" description="Main Font SemiBold" type="font" default="normal 600 14px $(main.font.family)" value="normal 600 14px $(family)"/>
+      <Variable name="mainfont.bold" description="Main Font Bold" type="font" default="normal 700 14px $(main.font.family)" value="normal 700 14px $(family)"/>
+      <Variable name="mainfont.italic" description="Main Font Italic" type="font" default="italic 400 14px $(main.font.family)" value="italic 400 14px $(family)"/>
+      <Variable name="mainfont.mediumitalic" description="Main Font Medium Italic" type="font" default="italic 500 14px $(main.font.family)" hideEditor="true" value="italic 500 14px $(family)"/>
+      <Variable name="mainfont.semibolditalic" description="Main Font SemiBold Italic" type="font" default="italic 600 14px $(main.font.family)" value="italic 600 14px $(family)"/>
+      <Variable name="mainfont.bolditalic" description="Main Font Bold Italic" type="font" default="italic 700 14px $(main.font.family)" value="italic 700 14px $(family)"/>
+      <!-- Title Font -->
+      <Variable name="titlefont.medium" description="Title Font Medium" type="font" default="normal 500 14px $(title.font.family)" value="normal 500 14px $(family)"/>
+      <Variable name="titlefont.semibold" description="Title Font SemiBold" type="font" default="normal 600 14px $(title.font.family)" value="normal 600 14px $(family)"/>
+      <Variable name="titlefont.bold" description="Title Font Bold" type="font" default="normal 700 14px $(title.font.family)" value="normal 700 14px $(family)"/>
+      <Variable name="titlefont.italic" description="Title Font Italic" type="font" default="italic 400 14px $(title.font.family)" value="italic 400 14px $(family)"/>
+      <Variable name="titlefont.mediumitalic" description="Title Font Medium Italic" type="font" default="italic 500 14px $(title.font.family)" value="italic 500 14px $(family)"/>
+      <Variable name="titlefont.semibolditalic" description="Title Font SemiBold Italic" type="font" default="italic 600 14px $(title.font.family)" value="italic 600 14px $(family)"/>
+      <Variable name="titlefont.bolditalic" description="Title Font Bold Italic" type="font" default="italic 700 14px $(title.font.family)" value="italic 700 14px $(family)"/>
+      <!-- Meta Font -->
+      <Variable name="metafont.italic" description="Meta Font Italic" type="font" default="italic 400 14px $(meta.font.family)" value="italic 400 14px $(family)"/>
+      <Variable name="metafont.medium" description="Meta Font Medium" type="font" default="normal 500 14px $(meta.font.family)" value="normal 500 14px $(family)"/>
+      <Variable name="metafont.mediumitalic" description="Meta Font Medium Italic" type="font" default="italic 500 14px $(meta.font.family)" value="italic 500 14px $(family)"/>
+      <!-- Text Font -->
+      <Variable name="textfont.medium" description="Text Font Medium" type="font" default="normal 500 14px $(text.font.family)" value="normal 500 14px $(family)"/>
+      <Variable name="textfont.semibold" description="Text Font SemiBold" type="font" default="normal 600 14px $(text.font.family)" value="normal 600 14px $(family)"/>
+      <Variable name="textfont.bold" description="Text Font Bold" type="font" default="normal 700 14px $(text.font.family)" value="normal 700 14px $(family)"/>
+      <Variable name="textfont.italic" description="Text Font Italic" type="font" default="italic 400 14px $(text.font.family)" value="italic 400 14px $(family)"/>
+      <Variable name="textfont.mediumitalic" description="Text Font Medium Italic" type="font" default="italic 500 14px $(text.font.family)" value="italic 500 14px $(family)"/>
+      <Variable name="textfont.semibolditalic" description="Text Font SemiBold Italic" type="font" default="italic 600 14px $(text.font.family)" value="italic 600 14px $(family)"/>
+      <Variable name="textfont.bolditalic" description="Text Font Bold Italic" type="font" default="italic 700 14px $(text.font.family)" value="italic 700 14px $(family)"/>
+     
+  </body>
+</html>

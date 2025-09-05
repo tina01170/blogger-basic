@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>上下滾動</title>
+    <style>
+/*popular news*/
+.news-ticker { position:relative; width:100%; margin: 0 auto; padding: 0 20px; box-sizing: border-box; }
+.news .PopularPosts { display:flex; height:45px; }
+.news .PopularPosts h3 { background:$(main.color); color:#fff; height:45px; margin:0; padding:0 5px; font-size:16px; line-height:50px; width:80px; }
+.news .PopularPosts .widget-content { width:100%;  border:1px solid #ccc; overflow:hidden; }
+.news .PopularPosts .widget-content .ticker-news {  animation: scroll 10s infinite linear;  } 
+.news .PopularPosts .widget-content .ticker-news li { width:100%; line-height:45px; }
+.news .PopularPosts .widget-content .ticker-news li h2 {  margin:0; width:100%; line-height:50px; }
+.news .PopularPosts .widget-content .ticker-news li h2 a { display:block; color:#282828; height:50px; margin:0; font-size:16px; line-height:45px; }
+
+@keyframes scroll {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100%); }
+}
+@media (max-width: 767px) { 
+	.news .PopularPosts .widget-content .ticker-news li h2 a { font-size:14px;} 
+}
+@media (max-width: 480px) { 
+ .news .PopularPosts .widget-content .ticker-news li h2 a { font-size:14px;}    
+ .news .HTML .widget-content, .news .PopularPosts .widget-content { padding-left:0; }
+.news .PopularPosts .widget-content .ticker-news li{ padding-top:5px; }
+.news .PopularPosts .widget-content .ticker-news li h2 a { line-height:22px; }
+ .news .PopularPosts > h3 { font-size:0; width:40px; }
+
+}
+    </style>
+  </head>
+  <body>
+  
+    <b:defaultmarkup type='PopularPosts'>
+      <b:includable id='main' var='this'>
+        <b:include name='widget-title'/>
+        <div class='widget-content'><!--sidebar posts-->
+          <b:if cond='data:widget.sectionId == &quot;news&quot;'>
+             <div class='ticker ticker-news'>
+                 <b:loop index='i' values='data:posts' var='post'>
+                    <b:include data='post' name='newscontent'/>
+                 </b:loop>
+              </div>
+          <b:else/>  
+             <b:loop values='data:posts' var='post'>
+                <b:include data='post' name='content'/>
+             </b:loop>
+          </b:if>
+        </div>
+      </b:includable>
+      <b:includable id='content' var='post'>
+          <article class='post'>
+              <b:if cond='data:postDisplay.showFeaturedImage'> 
+                  <a class='post-image-link' expr:href='data:post.url'>
+                      <b:if cond='data:post.featuredImage'>
+                          <img class='post-thumb' expr:alt='data:post.title' expr:src='data:post.featuredImage.isYouTube ? resizeImage(data:post.featuredImage.youtubeMaxResDefaultUrl.jsonEscaped, 72, &quot;1:1&quot;) : resizeImage(data:post.featuredImage, 512, &quot;4:3&quot;)'/>
+                      <b:else/>
+                          <img class='post-thumb' expr:alt='data:post.title' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnO1vVWbzxR8nDIHRPhcMUhcFXQrisYPL5ZjZgEhpqp68Ho8mVREKFR-g11xCzK8d-3TaK-h72KeJYe-GD-d__0Il7k5-o4QB-ZY-8UZmtR2iqC-Aakc7QNY8vHrfvKKJYpIiHsGWuTHk/w640/nth.png'/><!--更換圖片link-->            
+                      </b:if>
+                  </a>        
+              </b:if>
+              <div class='post-info'>
+                  <b:if cond='data:post.labels'><span class='post-tag'><a expr:href='data:post.labels.first.url'><data:post.labels.first.name/></a></span></b:if>
+                  <h2 class='post-title'>
+                      <a expr:href='data:post.url'><data:post.title/></a>
+                  </h2>
+                  <div class='post-meta'>                              				       
+                    <span class='post-date published' expr:datetime='data:post.date.iso8601'><data:post.date/></span>
+                  </div>
+              </div>  
+          </article>
+      </b:includable>
+      <b:includable id='newscontent' var='post'>
+        <li>
+          <h2 class='post-title'>
+            <a expr:href='data:post.url'><data:post.title/></a>
+          </h2>
+        </li>
+      </b:includable>  
+    </b:defaultmarkup>       
+
+    
+   
+  </body>
+</html>

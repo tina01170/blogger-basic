@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+      .topbutton { height:36px; width:36px;  position:fixed; right:15px; bottom:25px;  Z-index:99; display:none; padding:0 4px; border:1px solid #BEBEBE; outline: none; cursor: pointer; opacity:1; color:$(buttom.text.color); background-color:$(buttom.bg.color); -webkit-transition: background 0.5s; -moz-transition: background 0.5s;  transition: background 0.5s; }
+      .topbutton:hover { background:$(buttom.hover.color); }
+
+
+    </style>
+  </head>
+  <body>
+    <button class='topbutton'><i class='fas fa-chevron-up' style='font-size:30px'/></button>
+
+    <script>
+    $(window).on('scroll', function() { if ($(this).scrollTop() < 50) { $('.topbutton') .fadeOut(); }
+        else { $('.topbutton') .fadeIn();} 
+    })
+    </script>
+   
+  </body>
+</html>

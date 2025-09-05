@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+      .slide-menu { position:fixed; width:300px; max-height:100%; overflow:auto; top:0; left:0; bottom:0; background-color:#fff; z-index:999; box-shadow:3px 0 7px rgba(0,0,0,0.1); transition:all .2s ease; transform: translateX(-100%); visibility: hidden; }
+      .nav-active .slide-menu { transform:translateX(0px); visibility:visible; }
+      .nav-active #outer-wrapper{position:fixed; width:100%; overflow:hidden; filter:blur(2px); }
+      .nav-active { position:fixed; width:100%; overflow:hidden; }
+
+      #menu-btn { position: absolute; color:#000;   font-size: 24px;    cursor: pointer;  /*left:0;*/  right:0;
+      top:0; width:45px;  height: 45px; padding:10px 20px 0;  }
+
+      #sidebar-wrapper #menu-btn { padding:50px 20px 0; }
+    </style>
+  </head>
+  <body>
+    <!--humberger-->
+    <div id="menu-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!--  <--  -->
+    <div id="menu-btn" class="menu-hide">
+        <i class='fa fa-arrow-left'></i>
+    </div>
+  
+    <script>
+    $('.menu-btn').on('click', function() {
+      $('body').toggleClass('nav-active');
+    });  
+
+    $(".menu-hide").on("click", function() {
+        $("body").toggleClass("nav-active")
+    })
+
+    </script>
+    
+   
+  </body>
+</html>
