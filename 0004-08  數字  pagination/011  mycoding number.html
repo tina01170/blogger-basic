@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+   
+    <style>
+
+
+
+
+
+
+
+
+
+
+    </style>
+  </head>
+  <body>
+    
+      <!-- Pagination Scripts-->
+      <b:if cond='data:view.isMultipleItems'>
+      <script type='text/javascript'>
+      //<![CDATA[
+      var postResults=postPerPage; //console.log(postResults);
+      var numOfPages=2;
+      var thisPage = 1;
+
+      //var list_posts=document.querySelectorAll("index-post");
+
+      function listpage(){
+        var url = '/feeds/posts/default?alt=json-in-script&max-results=999';
+        $.ajax({
+          url: url,
+          type: 'get',
+          dataType: 'jsonp',
+          success: function(json) {
+            var entry = json.feed.entry;
+            console.log(entry);
+                  if (entry != undefined) {
+                      document.getElementById('blog-pager').innerHTML = '';
+                      var count = Math.ceil(entry.length / postResults);		
+                      for(i = 1; i <= count; i++){
+                var start = postResults * (i-1); console.log(start);
+                        var end = postResults * i; 		console.log(end);
+                        var items = entry.slice(start, end);  //console.log(items);	
+                          var btn = changePage(i,items);
+                          document.getElementById('blog-pager').appendChild(btn); 
+                      }
+            } 
+          }
+        })
+      }
+      listpage()
+
+      function changePage(page,items){
+        //console.log(items);
+        var newPage = document.createElement('li');
+        newPage.innerText = i;
+        if(i == thisPage){
+          newPage.classList.add('active');
+          }
+          newPage.addEventListener('click', function () {
+          thisPage = i;
+          DisplayList(items, postResults, thisPage);
+          var current_page = document.querySelector('#blog-pager li.active');
+          current_page.classList.remove('active');
+          newPage.classList.add('active');
+        })
+        return newPage;
+      }
+
+      function DisplayList(items, postResults, Page) {
+        //var wrapper = document.querySelector('index-post-wrap');
+        console.log(items);
+        /*
+        var start = postResults * (thisPage-1); console.log(start);
+        var end = postResults * thisPage; 		console.log(end);
+        var items = entry.slice(start, end);  console.log(items);*/
+
+        for (var j = 0; j < items.length; j++) {
+          var item = items[j];  console.log(item);
+
+          var item_element = document.createElement('div');
+          item_element.classList.add('item');
+
+          //wrapper.appendChild(item_element);
+        }
+      }
+      //]]></script>  
+      </b:if>
+    
+   
+  </body>
+</html>

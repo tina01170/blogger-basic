@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+        .blog-post-comments{  //有
+            display:none;
+            margin:0 0 30px
+        }
+        .blog-post-comments .comments-title{  //有
+            margin:0 0 20px
+        }
+        .comments-system-disqus .comments-title,.comments-system-facebook .comments-title{
+            margin:0
+        }
+        #comments{   //有
+            margin:0
+        }
+        #gpluscomments{   //有
+            float:left!important;
+            width:100%!important;
+            margin:0 0 25px!important
+        }
+        #gpluscomments iframe{   //有
+            float:left!important;
+            width:100%
+        }
+        .comments{    //有
+            display:block;
+            clear:both;
+            margin:0;
+            color:$(title.color)
+        }
+        .comments .comment-thread > ol{ //有
+            padding:0
+        }
+        .comments > h3{    //有
+            font-size:13px;
+            font-weight:400;
+            font-style:italic;
+            padding-top:1px
+        }
+        .comments .comments-content .comment{    //有
+            list-style:none;
+            margin:0;
+            padding:0 0 8px
+        }
+        .comments .comments-content .comment:first-child{    //有
+            padding-top:0
+        }
+        .facebook-tab,.fb_iframe_widget_fluid span,.fb_iframe_widget iframe{
+            width:100%!important
+        }
+        .comments .item-control{
+            position:static
+        }
+        .comments .avatar-image-container{
+            float:left;
+            overflow:hidden;
+            position:absolute
+        }
+
+        // 有
+        .comments .avatar-image-container,.comments .avatar-image-container img{
+            height:35px;   
+            max-height:35px;
+            width:35px;
+            max-width:35px;
+            border-radius:100%f
+        }
+        .comments .comment-block{  // 有
+            overflow:hidden;
+            padding:0 0 10px
+        }
+        .comments .comment-block,.comments .comments-content .comment-replies{  // 有
+            margin:0 0 0 50px
+        }
+        .comments .comments-content .inline-thread{
+            padding:0
+        }
+        .comments .comment-actions{
+            float:left;
+            width:100%;
+            position:relative;
+            margin:0
+        }
+        .comments .comments-content .comment-header{
+            font-size:15px;
+            display:block;
+            overflow:hidden;
+            clear:both;
+            margin:0 0 3px;
+            padding:0 0 5px;
+            border-bottom:1px dashed #d6d6d6
+        }
+        .comments .comments-content .comment-header a{
+            color:$(title.color);
+            transition:color .17s
+        }
+        .comments .comments-content .comment-header a:hover{
+            color:$(title.hover)
+        }
+        .comments .comments-content .user{
+            font-style:normal;
+            font-weight:500;
+            display:block
+        }
+        .comments .comments-content .icon.blog-author{
+            display:none
+        }
+        .comments .comments-content .comment-content{
+            float:left;
+            font-size:13px;
+            color:#5E5E5E;
+            font-weight:400;
+            text-align:left;
+            line-height:1.4em;
+            margin:5px 0 9px
+        }
+        .comments .comment .comment-actions a{
+            margin-right:5px;
+            padding:2px 5px;
+            color:$(title.color);
+            font-weight:400;
+            background-color:#f2f2f2;
+            font-size:10px;
+            transition:all .17s ease
+        }
+        .comments .comment .comment-actions a:hover{
+            color:#fff;
+            background-color:$(main.color);
+            border-color:$(main.color);
+            text-decoration:none
+        }
+        .comments .comments-content .datetime{
+            float:left;
+            font-size:11px;
+            font-weight:400;
+            color:#aaa;
+            position:relative;
+            padding:0 1px;
+            margin:4px 0 0;
+            display:block
+        }
+        .comments .comments-content .datetime a,.comments .comments-content .datetime a:hover{
+            color:#aaa
+        }
+        .comments .thread-toggle{
+            margin-bottom:4px
+        }
+        .comments .thread-toggle .thread-arrow{
+            height:7px;
+            margin:0 3px 2px 0
+        }
+        .comments .thread-count a,.comments .continue a{
+            transition:opacity .17s
+        }
+        .comments .thread-count a:hover,.comments .continue a:hover{
+            opacity:.8
+        }
+        .comments .thread-expanded{
+            padding:5px 0 0
+        }
+        .comments .thread-chrome.thread-collapsed{
+            display:none
+        }
+        .thread-arrow:before{
+            content:'';
+            font-family:FontAwesome;
+            color:$(title.color);
+            font-weight:400;
+            margin:0 2px 0 0
+        }
+        .comments .thread-expanded .thread-arrow:before{
+            content:'\f0d7'
+        }
+        .comments .thread-collapsed .thread-arrow:before{
+            content:'\f0da'
+        }
+        .comments .comments-content .comment-thread{    //有
+            margin:0
+        }
+        .comments .continue a{  //有
+            padding:0 0 0 60px;
+            font-weight:400
+        }
+        .comments .comments-content .loadmore.loaded{ //有
+            margin:0;
+            padding:0
+        }
+        .comments .comment-replybox-thread{  //有
+            margin:0
+        }
+        .comments .comments-content .loadmore,
+        .comments .comments-content .loadmore.loaded{
+            display:none   //有
+        }
+        #comment-editor{  //有
+            margin:0 0 20px
+        }
+
+
+    </style>
+  </head>
+  <body>
+    
+
+    
+   
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lifelite</title>
+    <style>
+      /* Step 5 add css*/
+/* ajaxPagination */ 
+
+#blog-pager{ float:left; width:100%;font-size:16px;font-weight:400;text-align:center; box-sizing:border-box; padding:30px 0 0; border-top:1px solid #ccc; margin:30px 0 10px;  }
+#blog-pager .load-more{ text-decoration:none; display:inline-block; font-weight:400; font-size:16px; color:#fff;background-color:#46A3FF;  height:36px; line-height:36px; box-sizing:border-box; padding:0 20px; margin:0; border-radius:3px; border:1px solid rgba(0,0,0,0.1); /*border-bottom-width:1px; */ }
+        
+#blog-pager .load-more.no-more{ background-color:rgba(155,155,155,0.05); color:#000; }
+#blog-pager .loading, #blog-pager .no-more {  display:none; }
+#blog-pager .no-more.show {display:inline-block; cursor:not-allowed;} 
+#blog-pager .loading .loader { height:36px; }
+#blog-pager .loading .loader:after { width:20px; height:20px; margin:-15px 0 0 -15px;  } 
+
+.loader{ height:100%; overflow:hidden; display:block; margin:0; position:relative; }
+.loader:after{ content:''; position:absolute; top:50%; left:50%; width:24px; height:24px; margin:-14px 0 0 -14px; border:2px solid $(main.color); border-right-color:rgba(155,155,155,0.2); border-radius:100%; transform-origin:center; animation:spinner 1.2s infinite linear; }
+
+@-webkit-keyframes spinner {
+    0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
+    to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}
+}
+@keyframes spin {
+    0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
+    to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}
+}
+
+#blog-pager {}
+#blog-pager .load-more {}
+    </style>
+  </head>
+  <body>
+    
+    <!--Step 3-->
+    <b:includable id='main' var='this'><!--改變版型的地方-->
+        <b:include name='searchMessage'/>
+        <div class='blog-posts hfeed container'>
+          <b:class cond='data:view.isMultipleItems' name='index-post-wrap'/><!--index-post--> 
+          <b:class cond='data:view.isSingleItem' name='item-post-wrap'/><!--item-post-->       
+          <b:tag class='grid-posts' cond='data:view.isMultipleItems' name='div'>
+              <b:loop index='i' values='data:posts' var='post'>
+                  <b:include data='post' name='postCommentsAndAd'/>
+              </b:loop>
+          </b:tag>            
+        </div>
+        <b:include cond='data:view.isMultipleItems' name='ajaxPagination'/> 
+    </b:includable>
+
+    <!--Step 1-->
+    <b:includable id='ajaxPagination'>
+      <!-- Ajax Pagination on Index -->
+      <div class='blog-pager' id='blog-pager'>
+          <b:if cond='data:olderPageUrl'>
+           <a class='blog-pager-older-link load-more' expr:data-load='data:olderPageUrl' href='javascript:;' id='load-more-link'><b:include data='{ message: &quot;loadMorePosts&quot; }' name='theme-custom-lang'/></a> 
+            <span class='loading'><span class='loader'/></span>
+            <span class='no-more load-more'><data:messages.noResultsFound/></span>
+            <b:else/>
+            <span class='no-more load-more show'><data:messages.noResultsFound/></span>
+          </b:if> 
+      </div>                  
+    </b:includable>
+
+    <!--Step 2-->
+    <b:includable id='theme-custom-lang'>
+      <b:switch var='data:message'>
+        <!--<b:case value='prevPost'/><b:if cond='data:blog.locale.language == &quot;en&quot;'>Previous Post<b:elseif cond='data:blog.locale.language == &quot;es&quot;'/>Artículo Anterior<b:elseif cond='data:blog.locale.language == &quot;pt&quot;'/>Postagem Anterior<b:else/><data:messages.newer/></b:if>
+        
+        <b:case value='nextPost'/><b:if cond='data:blog.locale.language == &quot;en&quot;'>Next Post<b:elseif cond='data:blog.locale.language == &quot;es&quot;'/>Artículo Siguiente<b:elseif cond='data:blog.locale.language == &quot;pt&quot;'/>Próxima Postagem<b:else/><data:messages.older/></b:if>-->
+        
+        <b:case value='loadMorePosts'/><b:if cond='data:blog.locale.language == &quot;en&quot;'>Load More<b:elseif cond='data:blog.locale.language == &quot;es&quot;'/>Carga Más<b:elseif cond='data:blog.locale.language == &quot;pt&quot;'/>Carregar Mais<b:else/><data:messages.loadMorePosts/></b:if>
+        
+        <!--<b:case value='noMorePosts'/><b:if cond='data:blog.locale.language == &quot;en&quot;'>That is All<b:elseif cond='data:blog.locale.language == &quot;es&quot;'/>Eso es Todo<b:elseif cond='data:blog.locale.language == &quot;pt&quot;'/>Isso é Tudo<b:else/><data:messages.noResultsFound/></b:if>-->
+        
+      </b:switch>
+    </b:includable>
+
+    <!--Step 4  add jQUERY -->
+<script>
+//<![CDATA[  
+$("#load-more-link").each(function(){
+    var o=$(this),a=o.data("load");
+    a&&$("#load-more-link").show(),
+    $("#load-more-link").on("click",function(o){
+        $("#load-more-link").hide(),
+        $.ajax({ 
+            url:a,
+            success:function(o){
+              var n=$(o).find(".grid-posts");
+              n.find(".index-post").addClass("post-animated post-fadeInUp"),
+              $(".grid-posts").append(n.html()),	
+
+              a=$(o).find("#load-more-link").data("load"),
+                      a?$("#load-more-link").show():($("#load-more-link").hide(),
+                      $("#blog-pager .no-more").addClass("show"))
+            },
+            beforeSend:function(){
+                      $("#blog-pager .loading").show()
+                  },
+            complete:function(){
+                      $("#blog-pager .loading").hide()
+                  }
+        }),
+        o.preventDefault()
+    })
+}) 
+//]]></script>
+    
+   
+  </body>
+</html>

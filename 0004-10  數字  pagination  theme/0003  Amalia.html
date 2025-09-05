@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+        #blog-pager{
+            float:left;
+            width:100%;
+            font-size:12px;
+            font-weight:600;
+            text-transform:uppercase;
+            clear:both;
+            margin:0 0 40px
+        }
+        .blog-pager .blog-pager-newer-link,.blog-pager .blog-pager-older-link{
+            background-color:#f4f6f8;
+            min-width:30px;
+            height:30px;
+            color:$(title.color);
+            font-size:11px;
+            line-height:30px;
+            box-sizing:border-box;
+            padding:0 10px;
+            margin:0 5px 0 0;
+            border-radius:3px;
+            transition:all .17s ease
+        }
+        .blog-pager .page-num{
+            float:left;
+            background-color:#f4f6f8;
+            min-width:30px;
+            height:30px;
+            color:$(title.color);
+            line-height:30px;
+            box-sizing:border-box;
+            padding:0 10px;
+            margin:0 5px 0 0;
+            border-radius:3px;
+            transition:all .17s ease
+        }
+        .blog-pager .page-prev,.blog-pager .page-next{
+            font-size:10px
+        }
+        .blog-pager .page-prev:before,.blog-pager .page-next:before{
+            font-family:'Font Awesome 5 Free';
+            font-weight:900
+        }
+        .blog-pager .page-prev:before{
+            content:'\f053'
+        }
+        .blog-pager .page-next:before{
+            content:'\f054'
+        }
+        .blog-pager .page-active,.blog-pager a:hover{
+            background-color:$(main.color);
+            color:#fff
+        }
+        .blog-pager .page-dots{
+            min-width:auto;
+            background-color:#fff
+        }
+
+    </style>
+  </head>
+  <body>
+    <b:if cond='data:view.isMultipleItems'>
+      <script type='text/javascript'>
+      //<![CDATA[
+      var postResults=postPerPage;
+      var numOfPages=2;
+      /*! BlogPager Pagination Scripts */
+      eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('5 J;5 m;5 l;5 s;5 n=1k.9;5 w="/";18();C 1a(a){5 b=\'\';M=I(V/2);4(M==V-M){V=M*2+1}B=l-M;4(B<1)B=1;k=I(a/o)+1;4(k-1==a/o)k=k-1;D=B+V-1;4(D>k)D=k;5 c=I(l)-1;4(l>1){4(l==2){4(m==\'3\'){b+=\'<a 6="3-7 3-W" 9="\'+w+\'"></a>\'}i{b+=\'<a 6="3-7 3-W" 9="/v/u/\'+s+\'?&h-r=\'+o+\'"></a>\'}}i{4(m==\'3\'){b+=\'<a 6="3-7 3-W" 9="#" A="K(\'+c+\');z y"></a>\'}i{b+=\'<a 6="3-7 3-W" 9="#" A="L(\'+c+\');z y"></a>\'}}}4(B>1){4(m=="3"){b+=\'<a 6="3-7" 9="\'+w+\'">1</a>\'}i{b+=\'<a 6="3-7" 9="/v/u/\'+s+\'?&h-r=\'+o+\'">1</a>\'}}4(B>2){b+=\'<E 6="3-7 3-17">...</E>\'}15(5 d=B;d<=D;d++){4(l==d){b+=\'<E 6="3-7 3-1x">\'+d+\'</E>\'}i 4(d==1){4(m==\'3\'){b+=\'<a 6="3-7" 9="\'+w+\'">1</a>\'}i{b+=\'<a 6="3-7" 9="/v/u/\'+s+\'?&h-r=\'+o+\'">1</a>\'}}i{4(m==\'3\'){b+=\'<a 6="3-7" 9="#" A="K(\'+d+\');z y">\'+d+\'</a>\'}i{b+=\'<a 6="3-7" 9="#" A="L(\'+d+\');z y">\'+d+\'</a>\'}}}4(D<k-1){b+=\'<E 6="3-7 3-17">...</E>\'}4(D<k){4(m=="3"){b+=\'<a 6="3-7" 9="#" A="K(\'+k+\');z y">\'+k+\'</a>\'}i{b+=\'<a 6="3-7" 9="#" A="L(\'+k+\');z y">\'+k+\'</a>\'}}5 e=I(l)+1;4(l<k){4(m==\'3\'){b+=\'<a 6="3-7 3-1c" 9="#" A="K(\'+e+\');z y"></a>\'}i{b+=\'<a 6="3-7 3-1c" 9="#" A="L(\'+e+\');z y"></a>\'}}b+=\'\';5 f=x.1t(\'1p\');5 g=x.1r(\'1s-1q\');15(5 p=0;p<f.R;p++){f[p].1b=b}4(f&&f.R>0){b=\'\'}4(g){g.1b=b}}C 11(a){5 b=a.1i;5 c=I(b.1B$1z.$t,10);1a(c)}C 18(){5 a=n;4(a.j(\'/v/u/\')!=-1){4(a.j(\'?Q-h\')!=-1){s=a.G(a.j(\'/v/u/\')+14,a.j(\'?Q-h\'))}i{s=a.G(a.j(\'/v/u/\')+14,a.j(\'?&h\'))}}4(a.j(\'?q=\')==-1&&a.j(\'.1C\')==-1){4(a.j(\'/v/u/\')==-1){m=\'3\';4(n.j(\'#H=\')!=-1){l=n.G(n.j(\'#H=\')+8,n.R)}i{l=1}x.16(\'<F P=\\\'\'+w+\'O/S/N?h-r=1&T=U&X=11\\\'><\\/F>\')}i{m=\'u\';4(a.j(\'&h-r=\')==-1){o=1y}4(n.j(\'#H=\')!=-1){l=n.G(n.j(\'#H=\')+8,n.R)}i{l=1}x.16(\'<F P="\'+w+\'O/S/N/-/\'+s+\'?T=U&X=11&h-r=1" ><\\/F>\')}}}C K(a){Y=(a-1)*o;J=a;5 b=x.1f(\'1d\')[0];5 c=x.1m(\'F\');c.1n=\'1o/1l\';c.1j(\'P\',w+\'O/S/N?1e-1g=\'+Y+\'&h-r=1&T=U&X=12\');b.1h(c)}C L(a){Y=(a-1)*o;J=a;5 b=x.1f(\'1d\')[0];5 c=x.1m(\'F\');c.1n=\'1o/1l\';c.1j(\'P\',w+\'O/S/N/-/\'+s+\'?1e-1g=\'+Y+\'&h-r=1&T=U&X=12\');b.1h(c)}C 12(a){Z=a.1i.1A[0];5 b=Z.13.$t.G(0,19)+Z.13.$t.G(1w,1v);5 c=1u(b);4(m==\'3\'){5 d=\'/v?Q-h=\'+c+\'&h-r=\'+o+\'#H=\'+J}i{5 d=\'/v/u/\'+s+\'?Q-h=\'+c+\'&h-r=\'+o+\'#H=\'+J}1k.9=d}',62,101,'|||page|if|var|class|num||href||||||||max|else|indexOf|lastPageNo|currentPageNo|currentPage|locationUrl|postResults|||results|postLabel||label|search|home_page|document|false|return|onclick|pageStart|function|pageEnd|span|script|substring|PageNo|parseInt|noPage|getPage|getLabelPage|pageNumber|summary|feeds|src|updated|length|posts|alt|json|numOfPages|prev|callback|jsonstart|post||dataFeed|findPostDate|published||for|write|dots|pageCurrentBlogger||startPagination|innerHTML|next|head|start|getElementsByTagName|index|appendChild|feed|setAttribute|location|javascript|createElement|type|text|pageArea|pager|getElementById|blog|getElementsByName|encodeURIComponent|29|23|active|20|totalResults|entry|openSearch|html'.split('|'),0,{}))
+      //]]>
+      </script>
+    </b:if>
+
+
+    <script>
+    var noPage;
+    var currentPage;
+    var currentPageNo;
+    var postLabel;
+    var locationUrl = location.href;
+    var home_page = "/";
+    pageCurrentBlogger();
+
+    function startPagination(a) {
+        var b = '';
+        pageNumber = parseInt(numOfPages / 2);
+        if(pageNumber == numOfPages - pageNumber) {
+            numOfPages = pageNumber * 2 + 1
+        }
+        pageStart = currentPageNo - pageNumber;
+        if(pageStart < 1) pageStart = 1;
+        lastPageNo = parseInt(a / postResults) + 1;
+        if(lastPageNo - 1 == a / postResults) lastPageNo = lastPageNo - 1;
+        pageEnd = pageStart + numOfPages - 1;
+        if(pageEnd > lastPageNo) pageEnd = lastPageNo;
+        
+        var c = parseInt(currentPageNo) - 1;
+        if(currentPageNo > 1) {
+            if(currentPageNo == 2) {
+                if(currentPage == 'page') {
+                    b += '<a class="page-num page-prev" href="' + home_page + '"></a>'
+                } else {
+                    b += '<a class="page-num page-prev" href="/search/label/' + postLabel + '?&max-results=' + postResults + '"></a>'
+                }
+            } else {
+                if(currentPage == 'page') {
+                    b += '<a class="page-num page-prev" href="#" onclick="getPage(' + c + ');return false "></a>'
+                } else {
+                    b += '<a class="page-num page-prev" href="#" onclick="getLabelPage(' + c + ');return false "></a>'
+                }
+            }
+        }
+        if(pageStart > 1) {
+            if(currentPage == "page") {
+                b += '<a class="page-num" href="' + home_page + '">1</a>'
+            } else {
+                b += '<a class="page-num" href="/search/label/' + postLabel + '?&max-results=' + postResults + '">1</a>'
+            }
+        }
+        if(pageStart > 2) {
+            b += '<span class="page-num page-dots">...</span>'
+        }
+        for(var d = pageStart; d <= pageEnd; d++) {
+            if(currentPageNo == d) {
+                b += '<span class="page-num page-active">' + d + '</span>'
+            } else if(d == 1) {
+                if(currentPage == 'page') {
+                    b += '<a class="page-num" href="' + home_page + '">1</a>'
+                } else {
+                    b += '<a class="page-num" href="/search/label/' + postLabel + '?&max-results=' + postResults + '">1</a>'
+                }
+            } else {
+                if(currentPage == 'page') {
+                    b += '<a class="page-num" href="#" onclick="getPage(' + d + ');return false ">'+d+'</a>'
+                } else {
+                    b += '<a class="page-num" href="#" onclick="getLabelPage(' + d + ');return false ">'+d+'</a>'
+                }
+            }
+        }
+        if(pageEnd < lastPageNo - 1) {
+            b += '<span class="page-num page-dots">...</span>'
+        }
+        if(pageEnd < lastPageNo) {
+            if(currentPage == "page") {
+                b += '<a class="page-num" href="#" onclick="getPage(' + lastPageNo + ');return false ">'+lastPageNo+'</a>'
+            } else {
+                b += '<a class="page-num" href="#" onclick="getLabelPage(' + lastPageNo + ');return false ">'+lastPageNo+'</a>'
+            }
+        }
+        var e = parseInt(currentPageNo) + 1;
+        if(currentPageNo < lastPageNo) {
+            if(currentPage == 'page') {
+                b += '<a class="page-num page-next" href="#" onclick="getPage(' + e + ');return false "></a>'
+            } else {
+                b += '<a class="page-num page-next" href="#" onclick="getLabelPage(' + e + ');return false "></a>'
+            }
+        }
+        b += '';
+        var f = document.getElementsByName('pageArea');
+        var g = document.getElementById('blog-pager');
+        for(var p = 0; p < f.length; p++) {
+            f[p].innerHTML = b
+        }
+        if(f && f.length > 0) {
+            b = ''
+        }
+        if(g) {
+            g.innerHTML = b
+        }
+    }
+
+    function dataFeed(a) {
+        var b = a.feed;
+        var c = parseInt(b.openSearch$totalResults.$t, 10);
+        startPagination(c)
+    }
+
+    function pageCurrentBlogger() {
+        var a = locationUrl;
+        if(a.indexOf('/search/label/') != -1) {
+            if(a.indexOf('?updated-max') != -1) {
+                postLabel = a.substring(a.indexOf('/search/label/') + 14, a.indexOf('?updated-max'))
+            } else {
+                postLabel = a.substring(a.indexOf('/search/label/') + 14, a.indexOf('?&max'))
+            }
+        }
+        if(a.indexOf('?q=') == -1 && a.indexOf('.html') == -1) {
+            if(a.indexOf('/search/label/') == -1) {
+                currentPage = 'page';
+                if(locationUrl.indexOf('#PageNo=') != -1) {
+                    currentPageNo = locationUrl.substring(locationUrl.indexOf('#PageNo=') + 8, locationUrl.length)
+                } else {
+                    currentPageNo = 1
+                }
+               
+                document.write('<script src=\'' + home_page + 'feeds/posts/summary?max-results=1&alt=json&callback=dataFeed\'><\/script>')
+            } else {
+                currentPage = 'label';
+                if(a.indexOf('&max-results=') == -1) {
+                    postResults = 20
+                }
+                if(locationUrl.indexOf('#PageNo=') != -1) {
+                    currentPageNo = locationUrl.substring(locationUrl.indexOf('#PageNo=') + 8, locationUrl.length)
+                } else {
+                    currentPageNo = 1
+                }
+                
+                document.write('<script src="' + home_page + 'feeds/posts/summary/-/' + postLabel + '?alt=json&callback=dataFeed&max-results=1" ><\/script>')
+            }
+        }
+    }
+
+    function getPage(a) {
+        jsonstart = (a - 1) * postResults;
+        noPage = a;
+        var b = document.getElementsByTagName('head')[0];
+        var c = document.createElement('script');
+        c.type = 'text/javascript';
+        c.setAttribute('src', home_page + 'feeds/posts/summary?start-index=' + jsonstart + '&max-results=1&alt=json&callback=findPostDate');
+        b.appendChild(c)
+    }
+
+    function getLabelPage(a) {
+        jsonstart = (a - 1) * postResults;
+        noPage = a;
+        var b = document.getElementsByTagName('head')[0];
+        var c = document.createElement('script');
+        c.type = 'text/javascript';
+        c.setAttribute('src', home_page + 'feeds/posts/summary/-/' + postLabel + '?start-index=' + jsonstart + '&max-results=1&alt=json&callback=findPostDate');
+        b.appendChild(c)
+    }
+
+    function findPostDate(a) {
+        post = a.feed.entry[0];
+        var b = post.published.$t.substring(0, 19) + post.published.$t.substring(23, 29);
+        var c = encodeURIComponent(b);
+        if(currentPage == 'page') {
+            var d = '/search?updated-max=' + c + '&max-results=' + postResults + '#PageNo=' + noPage
+        } else {
+            var d = '/search/label/' + postLabel + '?updated-max=' + c + '&max-results=' + postResults + '#PageNo=' + noPage
+        }
+        location.href = d
+    }      
+    </script>
+    
+   
+  </body>
+</html>

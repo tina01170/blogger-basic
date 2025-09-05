@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+      .post-meta .comments-number { text-decoration: none; color:$(title.color); margin:0 6px; }
+
+    </style>
+  </head>
+  <body>
+    <b:if cond='data:post.numberOfComments &gt;= 0'>
+      <p style='margin:0 20px 6px'>留言 ( <data:post.numberOfComments/> )
+      </p>
+    </b:if>
+
+    <b:if cond='data:post.numberOfComments &gt;= 0'>
+      <a class='comments-number' expr:href='data:post.url + &quot;#comments&quot;'><data:post.numberOfComments/> Comments</a>                                     
+    </b:if>
+
+    <!--simple blog-->
+    <a expr:href='data:post.url + &quot;#comments&quot;'><data:post.numComments/> Comments</a>
+
+    <span class='post-comment-link'>
+      <b:include cond='data:blog.pageType not in {&quot;item&quot;,&quot;static_page&quot;}                                  and data:post.allowComments' data='post' name='comment_count_picker'/>
+    </span>
+
+    <!--灰鴿-->
+    <b:if cond='data:post.numberOfComments &gt; 0'><p style='margin:0 20px 6px'>留言 ( <data:post.numberOfComments/> )</p></b:if>
+
+    <b:includable id='commentPicker' var='post'>
+                          <b:if cond='data:post.numberOfComments &gt; 0'><p style='margin:0 20px 6px'>留言 ( <data:post.numberOfComments/> )</p></b:if>
+      <b:if cond='data:post.showThreadedComments'>
+        <b:include data='post' name='threadedComments'/>
+      <b:else/>
+        <b:include data='post' name='comments'/>
+      </b:if>
+    </b:includable>
+    
+
+    
+   
+  </body>
+</html>

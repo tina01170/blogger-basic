@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+   
+    <style>
+
+    </style>
+  </head>
+  <body>
+      <a class='comment-link' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'>
+      綠字<data:post.commentLabelFull/>:
+      </a>
+      <!--  接著將以上字串改為以下自訂格式： -->
+      <a class='comment-link' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'>
+      藍字  留言 (   紅字<data:post.numComments/>  藍字  ) 
+      </a>
+      <!--  紅色的字串是 Blogger 的標記語言，代表留言數量
+      藍色的字串請自由發揮，可改為任意的自訂字串形式  -->
+      
+    
+      三、留言區塊
+
+      接下來修改留言區塊的留言提示字串程式碼，在範本中找到的另外兩個 <data:post.commentLabelFull/> 搜尋結果，前後大致長的類似以下這樣：
+      <h4>
+      <data:post.commentLabelFull/>:
+      </h4>
+      接著將以上字串改為以下自訂格式：
+      <h4>
+      留言 (	<data:post.numComments/>	)
+      </h4>
+      紅色的字串如前所述，代表留言數量
+      藍色的字串請自由發揮，可改為任意的自訂字串形式
+    
+   
+  </body>
+</html>

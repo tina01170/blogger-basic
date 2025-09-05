@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+
+
+    </style>
+  </head>
+  <body>
+    <!--polar Amalia Amia 全都一樣  class 略不同-->
+
+    <!-- my -->
+    <b:includable id='commentPicker' var='post'>          
+      <b:if cond='data:post.allowComments'>
+              <div class='comments-title'><!--留言區的標題/增加-->
+                <h3><data:messages.postAComment/></h3>
+              </div>
+            </b:if>
+            <b:if cond='data:post.commentSource == 1'>
+              <b:include data='post' name='iframeComments'/>
+              <b:elseif cond='data:post.showThreadedComments'/>
+              <b:include data='post' name='threadedComments'/><!--真正的程式碼在這裡-->
+              <b:else/>
+              <b:include data='post' name='comments'/>
+            </b:if>
+    </b:includable>
+    
+    <b:includable id='threadedComments' var='post'>
+      <section class='comments threaded' expr:data-embed='data:post.embedCommentForm' expr:data-num-comments='data:post.numberOfComments' id='comments'>
+        <a name='comments'/>
+    
+        <b:include name='commentsTitle'/><!--留言數連結處-->
+    
+        <div class='comments-content'>
+          <b:if cond='data:post.embedCommentForm'>
+            <b:include data='post' name='threadedCommentJs'/>
+          </b:if>
+          <div id='comment-holder'>
+             <data:post.commentHtml/>
+          </div>
+        </div>
+    
+        <p class='comment-footer'>
+          <b:if cond='data:post.allowNewComments'>
+            <b:include data='post' name='threadedCommentForm'/>
+          <b:else/>
+            <data:post.noNewCommentsText/>
+          </b:if>
+          <b:if cond='data:post.showManageComments'>
+            <b:include data='post' name='manageComments'/>
+          </b:if>
+        </p>
+    
+        <b:if cond='data:showCmtPopup'>
+          <div id='comment-popup'>
+            <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+            </iframe>
+          </div>
+        </b:if>
+      </section>
+    </b:includable>
+
+     <!--new-->
+    <b:includable >
+   		<!-- Post Commments Title --><!--留言數增加處-->
+        <h3 class='title'><data:post.numberOfComments/><data:messages.comments/></h3>
+        <!-- 增加 <data:post.numberOfComments/>-->
+    </b:includable>
+
+    <!--old-->
+    <b:includable id='commentsTitle'>
+      <h3 class='title'><data:messages.comments/></h3>
+    </b:includable>
+    
+   
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+  </head>
+  <body>
+  <script>
+  $(".blog-post-comments").each(function() {
+      var system = commentsSystem,
+            fk = '<div class="fb-comments" data-width="100%" data-href="' + disqus_blogger_current_url + '" data-numposts="5"></div>',
+            c = 'comments-system-' + system;
+        if (system == 'blogger') {
+              $(this).addClass(c).show();
+        } else if (system == 'disqus') {
+            (function() {
+              var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqusShortname + '.disqus.com/embed.js';
+                  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();     
+              $("#comments, #gpluscomments").remove(),
+              $(this).append('<div id="disqus_thread"/>').addClass(c).show();    
+        } else if (system == 'facebook') {
+              $('#comments, #gpluscomments').remove();
+              $(this).append(fk).addClass(c).show();    
+        } else if (system == 'hide') {
+              $(this).hide();
+        } else {
+            $(this).addClass('comments-system-default').show();
+        } 
+  })
+  </script>
+    
+
+    
+   
+  </body>
+</html>

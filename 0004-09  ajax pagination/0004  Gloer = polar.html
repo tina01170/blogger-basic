@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gloer  https://www.way2themes.com/</title>
+    <title> jQuery 是開放的，可以用</title>
+    <style>
+#blog-pager{float:left;width:100%;font-size:15px;font-weight:500;text-align:center;clear:both;box-sizing:border-box;padding:20px 0 0;margin:20px 0;border-top:1px solid rgba(155,155,155,.1)}
+.archive #blog-pager,.index #blog-pager{margin:0;border:0}
+#blog-pager .load-more{position:relative;display:inline-block;height:52px;background-color:#fff;font-size:17px;color:$(title.color);font-weight:400;line-height:52px;box-sizing:border-box;padding:0 42px;margin:0;border:1px solid $(main.dark.color);border-radius:0}
+#blog-pager #load-more-link{color:$(title.color);cursor:pointer;overflow:hidden}
+#blog-pager #load-more-link:after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;-webkit-transition:all .5s;-moz-transition:all .5s;-o-transition:all .5s;transition:all .5s;opacity:.8;-webkit-transform:translate(-105%,0);transform:translate(-105%,0);border-right-width:2px;border-right-style:solid;border-right-color:#fff;background-color:rgba(255,255,255,.5)}
+#blog-pager #load-more-link:hover{background-color:$(main.dark.color);color:#fff}
+#blog-pager #load-more-link:hover:after{opacity:0;-webkit-transform:translate(0,0);transform:translate(0,0)}
+#blog-pager .load-more.no-more{background-color:rgba(155,155,155,.05);color:$(main.color)}
+#blog-pager .loading,#blog-pager .no-more{display:none}
+#blog-pager .loading .loader{position:relative;height:100%;overflow:hidden;display:block;margin:0}
+#blog-pager .loading .loader{height:34px}
+#blog-pager .no-more.show{display:inline-block}
+#blog-pager .loading .loader:after{width:26px;height:26px;margin:-15px 0 0 -15px}
+#blog-pager .loading .loader:after{content:'';position:absolute;top:50%;left:50%;width:28px;height:28px;margin:-16px 0 0 -16px;border:2px solid $(main.color);border-right-color:rgba(155,155,155,.2);border-radius:100%;animation:spinner 1.1s infinite linear;transform-origin:center}
+
+@-webkit-keyframes spinner{0%{-webkit-transform:rotate(0);transform:rotate(0)}
+to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}
+}
+@keyframes spinner{0%{-webkit-transform:rotate(0);transform:rotate(0)}
+to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}
+}
+    </style>
+  </head>
+  <body>
+            <b:includable id='main' var='this'>
+              <b:include name='searchMessage'/>
+              <div class='blog-posts hfeed container'>
+                <b:class cond='data:view.isMultipleItems' name='index-post-wrap'/>
+                <b:class cond='data:view.isSingleItem' name='item-post-wrap'/>
+                <b:tag class='grid-posts' cond='data:view.isMultipleItems' name='div'>
+                  <b:loop index='i' values='data:posts' var='post'>
+                    <b:include data='post' name='postCommentsAndAd'/>
+                  </b:loop>
+                </b:tag>
+              </div>
+              <b:include cond='data:view.isMultipleItems' name='indexBlogPager'/>
+              <b:include name='feedLinks'/>
+              <b:include name='messagesJs'/>
+            </b:includable>
+
+    <b:includable id='indexBlogPager'>
+      <!-- Post Pagination Index -->
+      <div class='blog-pager container' id='blog-pager'>
+        <b:if cond='data:olderPageUrl'>
+          <a class='blog-pager-older-link load-more' expr:data-load='data:olderPageUrl' href='javascript:;' id='load-more-link'><b:include data='{ message: &quot;loadMorePosts&quot; }' name='translate'/></a>
+          <span class='loading'><span class='loader'/></span>
+          <span class='no-more load-more'><b:include data='{ message: &quot;noMorePosts&quot; }' name='translate'/></span>
+          <b:else/>
+          <span class='no-more load-more show'><b:include data='{ message: &quot;noMorePosts&quot; }' name='translate'/></span>
+        </b:if>
+      </div>
+    </b:includable>    
+
+    <b:includable id='translate'>
+      <b:switch var='data:blog.locale.language'>
+        <b:case value='en'/><b:include name='customLang'/>
+        <b:default/><b:include name='customLang'/>
+      </b:switch>
+    </b:includable>     
+    
+    <script type='text/javascript'>
+      //<![CDATA[
+      $(function() {
+       $("#load-more-link")["each"](function() {
+              var a = $(this),
+                  b = a["data"]("load");
+              if (b) $("#load-more-link")["show"]();
+              $("#load-more-link")["on"]("click", function(a) {
+                  $("#load-more-link")["hide"]();
+                  $["ajax"]({
+                      url: b,
+                      success: function(a) {
+                          var c = $(a)["find"](".grid-posts");
+                          c["find"](".index-post")["addClass"]("post-animated post-fadeInUp");
+                          $(".grid-posts")["append"](c["html"]());
+                          b = $(a)["find"]("#load-more-link")["data"]("load");
+                          if (b) $("#load-more-link")["show"]();
+                          else {
+                              $("#load-more-link")["hide"]();
+                              $("#blog-pager .no-more")["addClass"]("show");
+                          }
+                          $('.index-post .post-image-link .post-thumb').lazyyard();
+                          $("#main-wrapper").each(function() {
+                              if (true == fixedSidebar) $(this).theiaStickySidebar();
+                          });
+                      },
+                      beforeSend: function() {
+                          $("#blog-pager .loading")["show"]();
+                      },
+                      complete: function() {
+                          $("#blog-pager .loading")["hide"]();
+                      }
+                  });
+                  a["preventDefault"]();
+              });
+      
+          });
+      });
+      //]]>
+      </script>
+    
+   
+  </body>
+</html>

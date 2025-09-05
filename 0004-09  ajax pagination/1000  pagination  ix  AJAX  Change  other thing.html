@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>theme options is html</title>
+    <style>
+
+      /*step 5  fix .blog-post-comments */
+      .blog-post-comments{/*display:none;*/width:100%;margin:0 0 30px;float:left;}
+    </style>
+
+    <style>/*-- step 1.5 change css */
+      body#layout .theme-options {display:block!important}
+      body#layout .show-panel {background-color:#D0D0D0 !important;overflow:hidden!important;}
+      body#layout .show-panel .widget {float:left;width:49%;margin-right:2%;}
+      body#layout .show-panel #HTML1 {margin-right:0}
+    </style>
+
+    
+    <!-- Global Variables -->
+    <!-- step 4  remove  Global Variables  disqusShortname and commentsSystem-->
+    <script type='text/javascript'>
+    //<![CDATA[     
+      // Global variables with content. "Available for Edit"
+      var monthFormat = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        //postPerPage = 4,
+        //disqusShortname = "soratemplates",   // 移除  or 保留
+        //commentsSystem = "blogger",          // 移除  or 保留
+          fixedSidebar = true; 
+    //]]>
+    </script>
+  </head>
+  <body>
+    <!-- step 1 linklist change to Html-->
+    <!--theme-options  linklist change to Html-->
+    <div class='theme-options' style='display:none'>
+      <b:section class='show-panel' id='show-panel' maxwidgets='2' name='Theme Options' showaddelement='no'>
+          <b:widget id='LinkList3' locked='true' title='Boxed Version' type='LinkList' visible='true'>
+ <b:includable id='main'>
+ <b:include name='widget-title'/>
+ <b:include name='content'/>
+</b:includable>
+ <b:includable id='content'>
+<div class='widget-content'>
+  <ul>
+    <b:loop values='data:links' var='link'>
+      <li><a expr:href='data:link.target'><data:link.name/></a></li>
+    </b:loop>
+  </ul>
+</div>
+</b:includable>
+</b:widget>
+<b:widget id='HTML1' locked='true' title='Default Variables' type='HTML' visible='true'>
+ <b:widget-settings>
+   <b:widget-setting name='content'/>
+ </b:widget-settings>
+ <b:includable id='main'>
+ <b:include name='widget-title'/>
+ <div class='widget-content'>
+   <data:content/>
+ </div>
+</b:includable>
+</b:widget>
+    </b:section></div>
+
+     <!-- step 2 remain Html-->
+    <!--html-->
+    <b:includable id='postCommentsAndAd' var='post'>
+      <article>
+        <b:class cond='data:view.isMultipleItems' expr:name='data:skin.vars.gridstyle == &quot;1px&quot; ? &quot;post hentry item-&quot; + data:i : &quot;post hentry item-&quot; + data:i'/>
+        <b:class cond='data:view.isSingleItem' name='item-post hentry flex-col'/>
+        <b:include data='post' name='post'/>
+      </article>
+      <b:if cond='data:view.isSingleItem and data:post.allowComments'>
+        <!-- Post Comments -->
+        <div class='xdfcb-blog-post-comments p-widget' expr:data-shortcode='data:allBylineItems.comments.label contains &quot;type&quot; ? data:allBylineItems.comments.label : &quot;$type={blogger}&quot;'>
+          <b:include data='post' name='threadedCommentsDisqus'/>
+          <b:include data='post' name='comments'/>
+        </div>
+      </b:if>
+      <!-- Post Navigation -->
+      <b:include cond='data:skin.vars.postnav == &quot;1px&quot;' name='postPagination'/>
+    </b:includable>
+
+
+    <b:includable id='threadedCommentsDisqus' var='post'>
+      <script type='text/javascript'>
+          var disqus_blogger_current_url = &quot;<data:blog.canonicalUrl/>&quot;;
+          if (!disqus_blogger_current_url.length) {
+                disqus_blogger_current_url = &quot;<data:blog.url/>&quot;;
+          }
+          var disqus_blogger_homepage_url = &quot;<data:blog.homepageUrl/>&quot;;
+          var disqus_blogger_canonical_homepage_url = &quot;<data:blog.canonicalHomepageUrl/>&quot;;
+     </script>
+    </b:includable>
+    
+   <!-- step 3 移除 jqueary 2-->
+    <script>
+      // 移除 label a tag a
+      /*
+      $(".Label a, .post-tag a").attr("href",function($this,href) {
+        return href.replace(href,href + '?&max-results=' + postPerPage);
+      })
+      */
+
+     // 移除  or 保留
+      $(".blog-post-comments").each(function() {
+	var system = commentsSystem,
+        fk = '<div class="fb-comments" data-width="100%" data-href="' + disqus_blogger_current_url + '" data-numposts="5"></div>',
+        c = 'comments-system-' + system;
+     if (system == 'blogger') {
+           $(this).addClass(c).show();
+     } else if (system == 'disqus') {
+     	  (function() {
+        	var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqusShortname + '.disqus.com/embed.js';
+            	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();     
+          $("#comments, #gpluscomments").remove(),
+          $(this).append('<div id="disqus_thread"/>').addClass(c).show();    
+     } else if (system == 'facebook') {
+          $('#comments, #gpluscomments').remove();
+          $(this).append(fk).addClass(c).show();    
+     } else if (system == 'hide') {
+          $(this).hide();
+     } else {
+     	  $(this).addClass('comments-system-default').show();
+     } 
+})     
+    </script>
+  </body>
+</html>

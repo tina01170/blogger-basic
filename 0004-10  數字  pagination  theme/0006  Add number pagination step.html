@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>number pagination</title>
+   
+    <style>
+
+      /*step 5  fix .blog-post-comments */
+      .blog-post-comments{/*display:none;*/width:100%;margin:0 0 30px;float:left;}
+    </style>
+    <style>/*-- step 1.5 change #HTML1 css */
+      body#layout .theme-options {display:block!important}
+      body#layout .show-panel {background-color:#D0D0D0 !important;overflow:hidden!important;}
+      body#layout .show-panel .widget {float:left;width:49%;margin-right:2%;}
+      body#layout .show-panel #HTML1 {margin-right:0}
+    </style>
+
+
+  </head>
+  <body>
+    <!--step 1 add theme-options -->
+    <!-- theme-options linklist has 4個變數-->
+    <div class='theme-options' style='display:none'>
+    </div>
+    
+    <!-- Global Variables -->
+    <!-- add postPerPage  disqusShortname  commentsSystem-->
+    <script type='text/javascript'>
+    //<![CDATA[     
+        // Global variables with content. "Available for Edit"
+        var monthFormat = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+          postPerPage = 4,
+          disqusShortname = "soratemplates",   
+          commentsSystem = "blogger",          
+          fixedSidebar = true; 
+    //]]>
+    </script>
+   
+    <!-- step 2 remain Html-->
+
+
+    <script>
+
+     // 加回 jquery
+      $(".blog-post-comments").each(function() {
+	var system = commentsSystem,
+        fk = '<div class="fb-comments" data-width="100%" data-href="' + disqus_blogger_current_url + '" data-numposts="5"></div>',
+        c = 'comments-system-' + system;
+     if (system == 'blogger') {
+           $(this).addClass(c).show();
+     } else if (system == 'disqus') {
+     	  (function() {
+        	var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqusShortname + '.disqus.com/embed.js';
+            	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();     
+          $("#comments, #gpluscomments").remove(),
+          $(this).append('<div id="disqus_thread"/>').addClass(c).show();    
+     } else if (system == 'facebook') {
+          $('#comments, #gpluscomments').remove();
+          $(this).append(fk).addClass(c).show();    
+     } else if (system == 'hide') {
+          $(this).hide();
+     } else {
+     	  $(this).addClass('comments-system-default').show();
+     } 
+})     
+    </script>
+    <script>
+      // 加回 label a tag a
+      
+      $(".Label a, .post-tag a").attr("href",function($this,href) {
+        return href.replace(href,href + '?&max-results=' + postPerPage);
+      })
+      
+    </script>
+
+
+    <!--加回 nnumber 的 jquery and css-->
+  </body>
+</html>

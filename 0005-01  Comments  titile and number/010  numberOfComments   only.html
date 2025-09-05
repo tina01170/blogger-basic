@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Polar </title>
+    <style>
+      .comments-title > h3{position:relative;float:left;width:100%;height:32px;background-color:#f4f6f8;font-size:13px;color:$(title.color);line-height:32px;font-weight:600;text-transform:uppercase;text-align:center;margin:0 0 20px}
+      .comments > h3 {
+          font-size: 13px;
+          font-weight: 400;
+          font-style: italic;
+          padding-top: 1px;
+      }
+
+      /*改*/
+      #comments h4#comment-post-message{display:none}
+
+    </style>
+  </head>
+  <body>
+    <b:if cond='data:post.numberOfComments &gt; 0'>
+      <p style='margin:0 20px 6px'>留言 ( <data:post.numberOfComments/> )</p>
+    </b:if>
+   
+    
+   
+  </body>
+</html>

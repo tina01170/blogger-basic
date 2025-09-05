@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WFU BLOGGER</title>
+   
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
+    <style>
+        /* 數字分頁 */
+        #blog-pager{
+        clear:both;
+        margin:30px auto;
+        text-align:center;
+        padding: 7px;
+        }
+        .blog-pager {
+        background: none;
+        }
+        #blog-pager > span {
+        margin-bottom: 10px;
+        }
+        .displaypageNum a,.showpage a,.pagecurrent{
+        display: inline-block;
+        font-size: 14px;
+        padding: 5px 12px;
+        margin-right:5px;
+        color: #666;
+        background-color:#eee;
+        }
+        .displaypageNum a:hover,.showpage a:hover, .pagecurrent{
+        background:#359BED;
+        text-decoration:none;
+        color: #fff;
+        }
+        #blog-pager .pagecurrent{
+        font-weight:bold;
+        color: #fff;
+        background:#359BED;
+        }
+        .showPageOf{
+        display:none!important
+        }
+        #blog-pager .pages{
+        border:none;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="BOX">
+      <P>
+        3. 注意事項:正式安裝之前仍有兩件事項需要注意：
+          這個工具必須讀取部落格的 feed，
+          因此公開的部落格才能正常執行，
+          請檢查後台 → 設定 → 其他 → 允許網誌資訊提供 → 是否為「完整」
+          後台設定每頁顯示的文章數，
+          必須與小工具的設定一致，
+          請檢查後台 → 設定 → 文章和留言 → 最多顯示 → 這裡的數字請與小工具的參數吻合。
+      </P>
+      <P>
+        三、安裝程式碼
+
+        接著請搜尋 </body> 這個字串，
+        找到後在此字串的前一行，
+        插入以下程式碼：    
+      </P>
+    </div>
+    <!-- 數字分頁 + Ajax 動態載入 start-->
+    <script>//<![CDATA[
+      var pageNav = {
+      perPage: 5, // 每頁顯示的文章數
+      numPages: 5, // 要顯示數字的按鈕數量
+      ajax: "Y", // 頁面是否動態載入, 不要則改成 "N"
+      firstText: "First",
+      lastText: "Last",
+      prevText: "« Previous",
+      nextText: "Next »"
+      };
+      $.getScript("https://drive.google.com/file/d/1u-QQxHCNTLxxyGGKtKjjhg2IH8psfFwJ/view");
+    //]]>
+    </script>
+      <!-- 數字分頁 + Ajax 動態載入 end, designed by WFU BLOG-->
+   
+  </body>
+</html>

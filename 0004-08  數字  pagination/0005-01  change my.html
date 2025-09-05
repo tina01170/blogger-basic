@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+    /* number page */
+
+    #blog-pager { clear:both; margin:20px auto; text-align:center; padding:8px;  }
+    .blog-pager { background: none; }
+    #blog-pager > span { margin-bottom:0; }
+    .pagenum a, .showpage a, .pagecurrent { display: inline-block; font-size: 16px; color:#656565; background-color:#fff;  margin-right:5px; padding: 5px 10px; box-sizing:border-box;  border:1px solid #ccc; -webkit-transition: color 0.5s;-moz-transition: color 0.5s; transition: color 0.5s;}
+    .pagenum a:hover,.showpage a:hover, .pagecurrent{ background:$(main.color);  text-decoration:none; color: #fff; }
+    #blog-pager .pagecurrent { font-weight:bold; color: #fff; background:$(main.color); }
+    .page-prev a, .page-next a { font-size:0; }
+    .page-next a::after { font-family:'Font Awesome 5 Free'; font-weight:900; content:'\f054'; font-size:10px; }
+    .page-prev a::after { font-family:'Font Awesome 5 Free'; font-weight:900; content:'\f053'; font-size:10px; }
+    #blog-pager span.page-dots{  padding:0 8px 0 3px; }     
+    #blog-pager .pages{ border:none; }
+    </style>
+  </head>
+  <body>
+    <b:if cond='data:view.isMultipleItems'>
+      <!-- Pagination -->
+      <script type='text/javascript'>
+      //<![CDATA[
+      
+      var perPage = postPerPage;
+      var numOfPages = 3;
+      var prevText = 'Previous';
+      var nextText = 'Next';
+      var urlactivepage = location.href;
+      var home_page = "/";
+      var noPage;
+      var currentPage;
+      var currentPageNo;
+      var postLabel;
+      pageCurrent();
+      
+      function startPagination(pageInfo) {
+        var html = '';
+        pageNumber = parseInt(numOfPages / 2);
+        if(pageNumber == numOfPages - pageNumber) {
+          numOfPages = pageNumber * 2 + 1
+        }
+        pageStart = currentPageNo - pageNumber;
+        if(pageStart < 1) pageStart = 1;
+        lastPageNo = parseInt(pageInfo / perPage) + 1;
+        if(lastPageNo - 1 == pageInfo / perPage) lastPageNo = lastPageNo - 1;
+        pageEnd = pageStart + numOfPages - 1;
+        if(pageEnd > lastPageNo) pageEnd = lastPageNo;
+      
+        var prevNo = parseInt(currentPageNo) - 1;
+        if(currentPageNo > 1) {
+          if(currentPageNo == 2) {
+            if(currentPage == "page") {
+              html += '<span class="showpage page-prev"><a href="' + home_page + '">' + prevText + '</a></span>'
+            } else {
+              html += '<span class="pagenum page-prev"><a href="/search/label/' + postLabel + '?&max-results=' + perPage + '">' + prevText + '</a></span>';
+      
+            }
+          } else {
+            if(currentPage == "page") {
+              html += '<span class="pagenum"><a href="#" onclick="getPage(' + prevNo + ');return false">' + prevText + '</a></span>'
+            } else {
+              html += '<span class="pagenum"><a href="#" onclick="getLabelPage(' + prevNo + ');return false">' + prevText + '</a></span>'
+            }
+          }
+        }
+        if(pageStart > 1) {
+          if(currentPage == "page") {
+            html += '<span class="pagenum"><a href="' + home_page + '">1</a></span>'
+          } else {
+            html += '<span class="pagenum"><a href="/search/label/' + postLabel + '?&max-results=' + perPage + '">1</a></span>'
+          }
+        }
+        if(pageStart > 2) {
+          html += '<span class="pagenum page-dots">...</span>'
+        }
+        for(var i = pageStart; i <= pageEnd; i++) {
+          if(currentPageNo == i) {
+            html += '<span class="pagecurrent">' + i + '</span>'
+          } else if(i == 1) {
+            if(currentPage == "page") {
+              html += '<span class="pagenum"><a href="' + home_page + '">1</a></span>'
+            } else {
+              html += '<span class="pagenum"><a href="/search/label/' + postLabel + '?&max-results=' + perPage + '">1</a></span>'
+            }
+          } else {
+            if(currentPage == "page") {
+              html += '<span class="pagenum"><a href="#" onclick="getPage(' + i + ');return false">' + i + '</a></span>'
+            } else {
+              html += '<span class="pagenum"><a href="#" onclick="getLabelPage(' + i + ');return false">' + i + '</a></span>'
+            }
+          }
+        }
+        if(pageEnd < lastPageNo - 1) {
+          html += '<span class="pagenum page-dots">...</span>'
+        }
+        if(pageEnd < lastPageNo) {
+          if(currentPage == "page") {
+            html += '<span class="pagenum"><a href="#" onclick="getPage(' + lastPageNo + ');return false">' + lastPageNo + '</a></span>'
+          } else {
+            html += '<span class="pagenum"><a href="#" onclick="getLabelPage(' + lastPageNo + ');return false">' + lastPageNo + '</a></span>'
+          }
+        }
+        var nextnumber = parseInt(currentPageNo) + 1;
+        if(currentPageNo < (lastPageNo - 1)) {
+          if(currentPage == "page") {
+            html += '<span class="pagenum page-next"><a href="#" onclick="getPage(' + nextnumber + ');return false">' + nextText + '</a></span>'
+          } else {
+            html += '<span class="pagenum page-next"><a href="#" onclick="getLabelPage(' + nextnumber + ');return false">' + nextText + '</a></span>'
+          }
+        }
+         
+        var pageArea = document.getElementsByName("pageArea");
+        var blogPager = document.getElementById("blog-pager");
+        for(var p = 0; p < pageArea.length; p++) {
+          pageArea[p].innerHTML = html
+        }
+        if(pageArea && pageArea.length > 0) {
+          html = ''
+        }
+        if(blogPager) {
+          blogPager.innerHTML = html
+        }
+      }
+      
+      function dataFeed(root) {
+        var feed = root.feed;
+        var totaldata = parseInt(feed.openSearch$totalResults.$t, 10);
+        startPagination(totaldata)
+      }
+      
+      function pageCurrent() {
+        var thisUrl = urlactivepage;
+        if(thisUrl.indexOf("/search/label/") != -1) {
+          if(thisUrl.indexOf("?updated-max") != -1) {
+            postLabel = thisUrl.substring(thisUrl.indexOf("/search/label/") + 14, thisUrl.indexOf("?updated-max"))
+          } else {
+            postLabel = thisUrl.substring(thisUrl.indexOf("/search/label/") + 14, thisUrl.indexOf("?&max"))
+          }
+        }
+        if(thisUrl.indexOf("?q=") == -1 && thisUrl.indexOf(".html") == -1) {
+          if(thisUrl.indexOf("/search/label/") == -1) {
+            currentPage = "page";
+            if(urlactivepage.indexOf("#PageNo=") != -1) {
+              currentPageNo = urlactivepage.substring(urlactivepage.indexOf("#PageNo=") + 8, urlactivepage.length)
+            } else {
+              currentPageNo = 1
+            }
+            document.write("<script src=\"" + home_page + "feeds/posts/summary?max-results=1&alt=json-in-script&callback=dataFeed\"><\/script>")
+          } else {
+            currentPage = "label";
+            if(thisUrl.indexOf("&max-results=") == -1) {
+              perPage = 20
+            }
+            if(urlactivepage.indexOf("#PageNo=") != -1) {
+              currentPageNo = urlactivepage.substring(urlactivepage.indexOf("#PageNo=") + 8, urlactivepage.length)
+            } else {
+              currentPageNo = 1
+            }
+            document.write('<script src="' + home_page + 'feeds/posts/summary/-/' + postLabel + '?alt=json-in-script&callback=dataFeed&max-results=1" ><\/script>')
+          }
+        }
+      }
+      
+      function getPage(numberpage) {
+        jsonstart = (numberpage - 1) * perPage;
+        noPage = numberpage;
+        var nameBody = document.getElementsByTagName('head')[0];
+        var newInclude = document.createElement('script');
+        newInclude.type = 'text/javascript';
+        newInclude.setAttribute("src", home_page + "feeds/posts/summary?start-index=" + jsonstart + "&max-results=1&alt=json-in-script&callback=finddatepost");
+        nameBody.appendChild(newInclude)
+      }
+      
+      function getLabelPage(numberpage) {
+        jsonstart = (numberpage - 1) * perPage;
+        noPage = numberpage;
+        var nameBody = document.getElementsByTagName('head')[0];
+        var newInclude = document.createElement('script');
+        newInclude.type = 'text/javascript';
+        newInclude.setAttribute("src", home_page + "feeds/posts/summary/-/" + postLabel + "?start-index=" + jsonstart + "&max-results=1&alt=json-in-script&callback=finddatepost");
+        nameBody.appendChild(newInclude)
+      }
+      
+      function finddatepost(root) {
+        post = root.feed.entry[0];
+        var timestamp1 = post.published.$t.substring(0, 19) + post.published.$t.substring(23, 29);
+        var timestamp = encodeURIComponent(timestamp1);
+        if(currentPage == "page") {
+          var pAddress = "/search?updated-max=" + timestamp + "&max-results=" + perPage + "#PageNo=" + noPage
+        } else {
+          var pAddress = "/search/label/" + postLabel + "?updated-max=" + timestamp + "&max-results=" + perPage + "#PageNo=" + noPage
+        }
+        location.href = pAddress
+      }
+      //]]>
+      </script>    
+    </b:if>
+
+    
+   
+  </body>
+</html>
