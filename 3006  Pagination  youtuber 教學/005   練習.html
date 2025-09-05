@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title> 
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+
+      body {
+        background: #F3F3F3;
+      }
+
+      header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        background-color: #EEE;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      main .list {
+        width: 100%;
+        max-width: 768px;
+        background-color: #FFF;
+        border: 1px solid #CCC;
+        margin-top: 25px;
+      }
+
+      main .list .item {
+        padding: 15px;
+        border-bottom: 1px solid #CCC;
+      }
+      main .list .item:last-of-type {
+        border-bottom: none;
+      }
+      main .list .item:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      .pagenumbers {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .pagenumbers button {
+        width: 50px;
+        height: 50px;
+
+        appearance: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+
+        background-color: #aaa;
+
+        margin: 5px;
+        transition: 0.4s;
+
+        color: #FFF;
+        font-size: 18px;
+        text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .pagenumbers button:hover {
+        background-color:#44AAEE;
+      }
+
+      .pagenumbers button.active {
+        background-color:#44AAEE;
+        box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
+      }
+
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="list" id="list"></div>
+      <div class="pagenumbers" id="pagination"></div>
+    </main>
+    <!--<script src="main.js"></script>-->
+    <script>
+      const list_items = [
+        "Item 1",
+        "Item 2",
+        "Item 3",
+        "Item 4",
+        "Item 5",
+        "Item 6",
+        "Item 7",
+        "Item 8",
+        "Item 9",
+        "Item 10",
+        "Item 11",
+        "Item 12",
+        "Item 13",
+        "Item 14",
+        "Item 15",
+        "Item 16",
+        "Item 17",
+        "Item 18",
+        "Item 19",
+        "Item 20",
+        "Item 21",
+        "Item 22"
+      ];
+
+      const list_element = document.getElementById('list');
+      const pagination_element = document.getElementById('pagination');
+
+      let current_page = 1;
+      let rows = 5;
+
+      function DisplayList (items, wrapper, rows_per_page, page) {
+        wrapper.innerHTML = "";
+        page--;
+
+        let start = rows_per_page * page;
+        let end = start + rows_per_page;
+        let paginatedItems = items.slice(start, end);
+
+        for (let i = 0; i < paginatedItems.length; i++) {
+          let item = paginatedItems[i];
+          let item_element = document.createElement('div');
+          item_element.classList.add('item');
+          item_element.innerText = item;
+          
+          wrapper.appendChild(item_element);
+        }
+      }
+
+      // 設置頁碼
+      function SetupPagination (items, wrapper, rows_per_page) {
+        wrapper.innerHTML = "";
+        let page_count = Math.ceil(items.length / rows_per_page);
+        for (let i = 1; i < page_count + 1; i++) {
+          let btn = PaginationButton(i, items);
+          wrapper.appendChild(btn);
+        }
+      }
+
+      // 設置 button
+      function PaginationButton(page, items){
+        let button = document.createElement("button");
+       
+        button.innerText =  page;
+        
+        if (current_page == page){ 
+          button.classList.add('active'); 
+        }
+
+        button.addEventListener('click', function () {
+          current_page = page;
+          
+          //DisplayList(list_items, list_element, rows, current_page);
+
+          let current_btn = document.querySelector(".pagenumbers button.active");
+          current_btn.classList.remove('active'); 
+
+          button.classList.add('active'); 
+
+        });
+        
+        
+        return button;
+      }
+
+
+      DisplayList(list_items, list_element, rows, current_page);
+      SetupPagination(list_items,pagination_element,rows);
+    </script>
+    
+
+    
+   
+  </body>
+</html>
+
